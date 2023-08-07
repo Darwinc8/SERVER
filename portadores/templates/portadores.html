@@ -1,0 +1,105 @@
+{% extends "layout.html" %}
+ {% block title %} Portadores {% endblock %} 
+{% block content %} 
+<br/><br/>
+<div class="card">
+  <div class="card-header">
+    <h1 style="text-align: center">PORTADORES</h1>
+    <div class="d-flex justify-content-between">
+      <a class="btn btn-success" href="{% url 'crear_portador' %}" role="button">Agregar nuevo portador</a>
+      <div>
+        <form method="GET" action="">
+          {{ form.query }}
+          <button type="submit" class="btn btn-outline-secondary">
+            <i class="fa fa-search"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="card-body table-responsive">
+    <table class="table table table-striped table-bordered">
+      <thead>
+        <tr class="text-center">
+          <th scope="col">CUIP</th>
+          <th scope="col">Imagen</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellidos</th>
+          <th scope="col">Telefono</th>
+          <th scope="col">Correo</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for portador in portadores%}
+        <tr class="text-center align-middle">
+          <td>{{ portador.CUIP }}</td>
+          <td>
+            <img src="{{ portador.IMAGEN.url }}" height="100" />
+          </td>
+          <td>{{ portador.NOMBRE }}</td>
+          <td>
+            {{ portador.APELLIDO_PATERNO }} {{ portador.APELLIDO_MATERNO }}
+          </td>
+          <td>{{ portador.TELEFONO }}</td>
+          <td>{{ portador.CORREO }}</td>
+          <td>
+            <a
+              class="btn btn-warning"
+              href="{% url 'editar_portador' portador.CUIP %}"
+              role="button"
+              >Editar</a
+            >
+            
+            <a
+              class="btn btn-danger"
+              href="{% url 'eliminar_portador' portador.CUIP %}"
+              role="button"
+              >Eliminar</a
+            >
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+<div class="pagination">
+  <span class="step-links">
+    {% if portadores.has_previous %}
+    <a  class="btn btn-primary" href="?page=1" role="button"
+      >&laquo; Primera</a
+    >
+    <a
+      class="btn btn-primary"
+      href="?page={{ portadores.previous_page_number }}"
+      role="button"
+      >Anterior</a
+    >
+    {% endif %}
+
+    <a  class="btn btn-danger" role="button"
+      >{{ portadores.number }}</a
+    >
+
+    {% if portadores.has_next %}
+    <a
+      class="btn btn-primary"
+      href="?page={{ portadores.next_page_number }}"
+      role="button"
+      >Siguiente</a
+    >
+
+    <a
+      class="btn btn-primary"
+      href="?page={{ portadores.paginator.num_pages }}"
+      role="button"
+      >última &raquo;</a
+    >
+    {% endif %}
+  </span>
+</div>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %}

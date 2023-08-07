@@ -1,0 +1,107 @@
+<form enctype="multipart/form-data" method="post">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label for="{{ form.ID_ARMA.id_for_label }}" class="form-label">Id del Arma existente:</label>
+    <br>
+    {{ form.ID_ARMA}}
+  </div>
+
+  <div class="mb-3">
+    <label for="{{ form.DEPENDENCIA.id_for_label }}" class="form-label">Dependencia:</label>
+    <br>
+    {{ form.DEPENDENCIA }}
+  </div>
+
+  <div class="mb-3">
+    <label for="{{ form.INSTITUCION.id_for_label }}" class="form-label">Institución:</label>
+    <br>
+    {{ form.INSTITUCION }}
+  </div>
+
+  <div class="mb-3">
+    <label for="{{ form.ENTIDAD.id_for_label }}" class="form-label">Entidad Federativa:</label>
+    <br>
+    {{ form.ENTIDAD }}
+  </div>
+
+
+  <div class="mb-3">
+    <label for="" class="form-label">Imakey:</label>
+    <input type="{{ form.IMAKEY.field.widget.input_type }}" class="form-control" name="{{ form.IMAKEY.name }}" id=""
+      placeholder="{{ form.IMAKEY.label|title }}" value="{{form.IMAKEY.value | default:''}}">
+  </div>
+
+  <div class="mb-3">
+    <label for="" class="form-label">Desima:</label>
+    <input type="{{ form.DESIMA.field.widget.input_type }}" class="form-control" name="{{ form.DESIMA.name }}" id=""
+      placeholder="{{ form.DESIMA.label|title }}" value="{{form.DESIMA.value | default:''}}">
+  </div>
+
+  <div class="mb-3">
+    <label for="{{ form.TIPO.id_for_label }}" class="form-label">Tipo de Imagen:</label>
+    <br>
+    {{form.TIPO}}
+  </div>
+
+  <div class="mb-3">
+    <label for="" class="form-label">Folio:</label>
+    <input type="{{ form.FOLIO.field.widget.input_type }}" class="form-control" name="{{ form.FOLIO.name }}" id=""
+      placeholder="{{ form.FOLIO.label|title }}" value="{{form.FOLIO.value | default:''}}">
+  </div>
+
+  <div class="mb-3">
+    <label for="" class="form-label">Grupo:</label>
+    <input type="{{ form.GRUPO.field.widget.input_type }}" class="form-control" name="{{ form.GRUPO.name }}" id=""
+      placeholder="{{ form.GRUPO.label|title }}" value="{{form.GRUPO.value | default:''}}" maxlength="1">
+  </div>
+  <div class="mb-3 imagen">
+    <label for="" class="form-label">Imagen del Arma:</label>
+    {% if form.IMAGEN.field.widget.input_type == 'file' and form.IMAGEN.value %}
+    <br>
+    <img src="{{MEDIA_URL}}/imagenes/{{form.IMAGEN.value}}" width="100"></img>
+    <br><br>
+    {% endif %}
+    <input type="{{ form.IMAGEN.field.widget.input_type }}" class="form-control" name="{{ form.IMAGEN.name }}" id=""
+      placeholder="{{ form.IMAGEN.label|title }}" value="{{form.IMAGEN.value | default:''}}">
+  </div>
+
+
+  <div class="col-12 help-text">
+    {{form.errors}}
+  </div>
+
+  <input name="" id="" class="btn btn-success" type="submit" value="Guardar">
+  <a name="" id="" class="btn btn-primary" href="{%url 'imagenes'%}" role="button">Volver</a>
+</form>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function () {
+      // Cuando cambia la selección del campo "Dependencia"
+      $('#id_DEPENDENCIA').change(function () {
+          const dependenciaId = $(this).val();
+          const institucionSelect = $('#id_INSTITUCION');
+
+          // Habilita el campo "Institucion" para permitir la selección
+          institucionSelect.prop('disabled', false);
+
+          // Realiza una solicitud AJAX para obtener los municipios filtrados por entidad
+          $.ajax({
+              url: `/armamento/obtener_instituciones/${dependenciaId}/`, 
+              
+              // Utiliza el ID de la dependencia seleccionado en la URL
+              type: 'GET',
+              dataType: 'json',
+              success: function (data) {
+                  // Limpia las instituciones existentes y agrega los nuevos basados en la respuesta JSON
+                  institucionSelect.empty();
+                  $.each(data, function (index, institucion) {
+                      institucionSelect.append(new Option(institucion.NOMBRE, institucion.ID_INSTITUCION));
+                  });
+              },
+              error: function (error) {
+                  console.log(error);
+              }
+          });
+      });
+  });
+</script>

@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+ {% block title %} Estatus de armas {% endblock %} 
+
+{% block content %}
+
+<br/><br/>
+<div class="card">
+  <div class="card-header">
+    <h1 style="text-align: center">ESTATUS DE LAS ARMAS</h1>
+    <a name="" id="" class="btn btn-success" href="{% url 'catalogos' %}" role="button">Volver a Catalogos</a>
+  </div>
+  <div class="card-body table-responsive">
+    <table class="table table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th scope="col" class="text-center">ID</th>
+                <th scope="col">ESTATUS</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for estatu in estatus %}
+            <tr class="">
+                <td class="text-center">{{ estatu.ID_ESTATUS }}</td>
+                <td>{{ estatu.DESCRIPCION }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="card-footer text-muted">
+</div>
+</div>
+
+{% endblock %}

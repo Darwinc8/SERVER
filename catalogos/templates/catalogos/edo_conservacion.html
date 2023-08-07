@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+ {% block title %} Estados de conservacion {% endblock %} 
+
+{% block content %}
+
+<br/><br/>
+<div class="card">
+  <div class="card-header">
+    <h1 style="text-align: center">ESTADO DE CONSERVACIÓN</h1>
+    <a class="btn btn-success" href="{% url 'catalogos' %}" role="button">Volver a Catalogos</a>
+  </div>
+  <div class="card-body table-responsive">
+    <table class="table table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th scope="col" class="text-center">ID ESTADO</th>
+                <th scope="col">DESCRIPCIÓN</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for estado in estados %}
+            <tr class="">
+                <td class="text-center">{{ estado.ID_ESTADO }}</td>
+                <td>{{ estado.DESCRIPCION }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="card-footer text-muted">
+    </div>
+</div>
+
+{% endblock %}

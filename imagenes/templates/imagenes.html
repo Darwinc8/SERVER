@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+ {% block title %} IMAGENES {% endblock %} 
+
+{% block content %}
+<br><br>
+<div class="card">
+    <div class="card-header">
+        <h1 style="text-align: center;">IMAGENES</h1>
+        <div class="d-flex justify-content-between">
+            <a name="" id="" class="btn btn-success" href="{% url 'crear_imagen' %}" role="button">Agregar nueva imagen</a>
+            <div>
+              <form method="GET" action="">
+                {{ form.query }}
+                <button type="submit" class="btn btn-outline-secondary">
+                  <i class="fa fa-search"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+    </div>
+    <div class="card-body table-responsive">
+        <table class="table table table-striped table-bordered">
+            <thead class="text-center">
+                <tr class="text-center align-middle">
+                    <td>ID ARMA</td>
+                    <td>INSTITUCION</td>
+                    <td>ENTIDAD</td>
+                    <td>DEPENDENCIA</td>
+                    <td>IMAKEY</td>
+                    <td>DESIMA</td>
+                    <td>TIPO</td>
+                    <td>FOLIO</td>
+                    <td>GRUPO</td>
+                    <td>IMAGEN</td>
+                    <td colspan="2">ACCIONES</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for imagen in imagenes%}
+                <tr class="text-center align-middle">
+                    <td>{{ imagen.ID_ARMA.ID_ARMA }}</td>
+                    <td>{{ imagen.INSTITUCION }}</td>
+                    <td>{{ imagen.ENTIDAD }}</td>
+                    <td>{{ imagen.DEPENDENCIA }}</td>
+                    <td>{{ imagen.IMAKEY }}</td>
+                    <td>{{ imagen.DESIMA }}</td>
+                    <td>{{ imagen.TIPO.DESCRIPCION }}</td>
+                    <td>{{ imagen.FOLIO }}</td>
+                    <td>{{ imagen.GRUPO }}</td>
+                    <td>
+                        <img src="{{ imagen.IMAGEN.url }}" height="100"/>
+                    </td>
+                    <td class="align-middle text-center">
+                        <a name="" id="" class="btn btn-warning" href="{% url 'editar_imagen' imagen.ID_ALTERNA %}" role="button">Editar</a> 
+                    </td>
+                    <td>
+                        <a name="" id="" class="btn btn-danger" href="{% url 'eliminar_imagen' imagen.ID_ALTERNA %}" role="button">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer text-muted">
+    </div>
+</div>
+<div class="pagination">
+    <span class="step-links">
+    {% if imagenes.has_previous %}
+        <a name="" id="" class="btn btn-primary" href="?page=1" role="button">&laquo; Primera</a>
+        <a name="" id="" class="btn btn-primary" href="?page={{ imagenes.previous_page_number }}" role="button">Anterior</a>
+    {% endif %}
+
+    <a name="" id="" class="btn btn-danger" role="button">{{ imagenes.number }}</a>
+
+    {% if imagenes.has_next %}
+        <a name="" id="" class="btn btn-primary" href="?page={{ imagenes.next_page_number }}" role="button">Siguiente</a>
+
+        <a name="" id="" class="btn btn-primary" href="?page={{ imagenes.paginator.num_pages }}" role="button">última &raquo;</a>
+    {% endif %}
+    </span>
+</div>
+
+{% endblock %}

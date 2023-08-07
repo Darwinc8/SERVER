@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+ {% block title %} {% trans "Calibres" %} {% endblock %}
+  {% block content %}
+ <br/><br/>
+<div class="card">
+  <div class="card-header">
+    <h1 style="text-align: center">CALIBRES</h1>
+    <a class="btn btn-success" href="{% url 'catalogos' %}" role="button">Volver a Catalogos</a>
+  </div>
+  <div class="card-body table-responsive">
+    <table class="table table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th scope="col" class="text-center">ID</th>
+          <th scope="col" class="text-left">CALIBRE</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for calibre in calibres%}
+        <tr>
+          <td class="align-middle text-center">{{calibre.ID_CALIBRE}}</td>
+          <td class="align-middle text-left">{{calibre.CALIBRE}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pagination">
+    <span class="step-links">
+      {% if calibres.has_previous %}
+      <a name="" id="" class="btn btn-primary" href="?page=1" role="button"
+        >&laquo; {% trans "Primera" %}</a
+      >
+      <a
+        class="btn btn-primary"
+        href="?page={{ calibres.previous_page_number }}"
+        role="button"
+        >{% trans "Anterior" %}</a
+      >
+      {% endif %}
+
+      <a class="btn btn-danger" role="button"
+        >{{ calibres.number }}</a
+      >
+
+      {% if calibres.has_next %}
+      <a
+        class="btn btn-primary"
+        href="?page={{ calibres.next_page_number }}"
+        role="button"
+        >{% trans "Siguiente" %}</a
+      >
+
+      <a
+        class="btn btn-primary"
+        href="?page={{ calibres.paginator.num_pages }}"
+        role="button"
+        >{% trans "última" %}&raquo;</a
+      >
+      {% endif %}
+    </span>
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+<form enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+    {% for campo in form %}
+    <div class="mb-3">
+      <label class="form-label">{{ campo.label|title }}:</label>
+        {% if campo.field.widget.input_type == 'file' and campo.value %}
+        <br>
+        <img src="{{MEDIA_URL}}/imagenes/{{campo.value}}" width="100"></img>
+        <br><br>
+        {% endif %}
+      <input type="{{ campo.field.widget.input_type }}"
+        class="form-control" 
+        name="{{ campo.name }}"  
+        placeholder="{{ campo.label|title }}"
+        value="{{campo.value | default:''}}" required>
+    </div>
+    <div class="col-12 help-text">
+        {{campo.errors}}
+    </div>
+    {% endfor %}
+
+    <input class="btn btn-success" type="submit" value="Guardar">
+    <a class="btn btn-primary" href="{%url 'portadores'%}" role="button">Volver</a>
+</form>

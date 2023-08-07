@@ -1,0 +1,110 @@
+{% extends "layout.html" %}
+ {% block title %} {% trans "Catalogos" %} {% endblock %} 
+
+{% block content %}
+<br/><br/>
+<div class="card">
+  <div class="card-header">
+    <h1 style="text-align: center">{% trans "CATALOGOS" %}</h1>
+  </div>
+  <div class="card-body table-responsive">
+    <table class="table table table-striped ">
+        <thead>
+            <tr class="text-center" >
+                <th scope="col">{% trans "Nombre del Catalogo" %}</th>
+                <th scope="col">{% trans "Acciones" %}</th>
+            </tr>
+        </thead>
+        <tbody class="text-center align-middle" >
+            <tr class="">
+                <td>{% trans "Emisores" %}</td>
+                <td>
+                    <a class="btn btn-primary" href="{% url 'emisores' %}" role="button">{% trans "Ver" %}</a>
+                </td>
+            </tr>
+            <tr class="">
+                <td>{% trans "Entidades" %}</td>
+                <td>
+                    <a class="btn btn-primary" href="{% url 'entidades' %}" role="button">{% trans "Ver" %}</a>
+                </td>
+            </tr>
+            <tr class="">
+                <td>{% trans "Municipios" %}</td>
+                <td>
+                    <a class="btn btn-primary" href="{% url 'municipios' %}" role="button">{% trans "Ver" %}</a>
+                </td>
+            </tr>
+            <tr class="">
+                <td>{% trans "Dependencias" %}</td>
+                <td>
+                    <a class="btn btn-primary" href="{% url 'dependencias' %}" role="button">{% trans "Ver" %}</a>
+                </td>
+            </tr>
+            <tr class="">
+                <td>{% trans "Locs" %}</td>
+                <td>
+                    <a class="btn btn-primary" href="{% url 'locs' %}" role="button">{% trans "Ver" %}</a>
+                </td>
+            </tr>
+            <tr class="">
+                <td>{% trans "Estados de conservación" %}</td>
+                <td>
+                    <a class="btn btn-primary" href="{% url 'edo_conservacion' %}" role="button">{% trans "Ver" %}</a>
+                </td>
+            </tr>
+            <tr class="">
+                <td>{% trans "Instituciones" %}</td>
+                <td>
+                    <a class="btn btn-primary" href="{% url 'instituciones' %}" role="button">{% trans "Ver" %}</a>
+                </td>
+            </tr>
+            <tr class="">
+                <td>{% trans "Tipos de armas" %}</td>
+                <td>
+                    <a class="btn btn-primary" href="{% url 'tipos' %}" role="button">{% trans "Ver" %}</a>
+                </td>
+            </tr>
+            <tr class="">
+                <td>{% trans "Tipos de calibre" %}</td>
+                <td>
+                    <a class="btn btn-primary" href="{% url 'calibres' %}" role="button">{% trans "Ver" %}</a>
+                </td>
+            </tr>
+            <tr class="">
+                <td>{% trans "Marcas" %}</td>
+                <td>
+                    <a class="btn btn-primary" href="{% url 'marcas' %}" role="button">{% trans "Ver" %}</a>
+                </td>
+            </tr>
+            <tr class="">
+                <td>{% trans "Estatus de armas" %}</td>
+                <td>
+                    <a class="btn btn-primary" href="{% url 'estatus_arma' %}" role="button">{% trans "Ver" %}</a>
+                </td>
+            </tr>
+            <tr class="">
+                <td>{% trans "Tipos de Alta" %}</td>
+                <td>
+                    <a class="btn btn-primary" href="{% url 'tipo_alta' %}" role="button">{% trans "Ver" %}</a>
+                </td>
+            </tr>
+            <tr class="">
+                <td>{% trans "Tipos de Dependencia" %}</td>
+                <td>
+                    <a class="btn btn-primary" href="{% url 'tipo_dependencia' %}" role="button">{% trans "Ver" %}</a>
+                </td>
+            </tr>
+            <tr class="">
+                <td>{% trans "Tipos de Imagen" %}</td>
+                <td>
+                    <a class="btn btn-primary" href="{% url 'tipo_imagen' %}" role="button">{% trans "Ver" %}</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="card-footer text-muted">
+</div>
+</div>
+
+{% endblock %}

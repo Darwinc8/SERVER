@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+ {% block title %} Marcas {% endblock %} 
+
+{% block content %}
+<br/><br/>
+<div class="card">
+  <div class="card-header">
+    <h1 style="text-align: center">MARCAS</h1>
+    <a class="btn btn-success" href="{% url 'catalogos' %}" role="button">Volver a Catalogos</a>
+  </div>
+  <div class="card-body table-responsive">
+    <table class="table table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th scope="col" class="text-center">ID</th>
+                <th scope="col">MARCA</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for marca in marcas %}
+            <tr class="">
+                <td class="text-center">{{ marca.ID_MARCA }}</td>
+                <td>{{ marca.MARCA }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+  </div>
+  <div class="card-footer text-muted">
+</div>
+</div>
+<div class="pagination">
+    <span class="step-links">
+    {% if marcas.has_previous %}
+        <a class="btn btn-primary" href="?page=1" role="button">&laquo; Primera</a>
+        <a class="btn btn-primary" href="?page={{ marcas.previous_page_number }}" role="button">Anterior</a>
+    {% endif %}
+
+    <a class="btn btn-danger" role="button">{{ marcas.number }}</a>
+
+    {% if marcas.has_next %}
+        <a class="btn btn-primary" href="?page={{ marcas.next_page_number }}" role="button">Siguiente</a>
+
+        <a class="btn btn-primary" href="?page={{ marcas.paginator.num_pages }}" role="button">última &raquo;</a>
+    {% endif %}
+    </span>
+</div>
+
+{% endblock %}

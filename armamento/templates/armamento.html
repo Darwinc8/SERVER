@@ -1,0 +1,173 @@
+{% extends "layout.html" %}
+{% load i18n %}
+ {% block title %} {% trans "Amarmamento" %} {% endblock %} 
+ {% block content %} 
+{% load l10n %} 
+ <br/><br/>
+<div class="card">
+  <div class="card-header">
+    <h1 style="text-align: center">{% trans "ARMAMENTO" %}</h1>
+    <div class="d-flex justify-content-between">
+      <a
+        class="btn btn-success d-inline-block"
+        href="{% url 'crear_armamento' %}"
+        role="button"
+        >{% trans "Agregar nuevo armamento" %}</a
+      >
+      <div>
+        <form method="GET" action="">
+          {{ form.query }}
+          <button type="submit" class="btn btn-outline-secondary">
+            <i class="fa fa-search"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="card-body table-responsive">
+    <table class="table table table-striped table-bordered">
+      <thead class="text-center align-middle">
+        <tr>
+          <th scope="col">ID ARMA</th>
+          <th scope="col">INSTITUCION</th>
+          <th scope="col">DEPENDENCIA</th>
+          <th scope="col">ENTIDAD</th>
+          <th scope="col">MUNICIPIO</th>
+          <th scope="col">NUMERO LOC</th>
+          <th scope="col">FOLIO_C</th>
+          <th scope="col">FOLIO_D</th>
+          <th scope="col">CLASE</th>
+          <th scope="col">CALIBRE</th>
+          <th scope="col">MARCA</th>
+          <th scope="col">MODELO</th>
+          <th scope="col">MATRICULA</th>
+          <th scope="col">MATRICULA CANON</th>
+          <th scope="col">FECHA DE REGISTRO</th>
+          <th scope="col">FECHA DEL LOC</th>
+          <th scope="col">ESTADO ARMA</th>
+          <th scope="col">FECHA DE CAPTURA</th>
+          <th scope="col">OBSERVACIONES</th>
+          <th scope="col">ESTATUS DEL ARMA</th>
+          <th scope="col">CUIP PORTADOR</th>
+          <th scope="col">CUIP RESPONSABLE</th>
+          <th scope="col">CIHB</th>
+          <th scope="col">FECHA DE BAJA LOGICA</th>
+          <th scope="col">MOTIVO BAJA</th>
+          <th scope="col">DOCUMENTO BAJA</th>
+          <th scope="col">OBSERVACIONES BAJA</th>
+          <th scope="col">FECHA DE BAJA DEL DOCUMENTO</th>
+          <th scope="col">ACCIONES</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for arma in armamento%}
+        <tr>
+          <td class="align-middle text-center">{{arma.ID_ARMA}}</td>
+          <td class="align-middle text-center">{{arma.INSTITUCION}}</td>
+          <td class="align-middle text-center">{{arma.DEPENDENCIA}}</td>
+          <td class="align-middle text-center">{{arma.ENTIDAD}}</td>
+          <td class="align-middle text-center">{{arma.MUNICIPIO.MUNICIPIO}}</td>
+          <td class="align-middle text-center">
+            {{arma.NUMERO_LOC.NO_LICENCIA}}
+          </td>
+          <td class="align-middle text-center">{{arma.FOLIO_C}}</td>
+          <td class="align-middle text-center">{{arma.FOLIO_D}}</td>
+          <td class="align-middle text-center">
+            {{arma.CLASE_TIPO_ARMA.TIPO}}
+          </td>
+          <td class="align-middle text-center">
+            {{arma.CALIBRE_ARMA.CALIBRE}}
+          </td>
+          <td class="align-middle text-center">{{arma.MARCA_ARMA.MARCA}}</td>
+          <td class="align-middle text-center">{{arma.MODELO_ARMA.MODELO}}</td>
+          <td class="align-middle text-center">{{arma.MATRICULA}}</td>
+          <td class="align-middle text-center">{{arma.MATRICULA_CANON}}</td>
+          <td class="align-middle text-center">{{arma.FECHA}}</td>
+          <td class="align-middle text-center">{{arma.FECHA_LOC}}</td>
+          <td class="align-middle text-center">{{arma.ESTADO_ARMA}}</td>
+          <td class="align-middle text-center">{{arma.FECHA_CAPTURA}}</td>
+          <td class="align-middle text-center">{{arma.OBSERVACIONES}}</td>
+          <td class="align-middle text-center">
+            {{arma.ESTATUS_ARMA.DESCRIPCION}}
+          </td>
+          <td class="align-middle text-center">{{arma.CUIP_PORTADOR}}</td>
+          <td class="align-middle text-center">{{arma.CUIP_RESPONSABLE}}</td>
+          <td class="align-middle text-center">{{arma.CIHB}}</td>
+          <td class="align-middle text-center">{{arma.FECHA_BAJA_LOGICA}}</td>
+          <td class="align-middle text-center">{{arma.MOTIVO_BAJA}}</td>
+          <td class="align-middle text-center">{{arma.DOCUMENTO_BAJA}}</td>
+          <td class="align-middle text-center">{{arma.OBSERVACIONES_BAJA}}</td>
+          <td class="align-middle text-center">
+            {{arma.FECHA_BAJA_DOCUMENTO}}
+          </td>
+          <td class="align-middle text-center">
+            <a
+              name=""
+              id=""
+              class="btn btn-warning"
+              href="{% url 'editar_armamento' arma.ID_ALTERNA %}"
+              role="button"
+              >{% trans "Editar" %}</a
+            >
+
+            <a
+              name=""
+              id=""
+              class="btn btn-danger"
+              href="{% url 'eliminar_armamento' arma.ID_ALTERNA %}"
+              role="button"
+              >{% trans "Eliminar" %}</a
+            >
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+  <div class="pagination">
+    <span class="step-links">
+      {% if armamento.has_previous %}
+      <a name="" id="" class="btn btn-primary" href="?page=1" role="button"
+        >&laquo; Primera</a
+      >
+      <a
+        name=""
+        id=""
+        class="btn btn-primary"
+        href="?page={{ armamento.previous_page_number }}"
+        role="button"
+        >Anterior</a
+      >
+      {% endif %}
+
+      <a name="" id="" class="btn btn-danger" role="button"
+        >{{ armamento.number }}</a
+      >
+
+      {% if armamento.has_next %}
+      <a
+        name=""
+        id=""
+        class="btn btn-primary"
+        href="?page={{ armamento.next_page_number }}"
+        role="button"
+        >Siguiente</a
+      >
+
+      <a
+        name=""
+        id=""
+        class="btn btn-primary"
+        href="?page={{ armamento.paginator.num_pages }}"
+        role="button"
+        >última &raquo;</a
+      >
+      {% endif %}
+    </span>
+  </div>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+{% endblock %}

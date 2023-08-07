@@ -1,0 +1,32 @@
+{% extends "layout.html" %} 
+{% block title %} {% trans Dependencias %} {% endblock %} 
+{% block content %} 
+<br /><br />
+<div class="card">
+  <div class="card-header">
+    <h1 style="text-align: center">{% trans "DEPENDENCIAS" %}</h1>
+    <a class="btn btn-success" href="{% url 'catalogos' %}" role="button">{% trans "Volver a Catalogos" %}</a>
+  </div>
+  <div class="card-body table-responsive">
+    <table class="table table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th scope="col" class="text-center">{% trans "TIPO DE DEPENDENCIA" %}</th>
+          <th scope="col" class="text-center">{% trans "ID DEPENDENCIAS" %}</th>
+          <th scope="col">{% trans "DEPENDENCIA" %}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for dependencia in dependencias %}
+        <tr class="">
+          <td class="text-center">{{ dependencia.ID_TIPO_DEPENDENCIA }}</td>
+          <td class="text-center">{{ dependencia.ID_DEPENDENCIA }}</td>
+          <td>{{ dependencia.DEPENDENCIA }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="card-footer text-muted"></div>
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+ {% block title %}Inicio{% endblock %} 
+{% block content %}
+{% load i18n %}
+<br>
+<!-- Jumbotron -->
+<div class="p-5 text-center bg-image rounded-3" style="
+    background-image: url('https://i.pinimg.com/736x/b6/cf/32/b6cf32b918f22c45d15204076c64f520.jpg');
+    height: 400px;
+
+  ">
+  <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+    <div class="d-flex justify-content-center align-items-center h-100">
+      <div class="text-white">
+        <h1 class="mb-3">{% trans "Bienvenido " %}{{usuario }}</h1>
+        <a class="btn btn-outline-light btn-lg" href="{% url 'catalogos' %}" role="button">Empezar</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Jumbotron -->
+{% endblock %}

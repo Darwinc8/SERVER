@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+ {% block title %} LOCs {% endblock %} 
+
+{% block content %}
+
+<br/><br/>
+<div class="card">
+  <div class="card-header">
+    <h1 style="text-align: center">LOC's</h1>
+    <a class="btn btn-success" href="{% url 'catalogos' %}" role="button">Volver a Catalogos</a>
+  </div>
+  <div class="card-body table-responsive">
+    <table class="table table table-striped table-bordered">
+        <thead class="text-center">
+            <tr>
+                <th scope="col">ID ENTIDAD</th>
+                <th scope="col">ENTIDAD</th>
+                <th scope="col">DEPENDENCIA</th>
+                <th scope="col">NO LICENCIA</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for loc in locs %}
+            <tr class="text-center">
+                <td>{{ loc.ID_ENTIDAD }}</td>
+                <td>{{ loc.ENTIDAD }}</td>
+                <td>{{ loc.DEPENDENCIA }}</td>
+                <td>{{ loc.NO_LICENCIA }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+  </div>
+  <div class="card-footer text-muted">
+</div>
+</div>
+    <div class="pagination">
+        <span class="step-links">
+        {% if locs.has_previous %}
+            <a class="btn btn-primary" href="?page=1" role="button">&laquo; Primera</a>
+            <a class="btn btn-primary" href="?page={{ locs.previous_page_number }}" role="button">Anterior</a>
+        {% endif %}
+    
+        <a class="btn btn-danger" role="button">{{ locs.number }}</a>
+    
+        {% if locs.has_next %}
+            <a class="btn btn-primary" href="?page={{ locs.next_page_number }}" role="button">Siguiente</a>
+    
+            <a class="btn btn-primary" href="?page={{ locs.paginator.num_pages }}" role="button">última &raquo;</a>
+        {% endif %}
+        </span>
+    </div>
+</div>
+
+{% endblock %}

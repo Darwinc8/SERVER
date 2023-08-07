@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+ {% block title %} Emisores {% endblock %} 
+
+{% block content %}
+<br/><br/>
+<div class="card">
+  <div class="card-header">
+    <h1 style="text-align: center">EMISORES</h1>
+    <a class="btn btn-success" href="{% url 'catalogos' %}" role="button">Volver a Catalogos</a>
+  </div>
+  <div class="card-body table-responsive">
+    <table class="table table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">TIPO</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for emisor in emisores %}
+            <tr>
+                <td>{{ emisor.Id_Emisor }}</td>
+                <td>{{ emisor.Tipo }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="card-footer text-muted">
+</div>
+</div>
+
+{% endblock %}
