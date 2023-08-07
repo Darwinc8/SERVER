@@ -1,19 +1,20 @@
 {% extends "layout.html" %}
- {% block title %} Tipos de alta {% endblock %} 
+{% load i18n %}
+ {% block title %} {% trans "Tipos de alta" %} {% endblock %} 
 
 {% block content %}
 <br/><br/>
 <div class="card">
   <div class="card-header">
-    <h1 style="text-align: center">TIPOS DE ALTA</h1>
-    <a class="btn btn-success" href="{% url 'catalogos' %}" role="button">Volver a Catalogos</a>
+    <h1 style="text-align: center">{% trans "TIPOS DE ALTA" %}</h1>
+    <a class="btn btn-success" href="{% url 'catalogos' %}" role="button">{% trans "Volver a Catalogos" %}</a>
   </div>
   <div class="card-body table-responsive">
     <table class="table table table-striped table-bordered">
         <thead>
             <tr>
                 <th scope="col" class="text-center">ID</th>
-                <th scope="col">TIPO</th>
+                <th scope="col">{% trans "TIPO" %}</th>
             </tr>
         </thead>
         <tbody>

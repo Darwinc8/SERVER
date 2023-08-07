@@ -1,20 +1,21 @@
 {% extends "layout.html" %}
- {% block title %} Estatus de armas {% endblock %} 
+{% load i18n %}
+ {% block title %} {% trans "Estatus de armas" %} {% endblock %} 
 
 {% block content %}
 
 <br/><br/>
 <div class="card">
   <div class="card-header">
-    <h1 style="text-align: center">ESTATUS DE LAS ARMAS</h1>
-    <a name="" id="" class="btn btn-success" href="{% url 'catalogos' %}" role="button">Volver a Catalogos</a>
+    <h1 style="text-align: center">{% trans "ESTATUS DE LAS ARMAS" %}</h1>
+    <a name="" id="" class="btn btn-success" href="{% url 'catalogos' %}" role="button">{% trans "Volver a Catalogos" %}</a>
   </div>
   <div class="card-body table-responsive">
     <table class="table table table-striped table-bordered">
         <thead>
             <tr>
                 <th scope="col" class="text-center">ID</th>
-                <th scope="col">ESTATUS</th>
+                <th scope="col">{% trans "ESTATUS" %}</th>
             </tr>
         </thead>
         <tbody>

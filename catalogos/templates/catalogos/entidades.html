@@ -1,20 +1,21 @@
 {% extends "layout.html" %}
+{% load i18n %}
  {% block title %} Entidades {% endblock %} 
 
 {% block content %}
 <br/><br/>
 <div class="card">
   <div class="card-header">
-    <h1 style="text-align: center">ENTIDADES</h1>
-    <a class="btn btn-success" href="{% url 'catalogos' %}" role="button">Volver a Catalogos</a>
+    <h1 style="text-align: center">{% trans "ENTIDADES" %}</h1>
+    <a class="btn btn-success" href="{% url 'catalogos' %}" role="button">{% trans "Volver a Catalogos" %}</a>
   </div>
   <div class="card-body table-responsive">
     <table class="table table table-striped table-bordered">
         <thead>
             <tr class="text-center">
                 <th scope="col">ID</th>
-                <th scope="col">ENTIDAD</th>
-                <th scope="col">SIGLAS</th>
+                <th scope="col">{% trans "ENTIDAD" %}</th>
+                <th scope="col">{% trans "SIGLAS" %}</th>
             </tr>
         </thead>
         <tbody>

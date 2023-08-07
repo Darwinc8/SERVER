@@ -1,21 +1,22 @@
 {% extends "layout.html" %}
- {% block title %} Instituciones {% endblock %} 
+{% load i18n %}
+ {% block title %} {% trans "Instituciones" %} {% endblock %} 
 
 {% block content %}
 <br/><br/>
 <div class="card">
   <div class="card-header">
-    <h1 style="text-align: center">INSTITUCIONES</h1>
-    <a class="btn btn-success" href="{% url 'catalogos' %}" role="button">Volver a Catalogos</a>
+    <h1 style="text-align: center">{% trans "INSTITUCIONES" %}</h1>
+    <a class="btn btn-success" href="{% url 'catalogos' %}" role="button">{% trans "Volver a Catalogos" %}</a>
   </div>
   <div class="card-body table-responsive">
     <table class="table table table-striped table-bordered">
         <thead>
             <tr class="text-center">
                 <th scope="col">ID</th>
-                <th scope="col">NOMBRE</th>
-                <th scope="col">TIPO DEPENDENCIA</th>
-                <th scope="col">DEPENDENCIA</th>
+                <th scope="col">{% trans "NOMBRE" %}</th>
+                <th scope="col">{% trans "TIPO DEPENDENCIA" %}</th>
+                <th scope="col">{% trans "DEPENDENCIA" %}</th>
             </tr>
         </thead>
         <tbody>
@@ -36,16 +37,16 @@
 <div class="pagination">
     <span class="step-links">
     {% if instituciones.has_previous %}
-        <a class="btn btn-primary" href="?page=1" role="button">&laquo; Primera</a>
-        <a class="btn btn-primary" href="?page={{ instituciones.previous_page_number }}" role="button">Anterior</a>
+        <a class="btn btn-primary" href="?page=1" role="button">&laquo; {% trans "Primera" %}</a>
+        <a class="btn btn-primary" href="?page={{ instituciones.previous_page_number }}" role="button">{% trans "Anterior" %}</a>
     {% endif %}
 
     <a class="btn btn-danger" role="button">{{ instituciones.number }}</a>
 
     {% if instituciones.has_next %}
-        <a class="btn btn-primary" href="?page={{ instituciones.next_page_number }}" role="button">Siguiente</a>
+        <a class="btn btn-primary" href="?page={{ instituciones.next_page_number }}" role="button">{% trans "Siguiente" %}</a>
 
-        <a class="btn btn-primary" href="?page={{ instituciones.paginator.num_pages }}" role="button">última &raquo;</a>
+        <a class="btn btn-primary" href="?page={{ instituciones.paginator.num_pages }}" role="button">{% trans "última" %} &raquo;</a>
     {% endif %}
     </span>
 </div>

@@ -1,4 +1,5 @@
 {% extends "layout.html" %}
+{% load i18n %}
  {% block title %} LOCs {% endblock %} 
 
 {% block content %}
@@ -7,16 +8,16 @@
 <div class="card">
   <div class="card-header">
     <h1 style="text-align: center">LOC's</h1>
-    <a class="btn btn-success" href="{% url 'catalogos' %}" role="button">Volver a Catalogos</a>
+    <a class="btn btn-success" href="{% url 'catalogos' %}" role="button">{% trans "Volver a Catalogos" %}</a>
   </div>
   <div class="card-body table-responsive">
     <table class="table table table-striped table-bordered">
         <thead class="text-center">
             <tr>
-                <th scope="col">ID ENTIDAD</th>
-                <th scope="col">ENTIDAD</th>
-                <th scope="col">DEPENDENCIA</th>
-                <th scope="col">NO LICENCIA</th>
+                <th scope="col">{% trans "ID ENTIDAD" %}</th>
+                <th scope="col">{% trans "ENTIDAD" %}</th>
+                <th scope="col">{% trans "DEPENDENCIA" %}</th>
+                <th scope="col">{% trans "NUMERO DE LICENCIA" %}</th>
             </tr>
         </thead>
         <tbody>
@@ -37,16 +38,16 @@
     <div class="pagination">
         <span class="step-links">
         {% if locs.has_previous %}
-            <a class="btn btn-primary" href="?page=1" role="button">&laquo; Primera</a>
-            <a class="btn btn-primary" href="?page={{ locs.previous_page_number }}" role="button">Anterior</a>
+            <a class="btn btn-primary" href="?page=1" role="button">&laquo; {% trans "Primera" %}</a>
+            <a class="btn btn-primary" href="?page={{ locs.previous_page_number }}" role="button">{% trans "Anterior" %}</a>
         {% endif %}
     
         <a class="btn btn-danger" role="button">{{ locs.number }}</a>
     
         {% if locs.has_next %}
-            <a class="btn btn-primary" href="?page={{ locs.next_page_number }}" role="button">Siguiente</a>
+            <a class="btn btn-primary" href="?page={{ locs.next_page_number }}" role="button">{% trans "Siguiente" %}</a>
     
-            <a class="btn btn-primary" href="?page={{ locs.paginator.num_pages }}" role="button">última &raquo;</a>
+            <a class="btn btn-primary" href="?page={{ locs.paginator.num_pages }}" role="button">{% trans "última" %} &raquo;</a>
         {% endif %}
         </span>
     </div>
