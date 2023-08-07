@@ -46,7 +46,7 @@ def iniciar_sesion(request):
         if user is None:
             return render(request, 'sign_in.html',{
             'form': AuthenticationForm,
-            'error': 'Username or Password is incorrect'
+            'error': 'Usuario o Contraseña incorrecta'
             })
         else:
             login(request, user)

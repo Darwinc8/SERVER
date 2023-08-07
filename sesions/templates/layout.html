@@ -27,30 +27,30 @@
           <ul class="navbar-nav ms-auto">
             {% if user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+              <a class="nav-link active" aria-current="page" href="{% url 'home' %}">{% trans "Home" %}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'armamento' %}">Armamento</a>
+              <a class="nav-link" href="{% url 'armamento' %}">{% trans "Armamento</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'imagenes' %}">Imagenes</a>
+              <a class="nav-link" href="{% url 'imagenes' %}">{% trans "Imagenes" %}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'portadores' %}">Portadores</a>
+              <a class="nav-link" href="{% url 'portadores' %}">{% trans "Portadores" %}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'catalogos' %}">Catalogos</a>
+              <a class="nav-link" href="{% url 'catalogos' %}">{% trans "Catalogos" %}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'cerrar_sesion' %}">Cerrar Sesión</a>
+              <a class="nav-link" href="{% url 'cerrar_sesion' %}">{% trans "Cerrar Sesión" %}</a>
             </li>
             
             {% else %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'registrarse' %}">Registrarse</a>
+              <a class="nav-link" href="{% url 'registrarse' %}">{% trans "Registrarse" %}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'iniciar_sesion' %}">Iniciar Sesión</a>
+              <a class="nav-link" href="{% url 'iniciar_sesion' %}">{% trans "Iniciar Sesión" %}</a>
             </li>
             {% endif %}
           </ul>
