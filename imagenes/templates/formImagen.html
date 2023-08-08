@@ -29,13 +29,15 @@
   <div class="mb-3">
     <label for="" class="form-label">{{form.IMAKEY.label|title}}:</label>
     <input type="{{ form.IMAKEY.field.widget.input_type }}" class="form-control" name="{{ form.IMAKEY.name }}" id=""
-      placeholder="{{ form.IMAKEY.label|title }}" value="{{form.IMAKEY.value | default:''}}">
+      placeholder="{{ form.IMAKEY.label|title }}" value="{{form.IMAKEY.value | default:''}}"
+      required>
   </div>
 
   <div class="mb-3">
     <label for="" class="form-label">{{form.DESIMA.label|title}}:</label>
     <input type="{{ form.DESIMA.field.widget.input_type }}" class="form-control" name="{{ form.DESIMA.name }}" id=""
-      placeholder="{{ form.DESIMA.label|title }}" value="{{form.DESIMA.value | default:''}}">
+      placeholder="{{ form.DESIMA.label|title }}" value="{{form.DESIMA.value | default:''}}"
+      required>
   </div>
 
   <div class="mb-3">
@@ -47,14 +49,17 @@
   <div class="mb-3">
     <label for="" class="form-label">{{form.FOLIO.label|title}}:</label>
     <input type="{{ form.FOLIO.field.widget.input_type }}" class="form-control" name="{{ form.FOLIO.name }}" id=""
-      placeholder="{{ form.FOLIO.label|title }}" value="{{form.FOLIO.value | default:''}}">
+      placeholder="{{ form.FOLIO.label|title }}" value="{{form.FOLIO.value | default:''}}"
+      required>
   </div>
 
   <div class="mb-3">
     <label for="" class="form-label">{{form.GRUPO.label|title}}:</label>
     <input type="{{ form.GRUPO.field.widget.input_type }}" class="form-control" name="{{ form.GRUPO.name }}" id=""
-      placeholder="{{ form.GRUPO.label|title }}" value="{{form.GRUPO.value | default:''}}" maxlength="1">
+      placeholder="{{ form.GRUPO.label|title }}" value="{{form.GRUPO.value | default:''}}" maxlength="1"
+      required>
   </div>
+  
   <div class="mb-3 imagen">
     <label for="" class="form-label">{% trans "Imagen del Arma:" %}</label>
     {% if form.IMAGEN.value %}
@@ -68,7 +73,9 @@
 
 
   <div class="col-12 help-text">
-    {{form.errors}}
+    {% if form.errors %}
+      {{form.errors}}
+    {%endif %}
   </div>
 
   <input name="" id="" class="btn btn-success" type="submit" value="Guardar">
