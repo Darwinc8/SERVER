@@ -55,51 +55,51 @@
           <th scope="col">DOCUMENTO BAJA</th>
           <th scope="col">OBSERVACIONES BAJA</th>
           <th scope="col">FECHA DE BAJA DEL DOCUMENTO</th>
-          <th scope="col">ACCIONES</th>
+          <th scope="col" colspan="2">ACCIONES</th>
         </tr>
       </thead>
       <tbody>
         {% for arma in armamento%}
-        <tr>
-          <td class="align-middle text-center">{{arma.ID_ARMA}}</td>
-          <td class="align-middle text-center">{{arma.INSTITUCION}}</td>
-          <td class="align-middle text-center">{{arma.DEPENDENCIA}}</td>
-          <td class="align-middle text-center">{{arma.ENTIDAD}}</td>
-          <td class="align-middle text-center">{{arma.MUNICIPIO.MUNICIPIO}}</td>
-          <td class="align-middle text-center">
+        <tr class="align-middle text-center">
+          <td>{{arma.ID_ARMA}}</td>
+          <td>{{arma.INSTITUCION}}</td>
+          <td>{{arma.DEPENDENCIA}}</td>
+          <td>{{arma.ENTIDAD}}</td>
+          <td>{{arma.MUNICIPIO.MUNICIPIO}}</td>
+          <td>
             {{arma.NUMERO_LOC.NO_LICENCIA}}
           </td>
-          <td class="align-middle text-center">{{arma.FOLIO_C}}</td>
-          <td class="align-middle text-center">{{arma.FOLIO_D}}</td>
-          <td class="align-middle text-center">
+          <td>{{arma.FOLIO_C}}</td>
+          <td>{{arma.FOLIO_D}}</td>
+          <td>
             {{arma.CLASE_TIPO_ARMA.TIPO}}
           </td>
-          <td class="align-middle text-center">
+          <td>
             {{arma.CALIBRE_ARMA.CALIBRE}}
           </td>
-          <td class="align-middle text-center">{{arma.MARCA_ARMA.MARCA}}</td>
-          <td class="align-middle text-center">{{arma.MODELO_ARMA.MODELO}}</td>
-          <td class="align-middle text-center">{{arma.MATRICULA}}</td>
-          <td class="align-middle text-center">{{arma.MATRICULA_CANON}}</td>
-          <td class="align-middle text-center">{{arma.FECHA}}</td>
-          <td class="align-middle text-center">{{arma.FECHA_LOC}}</td>
-          <td class="align-middle text-center">{{arma.ESTADO_ARMA}}</td>
-          <td class="align-middle text-center">{{arma.FECHA_CAPTURA}}</td>
-          <td class="align-middle text-center">{{arma.OBSERVACIONES}}</td>
-          <td class="align-middle text-center">
+          <td>{{arma.MARCA_ARMA.MARCA}}</td>
+          <td>{{arma.MODELO_ARMA.MODELO}}</td>
+          <td>{{arma.MATRICULA}}</td>
+          <td>{{arma.MATRICULA_CANON}}</td>
+          <td>{{arma.FECHA}}</td>
+          <td>{{arma.FECHA_LOC}}</td>
+          <td>{{arma.ESTADO_ARMA}}</td>
+          <td>{{arma.FECHA_CAPTURA}}</td>
+          <td>{{arma.OBSERVACIONES}}</td>
+          <td>
             {{arma.ESTATUS_ARMA.DESCRIPCION}}
           </td>
-          <td class="align-middle text-center">{{arma.CUIP_PORTADOR}}</td>
-          <td class="align-middle text-center">{{arma.CUIP_RESPONSABLE}}</td>
-          <td class="align-middle text-center">{{arma.CIHB}}</td>
-          <td class="align-middle text-center">{{arma.FECHA_BAJA_LOGICA}}</td>
-          <td class="align-middle text-center">{{arma.MOTIVO_BAJA}}</td>
-          <td class="align-middle text-center">{{arma.DOCUMENTO_BAJA}}</td>
-          <td class="align-middle text-center">{{arma.OBSERVACIONES_BAJA}}</td>
-          <td class="align-middle text-center">
+          <td>{{arma.CUIP_PORTADOR}}</td>
+          <td>{{arma.CUIP_RESPONSABLE}}</td>
+          <td>{{arma.CIHB}}</td>
+          <td>{{arma.FECHA_BAJA_LOGICA}}</td>
+          <td>{{arma.MOTIVO_BAJA}}</td>
+          <td>{{arma.DOCUMENTO_BAJA}}</td>
+          <td>{{arma.OBSERVACIONES_BAJA}}</td>
+          <td>
             {{arma.FECHA_BAJA_DOCUMENTO}}
           </td>
-          <td class="align-middle text-center">
+          <td>
             <a
               name=""
               id=""
@@ -108,7 +108,8 @@
               role="button"
               >{% trans "Editar" %}</a
             >
-
+          </td>
+          <td>
             <a
               name=""
               id=""

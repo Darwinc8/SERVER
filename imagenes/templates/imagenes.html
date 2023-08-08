@@ -21,44 +21,50 @@
     </div>
     <div class="card-body table-responsive">
         <table class="table table table-striped table-bordered">
-            <thead class="text-center align-middle">
-              <tr>
-                      <td>{% trans "ID ARMA" %}</td>
-                      <td>{% trans "INSTITUCION" %}</td>
-                      <td>{% trans "ENTIDAD" %}</td>
-                      <td>{% trans "DEPENDENCIA" %}</td>
-                      <td>{% trans "IMAKEY" %}</td>
-                      <td>{% trans "DESIMA" %}</td>
-                      <td>{% trans "TIPO" %}</td>
-                      <td>{% trans "FOLIO" %}</td>
-                      <td>{% trans "GRUPO" %}</td>
-                      <td>{% trans "IMAGEN" %}</td>
-                      <td colspan="2">{% trans "ACCIONES" %}</td>
-                  </tr>
-              </thead>
-              <tbody>
-                {% for imagen in imagenes %}
-                <tr class="text-center align-middle">
-                    <td>{{ imagen.ID_ARMA.ID_ARMA }}</td>
-                    <td>{{ imagen.INSTITUCION }}</td>
-                    <td>{{ imagen.ENTIDAD }}</td>
-                    <td>{{ imagen.DEPENDENCIA }}</td>
-                    <td>{{ imagen.IMAKEY }}</td>
-                    <td>{{ imagen.DESIMA }}</td>
-                    <td>{{ imagen.TIPO.DESCRIPCION }}</td>
-                    <td>{{ imagen.FOLIO }}</td>
-                    <td>{{ imagen.GRUPO }}</td>
-                    <td>
-                        <img src="{{ imagen.IMAGEN.url }}" height="100"/>
-                    </td>
-                    <td class="align-middle text-center">
-                        <a name="" id="" class="btn btn-warning" href="{% url 'editar_imagen' imagen.ID_ALTERNA %}" role="button">{% trans "Editar" %}</a> 
-                    </td>"
-                    <td>
-                        <a name="" id="" class="btn btn-danger" href="{% url 'eliminar_imagen' imagen.ID_ALTERNA %}" role="button">{% trans "Eliminar" %}</a>
-                    </td>
-                </tr>
-                {% endfor %}
+            <thead>
+              <tr class="text-center align-middle">
+                <th scope="col">ID ARMA</th>
+                <th scope="col">IMAGEN</th>
+                <th scope="col">DEPENDENCIA</th>
+                <th scope="col">INSTITUCION</th>
+                <th scope="col">ENTIDAD</th>
+                <th scope="col">IMAKEY</th>
+                <th scope="col">DESIMA</th>
+                <th scope="col">TIPO</th>
+                <th scope="col">FOLIO</th>
+                <th scope="col">GRUPO</th>
+                <th scope="col" colspan="2">ACCIONES</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for imagen in imagenes %}
+              <tr class="text-center align-middle">
+                <td>{{ imagen.ID_ARMA.ID_ARMA }}</td>
+                <td><img src="{{ imagen.IMAGEN.url }}" height="100" /></td>
+                <td>{{ imagen.DEPENDENCIA }}</td>
+                <td>{{ imagen.INSTITUCION }}</td>
+                <td>{{ imagen.ENTIDAD }}</td>
+                <td>{{ imagen.IMAKEY }}</td>
+                <td>{{ imagen.DESIMA }}</td>
+                <td>{{ imagen.TIPO }}</td>
+                <td>{{ imagen.FOLIO }}</td>
+                <td>{{ imagen.GRUPO }}</td>
+                <td>
+                  <a
+                    class="btn btn-warning"
+                    href="{% url 'editar_imagen' imagen.ID_ALTERNA %}"
+                    role="button"
+                    >Editar</a>
+                </td>
+                <td>
+                  <a
+                    class="btn btn-danger"
+                    href="{% url 'eliminar_imagen' imagen.ID_ALTERNA %}"
+                    role="button"
+                    >Eliminar</a>
+                </td>
+              </tr>
+              {% endfor %}
             </tbody>
           </table>
     </div>
@@ -81,4 +87,5 @@
     {% endif %}
     </span>
 </div>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 {% endblock %}
