@@ -8,7 +8,7 @@
     <div class="card-header">
         <h1 style="text-align: center;">{% trans "IMAGENES" %}</h1>
         <div class="d-flex justify-content-between">
-            <a name="" id="" class="btn btn-success" href="{% url 'crear_imagen' %}" role="button">{% trans "Agregar nueva imagen" %}</a>
+            <a class="btn btn-success" href="{% url 'crear_imagen' %}" role="button">{% trans "Agregar nueva imagen" %}</a>
             <div>
               <form method="GET" action="">
                 {{ form.query }}
@@ -21,22 +21,22 @@
     </div>
     <div class="card-body table-responsive">
         <table class="table table table-striped table-bordered">
-            <thead class="text-center">
-                <tr class="text-center align-middle">
-                    <td>ID ARMA</td>
-                    <td>INSTITUCION</td>
-                    <td>ENTIDAD</td>
-                    <td>DEPENDENCIA</td>
-                    <td>IMAKEY</td>
-                    <td>DESIMA</td>
-                    <td>TIPO</td>
-                    <td>FOLIO</td>
-                    <td>GRUPO</td>
-                    <td>IMAGEN</td>
-                    <td colspan="2">ACCIONES</td>
-                </tr>
-            </thead>
-            <tbody>
+            <thead class="text-center align-middle">
+              <tr>
+                      <td>{% trans "ID ARMA" %}</td>
+                      <td>{% trans "INSTITUCION" %}</td>
+                      <td>{% trans "ENTIDAD" %}</td>
+                      <td>{% trans "DEPENDENCIA" %}</td>
+                      <td>{% trans "IMAKEY" %}</td>
+                      <td>{% trans "DESIMA" %}</td>
+                      <td>{% trans "TIPO" %}</td>
+                      <td>{% trans "FOLIO" %}</td>
+                      <td>{% trans "GRUPO" %}</td>
+                      <td>{% trans "IMAGEN" %}</td>
+                      <td colspan="2">{% trans "ACCIONES" %}</td>
+                  </tr>
+              </thead>
+              <tbody>
                 {% for imagen in imagenes %}
                 <tr class="text-center align-middle">
                     <td>{{ imagen.ID_ARMA.ID_ARMA }}</td>
@@ -60,7 +60,7 @@
                 </tr>
                 {% endfor %}
             </tbody>
-        </table>
+          </table>
     </div>
     <div class="card-footer text-muted">
     </div>
@@ -81,5 +81,4 @@
     {% endif %}
     </span>
 </div>
-
 {% endblock %}
