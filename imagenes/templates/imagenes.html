@@ -1,13 +1,14 @@
 {% extends "layout.html" %}
- {% block title %} IMAGENES {% endblock %} 
+{% load i18n %}
+ {% block title %} {% trans "IMAGENES" %} {% endblock %} 
 
 {% block content %}
 <br><br>
 <div class="card">
     <div class="card-header">
-        <h1 style="text-align: center;">IMAGENES</h1>
+        <h1 style="text-align: center;">{% trans "IMAGENES" %}</h1>
         <div class="d-flex justify-content-between">
-            <a name="" id="" class="btn btn-success" href="{% url 'crear_imagen' %}" role="button">Agregar nueva imagen</a>
+            <a name="" id="" class="btn btn-success" href="{% url 'crear_imagen' %}" role="button">{% trans "Agregar nueva imagen" %}</a>
             <div>
               <form method="GET" action="">
                 {{ form.query }}
@@ -36,7 +37,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% for imagen in imagenes%}
+                {% for imagen in imagenes %}
                 <tr class="text-center align-middle">
                     <td>{{ imagen.ID_ARMA.ID_ARMA }}</td>
                     <td>{{ imagen.INSTITUCION }}</td>
@@ -51,10 +52,10 @@
                         <img src="{{ imagen.IMAGEN.url }}" height="100"/>
                     </td>
                     <td class="align-middle text-center">
-                        <a name="" id="" class="btn btn-warning" href="{% url 'editar_imagen' imagen.ID_ALTERNA %}" role="button">Editar</a> 
-                    </td>
+                        <a name="" id="" class="btn btn-warning" href="{% url 'editar_imagen' imagen.ID_ALTERNA %}" role="button">{% trans "Editar" %}</a> 
+                    </td>"
                     <td>
-                        <a name="" id="" class="btn btn-danger" href="{% url 'eliminar_imagen' imagen.ID_ALTERNA %}" role="button">Eliminar</a>
+                        <a name="" id="" class="btn btn-danger" href="{% url 'eliminar_imagen' imagen.ID_ALTERNA %}" role="button">{% trans "Eliminar" %}</a>
                     </td>
                 </tr>
                 {% endfor %}
@@ -67,16 +68,16 @@
 <div class="pagination">
     <span class="step-links">
     {% if imagenes.has_previous %}
-        <a name="" id="" class="btn btn-primary" href="?page=1" role="button">&laquo; Primera</a>
-        <a name="" id="" class="btn btn-primary" href="?page={{ imagenes.previous_page_number }}" role="button">Anterior</a>
+        <a name="" id="" class="btn btn-primary" href="?page=1" role="button">&laquo; {% trans "Primera" %}</a>
+        <a name="" id="" class="btn btn-primary" href="?page={{ imagenes.previous_page_number }}" role="button">{% trans "Anterior" %}</a>
     {% endif %}
 
     <a name="" id="" class="btn btn-danger" role="button">{{ imagenes.number }}</a>
 
     {% if imagenes.has_next %}
-        <a name="" id="" class="btn btn-primary" href="?page={{ imagenes.next_page_number }}" role="button">Siguiente</a>
+        <a name="" id="" class="btn btn-primary" href="?page={{ imagenes.next_page_number }}" role="button">{% trans "Siguiente" %}</a>
 
-        <a name="" id="" class="btn btn-primary" href="?page={{ imagenes.paginator.num_pages }}" role="button">última &raquo;</a>
+        <a name="" id="" class="btn btn-primary" href="?page={{ imagenes.paginator.num_pages }}" role="button">{% trans "última" %} &raquo;</a>
     {% endif %}
     </span>
 </div>
