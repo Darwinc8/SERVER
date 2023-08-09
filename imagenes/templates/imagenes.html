@@ -23,17 +23,17 @@
         <table class="table table table-striped table-bordered">
             <thead>
               <tr class="text-center align-middle">
-                <th scope="col">ID ARMA</th>
-                <th scope="col">IMAGEN</th>
-                <th scope="col">DEPENDENCIA</th>
-                <th scope="col">INSTITUCION</th>
-                <th scope="col">ENTIDAD</th>
-                <th scope="col">IMAKEY</th>
-                <th scope="col">DESIMA</th>
-                <th scope="col">TIPO</th>
-                <th scope="col">FOLIO</th>
-                <th scope="col">GRUPO</th>
-                <th scope="col" colspan="2">ACCIONES</th>
+                <th scope="col">{% trans "ID ARMA" %}</th>
+                <th scope="col">{% trans "IMAGEN" %}</th>
+                <th scope="col">{% trans "DEPENDENCIA" %}</th>
+                <th scope="col">{% trans "INSTITUCIÓN" %}</th>
+                <th scope="col">{% trans "ENTIDAD" %}</th>
+                <th scope="col">{% trans "IMAKEY" %}</th>
+                <th scope="col">{% trans "DESIMA" %}</th>
+                <th scope="col">{% trans "TIPO" %}</th>
+                <th scope="col">{% trans "FOLIO" %}</th>
+                <th scope="col">{% trans "GRUPO" %}</th>
+                <th scope="col" colspan="2">{% trans "ACCIONES" %}</th>
               </tr>
             </thead>
             <tbody>
@@ -54,14 +54,14 @@
                     class="btn btn-warning"
                     href="{% url 'editar_imagen' imagen.ID_ALTERNA %}"
                     role="button"
-                    >Editar</a>
+                    >{% trans "Editar" %}</a>
                 </td>
                 <td>
                   <a
                     class="btn btn-danger"
                     href="{% url 'eliminar_imagen' imagen.ID_ALTERNA %}"
                     role="button"
-                    >Eliminar</a>
+                    >{% trans "Eliminar" %}</a>
                 </td>
               </tr>
               {% endfor %}

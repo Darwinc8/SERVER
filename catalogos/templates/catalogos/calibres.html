@@ -5,15 +5,15 @@
  <br/><br/>
 <div class="card">
   <div class="card-header">
-    <h1 style="text-align: center">CALIBRES</h1>
-    <a class="btn btn-success" href="{% url 'catalogos' %}" role="button">Volver a Catalogos</a>
+    <h1 style="text-align: center">{% trans "CALIBRES" %}</h1>
+    <a class="btn btn-success" href="{% url 'catalogos' %}" role="button">{% trans "Volver a Catalogos" %}</a>
   </div>
   <div class="card-body table-responsive">
     <table class="table table table-striped table-bordered">
       <thead>
         <tr>
           <th scope="col" class="text-center">ID</th>
-          <th scope="col" class="text-left">CALIBRE</th>
+          <th scope="col" class="text-left">{% trans "CALIBRE" %}</th>
         </tr>
       </thead>
       <tbody>

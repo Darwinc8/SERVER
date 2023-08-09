@@ -1,12 +1,13 @@
 {% extends "layout.html" %}
- {% block title %} Portadores {% endblock %} 
+{% load i18n %}
+ {% block title %} {% trans "Portadores" %} {% endblock %} 
 {% block content %} 
 <br/><br/>
 <div class="card">
   <div class="card-header">
-    <h1 style="text-align: center">PORTADORES</h1>
+    <h1 style="text-align: center">{% trans "PORTADORES" %}</h1>
     <div class="d-flex justify-content-between">
-      <a class="btn btn-success" href="{% url 'crear_portador' %}" role="button">Agregar nuevo portador</a>
+      <a class="btn btn-success" href="{% url 'crear_portador' %}" role="button">{% trans "Agregar nuevo portador" %}</a>
       <div>
         <form method="GET" action="">
           {{ form.query }}
@@ -22,12 +23,12 @@
       <thead>
         <tr class="text-center">
           <th scope="col">CUIP</th>
-          <th scope="col">IMAGEN</th>
-          <th scope="col">NOMBRE</th>
-          <th scope="col">APELLIDOS</th>
-          <th scope="col">TELEFONO</th>
-          <th scope="col">CORREO</th>
-          <th scope="col">ACCIONES</th>
+          <th scope="col">{% trans "IMAGEN" %}</th>
+          <th scope="col">{% trans "NOMBRE" %}</th>
+          <th scope="col">{% trans "APELLIDOS" %}</th>
+          <th scope="col">{% trans "TELEFONO" %}</th>
+          <th scope="col">{% trans "CORREO" %}</th>
+          <th scope="col">{% trans "ACCIONES" %}</th>
         </tr>
       </thead>
       <tbody>
@@ -48,14 +49,14 @@
               class="btn btn-warning"
               href="{% url 'editar_portador' portador.CUIP %}"
               role="button"
-              >Editar</a
+              >{% trans "Editar" %}</a
             >
             
             <a
               class="btn btn-danger"
               href="{% url 'eliminar_portador' portador.CUIP %}"
               role="button"
-              >Eliminar</a
+              >{% trans "Eliminar" %}</a
             >
           </td>
         </tr>
@@ -70,13 +71,13 @@
   <span class="step-links">
     {% if portadores.has_previous %}
     <a  class="btn btn-primary" href="?page=1" role="button"
-      >&laquo; Primera</a
+      >&laquo; {% trans "Primera" %}</a
     >
     <a
       class="btn btn-primary"
       href="?page={{ portadores.previous_page_number }}"
       role="button"
-      >Anterior</a
+      >{% trans "Anterior" %}</a
     >
     {% endif %}
 
@@ -89,14 +90,14 @@
       class="btn btn-primary"
       href="?page={{ portadores.next_page_number }}"
       role="button"
-      >Siguiente</a
+      >{% trans "Siguiente" %}</a
     >
 
     <a
       class="btn btn-primary"
       href="?page={{ portadores.paginator.num_pages }}"
       role="button"
-      >última &raquo;</a
+      >{% trans "última" %} &raquo;</a
     >
     {% endif %}
   </span>

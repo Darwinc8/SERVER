@@ -27,35 +27,35 @@
     <table class="table table table-striped table-bordered">
       <thead class="text-center align-middle">
         <tr>
-          <th scope="col">ID ARMA</th>
-          <th scope="col">INSTITUCION</th>
-          <th scope="col">DEPENDENCIA</th>
-          <th scope="col">ENTIDAD</th>
-          <th scope="col">MUNICIPIO</th>
-          <th scope="col">NUMERO LOC</th>
-          <th scope="col">FOLIO_C</th>
-          <th scope="col">FOLIO_D</th>
-          <th scope="col">CLASE</th>
-          <th scope="col">CALIBRE</th>
-          <th scope="col">MARCA</th>
-          <th scope="col">MODELO</th>
-          <th scope="col">MATRICULA</th>
-          <th scope="col">MATRICULA CANON</th>
-          <th scope="col">FECHA DE REGISTRO</th>
-          <th scope="col">FECHA DEL LOC</th>
-          <th scope="col">ESTADO ARMA</th>
-          <th scope="col">FECHA DE CAPTURA</th>
-          <th scope="col">OBSERVACIONES</th>
-          <th scope="col">ESTATUS DEL ARMA</th>
-          <th scope="col">CUIP PORTADOR</th>
-          <th scope="col">CUIP RESPONSABLE</th>
+          <th scope="col">{% trans "ID ARMA" %}</th>
+          <th scope="col">{% trans "INSTITUCIÓN" %}</th>
+          <th scope="col">{% trans "DEPENDENCIA" %}</th>
+          <th scope="col">{% trans "ENTIDAD" %}</th>
+          <th scope="col">{% trans "MUNICIPIO" %}</th>
+          <th scope="col">{% trans "NUMERO LOC" %}</th>
+          <th scope="col">{% trans "FOLIO C" %}</th>
+          <th scope="col">{% trans "FOLIO D" %}</th>
+          <th scope="col">{% trans "CLASE" %}</th>
+          <th scope="col">{% trans "CALIBRE" %}</th>
+          <th scope="col">{% trans "MARCA" %}</th>
+          <th scope="col">{% trans "MODELO" %}</th>
+          <th scope="col">{% trans "MATRICULA" %}</th>
+          <th scope="col">{% trans "MATRICULA CANON" %}</th>
+          <th scope="col">{% trans "FECHA DE REGISTRO" %}</th>
+          <th scope="col">{% trans "FECHA DEL LOC" %}</th>
+          <th scope="col">{% trans "ESTADO ARMA" %}</th>
+          <th scope="col">{% trans "FECHA DE CAPTURA" %}</th>
+          <th scope="col">{% trans "OBSERVACIONES" %}</th>
+          <th scope="col">{% trans "ESTATUS DEL ARMA" %}</th>
+          <th scope="col">{% trans "CUIP PORTADOR" %}</th>
+          <th scope="col">{% trans "CUIP RESPONSABLE" %}</th>
           <th scope="col">CIHB</th>
-          <th scope="col">FECHA DE BAJA LOGICA</th>
-          <th scope="col">MOTIVO BAJA</th>
-          <th scope="col">DOCUMENTO BAJA</th>
-          <th scope="col">OBSERVACIONES BAJA</th>
-          <th scope="col">FECHA DE BAJA DEL DOCUMENTO</th>
-          <th scope="col" colspan="2">ACCIONES</th>
+          <th scope="col">{% trans "FECHA DE BAJA LOGICA" %}</th>
+          <th scope="col">{% trans "MOTIVO BAJA" %}</th>
+          <th scope="col">{% trans "DOCUMENTO BAJA" %}</th>
+          <th scope="col">{% trans "OBSERVACIONES BAJA" %}</th>
+          <th scope="col">{% trans "FECHA DE BAJA DEL DOCUMENTO" %}</th>
+          <th scope="col" colspan="2">{% trans "ACCIONES" %}</th>
         </tr>
       </thead>
       <tbody>
@@ -131,7 +131,7 @@
     <span class="step-links">
       {% if armamento.has_previous %}
       <a name="" id="" class="btn btn-primary" href="?page=1" role="button"
-        >&laquo; Primera</a
+        >&laquo; {% trans "Primera" %}</a
       >
       <a
         name=""
@@ -139,7 +139,7 @@
         class="btn btn-primary"
         href="?page={{ armamento.previous_page_number }}"
         role="button"
-        >Anterior</a
+        >{% trans "Anterior" %}</a
       >
       {% endif %}
 
@@ -154,7 +154,7 @@
         class="btn btn-primary"
         href="?page={{ armamento.next_page_number }}"
         role="button"
-        >Siguiente</a
+        >{% trans "Siguiente" %}</a
       >
 
       <a
@@ -163,7 +163,7 @@
         class="btn btn-primary"
         href="?page={{ armamento.paginator.num_pages }}"
         role="button"
-        >última &raquo;</a
+        >{% trans "última" %}&raquo;</a
       >
       {% endif %}
     </span>

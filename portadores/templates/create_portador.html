@@ -1,17 +1,18 @@
 {% extends "layout.html" %}
+{% load i18n %}
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
- {% block title %} Crear Portador {% endblock %} 
+ {% block title %} {% trans "Crear Portador" %} {% endblock %} 
 
 {% block content %}
 <br><br>
 <div class="card">
     <div class="card-header">
-        Crear Portador
+        {% trans "Crear Portador" %}
     </div>
     <div class="card-body">
-        <h4 class="card-title">Datos del Portador</h4>
+        <h4 class="card-title">{% trans "Datos del Portador" %}</h4>
         {% include 'formPortador.html'%}
     </div>
     <div class="card-footer text-muted">
