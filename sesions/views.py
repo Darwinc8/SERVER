@@ -4,7 +4,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 from django.contrib.auth.decorators import login_required
-
+from django.utils.translation import activate
+from django.urls import reverse
 # Create your views here.
 def registrarse(request):
     if request.method == 'GET':
@@ -50,4 +51,19 @@ def iniciar_sesion(request):
             })
         else:
             login(request, user)
-            return redirect('home')       
+            return redirect('home')  
+
+def cambiar_lenguaje(request, language_code):
+    try:
+        # Almacena la URL actual en la sesión
+        request.session['_language_switch_url'] = request.META.get('HTTP_REFERER')
+
+        # Cambia el idioma activo
+        activate(language_code)
+        print(f'Idioma activado: {language_code}')
+        # Redirige al usuario al referer almacenado
+        return redirect(request.session['_language_switch_url'])
+    except Exception as e:
+        # Muestra el error en la consola
+        print("error")
+        return redirect(request.META.get('HTTP_REFERER'))  

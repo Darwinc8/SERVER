@@ -41,6 +41,10 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'catalogos' %}">{% trans "Catalogos" %}</a>
             </li>
+            <ul>
+              <li><a href="{% url 'cambiar_lenguaje' 'en' %}">English</a></li>
+              <li><a href="{% url 'cambiar_lenguaje' 'es' %}">Español</a></li>
+          </ul>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'cerrar_sesion' %}">{% trans "Cerrar Sesión" %}</a>
             </li>

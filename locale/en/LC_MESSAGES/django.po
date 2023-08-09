@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-08 12:22-0600\n"
+"POT-Creation-Date: 2023-08-09 10:53-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,6 +18,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: .\armamento\templates\armamento.html:3 .\sesions\templates\layout.html:33
+msgid "Armamento"
+msgstr "Armament"
 
 #: .\armamento\templates\armamento.html:8
 msgid "ARMAMENTO"
@@ -126,6 +129,7 @@ msgstr "Document retirement date"
 
 #: .\armamento\templates\formArmamento.html:191
 #: .\imagenes\templates\formImagen.html:82
+#: .\portadores\templates\formPortador.html:24
 msgid "Volver"
 msgstr "Back"
 
@@ -1685,27 +1689,23 @@ msgstr "Welcome "
 msgid "Home"
 msgstr "Home"
 
-#: .\sesions\templates\layout.html:33
-msgid "Armamento"
-msgstr ""
-
 #: .\sesions\templates\layout.html:36
 msgid "Imagenes"
-msgstr "Armament"
+msgstr "Images"
 
 #: .\sesions\templates\layout.html:39
 msgid "Portadores"
 msgstr "Carriers"
 
-#: .\sesions\templates\layout.html:45
+#: .\sesions\templates\layout.html:49
 msgid "Cerrar Sesión"
 msgstr "Log Out"
 
-#: .\sesions\templates\layout.html:50
+#: .\sesions\templates\layout.html:54
 msgid "Registrarse"
 msgstr "Sign up"
 
-#: .\sesions\templates\layout.html:53
+#: .\sesions\templates\layout.html:57
 msgid "Iniciar Sesión"
 msgstr "Log In"
 
@@ -1738,5 +1738,7 @@ msgid "Repite tu contraseña"
 msgstr "Repeat your password"
 
 #: .\sesions\templates\sign_up.html:46
-msgid "Registar"
+#, fuzzy
+#| msgid "Registar"
+msgid "Registrar"
 msgstr "Register"
