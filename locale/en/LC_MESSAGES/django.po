@@ -18,140 +18,137 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\armamento\templates\armamento.html:3
-msgid "Amarmamento"
-msgstr ""
 
 #: .\armamento\templates\armamento.html:8
 msgid "ARMAMENTO"
-msgstr ""
+msgstr "ARMAMENT"
 
 #: .\armamento\templates\armamento.html:14
 msgid "Agregar nuevo armamento"
-msgstr ""
+msgstr "Add new armament"
 
 #: .\armamento\templates\armamento.html:109
 msgid "Editar"
-msgstr ""
+msgstr "Edit"
 
 #: .\armamento\templates\armamento.html:119
 msgid "Eliminar"
-msgstr ""
+msgstr "Delete"
 
 #: .\armamento\templates\create_armamento.html:9
 msgid "Crear Armamento"
-msgstr ""
+msgstr "Create Armament"
 
 #: .\armamento\templates\create_armamento.html:12
 #: .\armamento\templates\editar_armamento.html:12
 msgid "Datos del Armamento"
-msgstr ""
+msgstr "Armament Data"
 
 #: .\armamento\templates\editar_armamento.html:9
 msgid "Editar Armamento"
-msgstr ""
+msgstr "Edit Armament"
 
 #: .\armamento\templates\formArmamento.html:36
 msgid "Numero Loc:"
-msgstr ""
+msgstr "Number Loc:"
 
 #: .\armamento\templates\formArmamento.html:41
 msgid "Folio C:"
-msgstr ""
+msgstr "C Folio"
 
 #: .\armamento\templates\formArmamento.html:51
 msgid "Folio D:"
-msgstr ""
+msgstr "D Folio"
 
 #: .\armamento\templates\formArmamento.html:61
 msgid "Clase del Arma:"
-msgstr ""
+msgstr "Weapon Class"
 
 #: .\armamento\templates\formArmamento.html:66
 msgid "Calibre del Arma:"
-msgstr ""
+msgstr "Weapon Caliber"
 
 #: .\armamento\templates\formArmamento.html:71
 msgid "Marca del Arma:"
-msgstr ""
+msgstr "Weapon Brand"
 
 #: .\armamento\templates\formArmamento.html:76
 msgid "Modelo del Arma:"
-msgstr ""
+msgstr "Weapon Model"
 
 #: .\armamento\templates\formArmamento.html:91
 msgid "Matricula Canon:"
-msgstr ""
+msgstr "Canon Registration"
 
 #: .\armamento\templates\formArmamento.html:106
 msgid "Fecha Loc:"
-msgstr ""
+msgstr "Loc date"
 
 #: .\armamento\templates\formArmamento.html:111
 msgid "Estado del Arma:"
-msgstr ""
+msgstr "Weapon Status"
 
 #: .\armamento\templates\formArmamento.html:116
 msgid "Fecha de Captura:"
-msgstr ""
+msgstr "Capture Date"
 
 #: .\armamento\templates\formArmamento.html:126
 msgid "Estatus del Arma:"
-msgstr ""
+msgstr "Weapon Status"
 
 #: .\armamento\templates\formArmamento.html:131
 msgid "CUIP del Portador:"
-msgstr ""
+msgstr "Carrier's CUIP"
 
 #: .\armamento\templates\formArmamento.html:141
 msgid "CUIP del Responsable:"
-msgstr ""
+msgstr "Person in charge's CUIP"
 
 #: .\armamento\templates\formArmamento.html:161
 msgid "Fecha de Baja Logica:"
-msgstr ""
+msgstr "Date of Logical Discharge"
 
 #: .\armamento\templates\formArmamento.html:166
 msgid "Motivo de baja:"
-msgstr ""
+msgstr "Reason for leaving"
 
 #: .\armamento\templates\formArmamento.html:171
 msgid "Documento de Baja:"
-msgstr ""
+msgstr "Discharge Document"
 
 #: .\armamento\templates\formArmamento.html:181
 msgid "Observaciones de Baja:"
-msgstr ""
+msgstr "Discharge Observations"
 
 #: .\armamento\templates\formArmamento.html:186
 msgid "Fecha de baja del documento:"
-msgstr ""
+msgstr "Document retirement date"
 
 #: .\armamento\templates\formArmamento.html:191
 #: .\imagenes\templates\formImagen.html:82
 msgid "Volver"
-msgstr ""
+msgstr "Back"
 
 #: .\catalogos\templates\catalogos.html:3 .\sesions\templates\layout.html:42
 msgid "Catalogos"
-msgstr ""
+msgstr "Catalogs"
 
 #: .\catalogos\templates\catalogos.html:9
 msgid "CATALOGOS"
-msgstr ""
+msgstr "CATALOGS"
 
 #: .\catalogos\templates\catalogos.html:15
 msgid "Nombre del Catalogo"
-msgstr ""
+msgstr "Catalog Name"
 
 #: .\catalogos\templates\catalogos.html:16
 msgid "Acciones"
-msgstr ""
+msgstr "Actions"
 
 #: .\catalogos\templates\catalogos.html:21
 #: .\catalogos\templates\catalogos\emisores.html:3
 msgid "Emisores"
-msgstr ""
+msgstr "Emitters"
 
 #: .\catalogos\templates\catalogos.html:23
 #: .\catalogos\templates\catalogos.html:29
@@ -168,68 +165,68 @@ msgstr ""
 #: .\catalogos\templates\catalogos.html:95
 #: .\catalogos\templates\catalogos.html:101
 msgid "Ver"
-msgstr ""
+msgstr "See"
 
 #: .\catalogos\templates\catalogos.html:27
 msgid "Entidades"
-msgstr ""
+msgstr "Entities"
 
 #: .\catalogos\templates\catalogos.html:33
 msgid "Municipios"
-msgstr ""
+msgstr "Municipalities"
 
 #: .\catalogos\templates\catalogos.html:39
 msgid "Dependencias"
-msgstr ""
+msgstr "Dependencies"
 
 #: .\catalogos\templates\catalogos.html:45
 msgid "Locs"
-msgstr ""
+msgstr "Locs"
 
 #: .\catalogos\templates\catalogos.html:51
 msgid "Estados de conservación"
-msgstr ""
+msgstr "Conservation status"
 
 #: .\catalogos\templates\catalogos.html:57
 #: .\catalogos\templates\catalogos\instituciones.html:3
 msgid "Instituciones"
-msgstr ""
+msgstr "Institutions"
 
 #: .\catalogos\templates\catalogos.html:63
 #: .\catalogos\templates\catalogos\tipos.html:3
 msgid "Tipos de armas"
-msgstr ""
+msgstr "Weapons types"
 
 #: .\catalogos\templates\catalogos.html:69
 msgid "Tipos de calibre"
-msgstr ""
+msgstr "Caliber types"
 
 #: .\catalogos\templates\catalogos.html:75
 #: .\catalogos\templates\catalogos\marcas.html:3
 msgid "Marcas"
-msgstr ""
+msgstr "Brands"
 
 #: .\catalogos\templates\catalogos.html:81
 #: .\catalogos\templates\catalogos\estatus_arma.html:3
 msgid "Estatus de armas"
-msgstr ""
+msgstr "Weapons status"
 
 #: .\catalogos\templates\catalogos.html:87
 msgid "Tipos de Alta"
-msgstr ""
+msgstr "Types of registration"
 
 #: .\catalogos\templates\catalogos.html:93
 #: .\catalogos\templates\catalogos\tipos_dependencia.html:3
 msgid "Tipos de Dependencia"
-msgstr ""
+msgstr "Types of Dependency"
 
 #: .\catalogos\templates\catalogos.html:99
 msgid "Tipos de Imagen"
-msgstr ""
+msgstr "Image Types"
 
 #: .\catalogos\templates\catalogos\calibres.html:3
 msgid "Calibres"
-msgstr ""
+msgstr "Calibers"
 
 #: .\catalogos\templates\catalogos\calibres.html:34
 #: .\catalogos\templates\catalogos\instituciones.html:40
@@ -239,7 +236,7 @@ msgstr ""
 #: .\catalogos\templates\catalogos\tipos.html:38
 #: .\imagenes\templates\imagenes.html:77
 msgid "Primera"
-msgstr ""
+msgstr "First"
 
 #: .\catalogos\templates\catalogos\calibres.html:40
 #: .\catalogos\templates\catalogos\instituciones.html:41
@@ -249,7 +246,7 @@ msgstr ""
 #: .\catalogos\templates\catalogos\tipos.html:39
 #: .\imagenes\templates\imagenes.html:78
 msgid "Anterior"
-msgstr ""
+msgstr "Previous"
 
 #: .\catalogos\templates\catalogos\calibres.html:53
 #: .\catalogos\templates\catalogos\instituciones.html:47
@@ -259,7 +256,7 @@ msgstr ""
 #: .\catalogos\templates\catalogos\tipos.html:45
 #: .\imagenes\templates\imagenes.html:84
 msgid "Siguiente"
-msgstr ""
+msgstr "Next"
 
 #: .\catalogos\templates\catalogos\calibres.html:60
 #: .\catalogos\templates\catalogos\instituciones.html:49
@@ -269,11 +266,11 @@ msgstr ""
 #: .\catalogos\templates\catalogos\tipos.html:47
 #: .\imagenes\templates\imagenes.html:86
 msgid "última"
-msgstr ""
+msgstr "last"
 
 #: .\catalogos\templates\catalogos\dependencias.html:8
 msgid "DEPENDENCIAS"
-msgstr ""
+msgstr "DEPENDENCIES"
 
 #: .\catalogos\templates\catalogos\dependencias.html:9
 #: .\catalogos\templates\catalogos\edo_conservacion.html:11
@@ -289,142 +286,142 @@ msgstr ""
 #: .\catalogos\templates\catalogos\tipos_dependencia.html:11
 #: .\catalogos\templates\catalogos\tipos_imagen.html:10
 msgid "Volver a Catalogos"
-msgstr ""
+msgstr "Back to Catalogs"
 
 #: .\catalogos\templates\catalogos\dependencias.html:15
 #: .\catalogos\templates\catalogos\tipos_dependencia.html:18
 msgid "TIPO DE DEPENDENCIA"
-msgstr ""
+msgstr "TYPE OF DEPENDENCY"
 
 #: .\catalogos\templates\catalogos\dependencias.html:16
 msgid "ID DEPENDENCIAS"
-msgstr ""
+msgstr "DEPENDENCIES ID"
 
 #: .\catalogos\templates\catalogos\dependencias.html:17
 #: .\catalogos\templates\catalogos\instituciones.html:19
 #: .\catalogos\templates\catalogos\locs.html:19
 msgid "DEPENDENCIA"
-msgstr ""
+msgstr "DEPENDENCY"
 
 #: .\catalogos\templates\catalogos\edo_conservacion.html:3
 msgid "Estados de conservacion"
-msgstr ""
+msgstr "Conservation status"
 
 #: .\catalogos\templates\catalogos\edo_conservacion.html:10
 msgid "ESTADO DE CONSERVACIÓN"
-msgstr ""
+msgstr "CONSERVATION STATUS"
 
 #: .\catalogos\templates\catalogos\edo_conservacion.html:17
 msgid "ID ESTADO"
-msgstr ""
+msgstr "STATUS ID"
 
 #: .\catalogos\templates\catalogos\edo_conservacion.html:18
 msgid "DESCRIPCIÓN"
-msgstr ""
+msgstr "DESCRIPTION"
 
 #: .\catalogos\templates\catalogos\emisores.html:9
 msgid "EMISORES"
-msgstr ""
+msgstr "EMITTERS"
 
 #: .\catalogos\templates\catalogos\emisores.html:16
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #: .\catalogos\templates\catalogos\emisores.html:17
 #: .\catalogos\templates\catalogos\tipos.html:17
 #: .\catalogos\templates\catalogos\tipos_alta.html:17
 msgid "TIPO"
-msgstr ""
+msgstr "TYPE"
 
 #: .\catalogos\templates\catalogos\entidades.html:9
 msgid "ENTIDADES"
-msgstr ""
+msgstr "ENTITIES"
 
 #: .\catalogos\templates\catalogos\entidades.html:17
 #: .\catalogos\templates\catalogos\locs.html:18
 #: .\catalogos\templates\catalogos\municipios.html:16
 msgid "ENTIDAD"
-msgstr ""
+msgstr "ENTITY"
 
 #: .\catalogos\templates\catalogos\entidades.html:18
 msgid "SIGLAS"
-msgstr ""
+msgstr "ACRONYMS"
 
 #: .\catalogos\templates\catalogos\estatus_arma.html:10
 msgid "ESTATUS DE LAS ARMAS"
-msgstr ""
+msgstr "WEAPONS STATUS"
 
 #: .\catalogos\templates\catalogos\estatus_arma.html:18
 msgid "ESTATUS"
-msgstr ""
+msgstr "STATUS"
 
 #: .\catalogos\templates\catalogos\instituciones.html:9
 msgid "INSTITUCIONES"
-msgstr ""
+msgstr "INSTITUTIONS"
 
 #: .\catalogos\templates\catalogos\instituciones.html:17
 msgid "NOMBRE"
-msgstr ""
+msgstr "NAME"
 
 #: .\catalogos\templates\catalogos\instituciones.html:18
 msgid "TIPO DEPENDENCIA"
-msgstr ""
+msgstr "DEPENDENCY TYPE"
 
 #: .\catalogos\templates\catalogos\locs.html:17
 msgid "ID ENTIDAD"
-msgstr ""
+msgstr "ENTITY ID"
 
 #: .\catalogos\templates\catalogos\locs.html:20
 msgid "NUMERO DE LICENCIA"
-msgstr ""
+msgstr "LICENSE NUMBER"
 
 #: .\catalogos\templates\catalogos\marcas.html:9
 msgid "MARCAS"
-msgstr ""
+msgstr "BRANDS"
 
 #: .\catalogos\templates\catalogos\marcas.html:17
 msgid "MARCA"
-msgstr ""
+msgstr "BRAND"
 
 #: .\catalogos\templates\catalogos\municipios.html:9
 msgid "MUNICIPIOS"
-msgstr ""
+msgstr "MUNICIPALITIES"
 
 #: .\catalogos\templates\catalogos\municipios.html:17
 msgid "ID MUNICIPIO"
-msgstr ""
+msgstr "MUNICIPALITY ID"
 
 #: .\catalogos\templates\catalogos\municipios.html:18
 msgid "MUNICIPIO"
-msgstr ""
+msgstr "MUNICIPALITY"
 
 #: .\catalogos\templates\catalogos\tipos.html:9
 msgid "TIPOS DE ARMAS"
-msgstr ""
+msgstr "WEAPON TYPES"
 
 #: .\catalogos\templates\catalogos\tipos.html:18
 msgid "CLASIFICACION"
-msgstr ""
+msgstr "CLASIFICATION"
 
 #: .\catalogos\templates\catalogos\tipos_alta.html:3
 msgid "Tipos de alta"
-msgstr ""
+msgstr "Registration types"
 
 #: .\catalogos\templates\catalogos\tipos_alta.html:9
 msgid "TIPOS DE ALTA"
-msgstr ""
+msgstr "REGISTRATION TYPES"
 
 #: .\catalogos\templates\catalogos\tipos_dependencia.html:10
 msgid "TIPOS DE DEPENDENCIA"
-msgstr ""
+msgstr "DEPENDENCY TYPES"
 
 #: .\catalogos\templates\catalogos\tipos_imagen.html:9
 msgid "TIPOS DE IMAGEN"
-msgstr ""
+msgstr "IMAGE TYPES"
 
 #: .\catalogos\templates\catalogos\tipos_imagen.html:17
 msgid "TIPO DE IMAGEN"
-msgstr ""
+msgstr "IMAGE TYPE"
 
 #: .\env\Lib\site-packages\django\contrib\messages\apps.py:15
 msgid "Messages"
@@ -1635,27 +1632,27 @@ msgstr ""
 
 #: .\imagenes\templates\formImagen.html:5
 msgid "Id del Arma existente:"
-msgstr ""
+msgstr "Existing Weapon ID"
 
 #: .\imagenes\templates\formImagen.html:23
 msgid "Entidad Federativa:"
-msgstr ""
+msgstr "Federal Entity"
 
 #: .\imagenes\templates\formImagen.html:44
 msgid "Tipo de Imagen:"
-msgstr ""
+msgstr "Image Type"
 
 #: .\imagenes\templates\formImagen.html:64
 msgid "Imagen del Arma:"
-msgstr ""
+msgstr "Weapon Image"
 
 #: .\imagenes\templates\imagenes.html:3 .\imagenes\templates\imagenes.html:9
 msgid "IMAGENES"
-msgstr ""
+msgstr "IMAGES"
 
 #: .\imagenes\templates\imagenes.html:11
 msgid "Agregar nueva imagen"
-msgstr ""
+msgstr "Add new image"
 
 #: .\sesions\templates\footer.html:19
 msgid ""
@@ -1674,7 +1671,7 @@ msgstr ""
 
 #: .\sesions\templates\footer.html:38
 msgid "Siguenos!"
-msgstr ""
+msgstr "Follow us!"
 
 #: .\sesions\templates\footer.html:105
 msgid "© 2023 Copyright"
@@ -1682,11 +1679,11 @@ msgstr ""
 
 #: .\sesions\templates\index.html:15
 msgid "Bienvenido "
-msgstr ""
+msgstr "Welcome "
 
 #: .\sesions\templates\layout.html:30
 msgid "Home"
-msgstr ""
+msgstr "Home"
 
 #: .\sesions\templates\layout.html:33
 msgid "Armamento"
@@ -1694,52 +1691,52 @@ msgstr ""
 
 #: .\sesions\templates\layout.html:36
 msgid "Imagenes"
-msgstr ""
+msgstr "Armament"
 
 #: .\sesions\templates\layout.html:39
 msgid "Portadores"
-msgstr ""
+msgstr "Carriers"
 
 #: .\sesions\templates\layout.html:45
 msgid "Cerrar Sesión"
-msgstr ""
+msgstr "Log Out"
 
 #: .\sesions\templates\layout.html:50
 msgid "Registrarse"
-msgstr ""
+msgstr "Sign up"
 
 #: .\sesions\templates\layout.html:53
 msgid "Iniciar Sesión"
-msgstr ""
+msgstr "Log In"
 
 #: .\sesions\templates\sign_in.html:3 .\sesions\templates\sign_in.html:56
 msgid "Iniciar sesión"
-msgstr ""
+msgstr "Log In"
 
 #: .\sesions\templates\sign_in.html:34
 msgid "Bienvenido!"
-msgstr ""
+msgstr "Welcome!"
 
 #: .\sesions\templates\sign_in.html:41 .\sesions\templates\sign_up.html:25
 msgid "Usuario"
-msgstr ""
+msgstr "User"
 
 #: .\sesions\templates\sign_in.html:47 .\sesions\templates\sign_up.html:33
 msgid "Contraseña"
-msgstr ""
+msgstr "Password"
 
 #: .\sesions\templates\sign_up.html:3
 msgid "Registrar usuario"
-msgstr ""
+msgstr "Register user"
 
 #: .\sesions\templates\sign_up.html:16
 msgid "Registrate!"
-msgstr ""
+msgstr "Register now!"
 
 #: .\sesions\templates\sign_up.html:41
 msgid "Repite tu contraseña"
-msgstr ""
+msgstr "Repeat your password"
 
 #: .\sesions\templates\sign_up.html:46
 msgid "Registar"
-msgstr ""
+msgstr "Register"
