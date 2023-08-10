@@ -41,10 +41,9 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'catalogos' %}">{% trans "Catalogos" %}</a>
             </li>
-            <ul>
-              {% for lang_code, lang_name in LANGUAGES %}
-                  <li><a href="{% url 'change_language' lang_code %}">{{ lang_name }}</a></li>
-              {% endfor %}
+            <ul id="language-dropdown">
+                  <li><a href="{% url 'change_language' 'en' %}">Ingles</a></li>
+                  <li><a href="{% url 'change_language' 'es' %}">Español</a></li>
           </ul>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'cerrar_sesion' %}">{% trans "Cerrar Sesión" %}</a>
@@ -69,3 +68,14 @@
   </body>
   {% include 'footer.html'%}
 </html>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      var languageSelect = document.getElementById('language-select');
+      
+      languageSelect.addEventListener('change', function() {
+          var newLanguageCode = this.value;
+          var changeLanguageURL = `/change_language/${newLanguageCode}/`;
+          window.location.href = changeLanguageURL;
+      });
+  });
+  </script>

@@ -6,7 +6,6 @@ from django.db import IntegrityError
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import activate
 from django.conf import settings
-from django.utils import translation
 # Create your views here.
 def registrarse(request):
     if request.method == 'GET':
@@ -54,8 +53,8 @@ def iniciar_sesion(request):
             login(request, user)
             return redirect('home')  
 
-def cambiar_lenguaje(request, lang_code):
-    if lang_code  in [lang for lang, _ in settings.LANGUAGES]:
-        request.session[translation.LANGUAGE_SESSION_KEY] = lang_code 
-        return redirect(request.META.get('HTTP_REFERER', '/'))
-    return redirect('/')
+def cambiar_lenguaje(request, language_code):
+    if language_code in [lang[0] for lang in settings.LANGUAGES]:
+        activate(language_code)
+        request.session[settings.LANGUAGE_COOKIE_NAME] = language_code
+    return redirect(request.META.get('HTTP_REFERER', '/'))

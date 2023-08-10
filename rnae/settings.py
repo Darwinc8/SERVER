@@ -52,10 +52,10 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -121,7 +121,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'es'
 TIME_ZONE = 'America/Mexico_City'
 
 USE_L10N = True
@@ -136,9 +136,11 @@ LOCALE_PATHS = [
 ]
 
 LANGUAGES = [
-    ('en', _('English')),
-    ('es-mx', _('Mexicano')),
+    ('en', _('Ingles')),
+    ('es', _('Español')),
+    # Otros idiomas aquí
 ]
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
@@ -153,3 +155,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, '')
 MEDIA_URL = '/imagenes/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"  # Puedes usar otro backend si es necesario
+SESSION_COOKIE_NAME = "django_language"  # Cambia esto a un nombre adecuado para tu sitio
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True  # Las cookies de sesión se eliminarán al cerrar el navegador
+SESSION_COOKIE_SECURE = False  # Para usar cookies seguras (HTTPS)
+SESSION_COOKIE_HTTPONLY = True  # Para usar cookies de solo lectura desde JavaScript
