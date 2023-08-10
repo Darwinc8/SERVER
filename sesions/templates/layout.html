@@ -42,8 +42,9 @@
               <a class="nav-link" href="{% url 'catalogos' %}">{% trans "Catalogos" %}</a>
             </li>
             <ul>
-              <li><a href="{% url 'cambiar_lenguaje' 'en' %}">English</a></li>
-              <li><a href="{% url 'cambiar_lenguaje' 'es' %}">Español</a></li>
+              {% for lang_code, lang_name in LANGUAGES %}
+                  <li><a href="{% url 'change_language' lang_code %}">{{ lang_name }}</a></li>
+              {% endfor %}
           </ul>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'cerrar_sesion' %}">{% trans "Cerrar Sesión" %}</a>

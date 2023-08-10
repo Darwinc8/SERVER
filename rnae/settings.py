@@ -135,7 +135,10 @@ LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale'),
 ]
 
-
+LANGUAGES = [
+    ('en', _('English')),
+    ('es-mx', _('Mexicano')),
+]
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
