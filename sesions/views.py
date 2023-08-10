@@ -57,4 +57,6 @@ def cambiar_lenguaje(request, language_code):
     if language_code in [lang[0] for lang in settings.LANGUAGES]:
         activate(language_code)
         request.session[settings.LANGUAGE_COOKIE_NAME] = language_code
+    else:
+        print("error")
     return redirect(request.META.get('HTTP_REFERER', '/'))
