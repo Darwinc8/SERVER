@@ -7,7 +7,17 @@
 <div class="card">
   <div class="card-header">
     <h1 style="text-align: center">{% trans "MARCAS" %}</h1>
-    <a class="btn btn-success" href="{% url 'catalogos' %}" role="button">{% trans "Volver a Catalogos" %}</a>
+    <div class="d-flex justify-content-between">
+        <a class="btn btn-success" href="{% url 'catalogos' %}" role="button">{% trans "Volver a Catalogos" %}</a>
+        <div>
+          <form method="GET" action="">
+            {{ form.query }}
+            <button type="submit" class="btn btn-outline-secondary">
+              <i class="fa fa-search"></i>
+            </button>
+          </form>
+        </div>
+      </div>
   </div>
   <div class="card-body table-responsive">
     <table class="table table table-striped table-bordered">

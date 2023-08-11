@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.core.paginator import Paginator
 from .models import Emisor, Entidad, Dependencia, LOC, Edo_conservacion, Institucion, Tipo, Calibre, Marca, Modelo, Estatus_Arma, Tipo_Alta, Tipo_Dependencia, Tipo_Imagen, Municipio
 from django.contrib.auth.decorators import login_required
+from armamento.forms import BusquedaForm
 # Create your views here.
 @login_required
 def index(request):
@@ -31,11 +32,15 @@ def entidades(request):
 @login_required   
 def municipios(request):
     municipios = Municipio.objects.order_by('ID_ENTIDAD', 'ID_MUNICIPIO')
+    query = request.GET.get('query')
+    if query:
+        municipios = municipios.filter(MUNICIPIO__icontains=query)
     paginator = Paginator(municipios, 12)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'catalogos/municipios.html', {
-        'municipios': page_obj
+        'municipios': page_obj,
+        'form': BusquedaForm()
     })
 
 @login_required
@@ -47,12 +52,16 @@ def dependencias(request):
 
 @login_required    
 def locs(request):
-    locs = LOC.objects.all()
+    locs = LOC.objects.all().order_by('NO_LICENCIA')
+    query = request.GET.get('query')
+    if query:
+        locs = locs.filter(NO_LICENCIA__icontains=query)
     paginator = Paginator(locs, 12)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'catalogos/locs.html', {
-        'locs': page_obj
+        'locs': page_obj,
+        'form': BusquedaForm()
     })
 
 @login_required
@@ -64,42 +73,58 @@ def edo_conservacion(request):
 
 @login_required
 def instituciones(request):
-    instituciones = Institucion.objects.all()
+    instituciones = Institucion.objects.all().order_by('ID_INSTITUCION')
+    query = request.GET.get('query')
+    if query:
+        instituciones = instituciones.filter(NOMBRE__icontains=query)
     paginator = Paginator(instituciones, 12)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'catalogos/instituciones.html', {
-        'instituciones': page_obj
+        'instituciones': page_obj,
+        'form': BusquedaForm()
     })
 
 @login_required    
 def tipos(request):
     tipos = Tipo.objects.all()
+    query = request.GET.get('query')
+    if query:
+        tipos = tipos.filter(TIPO__icontains=query)
     paginator = Paginator(tipos, 12)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'catalogos/tipos.html', {
-        'tipos': page_obj
+        'tipos': page_obj,
+        'form': BusquedaForm()
     })
 
 @login_required
 def calibres(request):
-    calibres = Calibre.objects.all()
+    calibres = Calibre.objects.all().order_by('ID_CALIBRE')
+    query = request.GET.get('query')
+    if query:
+        calibres = calibres.filter(CALIBRE__icontains=query)
     paginator = Paginator(calibres, 12)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'catalogos/calibres.html', {
-        'calibres': page_obj
+        'calibres': page_obj,
+        'form': BusquedaForm()
     })
 
 @login_required
 def marcas(request):
     marcas = Marca.objects.all()
+    query = request.GET.get('query')
+    if query:
+        marcas = marcas.filter(MARCA__icontains=query)
     paginator = Paginator(marcas, 12)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'catalogos/marcas.html', {
-        'marcas': page_obj
+        'marcas': page_obj,
+        'form': BusquedaForm()
     })
 
 @login_required    
