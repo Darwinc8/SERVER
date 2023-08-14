@@ -89,8 +89,8 @@
           <td>
             {{arma.ESTATUS_ARMA.DESCRIPCION}}
           </td>
-          <td>{{arma.CUIP_PORTADOR}}</td>
-          <td>{{arma.CUIP_RESPONSABLE}}</td>
+          <td>{{arma.CUIP_PORTADOR.CUIP}}</td>
+          <td>{{arma.CUIP_RESPONSABLE.CUIP}}</td>
           <td>{{arma.CIHB}}</td>
           <td>{{arma.FECHA_BAJA_LOGICA}}</td>
           <td>{{arma.MOTIVO_BAJA}}</td>
@@ -101,8 +101,6 @@
           </td>
           <td>
             <a
-              name=""
-              id=""
               class="btn btn-warning"
               href="{% url 'editar_armamento' arma.ID_ALTERNA %}"
               role="button"
@@ -111,8 +109,6 @@
           </td>
           <td>
             <a
-              name=""
-              id=""
               class="btn btn-danger"
               href="{% url 'eliminar_armamento' arma.ID_ALTERNA %}"
               role="button"

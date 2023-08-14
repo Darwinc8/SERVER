@@ -1,5 +1,6 @@
 from django.db import models
 from catalogos.models import Institucion, Dependencia, Calibre, Edo_conservacion, Entidad, Estatus_Arma, LOC, Marca, Modelo, Municipio, Tipo
+from portadores.models import Portador
 
 # Create your models here.
 class Armamento(models.Model):
@@ -30,8 +31,8 @@ class Armamento(models.Model):
     FECHA_CAPTURA = models.DateField(null=False, blank=False)
     OBSERVACIONES = models.TextField(null=False, blank=False)
     ESTATUS_ARMA = models.ForeignKey(Estatus_Arma, on_delete=models.RESTRICT, null=False, blank=False)
-    CUIP_PORTADOR = models.CharField(max_length=20, null=False, blank=False)
-    CUIP_RESPONSABLE = models.CharField(max_length=20, null=False, blank=False)
+    CUIP_PORTADOR = models.ForeignKey(Portador, on_delete=models.RESTRICT, null=False, blank=False, related_name='armamento_portador')
+
     CIHB = models.CharField(max_length=20, null=True, blank=True)
     FECHA_BAJA_LOGICA = models.DateField(null=True, blank=True)
     MOTIVO_BAJA = models.TextField(null=True, blank=True)

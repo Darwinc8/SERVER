@@ -56,7 +56,9 @@ def editar_armamento(request, id):
 
 @login_required
 def eliminar_armamento(request, id):
-    return render(request, 'delete_armamento.html')  
+    armamento = Armamento.objects.get(ID_ALTERNA=id)
+    armamento.delete()
+    return redirect('armamento')  
 
 def convertir_fechas(objeto):
     objeto.FECHA = objeto.FECHA.strftime("%Y-%m-%d")

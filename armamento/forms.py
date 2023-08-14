@@ -1,6 +1,7 @@
 from django import forms
 from django.forms import DateInput
 from .models import Armamento, Institucion, Dependencia, Entidad, Municipio, LOC, Tipo, Calibre, Marca, Modelo, Edo_conservacion
+from portadores.models import Portador
 
 class ArmamentoForm(forms.ModelForm):
     class Meta:
@@ -28,6 +29,8 @@ class ArmamentoForm(forms.ModelForm):
     
     ESTADO_ARMA = forms.ModelChoiceField(queryset=Edo_conservacion.objects.all(),to_field_name='ID_ESTADO',label='ESTADO_ARMA')
     
+    CUIP_PORTADOR = forms.ModelChoiceField(queryset=Portador.objects.all(),to_field_name='CUIP',label='PORTADORES')
+     
     FECHA = forms.DateField(widget=DateInput(attrs={'type': 'date'}))
     
     FECHA_LOC = forms.DateField(widget=DateInput(attrs={'type': 'date'}))
@@ -37,6 +40,16 @@ class ArmamentoForm(forms.ModelForm):
     FECHA_BAJA_LOGICA = forms.DateField(widget=DateInput(attrs={'type': 'date'}), required=False)
         
     FECHA_BAJA_DOCUMENTO = forms.DateField(widget=DateInput(attrs={'type': 'date'}), required=False)
+    
+    def clean(self):
+        cleaned_data = super().clean()
+        CUIP_PORTADOR = cleaned_data.get('CUIP_PORTADOR')
+        CUIP_RESPONSABLE = cleaned_data.get('CUIP_RESPONSABLE')
+
+        if CUIP_PORTADOR == CUIP_RESPONSABLE:
+            raise forms.ValidationError("Los campos no pueden tener el mismo registro seleccionado.")
+
+        return cleaned_data
 
 class BusquedaForm(forms.Form):
     query = forms.CharField(max_length=100, required=False, widget=forms.TextInput(attrs={'placeholder': '     Buscar registros...'}))
