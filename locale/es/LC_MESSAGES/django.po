@@ -1317,51 +1317,51 @@ msgstr ""
 
 #: .\env\Lib\site-packages\django\utils\dates.py:25
 msgid "January"
-msgstr ""
+msgstr "Enero"
 
 #: .\env\Lib\site-packages\django\utils\dates.py:26
 msgid "February"
-msgstr ""
+msgstr "Febrero"
 
 #: .\env\Lib\site-packages\django\utils\dates.py:27
 msgid "March"
-msgstr ""
+msgstr "Marzo"
 
 #: .\env\Lib\site-packages\django\utils\dates.py:28
 msgid "April"
-msgstr ""
+msgstr "Abril"
 
 #: .\env\Lib\site-packages\django\utils\dates.py:29
 msgid "May"
-msgstr ""
+msgstr "Mayo"
 
 #: .\env\Lib\site-packages\django\utils\dates.py:30
 msgid "June"
-msgstr ""
+msgstr "Junio"
 
 #: .\env\Lib\site-packages\django\utils\dates.py:31
 msgid "July"
-msgstr ""
+msgstr "Julio"
 
 #: .\env\Lib\site-packages\django\utils\dates.py:32
 msgid "August"
-msgstr ""
+msgstr "Agosto"
 
 #: .\env\Lib\site-packages\django\utils\dates.py:33
 msgid "September"
-msgstr ""
+msgstr "Septiembre"
 
 #: .\env\Lib\site-packages\django\utils\dates.py:34
 msgid "October"
-msgstr ""
+msgstr "Octubre"
 
 #: .\env\Lib\site-packages\django\utils\dates.py:35
 msgid "November"
-msgstr ""
+msgstr "Noviembre"
 
 #: .\env\Lib\site-packages\django\utils\dates.py:36
 msgid "December"
-msgstr ""
+msgstr "Diciembre"
 
 #: .\env\Lib\site-packages\django\utils\dates.py:39
 msgid "jan"

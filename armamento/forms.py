@@ -34,9 +34,9 @@ class ArmamentoForm(forms.ModelForm):
         
     FECHA_CAPTURA = forms.DateField(widget=DateInput(attrs={'type': 'date'}))
         
-    FECHA_BAJA_LOGICA = forms.DateField(widget=DateInput(attrs={'type': 'date'}))
+    FECHA_BAJA_LOGICA = forms.DateField(widget=DateInput(attrs={'type': 'date'}), required=False)
         
-    FECHA_BAJA_DOCUMENTO = forms.DateField(widget=DateInput(attrs={'type': 'date'}))
+    FECHA_BAJA_DOCUMENTO = forms.DateField(widget=DateInput(attrs={'type': 'date'}), required=False)
 
 class BusquedaForm(forms.Form):
     query = forms.CharField(max_length=100, required=False, widget=forms.TextInput(attrs={'placeholder': '     Buscar registros...'}))
