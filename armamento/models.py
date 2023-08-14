@@ -32,7 +32,7 @@ class Armamento(models.Model):
     OBSERVACIONES = models.TextField(null=False, blank=False)
     ESTATUS_ARMA = models.ForeignKey(Estatus_Arma, on_delete=models.RESTRICT, null=False, blank=False)
     CUIP_PORTADOR = models.ForeignKey(Portador, on_delete=models.RESTRICT, null=False, blank=False, related_name='armamento_portador')
-
+    CUIP_RESPONSABLE = models.ForeignKey(Portador, on_delete=models.RESTRICT, null=False, blank=False, related_name='armamento_responsable', default="nadie")
     CIHB = models.CharField(max_length=20, null=True, blank=True)
     FECHA_BAJA_LOGICA = models.DateField(null=True, blank=True)
     MOTIVO_BAJA = models.TextField(null=True, blank=True)
