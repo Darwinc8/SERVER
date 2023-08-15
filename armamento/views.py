@@ -61,19 +61,19 @@ def eliminar_armamento(request, id):
     return redirect('armamento')  
 
 def convertir_fechas(objeto):
-    objeto.FECHA = objeto.FECHA.strftime("%Y-%m-%d")
-    objeto.FECHA_LOC = objeto.FECHA_LOC.strftime("%Y-%m-%d")
-    objeto.FECHA_CAPTURA = objeto.FECHA_CAPTURA.strftime("%Y-%m-%d")
-    objeto.FECHA_BAJA_LOGICA = objeto.FECHA_BAJA_LOGICA.strftime("%Y-%m-%d")
-    objeto.FECHA_BAJA_DOCUMENTO = objeto.FECHA_BAJA_DOCUMENTO.strftime("%Y-%m-%d")
+    if objeto.FECHA: objeto.FECHA = objeto.FECHA.strftime("%Y-%m-%d")
+    if objeto.FECHA_LOC: objeto.FECHA_LOC = objeto.FECHA_LOC.strftime("%Y-%m-%d")
+    if objeto.FECHA_CAPTURA: objeto.FECHA_CAPTURA = objeto.FECHA_CAPTURA.strftime("%Y-%m-%d")
+    if objeto.FECHA_BAJA_LOGICA: objeto.FECHA_BAJA_LOGICA= objeto.FECHA_BAJA_LOGICA.strftime("%Y-%m-%d")
+    if objeto.FECHA_BAJA_DOCUMENTO: objeto.FECHA_BAJA_DOCUMENTO = objeto.FECHA_BAJA_DOCUMENTO.strftime("%Y-%m-%d")
     return objeto
 
 def reconvertir_fechas(objeto):
-    objeto.FECHA = objeto.FECHA.strftime("'%d de %B de %Y'")
-    objeto.FECHA_LOC = objeto.FECHA_LOC.strftime("'%d de %B de %Y'")
-    objeto.FECHA_CAPTURA = objeto.FECHA_CAPTURA.strftime("'%d de %B de %Y'")
-    objeto.FECHA_BAJA_LOGICA = objeto.FECHA_BAJA_LOGICA.strftime("'%d de %B de %Y'")
-    objeto.FECHA_BAJA_DOCUMENTO = objeto.FECHA_BAJA_DOCUMENTO.strftime("'%d de %B de %Y'")
+    if objeto.FECHA: objeto.FECHA = objeto.FECHA.strftime("'%d de %B de %Y'")
+    if objeto.FECHA_LOC: objeto.FECHA_LOC = objeto.FECHA_LOC.strftime("'%d de %B de %Y'")
+    if objeto.FECHA_CAPTURA: objeto.FECHA_CAPTURA = objeto.FECHA_CAPTURA.strftime("'%d de %B de %Y'")
+    if objeto.FECHA_BAJA_LOGICA: objeto.FECHA_BAJA_LOGICA = objeto.FECHA_BAJA_LOGICA.strftime("'%d de %B de %Y'")
+    if objeto.FECHA_BAJA_DOCUMENTO: objeto.FECHA_BAJA_DOCUMENTO = objeto.FECHA_BAJA_DOCUMENTO.strftime("'%d de %B de %Y'")
 
     return objeto
 

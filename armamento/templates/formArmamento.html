@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load static %}
 <form enctype="multipart/form-data" method="post">
     {% csrf_token %}
 
@@ -183,68 +184,9 @@
 
 </form>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-  $(document).ready(function () {
-      // Cuando cambia la selección del campo "Entidad"
-      $('#id_ENTIDAD').change(function () {
-          const entidadId = $(this).val();
-          const municipioSelect = $('#id_MUNICIPIO');
-
-          // Habilita el campo "Municipio" para permitir la selección
-          municipioSelect.prop('disabled', false);
-
-          // Realiza una solicitud AJAX para obtener los municipios filtrados por entidad
-          $.ajax({
-              url: `/armamento/obtener_municipios/${entidadId}/`, 
-              
-              // Utiliza el ID de entidad seleccionado en la URL
-              type: 'GET',
-              dataType: 'json',
-              success: function (data) {
-                  // Limpia los municipios existentes y agrega los nuevos basados en la respuesta JSON
-                  municipioSelect.empty();
-                  $.each(data, function (index, municipio) {
-                      municipioSelect.append(new Option(municipio.MUNICIPIO, municipio.id));
-                  });
-              },
-              error: function (error) {
-                  console.log(error);
-              }
-          });
-      });
-  });
-</script>
-<script>
-  $(document).ready(function () {
-      // Cuando cambia la selección del campo "Dependencia"
-      $('#id_DEPENDENCIA').change(function () {
-          const dependenciaId = $(this).val();
-          const institucionSelect = $('#id_INSTITUCION');
-
-          // Habilita el campo "Institucion" para permitir la selección
-          institucionSelect.prop('disabled', false);
-
-          // Realiza una solicitud AJAX para obtener los municipios filtrados por entidad
-          $.ajax({
-              url: `/armamento/obtener_instituciones/${dependenciaId}/`, 
-              
-              // Utiliza el ID de la dependencia seleccionado en la URL
-              type: 'GET',
-              dataType: 'json',
-              success: function (data) {
-                  // Limpia las instituciones existentes y agrega los nuevos basados en la respuesta JSON
-                  institucionSelect.empty();
-                  $.each(data, function (index, institucion) {
-                      institucionSelect.append(new Option(institucion.NOMBRE, institucion.ID_INSTITUCION));
-                  });
-              },
-              error: function (error) {
-                  console.log(error);
-              }
-          });
-      });
-  });
-</script>
+<script src="{% static 'js/municipios.js' %}"></script>
+<script src="{% static 'js/institutos.js' %}"></script>
+<script src="{% static 'js/validacion_cuip.js' %}"></script>
 
 
 

@@ -30,6 +30,8 @@ class ArmamentoForm(forms.ModelForm):
     ESTADO_ARMA = forms.ModelChoiceField(queryset=Edo_conservacion.objects.all(),to_field_name='ID_ESTADO',label='ESTADO_ARMA')
     
     CUIP_PORTADOR = forms.ModelChoiceField(queryset=Portador.objects.all(),to_field_name='CUIP',label='PORTADORES')
+    
+    CUIP_RESPONSABLE = forms.ModelChoiceField(queryset=Portador.objects.all(),to_field_name='CUIP',label='PORTADORES')
      
     FECHA = forms.DateField(widget=DateInput(attrs={'type': 'date'}))
     
