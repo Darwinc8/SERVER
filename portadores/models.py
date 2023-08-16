@@ -8,7 +8,7 @@ class Portador(models.Model):
     APELLIDO_MATERNO = models.CharField(max_length=30,blank=False)
     CORREO = models.EmailField(max_length=254,blank=False)
     TELEFONO = models.CharField(max_length=10,blank=False)
-    IMAGEN = models.FileField(upload_to='portadores/imagenes/',blank=False)
+    IMAGEN = models.FileField(upload_to='images/portadores/',blank=False)
     
     def __str__(self):
         return f"{self.CUIP} - {self.NOMBRE} {self.APELLIDO_PATERNO} {self.APELLIDO_MATERNO}"

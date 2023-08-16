@@ -6,7 +6,7 @@
       <label class="form-label">{{ campo.label|title }}:</label>
         {% if campo.field.widget.input_type == 'file' and campo.value %}
         <br>
-        <img src="{{MEDIA_URL}}/imagenes/{{campo.value}}" width="100"></img>
+        <img src="{{MEDIA_URL}}/{{campo.value}}" width="100"></img>
         <br><br>
         {% endif %}
       <input type="{{ campo.field.widget.input_type }}"
