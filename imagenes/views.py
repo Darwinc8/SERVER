@@ -41,7 +41,7 @@ def crear_imagen(request):
         })
 
 @login_required
-def eliminar_imagen(request, id):
+def eliminar_imagen(id):
     imagen = Imagenes.objects.get(ID_ALTERNA=id)
     imagen.delete()
     return redirect('imagenes')
@@ -59,7 +59,7 @@ def editar_imagen(request, id):
             })
         
 @login_required
-def obtener_instituciones(request, dependencia_id):
+def obtener_instituciones(dependencia_id):
     try:
         instituciones = Institucion.objects.filter(ID_DEPENDENCIA=dependencia_id).values('ID_INSTITUCION', 'NOMBRE')
 

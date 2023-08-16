@@ -46,7 +46,7 @@ def editar_portador(request, id):
     })
 
 @login_required
-def eliminar_portador(request, id):
+def eliminar_portador(id):
      portador = Portador.objects.get(pk=id) 
      portador.delete()
      return redirect('portadores')      
