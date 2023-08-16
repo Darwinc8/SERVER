@@ -24,7 +24,7 @@ class Imagenes(models.Model):
     
     GRUPO = models.CharField(max_length=1)
     
-    IMAGEN = models.FileField(upload_to='imagenes/imagenes/',blank=False)
+    IMAGEN = models.FileField(upload_to='images/imagenes/',blank=False)
     
     def __str__(self):
        return f"{self.ID_ALTERNA} - {self.ID_ARMA}" 
