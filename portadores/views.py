@@ -4,7 +4,7 @@ from .models import Portador
 from .forms import PortadorForm
 from armamento.forms import BusquedaForm
 from django.contrib.auth.decorators import login_required
-from django.utils.translation import activate
+from django.contrib import messages
 
 # Create your views here.
 @login_required
@@ -46,7 +46,11 @@ def editar_portador(request, id):
     })
 
 @login_required
-def eliminar_portador(id):
-     portador = Portador.objects.get(pk=id) 
+def eliminar_portador(request, id):
+    try:
+     portador = Portador.objects.get(CUIP=id) 
      portador.delete()
-     return redirect('portadores')      
+    except Exception: 
+        messages.error(request, "No se puede borrar este Portador porque esta enlazado con un armamento")
+    return redirect('portadores')
+          

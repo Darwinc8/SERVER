@@ -6,7 +6,6 @@ from django.db import IntegrityError
 from django.contrib.auth.decorators import login_required
 from django.utils import translation
 from django.conf import settings
-from django.views import i18n as views_i18n
 # Create your views here.
 def registrarse(request):
     if request.method == 'GET':

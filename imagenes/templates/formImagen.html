@@ -72,13 +72,6 @@
       placeholder="{{ form.IMAGEN.label|title }}" value="{{form.IMAGEN.value | default:''}}">
   </div>
 
-
-  <div class="col-12 help-text">
-    {% if form.errors %}
-      {{form.errors}}
-    {%endif %}
-  </div>
-
   <input name="" id="" class="btn btn-success" type="submit" value="Guardar">
   <a name="" id="" class="btn btn-primary" href="{%url 'imagenes'%}" role="button">{% trans "Volver" %}</a>
 </form>
