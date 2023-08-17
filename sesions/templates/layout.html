@@ -9,8 +9,19 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-    <link rel="icon" type="image/x-icon" href="{% static 'icons/logo.png' %}">
-
+    {% block favicon %}
+    {% if request.resolver_match.url_name == 'portadores' %}
+    <link rel="icon" type="image/x-icon" href="{% static 'icons/portador.png' %}">
+    {% elif request.resolver_match.url_name == 'armamento' %}
+    <link rel="icon" type="image/x-icon" href="{% static 'icons/armamento.png' %}">
+    {% elif request.resolver_match.url_name == 'catalogos' %}
+    <link rel="icon" type="image/x-icon" href="{% static 'icons/catalogos.png' %}">
+    {% elif request.resolver_match.url_name == 'imagenes' %}
+    <link rel="icon" type="image/x-icon" href="{% static 'icons/fotos.png' %}">
+    {% else %}
+    <link rel="icon" type="image/x-icon" href="{% static 'icons/home.png' %}">
+    {% endif %}
+    {% endblock %}
   
     <title>{% block title %} {% endblock %}</title>
   </head>
