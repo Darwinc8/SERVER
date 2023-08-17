@@ -50,7 +50,7 @@ def eliminar_portador(request, id):
     try:
      portador = Portador.objects.get(CUIP=id) 
      portador.delete()
-    except Exception: 
-        messages.error(request, "No se puede borrar este Portador porque esta enlazado con un armamento")
+    except Exception as e: 
+        messages.error(request, f"error: {e}")
     return redirect('portadores')
           
