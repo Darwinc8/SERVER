@@ -1,5 +1,9 @@
 {% extends "layout.html" %}
 {% load i18n %}
+{% load static %}
+{% block favicon %}
+<link rel="icon" type="image/x-icon" href="{% static 'icons/arma.png' %}">
+{% endblock %}
  {% block title %} Crear Armamento {% endblock %} 
 
 {% block content %}

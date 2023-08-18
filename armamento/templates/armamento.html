@@ -1,5 +1,9 @@
 {% extends "layout.html" %}
 {% load i18n %}
+{% load static %}
+{% block favicon %}
+<link rel="icon" type="image/x-icon" href="{% static 'icons/armamento.png' %}">
+{% endblock %}
  {% block title %} {% trans "Armamento" %} {% endblock %} 
  {% block content %} 
  <br/><br/>
@@ -164,6 +168,6 @@
       {% endif %}
     </span>
   </div>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 
 {% endblock %}
