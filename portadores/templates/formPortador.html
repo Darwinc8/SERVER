@@ -20,6 +20,13 @@
         {{campo.errors}}
     </div>
     {% endfor %}
+    {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
 
     <input class="btn btn-success" type="submit" value="{% trans 'Guardar' %}">
     <a class="btn btn-primary" href="{%url 'portadores'%}" role="button">{% trans "Volver" %}</a>

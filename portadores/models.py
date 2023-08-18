@@ -1,5 +1,5 @@
 from django.db import models
-
+import os
 # Create your models here.
 class Portador(models.Model):
     CUIP = models.CharField(max_length=20, primary_key=True)
@@ -13,7 +13,5 @@ class Portador(models.Model):
     def __str__(self):
         return f"{self.CUIP} - {self.NOMBRE} {self.APELLIDO_PATERNO} {self.APELLIDO_MATERNO}"
     
-    def delete(self, using=None, Keep_parents=False):
-        self.IMAGEN.storage.delete(self.IMAGEN.name)
-        super().delete()
+    
     

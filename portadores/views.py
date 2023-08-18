@@ -4,6 +4,7 @@ from .models import Portador
 from .forms import PortadorForm
 from armamento.forms import BusquedaForm
 from django.contrib.auth.decorators import login_required
+import os
 from django.contrib import messages
 
 # Create your views here.
@@ -32,7 +33,10 @@ def crear_portador(request):
         form = PortadorForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-        return redirect('portadores')
+            return redirect('portadores')
+        else:
+            messages.error(request, 'Error al crear portador, verifique los datos')
+            return redirect('crear_portador')
  
 @login_required    
 def editar_portador(request, id):
@@ -48,9 +52,19 @@ def editar_portador(request, id):
 @login_required
 def eliminar_portador(request, id):
     try:
-     portador = Portador.objects.get(CUIP=id) 
-     portador.delete()
-    except Exception as e: 
-        messages.error(request, f"error: {e}")
-    return redirect('portadores')
+        # Obten el registro por su ID, si no existe, lanzará una excepción 404
+        registro = get_object_or_404(Portador, pk=id)
+
+        # Obtén la ruta completa de la imagen
+        imagen_path = os.path.join('static/portadores', registro.IMAGEN.path)
+        
+        # Borra el registro y luego la imagen
+        registro.delete()
+        os.remove(imagen_path)
+        
+    except Exception as e:
+        # Si ocurre una excepción, maneja el error apropiadamente
+        messages.error(request, f'Error al eliminar: {e}')
+        
+    return redirect('portadores')  # Redirige a la misma vista
           
