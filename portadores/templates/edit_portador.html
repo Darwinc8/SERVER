@@ -1,5 +1,9 @@
 {% extends "layout.html" %}
 {% load i18n %}
+{% load static %}
+{% block favicon %}
+<link rel="icon" type="image/x-icon" href="{% static 'icons/portador.png' %}">
+{% endblock %}
  {% block title %} {% trans "Editar Portador" %} {% endblock %} 
 
 {% block content %}
