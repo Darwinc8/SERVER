@@ -1,3 +1,4 @@
+import os
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
 from .models import Armamento
@@ -5,6 +6,7 @@ from django.core.paginator import Paginator
 from .forms import ArmamentoForm, BusquedaForm
 from django.contrib.auth.decorators import login_required
 from .models import Municipio, Institucion
+from django.contrib import messages
 
 # Create your views here.
 @login_required
@@ -56,9 +58,18 @@ def editar_armamento(request, id):
 
 @login_required
 def eliminar_armamento(request, id):
-    armamento = Armamento.objects.get(ID_ALTERNA=id)
-    armamento.delete()
-    return redirect('armamento')  
+    try:
+        #Obten el registro por su ID, si no existe, lanzará una excepción 404
+        registro = get_object_or_404(Armamento, pk=id)
+        
+        # Borra el registro y luego la imagen
+        registro.delete()
+        
+    except Exception as e:
+        # Si ocurre una excepción, maneja el error apropiadamente
+        messages.error(request, f'Error al eliminar: {e}')
+        
+    return redirect('armamento')  # Redirige a la misma vista  
 
 def convertir_fechas(objeto):
     if objeto.FECHA: objeto.FECHA = objeto.FECHA.strftime("%Y-%m-%d")
