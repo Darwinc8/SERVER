@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect
+import os
+from django.shortcuts import get_object_or_404, render, redirect
 from .models import Imagenes
 from django.contrib.auth.decorators import login_required
 from .forms import ImagenForm
@@ -6,7 +7,7 @@ from catalogos.models import Institucion
 from django.http import JsonResponse
 from armamento.forms import BusquedaForm
 from django.core.paginator import Paginator
-from django.db.models import Q
+from django.contrib import messages
 # Create your views here.
 @login_required
 def imagenes(request):
@@ -41,10 +42,24 @@ def crear_imagen(request):
         })
 
 @login_required
-def eliminar_imagen(id):
-    imagen = Imagenes.objects.get(ID_ALTERNA=id)
-    imagen.delete()
-    return redirect('imagenes')
+def eliminar_imagen(request, id):
+    try:
+        #Obten el registro por su ID, si no existe, lanzará una excepción 404
+        registro = get_object_or_404(Imagenes, pk=id)
+        
+        # Obtén la ruta completa de la imagen
+        imagen_path = os.path.join(registro.IMAGEN.path)
+        
+        # Borra el registro y luego la imagen
+        registro.delete()
+        os.remove(imagen_path)
+        
+    except Exception as e:
+        # Si ocurre una excepción, maneja el error apropiadamente
+        messages.error(request, f'Error al eliminar: {e}')
+        
+    return redirect('imagenes')  # Redirige a la misma vista
+
 
 @login_required
 def editar_imagen(request, id):

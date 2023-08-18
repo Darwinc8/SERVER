@@ -65,9 +65,16 @@
     <label for="" class="form-label">{% trans "Imagen del Arma:" %}</label>
     {% if form.IMAGEN.value %}
     <br>
-    <img src="{{MEDIA_URL}}/{{form.IMAGEN.value}}" width="100"></img>
+    <img src="{{MEDIA_URL}}/static/{{form.IMAGEN.value}}" width="100"></img>
     <br><br>
     {% endif %}
+    {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
     <input type="{{ form.IMAGEN.field.widget.input_type }}" class="form-control" name="{{ form.IMAGEN.name }}" id=""
       placeholder="{{ form.IMAGEN.label|title }}" value="{{form.IMAGEN.value | default:''}}">
   </div>

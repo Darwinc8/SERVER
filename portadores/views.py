@@ -56,7 +56,7 @@ def eliminar_portador(request, id):
         registro = get_object_or_404(Portador, pk=id)
 
         # Obtén la ruta completa de la imagen
-        imagen_path = os.path.join('static/portadores', registro.IMAGEN.path)
+        imagen_path = os.path.join(registro.IMAGEN.path)
         
         # Borra el registro y luego la imagen
         registro.delete()
