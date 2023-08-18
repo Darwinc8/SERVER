@@ -29,7 +29,3 @@ class Imagenes(models.Model):
     def __str__(self):
        return f"{self.ID_ALTERNA} - {self.ID_ARMA}" 
    
-    #Funcion para eliminar la imagen de la carpeta cuando se borre de la db
-    def delete(self, using=None, Keep_parents=False):
-        self.IMAGEN.storage.delete(self.IMAGEN.name)
-        super().delete()
