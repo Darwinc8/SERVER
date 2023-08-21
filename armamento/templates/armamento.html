@@ -7,6 +7,13 @@
  {% block title %} {% trans "Armamento" %} {% endblock %} 
  {% block content %} 
  <br/><br/>
+ {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
 <div class="card">
   <div class="card-header">
     <h1 style="text-align: center">{% trans "ARMAMENTO" %}</h1>

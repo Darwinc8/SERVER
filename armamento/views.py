@@ -62,7 +62,7 @@ def eliminar_armamento(request, id):
         #Obten el registro por su ID, si no existe, lanzará una excepción 404
         registro = get_object_or_404(Armamento, pk=id)
         
-        # Borra el registro y luego la imagen
+        # Borra el registro
         registro.delete()
         
     except Exception as e:
