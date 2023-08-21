@@ -52,10 +52,10 @@ def editar_portador(request, id):
 @login_required
 def eliminar_portador(request, id):
     try:
-        # Obten el registro por su ID, si no existe, lanzará una excepción 404
+        # Obtiene el registro por su ID, si no existe, lanzará una excepción 404
         registro = get_object_or_404(Portador, pk=id)
 
-        # Obtén la ruta completa de la imagen
+        # Obtiene la ruta completa de la imagen
         imagen_path = os.path.join(registro.IMAGEN.path)
         
         # Borra el registro y luego la imagen
