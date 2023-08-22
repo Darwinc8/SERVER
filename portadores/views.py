@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator 
 from .models import Portador
 from .forms import PortadorForm
-from armamento.forms import BusquedaForm
+from .forms import BusquedaPortadoresForm
 from django.contrib.auth.decorators import login_required
 import os
 from django.contrib import messages
@@ -12,14 +12,16 @@ from django.contrib import messages
 def portadores(request):
     portador = Portador.objects.all().order_by('NOMBRE')
     query = request.GET.get('query')
-    if query:
-        portador = portador.filter(CUIP__icontains=query)
+    valor = request.GET.get('campos_filtrados')
+    
+    if query and valor:
+        portador = portador.filter(**{valor: query})
     paginator = Paginator(portador, 10)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'portadores.html', {
         'portadores': page_obj,
-        'form': BusquedaForm()
+        'form': BusquedaPortadoresForm()
     }) 
 
 @login_required    

@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
 from .models import Armamento
 from django.core.paginator import Paginator
-from .forms import ArmamentoForm, BusquedaForm
+from .forms import ArmamentoForm, BusquedaArmamentoForm
 from django.contrib.auth.decorators import login_required
 from .models import Municipio, Institucion
 from django.contrib import messages
@@ -13,14 +13,16 @@ from django.contrib import messages
 def armamento(request):
     armamentos = Armamento.objects.all().order_by('ID_ALTERNA')
     query = request.GET.get('query')
-    if query:
-        armamentos = armamentos.filter(ID_ARMA__icontains=query)
+    valor = request.GET.get('campos_filtrados')
+
+    if query and valor:
+        armamentos = armamentos.filter(**{valor: query})
     paginator = Paginator(armamentos, 5)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'armamento.html', {
         'armamento': page_obj,
-        'form': BusquedaForm()
+        'form': BusquedaArmamentoForm()
     })
 
 @login_required

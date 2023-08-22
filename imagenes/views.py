@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import ImagenForm
 from catalogos.models import Institucion
 from django.http import JsonResponse
-from armamento.forms import BusquedaForm
+from .forms import BusquedaImagenesForm
 from django.core.paginator import Paginator
 from django.contrib import messages
 # Create your views here.
@@ -20,7 +20,7 @@ def imagenes(request):
     page_obj = paginator.get_page(page_number)
     return render(request,'imagenes.html', {
         'imagenes': page_obj,
-        'form': BusquedaForm()
+        'form': BusquedaImagenesForm()
     })
 
 @login_required

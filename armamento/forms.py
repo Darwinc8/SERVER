@@ -53,7 +53,28 @@ class ArmamentoForm(forms.ModelForm):
 
         return cleaned_data
 
-class BusquedaForm(forms.Form):
+class BusquedaArmamentoForm(forms.Form):
     query = forms.CharField(max_length=100, required=False, widget=forms.TextInput(attrs={'placeholder': '     Buscar registros...'}))
+    
+    CAMPOS_BUSQUEDA = (
+        ('ID_ARMA__icontains', 'ID'),
+        ('INSTITUCION_id__NOMBRE__icontains', 'Institución'),
+        ('DEPENDENCIA_id__DEPENDENCIA__icontains', 'Dependencia'),
+        ('ENTIDAD_id__ENTIDAD__icontains', 'Entidad'),
+        ('MUNICIPIO_id__MUNICIPIO__icontains', 'Municipio'),
+        ('NUMERO_LOC_id__NO_LICENCIA__icontains', 'LOC'),
+        ('CLASE_TIPO_ARMA_id__TIPO__icontains', 'Tipo de arma'),
+        ('CALIBRE_ARMA_id__CALIBRE__icontains', 'Calibres'),
+        ('MARCA_id__MARCA__icontains', 'Marcas'),
+        ('MODELO_id__MODELO__icontains', 'Modelos')
+    )
+    
+    OPCIONES_ORDENADAS = sorted(CAMPOS_BUSQUEDA, key=lambda option: option[1])
+    
+    campos_filtrados = forms.ChoiceField(
+        choices=OPCIONES_ORDENADAS,
+        label="Filtrar por",
+        initial='ID_ARMA__icontains'
+        )
 
 

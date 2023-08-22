@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.core.paginator import Paginator
 from .models import Emisor, Entidad, Dependencia, LOC, Edo_conservacion, Institucion, Tipo, Calibre, Marca, Modelo, Estatus_Arma, Tipo_Alta, Tipo_Dependencia, Tipo_Imagen, Municipio
 from django.contrib.auth.decorators import login_required
-from armamento.forms import BusquedaForm
 # Create your views here.
 @login_required
 def index(request):
