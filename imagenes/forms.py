@@ -30,7 +30,7 @@ class BusquedaImagenesForm(forms.Form):
     query = forms.CharField(max_length=100, required=False, widget=forms.TextInput(attrs={'placeholder': '     Buscar registros...'}))
     
     CAMPOS_BUSQUEDA = (
-        ('ID_ARMA__icontains', 'ID'),
+        ('ID_ARMA__ID_ARMA__icontains', 'ID'),
         ('INSTITUCION_id__NOMBRE__icontains', 'Institución'),
         ('ENTIDAD_id__ENTIDAD__icontains', 'Entidad'),
         ('DEPENDENCIA_id__DEPENDENCIA__icontains', 'Dependencia'),
@@ -42,6 +42,6 @@ class BusquedaImagenesForm(forms.Form):
     campos_filtrados = forms.ChoiceField(
         choices=OPCIONES_ORDENADAS,
         label="Filtrar por",
-        initial='ID_ARMA__icontains'
+        initial='ID_ARMA_id__ID_ARMA__icontains'
         )    
        

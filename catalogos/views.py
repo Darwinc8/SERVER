@@ -34,8 +34,15 @@ def municipios(request):
     municipios = Municipio.objects.order_by('ID_ENTIDAD', 'ID_MUNICIPIO')
     query = request.GET.get('query')
     valor = request.GET.get('campos_filtrados')
+    
     if query and valor:
         municipios = municipios.filter(**{valor: query})
+        return render(request, 'catalogos/municipios.html', {
+        'municipios': municipios,
+        'form': BusquedaMunicipiosForm({'campos_filtrados':valor,
+        'query':query
+        })
+    })
     paginator = Paginator(municipios, 12)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -54,10 +61,18 @@ def dependencias(request):
 @login_required    
 def locs(request):
     locs = LOC.objects.all().order_by('NO_LICENCIA')
+    
     query = request.GET.get('query')
     valor = request.GET.get('campos_filtrados')
+    
     if query and valor:
         locs = locs.filter(**{valor: query})
+        return render(request, 'catalogos/locs.html', {
+        'locs': locs,
+        'form': BusquedaLOCsForm({'campos_filtrados':valor,
+        'query':query
+        })
+    })
     paginator = Paginator(locs, 12)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -76,10 +91,18 @@ def edo_conservacion(request):
 @login_required
 def instituciones(request):
     instituciones = Institucion.objects.all().order_by('ID_INSTITUCION')
+    
     query = request.GET.get('query')
     valor = request.GET.get('campos_filtrados')
+    
     if query and valor:
         instituciones = instituciones.filter(**{valor: query})
+        return render(request, 'catalogos/instituciones.html', {
+        'instituciones': instituciones,
+        'form': BusquedaInstitucionesForm({'campos_filtrados':valor,
+        'query':query
+        })
+    })
     paginator = Paginator(instituciones, 12)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -91,10 +114,18 @@ def instituciones(request):
 @login_required    
 def tipos(request):
     tipos = Tipo.objects.all()
+    
     query = request.GET.get('query')
     valor = request.GET.get('campos_filtrados')
+    
     if query and valor:
         tipos = tipos.filter(**{valor: query})
+        return render(request, 'catalogos/tipos.html', {
+        'tipos': tipos,
+        'form': BusquedaTiposForm({'campos_filtrados':valor,
+        'query':query
+        })
+    })
     paginator = Paginator(tipos, 12)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -110,6 +141,12 @@ def calibres(request):
     valor = request.GET.get('campos_filtrados')
     if query and valor:
         calibres = calibres.filter(**{valor: query})
+        return render(request, 'catalogos/calibres.html', {
+        'calibres': calibres,
+        'form': BusquedaCalibreForm({'campos_filtrados':valor,
+        'query':query
+        })
+    })
     paginator = Paginator(calibres, 12)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -121,10 +158,18 @@ def calibres(request):
 @login_required
 def marcas(request):
     marcas = Marca.objects.all()
+    
     query = request.GET.get('query')
     valor = request.GET.get('campos_filtrados')
+    
     if query and valor:
         marcas = marcas.filter(**{valor: query})
+        return render(request, 'catalogos/marcas.html', {
+        'marcas': marcas,
+        'form': BusquedaMarcasForm({'campos_filtrados':valor,
+        'query':query
+        })
+    })
     paginator = Paginator(marcas, 12)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
