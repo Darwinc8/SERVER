@@ -11,11 +11,17 @@ from django.contrib import messages
 @login_required
 def portadores(request):
     portador = Portador.objects.all().order_by('NOMBRE')
+    
     query = request.GET.get('query')
     valor = request.GET.get('campos_filtrados')
     
     if query and valor:
         portador = portador.filter(**{valor: query})
+        return render(request, 'portadores.html', {
+        'portadores': portador,
+        'form': BusquedaPortadoresForm({'campos_filtrados':valor,'query':query
+        })
+    })
     paginator = Paginator(portador, 10)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)

@@ -15,7 +15,7 @@ class BusquedaMunicipiosForm(BusquedaForm):
     campos_filtrados = forms.ChoiceField(
         choices=OPCIONES_ORDENADAS,
         label="Filtrar por",
-        initial='ID_ARMA__icontains'
+        initial='MUNICIPIO__icontains'
         )
     
 class BusquedaLOCsForm(BusquedaForm):
@@ -45,7 +45,7 @@ class BusquedaInstitucionesForm(BusquedaForm):
     campos_filtrados = forms.ChoiceField(
         choices=OPCIONES_ORDENADAS,
         label="Filtrar por",
-        initial='ID_INSTITUCION__icontains'
+        initial='NOMBRE__icontains'
         )
     
 class BusquedaTiposForm(BusquedaForm):
@@ -59,7 +59,7 @@ class BusquedaTiposForm(BusquedaForm):
     campos_filtrados = forms.ChoiceField(
         choices=OPCIONES_ORDENADAS,
         label="Filtrar por",
-        initial='ID_TIPO__icontains'
+        initial='TIPO__icontains'
         )
 
 class BusquedaCalibreForm(BusquedaForm):
@@ -73,7 +73,7 @@ class BusquedaCalibreForm(BusquedaForm):
     campos_filtrados = forms.ChoiceField(
         choices=OPCIONES_ORDENADAS,
         label="Filtrar por",
-        initial='ID_INSTITUCION__icontains'
+        initial='CALIBRE__icontains'
         )
 
 class BusquedaMarcasForm(BusquedaForm):
@@ -87,5 +87,5 @@ class BusquedaMarcasForm(BusquedaForm):
     campos_filtrados = forms.ChoiceField(
         choices=OPCIONES_ORDENADAS,
         label="Filtrar por",
-        initial='ID_MARCA__icontains'
+        initial='MARCA__icontains'
         )

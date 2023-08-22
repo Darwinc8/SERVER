@@ -12,11 +12,19 @@ from django.contrib import messages
 @login_required
 def armamento(request):
     armamentos = Armamento.objects.all().order_by('ID_ALTERNA')
+    
     query = request.GET.get('query')
     valor = request.GET.get('campos_filtrados')
 
     if query and valor:
         armamentos = armamentos.filter(**{valor: query})
+        return render(request, 'armamento.html', {
+        'armamento': armamentos,
+        'form': BusquedaArmamentoForm({'campos_filtrados':valor,
+        'query':query
+        })
+    })
+        
     paginator = Paginator(armamentos, 5)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)

@@ -12,9 +12,18 @@ from django.contrib import messages
 @login_required
 def imagenes(request):
     imagenes = Imagenes.objects.all().order_by('ID_ARMA')
+    
     query = request.GET.get('query')
-    if query:
-        imagenes = imagenes.filter(ID_ARMA__ID_ARMA__icontains=query)
+    valor = request.GET.get('campos_filtrados')
+    
+    if query and valor:
+        imagenes = imagenes.filter(**{valor: query})
+        return render(request,'imagenes.html', {
+        'imagenes': imagenes,
+        'form': BusquedaImagenesForm({'campos_filtrados':valor,'query':query
+        })
+    })
+        
     paginator = Paginator(imagenes, 10)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
