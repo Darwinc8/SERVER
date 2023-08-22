@@ -15,6 +15,8 @@
         <a class="btn btn-success" href="{% url 'catalogos' %}" role="button">{% trans "Volver a Catalogos" %}</a>
         <div>
           <form method="GET" action="">
+            {{ form.campos_filtrados.label_tag }}
+            {{ form.campos_filtrados }}
             {{ form.query }}
             <button type="submit" class="btn btn-outline-secondary">
               <i class="fa fa-search"></i>
