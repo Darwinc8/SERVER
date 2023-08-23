@@ -50,7 +50,7 @@
               </tr>
             </thead>
             <tbody>
-              {% for imagen in imagenes %}
+              {% for imagen in lista %}
               <tr class="text-center align-middle">
                 <td>{{ imagen.ID_ARMA.ID_ARMA }}</td>
                 <td><img src="{{ imagen.IMAGEN.url }}" height="100" /></td>
@@ -86,17 +86,17 @@
 </div>
 <div class="pagination">
     <span class="step-links">
-    {% if imagenes.has_previous %}
+    {% if lista.has_previous %}
         <a name="" id="" class="btn btn-primary" href="?page=1" role="button">&laquo; {% trans "Primera" %}</a>
-        <a name="" id="" class="btn btn-primary" href="?page={{ imagenes.previous_page_number }}" role="button">{% trans "Anterior" %}</a>
+        <a name="" id="" class="btn btn-primary" href="?page={{ lista.previous_page_number }}" role="button">{% trans "Anterior" %}</a>
     {% endif %}
 
-    <a name="" id="" class="btn btn-danger" role="button">{{ imagenes.number }}</a>
+    <a name="" id="" class="btn btn-danger" role="button">{{ lista.number }}</a>
 
-    {% if imagenes.has_next %}
-        <a name="" id="" class="btn btn-primary" href="?page={{ imagenes.next_page_number }}" role="button">{% trans "Siguiente" %}</a>
+    {% if lista.has_next %}
+        <a name="" id="" class="btn btn-primary" href="?page={{ lista.next_page_number }}" role="button">{% trans "Siguiente" %}</a>
 
-        <a name="" id="" class="btn btn-primary" href="?page={{ imagenes.paginator.num_pages }}" role="button">{% trans "última" %} &raquo;</a>
+        <a name="" id="" class="btn btn-primary" href="?page={{ lista.paginator.num_pages }}" role="button">{% trans "última" %} &raquo;</a>
     {% endif %}
     </span>
 </div>

@@ -6,8 +6,8 @@ from .forms import ImagenForm
 from catalogos.models import Institucion
 from django.http import JsonResponse
 from .forms import BusquedaImagenesForm
-from django.core.paginator import Paginator
 from django.contrib import messages
+from utilidades import utils
 # Create your views here.
 @login_required
 def imagenes(request):
@@ -17,20 +17,9 @@ def imagenes(request):
     valor = request.GET.get('campos_filtrados')
     
     if query and valor:
-        imagenes = imagenes.filter(**{valor: query})
-        return render(request,'imagenes.html', {
-        'imagenes': imagenes,
-        'form': BusquedaImagenesForm({'campos_filtrados':valor,'query':query
-        })
-    })
+        return utils.BusquedaPersonalizada(request, query, valor, imagenes, 'imagenes.html', BusquedaImagenesForm)
         
-    paginator = Paginator(imagenes, 10)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-    return render(request,'imagenes.html', {
-        'imagenes': page_obj,
-        'form': BusquedaImagenesForm()
-    })
+    return utils.CrearPaginador(request, imagenes, 1, 'imagenes.html', BusquedaImagenesForm)
 
 @login_required
 def crear_imagen(request):
