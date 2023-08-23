@@ -45,7 +45,7 @@
         </tr>
       </thead>
       <tbody>
-        {% for portador in portadores%}
+        {% for portador in lista%}
         <tr class="text-center align-middle">
           <td>{{ portador.CUIP }}</td>
           <td>
@@ -82,33 +82,33 @@
 </div>
 <div class="pagination">
   <span class="step-links">
-    {% if portadores.has_previous %}
+    {% if lista.has_previous %}
     <a  class="btn btn-primary" href="?page=1" role="button"
       >&laquo; {% trans "Primera" %}</a
     >
     <a
       class="btn btn-primary"
-      href="?page={{ portadores.previous_page_number }}"
+      href="?page={{ lista.previous_page_number }}"
       role="button"
       >{% trans "Anterior" %}</a
     >
     {% endif %}
 
     <a  class="btn btn-danger" role="button"
-      >{{ portadores.number }}</a
+      >{{ lista.number }}</a
     >
 
-    {% if portadores.has_next %}
+    {% if lista.has_next %}
     <a
       class="btn btn-primary"
-      href="?page={{ portadores.next_page_number }}"
+      href="?page={{ lista.next_page_number }}"
       role="button"
       >{% trans "Siguiente" %}</a
     >
 
     <a
       class="btn btn-primary"
-      href="?page={{ portadores.paginator.num_pages }}"
+      href="?page={{ lista.paginator.num_pages }}"
       role="button"
       >{% trans "última" %} &raquo;</a
     >

@@ -16,12 +16,11 @@ def armamento(request):
     
     query = request.GET.get('query')
     valor = request.GET.get('campos_filtrados')
-    formulario = BusquedaArmamentoForm
     
     if query and valor:
-        return utils.BusquedaPersonalizada(request, query, valor, armamentos, 'armamento.html', formulario)
+        return utils.BusquedaPersonalizada(request, query, valor, armamentos, 'armamento.html', BusquedaArmamentoForm)
         
-    return utils.CrearPaginador(request, armamentos, 5, 'armamento.html', formulario)
+    return utils.CrearPaginador(request, armamentos, 5, 'armamento.html', BusquedaArmamentoForm)
 
 @login_required
 def crear_armamento(request):

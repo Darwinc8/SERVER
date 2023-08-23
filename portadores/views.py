@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator 
 from .models import Portador
-from .forms import PortadorForm
-from .forms import BusquedaPortadoresForm
+from .forms import PortadorForm, BusquedaPortadoresForm
 from django.contrib.auth.decorators import login_required
 import os
 from django.contrib import messages
+from utilidades import utils
 
 # Create your views here.
 @login_required
@@ -16,19 +16,9 @@ def portadores(request):
     valor = request.GET.get('campos_filtrados')
     
     if query and valor:
-        portador = portador.filter(**{valor: query})
-        return render(request, 'portadores.html', {
-        'portadores': portador,
-        'form': BusquedaPortadoresForm({'campos_filtrados':valor,'query':query
-        })
-    })
-    paginator = Paginator(portador, 10)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-    return render(request, 'portadores.html', {
-        'portadores': page_obj,
-        'form': BusquedaPortadoresForm()
-    }) 
+        return utils.BusquedaPersonalizada(request, query, valor, portador, 'portadores.html', BusquedaPortadoresForm)
+        
+    return utils.CrearPaginador(request, portador, 1, 'portadores.html', BusquedaPortadoresForm) 
 
 @login_required    
 def crear_portador(request):
