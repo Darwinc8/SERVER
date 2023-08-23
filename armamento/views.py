@@ -7,6 +7,7 @@ from .forms import ArmamentoForm, BusquedaArmamentoForm
 from django.contrib.auth.decorators import login_required
 from .models import Municipio, Institucion
 from django.contrib import messages
+from utilidades import utils
 
 # Create your views here.
 @login_required
@@ -15,23 +16,12 @@ def armamento(request):
     
     query = request.GET.get('query')
     valor = request.GET.get('campos_filtrados')
-
+    formulario = BusquedaArmamentoForm
+    
     if query and valor:
-        armamentos = armamentos.filter(**{valor: query})
-        return render(request, 'armamento.html', {
-        'armamento': armamentos,
-        'form': BusquedaArmamentoForm({'campos_filtrados':valor,
-        'query':query
-        })
-    })
+        return utils.BusquedaPersonalizada(request, query, valor, armamentos, 'armamento.html', formulario)
         
-    paginator = Paginator(armamentos, 5)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-    return render(request, 'armamento.html', {
-        'armamento': page_obj,
-        'form': BusquedaArmamentoForm()
-    })
+    return utils.CrearPaginador(request, armamentos, 5, 'armamento.html', formulario)
 
 @login_required
 def crear_armamento(request):

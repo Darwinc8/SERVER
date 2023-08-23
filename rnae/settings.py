@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'armamento',
     'portadores',
     'imagenes',
+    'utilidades',
 ]
 
 MIDDLEWARE = [
