@@ -10,6 +10,6 @@
     {% if lista.has_next %}
         <a class="btn btn-primary" href="?page={{ lista.next_page_number }}" role="button">{% trans "Siguiente" %}</a>
 
-        <a class="btn btn-primary" href="?page={{ municipios.paginator.num_pages }}" role="button">{% trans "última" %} &raquo;</a>
+        <a class="btn btn-primary" href="?page={{ lista.paginator.num_pages }}" role="button">{% trans "última" %} &raquo;</a>
     {% endif %}
     </span>

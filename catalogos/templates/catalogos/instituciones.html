@@ -36,7 +36,7 @@
             </tr>
         </thead>
         <tbody>
-            {% for institucion in instituciones %}
+            {% for institucion in lista %}
             <tr class="">
                 <td class="text-center align-middle">{{ institucion.ID_INSTITUCION }}</td>
                 <td class="text-center align-middle">{{ institucion.NOMBRE }}</td>
@@ -51,20 +51,7 @@
 </div>
 </div>
 <div class="pagination">
-    <span class="step-links">
-    {% if instituciones.has_previous %}
-        <a class="btn btn-primary" href="?page=1" role="button">&laquo; {% trans "Primera" %}</a>
-        <a class="btn btn-primary" href="?page={{ instituciones.previous_page_number }}" role="button">{% trans "Anterior" %}</a>
-    {% endif %}
-
-    <a class="btn btn-danger" role="button">{{ instituciones.number }}</a>
-
-    {% if instituciones.has_next %}
-        <a class="btn btn-primary" href="?page={{ instituciones.next_page_number }}" role="button">{% trans "Siguiente" %}</a>
-
-        <a class="btn btn-primary" href="?page={{ instituciones.paginator.num_pages }}" role="button">{% trans "última" %} &raquo;</a>
-    {% endif %}
-    </span>
+    {% include 'paginador.html' %}
 </div>
 
 {% endblock %}

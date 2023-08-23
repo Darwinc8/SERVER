@@ -4,13 +4,13 @@
 {% block favicon %}
 <link rel="icon" type="image/x-icon" href="{% static 'icons/catalogo.png' %}">
 {% endblock %}
- {% block title %} {% trans "Tipos de armas" %} {% endblock %} 
+ {% block title %} {% trans "Modelos" %} {% endblock %} 
 
 {% block content %}
 <br/><br/>
 <div class="card">
   <div class="card-header">
-    <h1 style="text-align: center">{% trans "TIPOS DE ARMAS" %}</h1>
+    <h1 style="text-align: center">{% trans "MODELOS" %}</h1>
     <div class="d-flex justify-content-between">
         <a class="btn btn-success" href="{% url 'catalogos' %}" role="button">{% trans "Volver a Catalogos" %}</a>
         <div>
@@ -28,24 +28,22 @@
   <div class="card-body table-responsive">
     <table class="table table table-striped table-bordered">
         <thead>
-            <tr class="text-center"> 
-                <th scope="col">ID</th>
-                <th scope="col">{% trans "TIPO" %}</th>
-                <th scope="col">{% trans "CLASIFICACION" %}</th>
+            <tr>
+                <th scope="col" class="text-center">ID</th>
+                <th scope="col">{% trans "MODELOS" %}</th>
             </tr>
         </thead>
-        <tbody class="text-center">
-            {% for tipo in lista %}
+        <tbody>
+            {% for modelo in lista %}
             <tr class="">
-                <td>{{ tipo.ID_TIPO }}</td>
-                <td>{{ tipo.TIPO }}</td>
-                <td>{{ tipo.ID_CLASIFICACION }}</td>
+                <td class="text-center">{{ modelo.ID_MODELO }}</td>
+                <td>{{ modelo.MODELO }}</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
-</div>
-<div class="card-footer text-muted">
+  </div>
+  <div class="card-footer text-muted">
 </div>
 </div>
 <div class="pagination">

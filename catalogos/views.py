@@ -1,8 +1,7 @@
 from django.shortcuts import render
-from django.core.paginator import Paginator
 from .models import Emisor, Entidad, Dependencia, LOC, Edo_conservacion, Institucion, Tipo, Calibre, Marca, Modelo, Estatus_Arma, Tipo_Alta, Tipo_Dependencia, Tipo_Imagen, Municipio
 from django.contrib.auth.decorators import login_required
-from .forms import BusquedaMunicipiosForm, BusquedaLOCsForm, BusquedaInstitucionesForm, BusquedaTiposForm, BusquedaCalibreForm, BusquedaMarcasForm
+from .forms import BusquedaMunicipiosForm, BusquedaLOCsForm, BusquedaInstitucionesForm, BusquedaTiposForm, BusquedaCalibreForm, BusquedaMarcasForm, BusquedaModelosForm
 from utilidades import utils
 # Create your views here.
 @login_required
@@ -56,20 +55,9 @@ def locs(request):
     valor = request.GET.get('campos_filtrados')
     
     if query and valor:
-        locs = locs.filter(**{valor: query})
-        return render(request, 'catalogos/locs.html', {
-        'locs': locs,
-        'form': BusquedaLOCsForm({'campos_filtrados':valor,
-        'query':query
-        })
-    })
-    paginator = Paginator(locs, 12)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-    return render(request, 'catalogos/locs.html', {
-        'locs': page_obj,
-        'form': BusquedaLOCsForm()
-    })
+        return utils.BusquedaPersonalizada(request, query, valor, locs, 'catalogos/locs.html',BusquedaLOCsForm)
+    
+    return utils.CrearPaginador(request, locs, 12, 'catalogos/locs.html', BusquedaLOCsForm)
 
 @login_required
 def edo_conservacion(request):
@@ -86,20 +74,9 @@ def instituciones(request):
     valor = request.GET.get('campos_filtrados')
     
     if query and valor:
-        instituciones = instituciones.filter(**{valor: query})
-        return render(request, 'catalogos/instituciones.html', {
-        'instituciones': instituciones,
-        'form': BusquedaInstitucionesForm({'campos_filtrados':valor,
-        'query':query
-        })
-    })
-    paginator = Paginator(instituciones, 12)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-    return render(request, 'catalogos/instituciones.html', {
-        'instituciones': page_obj,
-        'form': BusquedaInstitucionesForm()
-    })
+        return utils.BusquedaPersonalizada(request, query, valor, instituciones, 'catalogos/instituciones.html', BusquedaInstitucionesForm)
+    
+    return utils.CrearPaginador(request, instituciones, 7, 'catalogos/instituciones.html', BusquedaInstitucionesForm)
 
 @login_required    
 def tipos(request):
@@ -109,41 +86,21 @@ def tipos(request):
     valor = request.GET.get('campos_filtrados')
     
     if query and valor:
-        tipos = tipos.filter(**{valor: query})
-        return render(request, 'catalogos/tipos.html', {
-        'tipos': tipos,
-        'form': BusquedaTiposForm({'campos_filtrados':valor,
-        'query':query
-        })
-    })
-    paginator = Paginator(tipos, 12)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-    return render(request, 'catalogos/tipos.html', {
-        'tipos': page_obj,
-        'form': BusquedaTiposForm()
-    })
+        return utils.BusquedaPersonalizada(request, query, valor, tipos, 'catalogos/tipos.html', BusquedaTiposForm)
+    
+    return utils.CrearPaginador(request, tipos, 12, 'catalogos/tipos.html', BusquedaTiposForm)
 
 @login_required
 def calibres(request):
     calibres = Calibre.objects.all().order_by('ID_CALIBRE')
+    
     query = request.GET.get('query')
     valor = request.GET.get('campos_filtrados')
+    
     if query and valor:
-        calibres = calibres.filter(**{valor: query})
-        return render(request, 'catalogos/calibres.html', {
-        'calibres': calibres,
-        'form': BusquedaCalibreForm({'campos_filtrados':valor,
-        'query':query
-        })
-    })
-    paginator = Paginator(calibres, 12)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-    return render(request, 'catalogos/calibres.html', {
-        'calibres': page_obj,
-        'form': BusquedaCalibreForm()
-    })
+        utils.BusquedaPersonalizada(request, query, valor, calibres, 'catalogos/calibres.html', BusquedaCalibreForm)
+        
+    return utils.CrearPaginador(request, calibres, 12, 'catalogos/calibres.html', BusquedaCalibreForm)
 
 @login_required
 def marcas(request):
@@ -153,31 +110,22 @@ def marcas(request):
     valor = request.GET.get('campos_filtrados')
     
     if query and valor:
-        marcas = marcas.filter(**{valor: query})
-        return render(request, 'catalogos/marcas.html', {
-        'marcas': marcas,
-        'form': BusquedaMarcasForm({'campos_filtrados':valor,
-        'query':query
-        })
-    })
-    paginator = Paginator(marcas, 12)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-    return render(request, 'catalogos/marcas.html', {
-        'marcas': page_obj,
-        'form': BusquedaMarcasForm()
-    })
+        return utils.BusquedaPersonalizada(request, query, valor, marcas, 'catalogos/marcas.html', BusquedaMarcasForm)
+    
+    return utils.CrearPaginador(request, marcas, 12, 'catalogos/marcas.html', BusquedaMarcasForm)
 
 @login_required    
 def modelos(request):
-    modelos = Modelo.objects.all()
-    paginator = Paginator(modelos, 12)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-    return render(request, 'catalogos/modelos.html', {
-        'modelos': page_obj
-    })
+    modelos = Modelo.objects.all().order_by('ID_MODELO')
+   
+    query = request.GET.get('query')
+    valor = request.GET.get('campos_filtrados')
 
+    if query and valor:
+        return utils.BusquedaPersonalizada(request, query, valor, modelos, 'catalogos/modelos.html', BusquedaModelosForm)
+    
+    return utils.CrearPaginador(request, modelos, 12, 'catalogos/modelos.html', BusquedaModelosForm)
+ 
 @login_required
 def estatus_arma(request):
     estatus = Estatus_Arma.objects.all()

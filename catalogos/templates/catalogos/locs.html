@@ -37,7 +37,7 @@
             </tr>
         </thead>
         <tbody>
-            {% for loc in locs %}
+            {% for loc in lista %}
             <tr class="text-center">
                 <td>{{ loc.ID_ENTIDAD }}</td>
                 <td>{{ loc.ENTIDAD }}</td>
@@ -52,20 +52,7 @@
 </div>
 </div>
     <div class="pagination">
-        <span class="step-links">
-        {% if locs.has_previous %}
-            <a class="btn btn-primary" href="?page=1" role="button">&laquo; {% trans "Primera" %}</a>
-            <a class="btn btn-primary" href="?page={{ locs.previous_page_number }}" role="button">{% trans "Anterior" %}</a>
-        {% endif %}
-    
-        <a class="btn btn-danger" role="button">{{ locs.number }}</a>
-    
-        {% if locs.has_next %}
-            <a class="btn btn-primary" href="?page={{ locs.next_page_number }}" role="button">{% trans "Siguiente" %}</a>
-    
-            <a class="btn btn-primary" href="?page={{ locs.paginator.num_pages }}" role="button">{% trans "última" %} &raquo;</a>
-        {% endif %}
-        </span>
+        {% include 'paginador.html' %}
     </div>
 </div>
 

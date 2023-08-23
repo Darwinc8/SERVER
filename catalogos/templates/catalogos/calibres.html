@@ -33,7 +33,7 @@
         </tr>
       </thead>
       <tbody>
-        {% for calibre in calibres%}
+        {% for calibre in lista %}
         <tr>
           <td class="align-middle text-center">{{calibre.ID_CALIBRE}}</td>
           <td class="align-middle text-left">{{calibre.CALIBRE}}</td>
@@ -42,43 +42,10 @@
       </tbody>
     </table>
   </div>
-
-  <div class="pagination">
-    <span class="step-links">
-      {% if calibres.has_previous %}
-      <a name="" id="" class="btn btn-primary" href="?page=1" role="button"
-        >&laquo; {% trans "Primera" %}</a
-      >
-      <a
-        class="btn btn-primary"
-        href="?page={{ calibres.previous_page_number }}"
-        role="button"
-        >{% trans "Anterior" %}</a
-      >
-      {% endif %}
-
-      <a class="btn btn-danger" role="button"
-        >{{ calibres.number }}</a
-      >
-
-      {% if calibres.has_next %}
-      <a
-        class="btn btn-primary"
-        href="?page={{ calibres.next_page_number }}"
-        role="button"
-        >{% trans "Siguiente" %}</a
-      >
-
-      <a
-        class="btn btn-primary"
-        href="?page={{ calibres.paginator.num_pages }}"
-        role="button"
-        >{% trans "última" %}&raquo;</a
-      >
-      {% endif %}
-    </span>
-  </div>
   <div class="card-footer text-muted">
   </div>
+</div>
+<div class="pagination">
+    {% include 'paginador.html' %}
 </div>
 {% endblock %}

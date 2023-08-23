@@ -89,3 +89,17 @@ class BusquedaMarcasForm(BusquedaForm):
         label="Filtrar por",
         initial='MARCA__icontains'
         )
+
+class BusquedaModelosForm(BusquedaForm):
+    CAMPOS_BUSQUEDA = (
+        ('MODELO__icontains', 'Modelos'),
+        ('ID_MODELO__icontains', 'ID')
+    )
+    
+    OPCIONES_ORDENADAS = sorted(CAMPOS_BUSQUEDA, key=lambda option: option[1])
+    
+    campos_filtrados = forms.ChoiceField(
+        choices=OPCIONES_ORDENADAS,
+        label="Filtrar por",
+        initial='MODELO__icontains'
+        )

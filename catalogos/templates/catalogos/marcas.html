@@ -34,7 +34,7 @@
             </tr>
         </thead>
         <tbody>
-            {% for marca in marcas %}
+            {% for marca in lista %}
             <tr class="">
                 <td class="text-center">{{ marca.ID_MARCA }}</td>
                 <td>{{ marca.MARCA }}</td>
@@ -47,20 +47,7 @@
 </div>
 </div>
 <div class="pagination">
-    <span class="step-links">
-    {% if marcas.has_previous %}
-        <a class="btn btn-primary" href="?page=1" role="button">&laquo; {% trans "Primera" %}</a>
-        <a class="btn btn-primary" href="?page={{ marcas.previous_page_number }}" role="button">{% trans "Anterior" %}</a>
-    {% endif %}
-
-    <a class="btn btn-danger" role="button">{{ marcas.number }}</a>
-
-    {% if marcas.has_next %}
-        <a class="btn btn-primary" href="?page={{ marcas.next_page_number }}" role="button">{% trans "Siguiente" %}</a>
-
-        <a class="btn btn-primary" href="?page={{ marcas.paginator.num_pages }}" role="button">{% trans "última" %} &raquo;</a>
-    {% endif %}
-    </span>
+    {% include 'paginador.html' %}
 </div>
 
 {% endblock %}
