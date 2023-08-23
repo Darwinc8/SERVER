@@ -81,39 +81,6 @@
   </div>
 </div>
 <div class="pagination">
-  <span class="step-links">
-    {% if lista.has_previous %}
-    <a  class="btn btn-primary" href="?page=1" role="button"
-      >&laquo; {% trans "Primera" %}</a
-    >
-    <a
-      class="btn btn-primary"
-      href="?page={{ lista.previous_page_number }}"
-      role="button"
-      >{% trans "Anterior" %}</a
-    >
-    {% endif %}
-
-    <a  class="btn btn-danger" role="button"
-      >{{ lista.number }}</a
-    >
-
-    {% if lista.has_next %}
-    <a
-      class="btn btn-primary"
-      href="?page={{ lista.next_page_number }}"
-      role="button"
-      >{% trans "Siguiente" %}</a
-    >
-
-    <a
-      class="btn btn-primary"
-      href="?page={{ lista.paginator.num_pages }}"
-      role="button"
-      >{% trans "última" %} &raquo;</a
-    >
-    {% endif %}
-  </span>
+  {% include 'paginador.html' %}
 </div>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 {% endblock %}

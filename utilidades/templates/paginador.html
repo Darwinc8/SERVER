@@ -1,0 +1,15 @@
+{% load i18n %}
+    <span class="step-links">
+    {% if lista.has_previous %}
+        <a class="btn btn-primary" href="?page=1" role="button">&laquo; {% trans "Primera" %}</a>
+        <a class="btn btn-primary" href="?page={{ lista.previous_page_number }}" role="button">{% trans "Anterior" %}</a>
+    {% endif %}
+
+    <a class="btn btn-danger" role="button">{{ lista.number }}</a>
+
+    {% if lista.has_next %}
+        <a class="btn btn-primary" href="?page={{ lista.next_page_number }}" role="button">{% trans "Siguiente" %}</a>
+
+        <a class="btn btn-primary" href="?page={{ municipios.paginator.num_pages }}" role="button">{% trans "última" %} &raquo;</a>
+    {% endif %}
+    </span>

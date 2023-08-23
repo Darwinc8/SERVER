@@ -35,7 +35,7 @@
             </tr>
         </thead>
         <tbody class="text-center">
-            {% for municipio in municipios %}
+            {% for municipio in lista %}
             <tr class="">
                 <td>{{ municipio.ID_ENTIDAD }}</td>
                 <td>{{ municipio.ID_MUNICIPIO }}</td>
@@ -49,20 +49,7 @@
 </div>
 </div>
 <div class="pagination">
-    <span class="step-links">
-    {% if municipios.has_previous %}
-        <a class="btn btn-primary" href="?page=1" role="button">&laquo; {% trans "Primera" %}</a>
-        <a class="btn btn-primary" href="?page={{ municipios.previous_page_number }}" role="button">{% trans "Anterior" %}</a>
-    {% endif %}
-
-    <a class="btn btn-danger" role="button">{{ municipios.number }}</a>
-
-    {% if municipios.has_next %}
-        <a class="btn btn-primary" href="?page={{ municipios.next_page_number }}" role="button">{% trans "Siguiente" %}</a>
-
-        <a class="btn btn-primary" href="?page={{ municipios.paginator.num_pages }}" role="button">{% trans "última" %} &raquo;</a>
-    {% endif %}
-    </span>
+    {% include 'paginador.html' %}
 </div>
 
 {% endblock %}

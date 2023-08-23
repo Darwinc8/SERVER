@@ -3,6 +3,7 @@ from django.core.paginator import Paginator
 from .models import Emisor, Entidad, Dependencia, LOC, Edo_conservacion, Institucion, Tipo, Calibre, Marca, Modelo, Estatus_Arma, Tipo_Alta, Tipo_Dependencia, Tipo_Imagen, Municipio
 from django.contrib.auth.decorators import login_required
 from .forms import BusquedaMunicipiosForm, BusquedaLOCsForm, BusquedaInstitucionesForm, BusquedaTiposForm, BusquedaCalibreForm, BusquedaMarcasForm
+from utilidades import utils
 # Create your views here.
 @login_required
 def index(request):
@@ -36,20 +37,9 @@ def municipios(request):
     valor = request.GET.get('campos_filtrados')
     
     if query and valor:
-        municipios = municipios.filter(**{valor: query})
-        return render(request, 'catalogos/municipios.html', {
-        'municipios': municipios,
-        'form': BusquedaMunicipiosForm({'campos_filtrados':valor,
-        'query':query
-        })
-    })
-    paginator = Paginator(municipios, 12)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-    return render(request, 'catalogos/municipios.html', {
-        'municipios': page_obj,
-        'form': BusquedaMunicipiosForm()
-    })
+        return utils.BusquedaPersonalizada(request, query, valor, municipios, 'catalogos/municipios.html', BusquedaMunicipiosForm)
+    
+    return utils.CrearPaginador(request, municipios, 1, 'catalogos/municipios.html', BusquedaMunicipiosForm)
 
 @login_required
 def dependencias(request):
