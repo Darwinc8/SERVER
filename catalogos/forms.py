@@ -64,7 +64,7 @@ class BusquedaTiposForm(BusquedaForm):
 
 class BusquedaCalibreForm(BusquedaForm):
     CAMPOS_BUSQUEDA = (
-        ('CALIBRE__icontains', 'Tipo de calibre'),
+        ('CALIBRE__icontains', 'Calibre'),
         ('ID_CALIBRE__icontains', 'ID')
     )
     

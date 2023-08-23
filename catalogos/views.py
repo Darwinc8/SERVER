@@ -38,7 +38,7 @@ def municipios(request):
     if query and valor:
         return utils.BusquedaPersonalizada(request, query, valor, municipios, 'catalogos/municipios.html', BusquedaMunicipiosForm)
     
-    return utils.CrearPaginador(request, municipios, 1, 'catalogos/municipios.html', BusquedaMunicipiosForm)
+    return utils.CrearPaginador(request, municipios, 7, 'catalogos/municipios.html', BusquedaMunicipiosForm)
 
 @login_required
 def dependencias(request):
@@ -92,15 +92,15 @@ def tipos(request):
 
 @login_required
 def calibres(request):
-    calibres = Calibre.objects.all().order_by('ID_CALIBRE')
+   calibres = Calibre.objects.all()
+   query = request.GET.get('query')
+   valor = request.GET.get('campos_filtrados')
+   
+   if query and valor:
+       return utils.BusquedaPersonalizada(request, query, valor,calibres, 'catalogos/calibres.html', BusquedaCalibreForm)
+   
+   return utils.CrearPaginador(request, calibres, 12, 'catalogos/calibres.html', BusquedaCalibreForm)
     
-    query = request.GET.get('query')
-    valor = request.GET.get('campos_filtrados')
-    
-    if query and valor:
-        utils.BusquedaPersonalizada(request, query, valor, calibres, 'catalogos/calibres.html', BusquedaCalibreForm)
-        
-    return utils.CrearPaginador(request, calibres, 12, 'catalogos/calibres.html', BusquedaCalibreForm)
 
 @login_required
 def marcas(request):
