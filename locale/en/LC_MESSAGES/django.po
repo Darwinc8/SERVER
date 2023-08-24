@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-21 14:57-0600\n"
+"POT-Creation-Date: 2023-08-24 11:12-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,192 +30,144 @@ msgstr "ARMAMENT"
 msgid "Agregar nuevo armamento"
 msgstr "Add new armament"
 
-#: .\armamento\templates\armamento.html:41
-#: .\imagenes\templates\imagenes.html:37
+#: .\armamento\templates\armamento.html:46
+#: .\imagenes\templates\imagenes.html:42
 msgid "ID ARMA"
 msgstr "WEAPON ID"
 
-#: .\armamento\templates\armamento.html:42
-#: .\imagenes\templates\imagenes.html:40
+#: .\armamento\templates\armamento.html:47
+#: .\imagenes\templates\imagenes.html:45
 msgid "INSTITUCIÓN"
 msgstr "INSTITUTION"
 
-#: .\armamento\templates\armamento.html:43
+#: .\armamento\templates\armamento.html:48
 #: .\catalogos\templates\catalogos\dependencias.html:21
-#: .\catalogos\templates\catalogos\instituciones.html:33
-#: .\catalogos\templates\catalogos\locs.html:33
-#: .\imagenes\templates\imagenes.html:39
+#: .\catalogos\templates\catalogos\instituciones.html:38
+#: .\catalogos\templates\catalogos\locs.html:38
+#: .\imagenes\templates\imagenes.html:44
 msgid "DEPENDENCIA"
 msgstr "DEPENDENCY"
 
-#: .\armamento\templates\armamento.html:44
+#: .\armamento\templates\armamento.html:49
 #: .\catalogos\templates\catalogos\entidades.html:21
-#: .\catalogos\templates\catalogos\locs.html:32
-#: .\catalogos\templates\catalogos\municipios.html:30
-#: .\imagenes\templates\imagenes.html:41
+#: .\catalogos\templates\catalogos\locs.html:37
+#: .\catalogos\templates\catalogos\municipios.html:35
+#: .\imagenes\templates\imagenes.html:46
 msgid "ENTIDAD"
 msgstr "ENTITY"
 
-#: .\armamento\templates\armamento.html:45
-#: .\catalogos\templates\catalogos\municipios.html:32
+#: .\armamento\templates\armamento.html:50
+#: .\catalogos\templates\catalogos\municipios.html:37
 msgid "MUNICIPIO"
 msgstr "MUNICIPALITY"
 
-#: .\armamento\templates\armamento.html:46
+#: .\armamento\templates\armamento.html:51
 msgid "NUMERO LOC"
 msgstr "LOC NUMBER"
 
-#: .\armamento\templates\armamento.html:47
+#: .\armamento\templates\armamento.html:52
 msgid "FOLIO C"
 msgstr "C FOLIO"
 
-#: .\armamento\templates\armamento.html:48
+#: .\armamento\templates\armamento.html:53
 msgid "FOLIO D"
 msgstr "D FOLIO"
 
-#: .\armamento\templates\armamento.html:49
+#: .\armamento\templates\armamento.html:54
 msgid "CLASE"
 msgstr "CLASS"
 
-#: .\armamento\templates\armamento.html:50
-#: .\catalogos\templates\catalogos\calibres.html:30
+#: .\armamento\templates\armamento.html:55
+#: .\catalogos\templates\catalogos\calibres.html:35
 msgid "CALIBRE"
 msgstr "CALIBER"
 
-#: .\armamento\templates\armamento.html:51
-#: .\catalogos\templates\catalogos\marcas.html:31
+#: .\armamento\templates\armamento.html:56
+#: .\catalogos\templates\catalogos\marcas.html:36
 msgid "MARCA"
 msgstr "BRAND"
 
-#: .\armamento\templates\armamento.html:52
+#: .\armamento\templates\armamento.html:57
 msgid "MODELO"
 msgstr "MODEL"
 
-#: .\armamento\templates\armamento.html:53
+#: .\armamento\templates\armamento.html:58
 msgid "MATRICULA"
 msgstr "REGISTRATION"
 
-#: .\armamento\templates\armamento.html:54
+#: .\armamento\templates\armamento.html:59
 msgid "MATRICULA CANON"
 msgstr "CANON REGISTRATION"
 
-#: .\armamento\templates\armamento.html:55
+#: .\armamento\templates\armamento.html:60
 msgid "FECHA DE REGISTRO"
 msgstr "REGISTRATION DATE"
 
-#: .\armamento\templates\armamento.html:56
+#: .\armamento\templates\armamento.html:61
 msgid "FECHA DEL LOC"
 msgstr "LOC DATE"
 
-#: .\armamento\templates\armamento.html:57
+#: .\armamento\templates\armamento.html:62
 msgid "ESTADO ARMA"
 msgstr "WEAPONS STATUS"
 
-#: .\armamento\templates\armamento.html:58
+#: .\armamento\templates\armamento.html:63
 msgid "FECHA DE CAPTURA"
 msgstr "CAPTURE DATE"
 
-#: .\armamento\templates\armamento.html:59
+#: .\armamento\templates\armamento.html:64
 msgid "OBSERVACIONES"
 msgstr "OBSERVATIONS"
 
-#: .\armamento\templates\armamento.html:60
+#: .\armamento\templates\armamento.html:65
 msgid "ESTATUS DEL ARMA"
 msgstr "WEAPONS STATUS"
 
-#: .\armamento\templates\armamento.html:61
+#: .\armamento\templates\armamento.html:66
 msgid "CUIP PORTADOR"
 msgstr "CUIP CARRIER"
 
-#: .\armamento\templates\armamento.html:62
+#: .\armamento\templates\armamento.html:67
 msgid "CUIP RESPONSABLE"
 msgstr "RESPONSIBLE CUIP"
 
-#: .\armamento\templates\armamento.html:64
+#: .\armamento\templates\armamento.html:69
 msgid "FECHA DE BAJA LOGICA"
 msgstr "LOGICAL RETIREMENT DATE"
 
-#: .\armamento\templates\armamento.html:65
+#: .\armamento\templates\armamento.html:70
 msgid "MOTIVO BAJA"
 msgstr "REASON FOR LEAVING"
 
-#: .\armamento\templates\armamento.html:66
+#: .\armamento\templates\armamento.html:71
 msgid "DOCUMENTO BAJA"
 msgstr "DOCUMENT LEAVE"
 
-#: .\armamento\templates\armamento.html:67
+#: .\armamento\templates\armamento.html:72
 msgid "OBSERVACIONES BAJA"
 msgstr "DISCHARGE REMARKS"
 
-#: .\armamento\templates\armamento.html:68
+#: .\armamento\templates\armamento.html:73
 msgid "FECHA DE BAJA DEL DOCUMENTO"
 msgstr "DOCUMENT RETIREMENT DATE"
 
-#: .\armamento\templates\armamento.html:69
-#: .\imagenes\templates\imagenes.html:47
-#: .\portadores\templates\portadores.html:42
+#: .\armamento\templates\armamento.html:74
+#: .\imagenes\templates\imagenes.html:52
+#: .\portadores\templates\portadores.html:47
 msgid "ACCIONES"
 msgstr "ACTIONS"
 
-#: .\armamento\templates\armamento.html:118
-#: .\imagenes\templates\imagenes.html:68
-#: .\portadores\templates\portadores.html:63
+#: .\armamento\templates\armamento.html:123
+#: .\imagenes\templates\imagenes.html:73
+#: .\portadores\templates\portadores.html:68
 msgid "Editar"
 msgstr "Edit"
 
-#: .\armamento\templates\armamento.html:126
-#: .\imagenes\templates\imagenes.html:75
-#: .\portadores\templates\portadores.html:70
+#: .\armamento\templates\armamento.html:131
+#: .\imagenes\templates\imagenes.html:80
+#: .\portadores\templates\portadores.html:75
 msgid "Eliminar"
 msgstr "Delete"
-
-#: .\armamento\templates\armamento.html:141
-#: .\catalogos\templates\catalogos\calibres.html:48
-#: .\catalogos\templates\catalogos\instituciones.html:54
-#: .\catalogos\templates\catalogos\locs.html:55
-#: .\catalogos\templates\catalogos\marcas.html:50
-#: .\catalogos\templates\catalogos\municipios.html:52
-#: .\catalogos\templates\catalogos\tipos.html:52
-#: .\imagenes\templates\imagenes.html:88
-#: .\portadores\templates\portadores.html:85
-msgid "Primera"
-msgstr "First"
-
-#: .\armamento\templates\armamento.html:149
-#: .\catalogos\templates\catalogos\calibres.html:54
-#: .\catalogos\templates\catalogos\instituciones.html:55
-#: .\catalogos\templates\catalogos\locs.html:56
-#: .\catalogos\templates\catalogos\marcas.html:51
-#: .\catalogos\templates\catalogos\municipios.html:53
-#: .\catalogos\templates\catalogos\tipos.html:53
-#: .\imagenes\templates\imagenes.html:89
-#: .\portadores\templates\portadores.html:91
-msgid "Anterior"
-msgstr "Previous"
-
-#: .\armamento\templates\armamento.html:164
-#: .\catalogos\templates\catalogos\calibres.html:67
-#: .\catalogos\templates\catalogos\instituciones.html:61
-#: .\catalogos\templates\catalogos\locs.html:62
-#: .\catalogos\templates\catalogos\marcas.html:57
-#: .\catalogos\templates\catalogos\municipios.html:59
-#: .\catalogos\templates\catalogos\tipos.html:59
-#: .\imagenes\templates\imagenes.html:95
-#: .\portadores\templates\portadores.html:104
-msgid "Siguiente"
-msgstr "Next"
-
-#: .\armamento\templates\armamento.html:173
-#: .\catalogos\templates\catalogos\calibres.html:74
-#: .\catalogos\templates\catalogos\instituciones.html:63
-#: .\catalogos\templates\catalogos\locs.html:64
-#: .\catalogos\templates\catalogos\marcas.html:59
-#: .\catalogos\templates\catalogos\municipios.html:61
-#: .\catalogos\templates\catalogos\tipos.html:61
-#: .\imagenes\templates\imagenes.html:97
-#: .\portadores\templates\portadores.html:111
-msgid "última"
-msgstr "Last"
 
 #: .\armamento\templates\create_armamento.html:7
 #: .\armamento\templates\create_armamento.html:13
@@ -353,6 +305,7 @@ msgstr "Emitters"
 #: .\catalogos\templates\catalogos.html:93
 #: .\catalogos\templates\catalogos.html:99
 #: .\catalogos\templates\catalogos.html:105
+#: .\catalogos\templates\catalogos.html:111
 msgid "Ver"
 msgstr "See"
 
@@ -396,20 +349,25 @@ msgid "Marcas"
 msgstr "Brands"
 
 #: .\catalogos\templates\catalogos.html:85
+#: .\catalogos\templates\catalogos\modelos.html:7
+msgid "Modelos"
+msgstr "Models"
+
+#: .\catalogos\templates\catalogos.html:91
 #: .\catalogos\templates\catalogos\estatus_arma.html:7
 msgid "Estatus de armas"
 msgstr "Weapons status"
 
-#: .\catalogos\templates\catalogos.html:91
+#: .\catalogos\templates\catalogos.html:97
 msgid "Tipos de Alta"
 msgstr "Types of registration"
 
-#: .\catalogos\templates\catalogos.html:97
+#: .\catalogos\templates\catalogos.html:103
 #: .\catalogos\templates\catalogos\tipos_dependencia.html:7
 msgid "Tipos de Dependencia"
 msgstr "Types of Dependency"
 
-#: .\catalogos\templates\catalogos.html:103
+#: .\catalogos\templates\catalogos.html:109
 msgid "Tipos de Imagen"
 msgstr "Image Types"
 
@@ -430,6 +388,7 @@ msgstr "CALIBERS"
 #: .\catalogos\templates\catalogos\instituciones.html:15
 #: .\catalogos\templates\catalogos\locs.html:16
 #: .\catalogos\templates\catalogos\marcas.html:15
+#: .\catalogos\templates\catalogos\modelos.html:15
 #: .\catalogos\templates\catalogos\municipios.html:15
 #: .\catalogos\templates\catalogos\tipos.html:15
 #: .\catalogos\templates\catalogos\tipos_alta.html:14
@@ -476,9 +435,9 @@ msgid "ID"
 msgstr "ID"
 
 #: .\catalogos\templates\catalogos\emisores.html:21
-#: .\catalogos\templates\catalogos\tipos.html:31
+#: .\catalogos\templates\catalogos\tipos.html:36
 #: .\catalogos\templates\catalogos\tipos_alta.html:21
-#: .\imagenes\templates\imagenes.html:44
+#: .\imagenes\templates\imagenes.html:49
 msgid "TIPO"
 msgstr "TYPE"
 
@@ -502,20 +461,20 @@ msgstr "STATUS"
 msgid "INSTITUCIONES"
 msgstr "INSTITUTIONS"
 
-#: .\catalogos\templates\catalogos\instituciones.html:31
-#: .\portadores\templates\portadores.html:38
+#: .\catalogos\templates\catalogos\instituciones.html:36
+#: .\portadores\templates\portadores.html:43
 msgid "NOMBRE"
 msgstr "NAME"
 
-#: .\catalogos\templates\catalogos\instituciones.html:32
+#: .\catalogos\templates\catalogos\instituciones.html:37
 msgid "TIPO DEPENDENCIA"
 msgstr "DEPENDENCY TYPE"
 
-#: .\catalogos\templates\catalogos\locs.html:31
+#: .\catalogos\templates\catalogos\locs.html:36
 msgid "ID ENTIDAD"
 msgstr "ENTITY ID"
 
-#: .\catalogos\templates\catalogos\locs.html:34
+#: .\catalogos\templates\catalogos\locs.html:39
 msgid "NUMERO DE LICENCIA"
 msgstr "LICENSE NUMBER"
 
@@ -523,11 +482,16 @@ msgstr "LICENSE NUMBER"
 msgid "MARCAS"
 msgstr "BRANDS"
 
+#: .\catalogos\templates\catalogos\modelos.html:13
+#: .\catalogos\templates\catalogos\modelos.html:36
+msgid "MODELOS"
+msgstr "MODEL"
+
 #: .\catalogos\templates\catalogos\municipios.html:13
 msgid "MUNICIPIOS"
 msgstr "MUNICIPALITIES"
 
-#: .\catalogos\templates\catalogos\municipios.html:31
+#: .\catalogos\templates\catalogos\municipios.html:36
 msgid "ID MUNICIPIO"
 msgstr "MUNICIPALITY ID"
 
@@ -535,7 +499,7 @@ msgstr "MUNICIPALITY ID"
 msgid "TIPOS DE ARMAS"
 msgstr "WEAPON TYPES"
 
-#: .\catalogos\templates\catalogos\tipos.html:32
+#: .\catalogos\templates\catalogos\tipos.html:37
 msgid "CLASIFICACION"
 msgstr "CLASIFICATION"
 
@@ -1794,24 +1758,24 @@ msgstr "IMAGES"
 msgid "Agregar nueva imagen"
 msgstr "Add new image"
 
-#: .\imagenes\templates\imagenes.html:38
-#: .\portadores\templates\portadores.html:37
+#: .\imagenes\templates\imagenes.html:43
+#: .\portadores\templates\portadores.html:42
 msgid "IMAGEN"
 msgstr "IMAGE"
 
-#: .\imagenes\templates\imagenes.html:42
+#: .\imagenes\templates\imagenes.html:47
 msgid "IMAKEY"
 msgstr "IMAKEY"
 
-#: .\imagenes\templates\imagenes.html:43
+#: .\imagenes\templates\imagenes.html:48
 msgid "DESIMA"
 msgstr "DESIMA"
 
-#: .\imagenes\templates\imagenes.html:45
+#: .\imagenes\templates\imagenes.html:50
 msgid "FOLIO"
 msgstr "FOLIO"
 
-#: .\imagenes\templates\imagenes.html:46
+#: .\imagenes\templates\imagenes.html:51
 msgid "GRUPO"
 msgstr "GROUP"
 
@@ -1846,25 +1810,17 @@ msgstr "CARRIERS"
 msgid "Agregar nuevo portador"
 msgstr "Add new carrier"
 
-#: .\portadores\templates\portadores.html:39
+#: .\portadores\templates\portadores.html:44
 msgid "APELLIDOS"
 msgstr "SURNAMES"
 
-#: .\portadores\templates\portadores.html:40
+#: .\portadores\templates\portadores.html:45
 msgid "TELEFONO"
 msgstr "PHONE NUMBER"
 
-#: .\portadores\templates\portadores.html:41
+#: .\portadores\templates\portadores.html:46
 msgid "CORREO"
 msgstr "EMAIL"
-
-#: .\rnae\settings.py:139
-msgid "Ingles"
-msgstr ""
-
-#: .\rnae\settings.py:140
-msgid "Español"
-msgstr ""
 
 #: .\sesions\templates\footer.html:19
 msgid ""
@@ -1905,15 +1861,27 @@ msgstr "Start"
 msgid "Home"
 msgstr "Home"
 
+#: .\sesions\templates\layout.html:42
+msgid "Lenguaje"
+msgstr "Language"
+
 #: .\sesions\templates\layout.html:45
+msgid "Español"
+msgstr "Spanish"
+
+#: .\sesions\templates\layout.html:46
+msgid "Ingles"
+msgstr "English"
+
+#: .\sesions\templates\layout.html:51
 msgid "Cerrar Sesión"
 msgstr "Log Out"
 
-#: .\sesions\templates\layout.html:50
+#: .\sesions\templates\layout.html:56
 msgid "Registrarse"
 msgstr "Sign up"
 
-#: .\sesions\templates\layout.html:53
+#: .\sesions\templates\layout.html:59
 msgid "Iniciar Sesión"
 msgstr "Log In"
 
@@ -1948,3 +1916,19 @@ msgstr "Repeat your password"
 #: .\sesions\templates\sign_up.html:46
 msgid "Registrar"
 msgstr "Register"
+
+#: .\utilidades\templates\paginador.html:4
+msgid "Primera"
+msgstr "First"
+
+#: .\utilidades\templates\paginador.html:5
+msgid "Anterior"
+msgstr "Previous"
+
+#: .\utilidades\templates\paginador.html:11
+msgid "Siguiente"
+msgstr "Next"
+
+#: .\utilidades\templates\paginador.html:13
+msgid "última"
+msgstr "Last"
