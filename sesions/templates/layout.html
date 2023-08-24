@@ -37,10 +37,16 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'catalogos' %}">{% trans "Catalogos" %}</a>
             </li>
-            <ul id="language-dropdown">
-                  <li><a href="{% url 'change_language' 'en' %}">Ingles</a></li>
-                  <li><a href="{% url 'change_language' 'es' %}">Español</a></li>
-          </ul>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {% trans "Lenguaje" %}
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{% url 'cambiar_lenguaje' 'es' %}">{% trans "Español" %}</a></li>
+                <li><a class="dropdown-item" href="{% url 'cambiar_lenguaje' 'en' %}">{% trans "Ingles" %}</a></li>
+
+              </ul>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'cerrar_sesion' %}">{% trans "Cerrar Sesión" %}</a>
             </li>

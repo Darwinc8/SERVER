@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 from django.contrib.auth.decorators import login_required
-from django.utils import translation
+from django.utils.translation import activate
 from django.conf import settings
 # Create your views here.
 def registrarse(request):
@@ -54,12 +54,8 @@ def iniciar_sesion(request):
             return redirect('home')  
 
 def cambiar_lenguaje(request, language_code):
-    if language_code in dict(settings.LANGUAGES):
-        print(request.session['django_language'])
-        request.session['django_language'] = language_code
-        translation.activate(language_code)
-        print(request.session['django_language'])
-    else:
-        print("error")
-    referer = request.META.get('HTTP_REFERER')
-    return redirect(referer)
+    activate(language_code)
+    response = redirect(request.META.get('HTTP_REFERER'))  # Redireccionar a la página anterior
+    response.set_cookie(settings.LANGUAGE_COOKIE_NAME, language_code)
+    request.session[settings.LANGUAGE_COOKIE_NAME] = language_code
+    return response
