@@ -57,7 +57,7 @@ class BusquedaArmamentoForm(forms.Form):
     query = forms.CharField(max_length=100, required=False, widget=forms.TextInput(attrs={'placeholder': '     Buscar registros...'}))
     
     CAMPOS_BUSQUEDA = (
-        ('ID_ARMA__icontains', 'ID'),
+        ('ID_ARMA', 'ID'),
         ('INSTITUCION_id__NOMBRE__icontains', 'Institución'),
         ('DEPENDENCIA_id__DEPENDENCIA__icontains', 'Dependencia'),
         ('ENTIDAD_id__ENTIDAD__icontains', 'Entidad'),
@@ -74,7 +74,7 @@ class BusquedaArmamentoForm(forms.Form):
     campos_filtrados = forms.ChoiceField(
         choices=OPCIONES_ORDENADAS,
         label="Filtrar por",
-        initial='ID_ARMA__icontains'
+        initial='ID_ARMA'
         )
 
 

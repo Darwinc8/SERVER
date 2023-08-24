@@ -6,7 +6,7 @@ class BusquedaForm(forms.Form):
 class BusquedaMunicipiosForm(BusquedaForm):
     CAMPOS_BUSQUEDA = (
         ('MUNICIPIO__icontains', 'Nombre de Municipio'),
-        ('ID_MUNICIPIO__icontains', 'ID del Municipio'),
+        ('ID_MUNICIPIO', 'ID del Municipio'),
         ('ID_ENTIDAD_id__ENTIDAD__icontains', 'Entidad')
     )
     
@@ -20,7 +20,7 @@ class BusquedaMunicipiosForm(BusquedaForm):
     
 class BusquedaLOCsForm(BusquedaForm):
     CAMPOS_BUSQUEDA = (
-        ('NO_LICENCIA__icontains', 'Número de Licencia'),
+        ('NO_LICENCIA', 'Número de Licencia'),
         ('DEPENDENCIA__icontains', 'Dependencia'),
         ('ENTIDAD__icontains', 'Entidad')
     )
@@ -30,13 +30,13 @@ class BusquedaLOCsForm(BusquedaForm):
     campos_filtrados = forms.ChoiceField(
         choices=OPCIONES_ORDENADAS,
         label="Filtrar por",
-        initial='NO_LICENCIA__icontains'
+        initial='NO_LICENCIA'
         )
     
 class BusquedaInstitucionesForm(BusquedaForm):
     CAMPOS_BUSQUEDA = (
         ('NOMBRE__icontains', 'Instituciones'),
-        ('ID_INSTITUCION__icontains', 'ID'),
+        ('ID_INSTITUCION', 'ID'),
         ('ID_DEPENDENCIA_id__DEPENDENCIA__icontains', 'Dependencias')
     )
     
@@ -51,7 +51,7 @@ class BusquedaInstitucionesForm(BusquedaForm):
 class BusquedaTiposForm(BusquedaForm):
     CAMPOS_BUSQUEDA = (
         ('TIPO__icontains', 'Tipo de arma'),
-        ('ID_TIPO__icontains', 'ID')
+        ('ID_TIPO', 'ID')
     )
     
     OPCIONES_ORDENADAS = sorted(CAMPOS_BUSQUEDA, key=lambda option: option[1])
@@ -65,7 +65,7 @@ class BusquedaTiposForm(BusquedaForm):
 class BusquedaCalibreForm(BusquedaForm):
     CAMPOS_BUSQUEDA = (
         ('CALIBRE__icontains', 'Calibre'),
-        ('ID_CALIBRE__icontains', 'ID')
+        ('ID_CALIBRE', 'ID')
     )
     
     OPCIONES_ORDENADAS = sorted(CAMPOS_BUSQUEDA, key=lambda option: option[1])
@@ -79,7 +79,7 @@ class BusquedaCalibreForm(BusquedaForm):
 class BusquedaMarcasForm(BusquedaForm):
     CAMPOS_BUSQUEDA = (
         ('MARCA__icontains', 'Marcas'),
-        ('ID_MARCA__icontains', 'ID')
+        ('ID_MARCA', 'ID')
     )
     
     OPCIONES_ORDENADAS = sorted(CAMPOS_BUSQUEDA, key=lambda option: option[1])
@@ -93,7 +93,7 @@ class BusquedaMarcasForm(BusquedaForm):
 class BusquedaModelosForm(BusquedaForm):
     CAMPOS_BUSQUEDA = (
         ('MODELO__icontains', 'Modelos'),
-        ('ID_MODELO__icontains', 'ID')
+        ('ID_MODELO', 'ID')
     )
     
     OPCIONES_ORDENADAS = sorted(CAMPOS_BUSQUEDA, key=lambda option: option[1])
