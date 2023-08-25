@@ -54,11 +54,11 @@ def iniciar_sesion(request):
             return redirect('home')  
 
 def cambiar_lenguaje(request, language_code):
-    if language_code == 'es' or language_code == "en":  
+    if language_code == "es" or language_code == "en": 
+        response = redirect(request.META.get('HTTP_REFERER'))
         activate(language_code)
         response.set_cookie(settings.LANGUAGE_COOKIE_NAME, language_code)
         request.session[settings.LANGUAGE_COOKIE_NAME] = language_code
-        response = redirect(request.META.get('HTTP_REFERER'))
         return response
     else:
         return redirect('home')

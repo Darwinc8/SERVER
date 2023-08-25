@@ -24,31 +24,23 @@ def armamento(request):
 
 @login_required
 def crear_armamento(request):
-    if request.method == 'GET':
-        form = ArmamentoForm(request.POST)
-        return render(request, 'create_armamento.html', {
-            'form': form
-        })
+    form = ArmamentoForm(request.POST)
+    
+    if request.method == 'POST' and form.is_valid():
+        form.save()
+        return redirect('armamento')
     else:
-        form = ArmamentoForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('armamento')
-        else:
-            return render(request, 'create_armamento.html', {
-            'form': form
+        return render(request, 'crear_armamento.html', {
+        'form': form
         })
 
 @login_required
 def editar_armamento(request, id):
     objeto = get_object_or_404(Armamento, pk=id)
-    
-    if request.method == 'POST':
-        form = ArmamentoForm(request.POST, instance=objeto)
-        if form.is_valid():
-            form.save()
-            print("guardado")
-            return redirect('armamento')
+    form = ArmamentoForm(request.POST, instance=objeto)
+    if request.method == 'POST' and form.is_valid():
+        form.save()
+        return redirect('armamento')
     else:
         objeto = convertir_fechas(objeto)
         form = ArmamentoForm(instance=objeto)
@@ -108,3 +100,5 @@ def obtener_instituciones(request, dependencia_id):
         # Manejo de error si no se encuentra o no existen instituciones asociadas
         print("Instituciones no encontradas.")
         return JsonResponse([], safe=False)
+
+
