@@ -82,17 +82,11 @@
           <td>{{arma.DEPENDENCIA}}</td>
           <td>{{arma.ENTIDAD}}</td>
           <td>{{arma.MUNICIPIO.MUNICIPIO}}</td>
-          <td>
-            {{arma.NUMERO_LOC.NO_LICENCIA}}
-          </td>
+          <td>{{arma.NUMERO_LOC.NO_LICENCIA}}</td>
           <td>{{arma.FOLIO_C}}</td>
           <td>{{arma.FOLIO_D}}</td>
-          <td>
-            {{arma.CLASE_TIPO_ARMA.TIPO}}
-          </td>
-          <td>
-            {{arma.CALIBRE_ARMA.CALIBRE}}
-          </td>
+          <td>{{arma.CLASE_TIPO_ARMA.TIPO}}</td>
+          <td>{{arma.CALIBRE_ARMA.CALIBRE}}</td>
           <td>{{arma.MARCA_ARMA.MARCA}}</td>
           <td>{{arma.MODELO_ARMA.MODELO}}</td>
           <td>{{arma.MATRICULA}}</td>
@@ -102,18 +96,50 @@
           <td>{{arma.ESTADO_ARMA}}</td>
           <td>{{arma.FECHA_CAPTURA}}</td>
           <td>{{arma.OBSERVACIONES}}</td>
-          <td>
-            {{arma.ESTATUS_ARMA.DESCRIPCION}}
-          </td>
+          <td>{{arma.ESTATUS_ARMA.DESCRIPCION}}</td>
           <td>{{arma.CUIP_PORTADOR.CUIP}}</td>
           <td>{{arma.CUIP_RESPONSABLE.CUIP}}</td>
-          <td>{{arma.CIHB}}</td>
-          <td>{{arma.FECHA_BAJA_LOGICA}}</td>
-          <td>{{arma.MOTIVO_BAJA}}</td>
-          <td>{{arma.DOCUMENTO_BAJA}}</td>
-          <td>{{arma.OBSERVACIONES_BAJA}}</td>
           <td>
+            {% if arma.CIHB|default:'' %}
+            {{arma.CIHB}}
+            {% else %}
+            <p>No</p>
+            {% endif %}
+          </td>
+          <td>
+            {% if arma.FECHA_BAJA_LOGICA|default:'' %}
+            {{arma.FECHA_BAJA_LOGICA}}
+            {% else %}
+            <p>No</p>
+            {% endif %}
+          </td>
+          <td>
+            {% if arma.MOTIVO_BAJA|default:'' %}
+            {{arma.MOTIVO_BAJA}}
+            {% else %}
+            <p>No</p>
+            {% endif %}
+          </td>
+          <td>
+            {% if arma.DOCUMENTO_BAJA|default:'' %}
+            {{arma.OBSERVACIONES_BAJA}}
+            {% else %}
+            <p>No</p>
+            {% endif %}
+          </td>
+          <td>
+            {% if arma.OBSERVACIONES_BAJA|default:'' %}
+            {{arma.OBSERVACIONES_BAJA}}
+            {% else %}
+            <p>No</p>
+            {% endif %}
+          </td>
+          <td>
+            {% if arma.FECHA_BAJA_DOCUMENTO|default:'' %}
             {{arma.FECHA_BAJA_DOCUMENTO}}
+            {% else %}
+            <p>No</p>
+            {% endif %}
           </td>
           <td>
             <a
