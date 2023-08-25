@@ -109,9 +109,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'es'
 TIME_ZONE = 'America/Mexico_City'
+DATE_FORMAT = 'j \de F \de Y'
 
 USE_i18N = True
 USE_TZ = True
+USE_L10N = True
 
 LANGUAGES = [
     ('en', 'Ingles'),
