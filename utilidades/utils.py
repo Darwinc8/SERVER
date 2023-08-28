@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.core.paginator import Paginator
 
 def BusquedaPersonalizada(request, query, valor, lista, pagina, formulario):
-    print("UTILIDADES")
     lista = lista.filter(**{valor: query})
     return render(request, pagina, {
     'lista': lista,
