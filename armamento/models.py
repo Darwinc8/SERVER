@@ -42,3 +42,4 @@ class Armamento(models.Model):
 
     def __str__(self):
         return f"{self.ID_ARMA}-{self.CUIP_PORTADOR}-{self.CUIP_RESPONSABLE}"
+    
