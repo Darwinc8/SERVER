@@ -1,12 +1,10 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from django.core.paginator import Paginator 
+from django.shortcuts import render, redirect, get_object_or_404 
 from .models import Portador
 from .forms import PortadorForm, BusquedaPortadoresForm
 from django.contrib.auth.decorators import login_required
 import os
 from django.contrib import messages
 from utilidades import utils
-
 # Create your views here.
 @login_required
 def portadores(request):
@@ -18,7 +16,7 @@ def portadores(request):
     if query and valor:
         return utils.BusquedaPersonalizada(request, query, valor, portador, 'portadores.html', BusquedaPortadoresForm)
         
-    return utils.CrearPaginador(request, portador, 1, 'portadores.html', BusquedaPortadoresForm) 
+    return utils.CrearPaginador(request, portador, 5, 'portadores.html', BusquedaPortadoresForm) 
 
 @login_required    
 def crear_portador(request):

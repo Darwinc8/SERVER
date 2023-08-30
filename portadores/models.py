@@ -19,4 +19,12 @@ class Portador(models.Model):
 class LogPortador(models.Model):
     accion = models.CharField(max_length=50)
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
-    fecha = models.DateTimeField(auto_now_add=True)   
+    fecha = models.DateTimeField(auto_now_add=True)
+    # Heredar los campos de Portador
+    CUIP = models.CharField(max_length=20)
+    NOMBRE = models.CharField(max_length=30,blank=False)
+    APELLIDO_PATERNO = models.CharField(max_length=30,blank=False)
+    APELLIDO_MATERNO = models.CharField(max_length=30,blank=False)
+    CORREO = models.EmailField(max_length=254,blank=False)
+    TELEFONO = models.CharField(max_length=10,blank=False)
+    IMAGEN = models.FileField(upload_to='images/portadores/',blank=False)   
