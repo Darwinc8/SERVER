@@ -1,6 +1,5 @@
 from django.db import models
-import os
-from django.contrib.auth.models import User
+
 # Create your models here.
 class Portador(models.Model):
     CUIP = models.CharField(max_length=20, primary_key=True)
@@ -17,8 +16,9 @@ class Portador(models.Model):
     
     
 class LogPortador(models.Model):
+    id_registro = models.AutoField(primary_key=True)
     accion = models.CharField(max_length=50)
-    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    usuario = models.CharField(max_length=50)
     fecha = models.DateTimeField(auto_now_add=True)
     # Heredar los campos de Portador
     CUIP = models.CharField(max_length=20)
