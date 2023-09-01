@@ -142,20 +142,9 @@
             {% endif %}
           </td>
           <td>
-            <a
-              class="btn btn-warning"
-              href="{% url 'editar_armamento' arma.ID_ALTERNA %}"
-              role="button"
-              >{% trans "Editar" %}</a
-            >
-          </td>
-          <td>
-            <a
-              class="btn btn-danger"
-              href="{% url 'eliminar_armamento' arma.ID_ALTERNA %}"
-              role="button"
-              >{% trans "Eliminar" %}</a
-            >
+            <button id="boton-editar" data-url="{% url 'editar_armamento' arma.ID_ARMA %}" class="btn btn-warning">{% trans "Editar" %}</button>
+
+              <button id="boton-borrar" data-url="{% url 'eliminar_armamento' arma.ID_ARMA %}" class="btn btn-danger">{% trans "Eliminar" %}</button>
           </td>
         </tr>
         {% endfor %}
@@ -168,4 +157,5 @@
   <div class="pagination">
     {% include 'paginador.html' %}
   </div>
+<script src="{% static 'js/confirmar_eliminacion.js' %}"></script>
 {% endblock %}
