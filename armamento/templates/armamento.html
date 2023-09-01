@@ -142,9 +142,9 @@
             {% endif %}
           </td>
           <td>
-            <button id="boton-editar" data-url="{% url 'editar_armamento' arma.ID_ARMA %}" class="btn btn-warning">{% trans "Editar" %}</button>
+            <a name="" id="" class="btn btn-warning" href="{% url 'editar_armamento' arma.ID_ALTERNA %}" role="button">{% trans "Editar" %}</a>
 
-              <button id="boton-borrar" data-url="{% url 'eliminar_armamento' arma.ID_ARMA %}" class="btn btn-danger">{% trans "Eliminar" %}</button>
+              <button id="boton-borrar" data-url="{% url 'eliminar_armamento' arma.ID_ALTERNA %}" class="btn btn-danger">{% trans "Eliminar" %}</button>
           </td>
         </tr>
         {% endfor %}

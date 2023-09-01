@@ -41,7 +41,7 @@ def editar_portador(request, id):
     if form.is_valid() and request.method == 'POST':
         form.save()
         return redirect('portadores')
-    return render(request, 'edit_portador.html', {
+    return render(request, 'editar_portador.html', {
     'form': form
     })
 

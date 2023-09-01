@@ -61,7 +61,7 @@
           <td>{{ portador.TELEFONO }}</td>
           <td>{{ portador.CORREO }}</td>
           <td>
-              <button id="boton-editar" data-url="{% url 'editar_portador' portador.CUIP %}" class="btn btn-warning">{% trans "Editar" %}</button>
+              <a name="" id="" class="btn btn-warning" href="{% url 'editar_portador' portador.CUIP %}" role="button">{% trans "Editar" %}</a>
 
               <button id="boton-borrar" data-url="{% url 'eliminar_portador' portador.CUIP %}" class="btn btn-danger">{% trans "Eliminar" %}</button>
           </td>

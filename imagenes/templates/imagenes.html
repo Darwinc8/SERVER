@@ -66,18 +66,9 @@
                 <td>{{ imagen.FOLIO }}</td>
                 <td>{{ imagen.GRUPO }}</td>
                 <td>
-                  <a
-                    class="btn btn-warning"
-                    href="{% url 'editar_imagen' imagen.ID_ALTERNA %}"
-                    role="button"
-                    >{% trans "Editar" %}</a>
-                </td>
-                <td>
-                  <a
-                    class="btn btn-danger"
-                    href="{% url 'eliminar_imagen' imagen.ID_ALTERNA %}"
-                    role="button"
-                    >{% trans "Eliminar" %}</a>
+                  <a name="" id="" class="btn btn-warning" href="{% url 'editar_imagen' imagen.ID_ALTERNA %}" role="button">{% trans "Editar" %}</a>
+
+              <button id="boton-borrar" data-url="{% url 'eliminar_imagen' imagen.ID_ALTERNA %}" class="btn btn-danger">{% trans "Eliminar" %}</button>
                 </td>
               </tr>
               {% endfor %}
@@ -90,5 +81,5 @@
 <div class="pagination">
   {% include 'paginador.html' %}
 </div>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="{% static 'js/confirmar_eliminacion.js' %}"></script>
 {% endblock %}
