@@ -71,7 +71,7 @@
           <th scope="col">{% trans "DOCUMENTO BAJA" %}</th>
           <th scope="col">{% trans "OBSERVACIONES BAJA" %}</th>
           <th scope="col">{% trans "FECHA DE BAJA DEL DOCUMENTO" %}</th>
-          <th scope="col">{% trans "ACCIONES" %}</th>
+          <th scope="col" colspan="2">{% trans "ACCIONES" %}</th>
         </tr>
       </thead>
       <tbody>
@@ -143,7 +143,8 @@
           </td>
           <td>
             <a name="" id="" class="btn btn-warning" href="{% url 'editar_armamento' arma.ID_ALTERNA %}" role="button">{% trans "Editar" %}</a>
-
+          </td>
+            <td>
               <button id="boton-borrar" data-url="{% url 'eliminar_armamento' arma.ID_ALTERNA %}" class="btn btn-danger">{% trans "Eliminar" %}</button>
           </td>
         </tr>
