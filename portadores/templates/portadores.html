@@ -17,22 +17,26 @@
 <div class="card">
   <div class="card-header">
     <h1 style="text-align: center">{% trans "PORTADORES" %}</h1>
-    <div class="d-flex justify-content-between">
-      <a class="btn btn-success" href="{% url 'crear_portador' %}" role="button">{% trans "Agregar nuevo portador" %}</a>
-      <div>
-        <form method="GET" action="">
-          {{ form.campos_filtrados.label_tag }}
-          {{ form.campos_filtrados }}
-          {{ form.query }}
-          <button type="submit" class="btn btn-outline-secondary">
-            <i class="fa fa-search"></i>
-          </button>
-          <a class="btn btn-danger" href="{% url 'portadores' %}" role="button">
-            <i class="fa fa-refresh" aria-hidden="true"></i>
-          </a>
-        </form>
+    <div class="d-flex justify-content-between flex-wrap">
+      <a class="btn btn-success d-inline-block mb-2 mb-md-0" href="{% url 'crear_armamento' %}" role="button">
+          {% trans "Agregar nuevo armamento" %}
+      </a>
+  
+      <div class="mb-2 mb-md-0">
+          <form method="GET" action="">
+              {{ form.campos_filtrados.label_tag }}
+              {{ form.campos_filtrados }}
+              {{ form.query }}
+              <button type="submit" class="btn btn-outline-secondary">
+                  <i class="fa fa-search"></i>
+              </button>
+              <a class="btn btn-danger" href="{% url 'portadores' %}" role="button">
+                  <i class="fa fa-refresh" aria-hidden="true"></i>
+              </a>
+          </form>
       </div>
-    </div>
+  </div>
+  
   </div>
   <div class="card-body table-responsive">
     <table class="table table table-striped table-bordered">
