@@ -21,12 +21,12 @@ def portadores(request):
 @login_required    
 def crear_portador(request):
     if request.method == 'GET':
-        form = PortadorForm(request.POST or None)
+        form = PortadorForm(request.POST or None, initial={'usuario': request.user})
         return render(request, 'create_portador.html', {
             'form': form
         })
     else:
-        form = PortadorForm(request.POST, request.FILES)
+        form = PortadorForm(request.POST, request.FILES, initial={'usuario': request.user})
         if form.is_valid():
             form.save()
             return redirect('portadores')
