@@ -73,7 +73,7 @@
                   <a name="" id="" class="btn btn-warning" href="{% url 'editar_imagen' imagen.ID_ALTERNA %}" role="button">{% trans "Editar" %}</a>
                 </td>
                 <td>
-                <button id="boton-borrar" data-url="{% url 'eliminar_imagen' imagen.ID_ALTERNA %}" class="btn btn-danger">{% trans "Eliminar" %}</button>
+                <button data-url="{% url 'eliminar_imagen' imagen.ID_ALTERNA %}" class="boton-borrar btn btn-danger">{% trans "Eliminar" %}</button>
                 </>
               </tr>
               {% endfor %}

@@ -18,8 +18,8 @@
   <div class="card-header">
     <h1 style="text-align: center">{% trans "PORTADORES" %}</h1>
     <div class="d-flex justify-content-between flex-wrap">
-      <a class="btn btn-success d-inline-block mb-2 mb-md-0" href="{% url 'crear_armamento' %}" role="button">
-          {% trans "Agregar nuevo armamento" %}
+      <a class="btn btn-success d-inline-block mb-2 mb-md-0" href="{% url 'crear_portador' %}" role="button">
+          {% trans "Agregar nuevo portador" %}
       </a>
   
       <div class="mb-2 mb-md-0">
@@ -48,7 +48,7 @@
           <th scope="col">{% trans "APELLIDOS" %}</th>
           <th scope="col">{% trans "TELEFONO" %}</th>
           <th scope="col">{% trans "CORREO" %}</th>
-          <th scope="col">{% trans "ACCIONES" %}</th>
+          <th scope="col" colspan="2">{% trans "ACCIONES" %}</th>
         </tr>
       </thead>
       <tbody>
@@ -66,8 +66,9 @@
           <td>{{ portador.CORREO }}</td>
           <td>
               <a name="" id="" class="btn btn-warning" href="{% url 'editar_portador' portador.CUIP %}" role="button">{% trans "Editar" %}</a>
-
-              <button id="boton-borrar" data-url="{% url 'eliminar_portador' portador.CUIP %}" class="btn btn-danger">{% trans "Eliminar" %}</button>
+          </td>
+          <td>
+            <button data-url="{% url 'eliminar_portador' portador.CUIP %}" class=" boton-borrar btn btn-danger">{% trans "Eliminar" %}</button>
           </td>
         </tr>
         {% endfor %}

@@ -17,4 +17,10 @@ class Portador(models.Model):
     
     def __str__(self):
         return f"{self.CUIP} - {self.NOMBRE} {self.APELLIDO_PATERNO} {self.APELLIDO_MATERNO}"
-  
+ 
+class PortadorLog(models.Model):
+    id = models.AutoField(primary_key=True)
+    id_portador = models.CharField(max_length=20)
+    estado = models.CharField(max_length=20)
+    usuario = models.CharField(max_length=50)
+    ultima_modificacion = models.DateTimeField()

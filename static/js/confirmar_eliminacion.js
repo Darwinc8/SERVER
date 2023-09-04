@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const deleteButton = document.getElementById("boton-borrar");
+    const botonesEliminar = document.querySelectorAll('.boton-borrar');
 
-    if (deleteButton) {
+    botonesEliminar.forEach(function (deleteButton) {
         deleteButton.addEventListener("click", function () {
             const url = deleteButton.getAttribute("data-url");
             const confirmDelete = confirm("¿Estás seguro de que quieres eliminar este registro?");
@@ -11,5 +11,5 @@ document.addEventListener("DOMContentLoaded", function () {
                 window.location.href = url;
             }
         });
-    }
+    });
 });
