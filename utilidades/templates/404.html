@@ -5,7 +5,10 @@
 <link rel="icon" type="image/x-icon" href="{% static 'icons/error.png' %}">
 {% endblock %}
  {% block title %} {% trans "Portadores" %} {% endblock %} 
-{% block content %} 
-<br/><br/>
-<h1>Ups... ¡Algo salio mal!</h1>
+{% block content %}
+<div class="conteiner" style="text-align: center;"> 
+    <h1>ERROR 404</h1>
+    <p>Ups... Algo salió mal, Esta pagina no existe</p>
+    <a name="" id="" class="btn btn-primary" href="{% url 'home'%}" role="button">Volver</a>
+</div> 
 {% endblock %}

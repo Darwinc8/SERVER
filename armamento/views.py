@@ -90,6 +90,4 @@ def obtener_instituciones(request, dependencia_id):
     except Institucion.DoesNotExist:
         # Manejo de error si no se encuentra o no existen instituciones asociadas
         print("Instituciones no encontradas.")
-        return JsonResponse([], safe=False)
-
-
+        return JsonResponse([], safe=False)   

@@ -13,6 +13,6 @@ urlpatterns = [
     path('armamento/', include('armamento.urls')),
     path('portadores/', include('portadores.urls')),
     path('imagenes/', include('imagenes.urls')),
+    path('error/', include('utilidades.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-handler404 = 'utilidades.views.error_404_view'
