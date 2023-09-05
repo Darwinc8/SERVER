@@ -139,15 +139,13 @@ LOGIN_URL = '/iniciar_sesion'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-IMAGES_ROOT = os.path.join(STATIC_ROOT, 'images')
-PORTADORES_ROOT = os.path.join(IMAGES_ROOT, 'portadores')
-IMAGENES_ROOT = os.path.join(IMAGES_ROOT, 'Imagenes')
-
 # Ruta donde se almacenarán los archivos multimedia
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
 # URL base para servir archivos multimedia
 MEDIA_URL = '/media/'
+IMAGES_ROOT = os.path.join(MEDIA_ROOT, 'images')
+PORTADORES_ROOT = os.path.join(IMAGES_ROOT, 'portadores')
+IMAGENES_ROOT = os.path.join(IMAGES_ROOT, 'Imagenes')
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
