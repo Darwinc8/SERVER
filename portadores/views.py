@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.shortcuts import render, redirect, get_object_or_404 
 from .models import Portador
 from .forms import PortadorForm, BusquedaPortadoresForm
@@ -36,9 +37,10 @@ def crear_portador(request):
  
 @login_required    
 def editar_portador(request, id):
-    portador =   get_object_or_404(Portador,CUIP=id)
+    portador =  get_object_or_404(Portador,pk=id)
     form = PortadorForm(request.POST or None, request.FILES or None, instance=portador)
     if form.is_valid() and request.method == 'POST':
+        utils.EliminarImagenAntigua(portador)
         form.save()
         return redirect('portadores')
     return render(request, 'editar_portador.html', {
@@ -63,4 +65,5 @@ def eliminar_portador(request, id):
         messages.error(request, f'Error al eliminar: {e}')
         
     return redirect('portadores')  # Redirige a la misma vista
+
           
