@@ -128,15 +128,27 @@ LOCALE_PATHS = [
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+    # Otras rutas de archivos estáticos si las tienes
+]
+
 
 LOGIN_URL = '/iniciar_sesion'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+IMAGES_ROOT = os.path.join(STATIC_ROOT, 'images')
+PORTADORES_ROOT = os.path.join(IMAGES_ROOT, 'portadores')
+IMAGENES_ROOT = os.path.join(IMAGES_ROOT, 'Imagenes')
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static')
-MEDIA_URL = '/images/'
+# Ruta donde se almacenarán los archivos multimedia
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# URL base para servir archivos multimedia
+MEDIA_URL = '/media/'
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
