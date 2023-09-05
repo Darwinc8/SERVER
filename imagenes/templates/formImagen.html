@@ -65,7 +65,7 @@
     <label for="" class="form-label">{% trans "Imagen del Arma:" %}</label>
     {% if form.IMAGEN.value %}
     <br>
-    <img src="{{MEDIA_URL}}/static/{{form.IMAGEN.value}}" width="100"></img>
+    <img src="{{form.IMAGEN.value.url}}" width="100"></img>
     <br><br>
     {% endif %}
     {% if messages %}
