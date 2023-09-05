@@ -22,10 +22,10 @@ def CrearPaginador(request, lista, num_paginas, pagina, formulario):
         'form': formulario()
     })
 
-def EliminarImagenAntigua(registro):
-    if os.path.isfile(registro.IMAGEN.path):
-        os.remove(registro.IMAGEN.path)
-        print(f"El archivo {registro.IMAGEN.path} ha sido eliminado con éxito.")
+def EliminarImagenAntigua(ruta):
+    if os.path.isfile(ruta):
+        os.remove(ruta)
+        print(f"El archivo {ruta} ha sido eliminado con éxito.")
     else:
-        print(f"El archivo {registro.IMAGEN.path} no existe.")
+        print(f"El archivo {ruta} no existe.")
         
