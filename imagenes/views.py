@@ -62,9 +62,12 @@ def eliminar_imagen(request, id):
 @login_required
 def editar_imagen(request, id):
         imagen = Imagenes.objects.get(ID_ALTERNA=id)
+        ruta = imagen.IMAGEN.path
         form = ImagenForm(request.POST or None, request.FILES or None, instance=imagen)
 
         if form.is_valid() and request.POST:
+            if request.FILES:
+                utils.EliminarImagenAntigua(ruta)
             form.save()
             return redirect('imagenes')
         return render(request, 'editar_imagen.html', {
