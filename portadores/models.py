@@ -1,5 +1,4 @@
 from django.db import models
-from datetime import timedelta
 from django.contrib.auth.models import User
 # Create your models here.
 class Portador(models.Model):
@@ -22,5 +21,11 @@ class PortadorLog(models.Model):
     id = models.AutoField(primary_key=True)
     id_portador = models.CharField(max_length=20)
     estado = models.CharField(max_length=20)
+    nombre = models.CharField(max_length=30,null=False)
+    apellido_paterno = models.CharField(max_length=30,null=False)
+    apellido_materno = models.CharField(max_length=30,null=False)
+    correo = models.EmailField(max_length=254,null=False)
+    telefono = models.CharField(max_length=10,null=False)
+    imagen = models.FileField(upload_to='respaldo/portadores/',null=False)
     usuario = models.CharField(max_length=50)
     ultima_modificacion = models.DateTimeField()
