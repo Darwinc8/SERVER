@@ -10,7 +10,7 @@ class Portador(models.Model):
     TELEFONO = models.CharField(max_length=10,blank=False)
     IMAGEN = models.FileField(upload_to='images/portadores/',blank=False)
     
-    usuario = models.ForeignKey(User, on_delete=models.RESTRICT, null=False, blank=False)
+    usuario = models.ForeignKey(User, on_delete=models.DO_NOTHING, null=False, blank=False)
     
     ultima_modificacion = models.DateTimeField(auto_now=True)
     
