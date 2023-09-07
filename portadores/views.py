@@ -18,7 +18,7 @@ def portadores(request):
         
     return utils.CrearPaginador(request, portador, 5, 'portadores.html', BusquedaPortadoresForm) 
 
-@login_required    
+@login_required 
 def crear_portador(request):
     if request.method == 'GET':
         form = PortadorForm(request.POST or None, initial={'usuario': request.user})

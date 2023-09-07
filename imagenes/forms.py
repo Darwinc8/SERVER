@@ -4,7 +4,8 @@ from .models import Imagenes, Institucion, Entidad, Dependencia, Tipo_Imagen, Ar
 class ImagenForm(forms.ModelForm):
     class Meta:
         model = Imagenes
-        fields = ['ID_ARMA',
+        fields = [
+            'ID_ARMA',
             'INSTITUCION',
             'ENTIDAD',
             'DEPENDENCIA',
@@ -13,8 +14,13 @@ class ImagenForm(forms.ModelForm):
             'TIPO',
             'FOLIO',
             'GRUPO',
-            'IMAGEN'
+            'IMAGEN',
+            'usuario'
             ]
+        exclude = ['ultima_modificacion']
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['usuario'].widget = forms.HiddenInput()
     
     ID_ARMA = forms.ModelChoiceField(queryset=Armamento.objects.all(),to_field_name='ID_ARMA',label='Armamento')
     

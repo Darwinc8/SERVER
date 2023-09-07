@@ -24,12 +24,12 @@ def imagenes(request):
 @login_required
 def crear_imagen(request):
     if request.method == 'GET':
-        form = ImagenForm(request.POST)
+        form = ImagenForm(request.POST or None, initial={'usuario': request.user})
         return render(request, 'crear_imagen.html', {
             'form': form
         })
     else:
-        form = ImagenForm(request.POST, request.FILES)
+        form = ImagenForm(request.POST, request.FILES, initial={'usuario': request.user})
         if form.is_valid():
             form.save()
             return redirect('imagenes')
