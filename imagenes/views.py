@@ -19,7 +19,7 @@ def imagenes(request):
     if query and valor:
         return utils.BusquedaPersonalizada(request, query, valor, imagenes, 'imagenes.html', BusquedaImagenesForm)
         
-    return utils.CrearPaginador(request, imagenes, 1, 'imagenes.html', BusquedaImagenesForm)
+    return utils.CrearPaginador(request, imagenes, 5, 'imagenes.html', BusquedaImagenesForm)
 
 @login_required
 def crear_imagen(request):
@@ -34,10 +34,8 @@ def crear_imagen(request):
             form.save()
             return redirect('imagenes')
         else:
-            form = ImagenForm(request.POST)
-        return render(request, 'crear_imagen.html', {
-            'form': form
-        })
+            print(form.errors)
+            return redirect('crear_imagen')
 
 @login_required
 def eliminar_imagen(request, id):

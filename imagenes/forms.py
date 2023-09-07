@@ -17,10 +17,6 @@ class ImagenForm(forms.ModelForm):
             'IMAGEN',
             'usuario'
             ]
-        exclude = ['ultima_modificacion']
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['usuario'].widget = forms.HiddenInput()
     
     ID_ARMA = forms.ModelChoiceField(queryset=Armamento.objects.all(),to_field_name='ID_ARMA',label='Armamento')
     

@@ -71,7 +71,11 @@
     <input type="{{ form.IMAGEN.field.widget.input_type }}" class="form-control" name="{{ form.IMAGEN.name }}"
       placeholder="{{ form.IMAGEN.label|title }}" value="{{form.IMAGEN.value | default:''}}">
 
-    <input type="{{ form.usuario.field.widget.input_type }}" value="{{form.usuario.value}}">
+      <input type="{{ form.usuario.field.widget.input_type }}"
+      class="form-control" 
+      name="{{ form.usuario.name }}"  
+      placeholder="{{ form.usuario.label|title }}"
+      value="{{form.usuario.value | default:''}}"
   </div>
   {% if messages %}
   <ul class="messages">

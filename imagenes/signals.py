@@ -24,8 +24,8 @@ def mi_funcion_despues_de_insert(sender, instance, created, **kwargs):
             shutil.copy(instance.IMAGEN.path, ruta_destino)
             
     ImagenesLog.objects.create(
-        id_portador = instance.CUIP,
-        id_alterna = instance.ID_ALTERNA,
+        id_alterna = instance,
+        id_arma = instance.ID_ARMA,
         estado = estado,
         institucion = instance.INSTITUCION,
         entidad = instance.ENTIDAD,

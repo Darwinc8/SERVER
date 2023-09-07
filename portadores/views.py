@@ -34,7 +34,7 @@ def crear_portador(request):
             messages.error(request, 'Error al crear portador, verifique los datos')
             return redirect('crear_portador')
  
-@login_required    
+@login_required
 def editar_portador(request, id):
     portador =  get_object_or_404(Portador,pk=id)
     ruta = portador.IMAGEN.path
