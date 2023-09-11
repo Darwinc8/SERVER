@@ -29,3 +29,6 @@ class PortadorLog(models.Model):
     imagen = models.FileField(upload_to='respaldo/portadores/',null=False)
     usuario = models.CharField(max_length=50)
     ultima_modificacion = models.DateTimeField()
+    
+    def __str__(self):
+        return f"{self.id} - {self.estado} {self.id_portador}"
