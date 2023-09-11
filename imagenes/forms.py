@@ -18,6 +18,10 @@ class ImagenForm(forms.ModelForm):
             'usuario'
             ]
     
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['usuario'].widget = forms.HiddenInput()
+        
     ID_ARMA = forms.ModelChoiceField(queryset=Armamento.objects.all(),to_field_name='ID_ARMA',label='Armamento')
     
     INSTITUCION = forms.ModelChoiceField(queryset=Institucion.objects.all(),to_field_name='ID_INSTITUCION',label='Institucion')

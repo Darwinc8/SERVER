@@ -1,6 +1,7 @@
 from django.db import models
 from catalogos.models import Institucion, Dependencia, Calibre, Edo_conservacion, Entidad, Estatus_Arma, LOC, Marca, Modelo, Municipio, Tipo
 from portadores.models import Portador
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Armamento(models.Model):
@@ -39,7 +40,47 @@ class Armamento(models.Model):
     DOCUMENTO_BAJA = models.CharField(max_length=20, null=True, blank=True)
     OBSERVACIONES_BAJA = models.TextField(null=True, blank=True)
     FECHA_BAJA_DOCUMENTO = models.DateField(null=True, blank=True)
+    
+    usuario = models.ForeignKey(User, on_delete=models.RESTRICT, null=False, blank=False)
+    
+    ultima_modificacion = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return f"{self.ID_ARMA}-{self.CUIP_PORTADOR}-{self.CUIP_RESPONSABLE}"
+
+class ArmamentoLog(models.Model):
+    id = models.AutoField(primary_key=True)
+    estado = models.CharField(max_length=20)
+    id_alterna= models.ForeignKey(Armamento, on_delete=models.DO_NOTHING, null=False)
+    id_arma = models.DecimalField(max_digits=10, decimal_places=0,  null=False, blank=False)
+    institucion = models.CharField(max_length=70, null=False)
+    dependencia = models.CharField(max_length=70, null=False)
+    entidad = models.CharField(max_length=70, null=False)  
+    municipio = models.CharField(max_length=70, null=False)
+    numero_loc = models.CharField(max_length=20, null=False)
+    folio_c = models.CharField(max_length=20, null=False)
+    folio_d = models.CharField(max_length=20, null=False)
+    clase_tipo_arma = models.CharField(max_length=50, null=False)
+    calibre_arma = models.CharField(max_length=50, null=False)
+    marca_arma = models.CharField(max_length=50, null=False)
+    modelo_arma = models.CharField(max_length=50, null=False)
+    matricula = models.CharField(max_length=20, null=False)
+    matricula_canon = models.CharField(max_length=40, null=True)
+    fecha = models.DateField(null=False)
+    fecha_loc = models.DateField(null=False, blank=False)
+    estado_arma = models.CharField(max_length=20, null=True)
+    fecha_captura = models.DateField(null=False)
+    observaciones = models.TextField(null=False)
+    estatus_arma = models.CharField(max_length=30, null=False)
+    cuip_portador = models.CharField(max_length=20, null=False)
+    cuip_responsable = models.CharField(max_length=20, null=False) 
+    cihb = models.CharField(max_length=20, null=False, blank=False)
+    fecha_baja_logica = models.DateField(null=True, blank=True)
+    motivo_baja = models.TextField(null=True, blank=True)
+    documento_baja = models.CharField(max_length=20, null=True, blank=True)
+    observaciones_baja = models.TextField(null=True, blank=True)
+    fecha_baja_documento = models.DateField(null=True, blank=True)
     
+    usuario = models.ForeignKey(User, on_delete=models.RESTRICT, null=False, blank=False)
+    
+    ultima_modificacion = models.DateTimeField()

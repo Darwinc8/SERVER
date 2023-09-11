@@ -24,7 +24,7 @@ def armamento(request):
 
 @login_required
 def crear_armamento(request):
-    form = ArmamentoForm(request.POST)
+    form = ArmamentoForm(request.POST or None,initial={'usuario': request.user})
     
     if request.method == 'POST' and form.is_valid():
         form.save()
@@ -37,13 +37,13 @@ def crear_armamento(request):
 @login_required
 def editar_armamento(request, id):
     objeto = get_object_or_404(Armamento, pk=id)
-    form = ArmamentoForm(request.POST, instance=objeto)
+    form = ArmamentoForm(request.POST or None, initial={'usuario': request.user}, instance=objeto)
     if request.method == 'POST' and form.is_valid():
         form.save()
         return redirect('armamento')
     else:
         objeto = convertir_fechas(objeto)
-        form = ArmamentoForm(instance=objeto)
+        form = ArmamentoForm(instance=objeto, initial={'usuario': request.user})
 
     return render(request, 'editar_armamento.html', {'form': form})
 

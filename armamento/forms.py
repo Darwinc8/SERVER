@@ -6,9 +6,8 @@ from portadores.models import Portador
 class ArmamentoForm(forms.ModelForm):
     class Meta:
         model = Armamento
-        exclude = ['ID_ALTERNA'] #Se omite este campo porque es la pk y es autoincrementable
-            
-    
+        exclude = ['ID_ALTERNA', 'ultima_modificacion']       
+        
     INSTITUCION = forms.ModelChoiceField(queryset=Institucion.objects.all().order_by('NOMBRE'),to_field_name='ID_INSTITUCION',label='Institucion')
     
     DEPENDENCIA = forms.ModelChoiceField(queryset=Dependencia.objects.all().order_by('DEPENDENCIA'),to_field_name='ID_DEPENDENCIA',label='DEPENDENCIA')
