@@ -1,9 +1,9 @@
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, pre_delete
 from django.dispatch import receiver
 from armamento.models import Armamento, ArmamentoLog
 
 @receiver(post_save, sender=Armamento)
-def mi_funcion_despues_de_insert(sender, instance, created, **kwargs):
+def despues_de_insertar(sender, instance, created, **kwargs):
     if created:
         estado = "Creación"
     else:
@@ -45,8 +45,8 @@ def mi_funcion_despues_de_insert(sender, instance, created, **kwargs):
     )
     print("Copia de creación/Modificacíon creada...")
 
-@receiver(post_save, sender=Armamento)
-def mi_funcion_antes_de_eliminar(sender, instance,**kwargs):
+@receiver(pre_delete, sender=Armamento)
+def antes_de_eliminar(sender, instance,**kwargs):
     ArmamentoLog.objects.create(
         estado = "Eliminación",
         id_alterna = instance,

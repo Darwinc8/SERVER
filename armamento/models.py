@@ -51,7 +51,7 @@ class Armamento(models.Model):
 class ArmamentoLog(models.Model):
     id = models.AutoField(primary_key=True)
     estado = models.CharField(max_length=20)
-    id_alterna= models.ForeignKey(Armamento, on_delete=models.DO_NOTHING, null=False)
+    id_alterna= models.ForeignKey(Armamento, on_delete=models.SET_NULL, blank=True, null=True)
     id_arma = models.DecimalField(max_digits=10, decimal_places=0,  null=False, blank=False)
     institucion = models.CharField(max_length=70, null=False)
     dependencia = models.CharField(max_length=70, null=False)
