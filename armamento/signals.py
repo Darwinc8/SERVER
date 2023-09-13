@@ -1,3 +1,4 @@
+from django.utils import timezone
 from django.db.models.signals import post_save, pre_delete
 from django.dispatch import receiver
 from armamento.models import Armamento, ArmamentoLog
@@ -79,6 +80,6 @@ def antes_de_eliminar(sender, instance,**kwargs):
         observaciones_baja = instance.OBSERVACIONES_BAJA,
         fecha_baja_documento = instance.FECHA_BAJA_DOCUMENTO,
         usuario = instance.usuario,
-        ultima_modificacion = instance.ultima_modificacion
+        ultima_modificacion = timezone.now()
     )
     print("Copia de eliminación creada...")

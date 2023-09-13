@@ -1,3 +1,4 @@
+from django.utils import timezone
 from django.db.models.signals import post_save, pre_delete
 from django.dispatch import receiver
 from portadores.models import Portador, PortadorLog
@@ -63,6 +64,6 @@ def mi_funcion_antes_de_eliminar(sender, instance, **kwargs):
         correo = instance.CORREO,
         telefono = instance.TELEFONO,
         imagen = ruta_destino if instance.IMAGEN else None,
-        ultima_modificacion = instance.ultima_modificacion
+        ultima_modificacion = timezone.now()
     )
     print("Copia de eliminación creada...")

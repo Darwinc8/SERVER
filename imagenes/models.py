@@ -7,19 +7,19 @@ from django.contrib.auth.models import User
 class Imagenes(models.Model):
     ID_ALTERNA = models.AutoField(primary_key=True)
     
-    ID_ARMA = models.ForeignKey(Armamento, on_delete=models.CASCADE, to_field='ID_ARMA')
+    ID_ARMA = models.ForeignKey(Armamento, on_delete=models.SET_NULL, blank=True, null=True, to_field='ID_ARMA')
     
-    INSTITUCION = models.ForeignKey(Institucion,on_delete=models.CASCADE)
+    INSTITUCION = models.ForeignKey(Institucion,on_delete=models.RESTRICT)
     
-    ENTIDAD = models.ForeignKey(Entidad, on_delete=models.CASCADE)
+    ENTIDAD = models.ForeignKey(Entidad, on_delete=models.RESTRICT)
     
-    DEPENDENCIA = models.ForeignKey(Dependencia, on_delete=models.CASCADE)
+    DEPENDENCIA = models.ForeignKey(Dependencia, on_delete=models.RESTRICT)
     
     IMAKEY = models.DecimalField(max_digits=10, decimal_places=0)
     
     DESIMA = models.CharField(max_length=80)
     
-    TIPO = models.ForeignKey(Tipo_Imagen,on_delete=models.CASCADE)
+    TIPO = models.ForeignKey(Tipo_Imagen,on_delete=models.RESTRICT)
     
     FOLIO = models.DecimalField(max_digits=10, decimal_places=0)
     
@@ -37,8 +37,8 @@ class Imagenes(models.Model):
    
 class ImagenesLog(models.Model):
     id = models.AutoField(primary_key=True)
-    id_alterna = models.ForeignKey(Imagenes, on_delete=models.DO_NOTHING)
-    id_arma = models.ForeignKey(Armamento, on_delete=models.DO_NOTHING, to_field='ID_ARMA')
+    id_alterna = models.ForeignKey(Imagenes, on_delete=models.SET_NULL, blank=True, null=True)
+    id_arma = models.ForeignKey(Armamento, on_delete=models.SET_NULL, blank=True, null=True, to_field='ID_ARMA')
     estado = models.CharField(max_length=20)
     institucion = models.CharField(max_length=80)
     entidad = models.CharField(max_length=50)
