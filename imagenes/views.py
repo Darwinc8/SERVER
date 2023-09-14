@@ -62,7 +62,6 @@ def eliminar_imagen(request, id):
         
     return redirect('imagenes')  # Redirige a la misma vista
 
-
 @login_required
 def editar_imagen(request, id):
         imagen = Imagenes.objects.get(ID_ALTERNA=id)
