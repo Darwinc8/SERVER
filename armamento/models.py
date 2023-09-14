@@ -41,7 +41,7 @@ class Armamento(models.Model):
     OBSERVACIONES_BAJA = models.TextField(null=True, blank=True)
     FECHA_BAJA_DOCUMENTO = models.DateField(null=True, blank=True)
     
-    usuario = models.ForeignKey(User, on_delete=models.RESTRICT, null=False, blank=False)
+    usuario = models.ForeignKey(User, on_delete=models.RESTRICT, null=False, blank=True)
     
     ultima_modificacion = models.DateTimeField(auto_now=True)
 

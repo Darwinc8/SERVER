@@ -27,7 +27,7 @@ class Imagenes(models.Model):
     
     IMAGEN = models.FileField(upload_to='images/imagenes/',blank=False)
     
-    usuario = models.ForeignKey(User, on_delete=models.RESTRICT, null=False, blank=False)
+    usuario = models.ForeignKey(User, on_delete=models.RESTRICT, null=False, blank=True)
     
     ultima_modificacion = models.DateTimeField(auto_now=True)
     

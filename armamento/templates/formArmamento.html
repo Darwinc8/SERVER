@@ -2,11 +2,6 @@
 {% load static %}
 <form enctype="multipart/form-data" method="post">
     {% csrf_token %}
-
-      
-    {{form.usuario }}
-    {{ form.ultima_modificacion }}
-
     <div class="mb-3">
       <label for="" class="form-label">{{ form.ID_ARMA.label|title }}:</label>
       <input type="{{ form.ID_ARMA.field.widget.input_type }}"

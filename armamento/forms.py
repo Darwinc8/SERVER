@@ -6,12 +6,8 @@ from portadores.models import Portador
 class ArmamentoForm(forms.ModelForm):
     class Meta:
         model = Armamento
-        exclude = ['ID_ALTERNA', 'ultima_modificacion']
-        
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['usuario'].widget = forms.HiddenInput()           
-        
+        exclude = ['ID_ALTERNA', 'ultima_modificacion', 'usuario']
+                   
     INSTITUCION = forms.ModelChoiceField(queryset=Institucion.objects.all().order_by('NOMBRE'),to_field_name='ID_INSTITUCION',label='Institucion')
     
     DEPENDENCIA = forms.ModelChoiceField(queryset=Dependencia.objects.all().order_by('DEPENDENCIA'),to_field_name='ID_DEPENDENCIA',label='DEPENDENCIA')
