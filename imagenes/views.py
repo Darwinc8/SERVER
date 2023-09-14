@@ -24,14 +24,16 @@ def imagenes(request):
 @login_required
 def crear_imagen(request):
     if request.method == 'GET':
-        form = ImagenForm(request.POST or None, initial={'usuario': request.user})
+        form = ImagenForm(request.POST or None)
         return render(request, 'crear_imagen.html', {
             'form': form
         })
     else:
-        form = ImagenForm(request.POST, request.FILES, initial={'usuario': request.user})
+        form = ImagenForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            objecto = form.save(commit=False)
+            objecto.usuario = request.user
+            objecto.save()
             return redirect('imagenes')
         else:
             print(form.errors)
@@ -70,7 +72,9 @@ def editar_imagen(request, id):
         if form.is_valid() and request.POST:
             if request.FILES:
                 utils.EliminarImagenAntigua(ruta)
-            form.save()
+            objeto = form.save(commit=False)
+            objeto.usuario = request.user     
+            objeto.save()    
             return redirect('imagenes')
         return render(request, 'editar_imagen.html', {
             'form': form
