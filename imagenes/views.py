@@ -46,6 +46,10 @@ def eliminar_imagen(request, id):
         # Obtén la ruta completa de la imagen
         imagen_path = os.path.join(registro.IMAGEN.path)
         
+        #Actualiza el campo usuario de quien lo elimino
+        registro.usuario = request.user
+        registro.save()
+        
         # Borra el registro y luego la imagen
         registro.delete()
         os.remove(imagen_path)

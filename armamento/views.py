@@ -53,6 +53,10 @@ def eliminar_armamento(request, id):
         #Obten el registro por su ID, si no existe, lanzará una excepción 404
         registro = get_object_or_404(Armamento, pk=id)
         
+        #Actualiza el campo usuario de quien lo elimino
+        registro.usuario = request.user
+        registro.save()
+        
         # Borra el registro
         registro.delete()
         
