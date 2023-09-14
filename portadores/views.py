@@ -62,8 +62,7 @@ def eliminar_portador(request, id):
         imagen_path = os.path.join(registro.IMAGEN.path)
         
         #Actualiza el campo usuario de quien lo elimino
-        registro.usuario = request.user
-        registro.save()
+        Portador.objects.filter(pk=id).update(usuario=request.user)
         # Borra el registro y luego la imagen
         registro.delete()
         os.remove(imagen_path)

@@ -58,8 +58,7 @@ def eliminar_armamento(request, id):
         registro = get_object_or_404(Armamento, pk=id)
         
         #Actualiza el campo usuario de quien lo elimino
-        registro.usuario = request.user
-        registro.save()
+        Armamento.objects.filter(pk=id).update(usuario=request.user)
         
         # Borra el registro
         registro.delete()
