@@ -44,7 +44,9 @@ def editar_portador(request, id):
     if form.is_valid() and request.method == 'POST':
         if request.FILES:
             utils.EliminarImagenAntigua(ruta)
-        form.save()
+        objeto = form.save(commit=False)
+        objeto.usuario = request.user     
+        objeto.save()
         return redirect('portadores')
     return render(request, 'editar_portador.html', {
     'form': form
