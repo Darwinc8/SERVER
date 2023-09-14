@@ -5,11 +5,8 @@ from .models import Portador
 class PortadorForm(ModelForm):
     class Meta:
         model = Portador
-        exclude = ['ultima_modificacion']
+        exclude = ['ultima_modificacion', 'usuario']
     
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['usuario'].widget = forms.HiddenInput()
                      
 class BusquedaPortadoresForm(forms.Form):
     query = forms.CharField(max_length=100, required=False, widget=forms.TextInput(attrs={'placeholder': '     Buscar registros...'}))

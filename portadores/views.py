@@ -21,14 +21,16 @@ def portadores(request):
 @login_required 
 def crear_portador(request):
     if request.method == 'GET':
-        form = PortadorForm(request.POST or None, initial={'usuario': request.user})
+        form = PortadorForm(request.POST or None)
         return render(request, 'create_portador.html', {
             'form': form
         })
     else:
-        form = PortadorForm(request.POST, request.FILES, initial={'usuario': request.user})
+        form = PortadorForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            objeto = form.save(commit=False)
+            objeto.usuario = request.user
+            objeto.save()
             return redirect('portadores')
         else:
             messages.error(request, 'Error al crear portador, verifique los datos')
