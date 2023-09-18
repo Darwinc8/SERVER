@@ -51,8 +51,8 @@ class Armamento(models.Model):
 class ArmamentoLog(models.Model):
     id = models.AutoField(primary_key=True)
     estado = models.CharField(max_length=20)
-    id_alterna= models.ForeignKey(Armamento, on_delete=models.SET_NULL, blank=True, null=True)
-    id_arma = models.DecimalField(max_digits=10, decimal_places=0,  null=False, blank=False)
+    id_alterna= models.DecimalField(max_digits=10, decimal_places=0)
+    id_arma = models.DecimalField(max_digits=10, decimal_places=0)
     institucion = models.CharField(max_length=70, null=False)
     dependencia = models.CharField(max_length=70, null=False)
     entidad = models.CharField(max_length=70, null=False)  
@@ -81,7 +81,7 @@ class ArmamentoLog(models.Model):
     observaciones_baja = models.TextField(null=True, blank=True)
     fecha_baja_documento = models.DateField(null=True, blank=True)
     
-    usuario = models.ForeignKey(User, on_delete=models.RESTRICT, null=False, blank=False)
+    usuario = models.CharField(max_length=50)
     
     ultima_modificacion = models.DateTimeField()
 
