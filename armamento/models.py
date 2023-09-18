@@ -84,3 +84,6 @@ class ArmamentoLog(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.RESTRICT, null=False, blank=False)
     
     ultima_modificacion = models.DateTimeField()
+
+    def __str__(self):
+        return f"{self.id}-{self.estado}-{self.id_alterna}"
