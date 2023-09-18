@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 class Imagenes(models.Model):
     ID_ALTERNA = models.AutoField(primary_key=True)
     
-    ID_ARMA = models.ForeignKey(Armamento, on_delete=models.SET_NULL, blank=True, null=True, to_field='ID_ARMA')
+    ID_ARMA = models.ForeignKey(Armamento, on_delete=models.RESTRICT, blank=True, null=True, to_field='ID_ARMA')
     
     INSTITUCION = models.ForeignKey(Institucion,on_delete=models.RESTRICT)
     

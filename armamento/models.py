@@ -13,7 +13,7 @@ class Armamento(models.Model):
     
     MUNICIPIO = models.ForeignKey(
         Municipio,
-        on_delete=models.CASCADE,
+        on_delete=models.RESTRICT,
         to_field='id', null=False, blank=False
     )
     
