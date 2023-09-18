@@ -25,12 +25,12 @@ def mi_funcion_despues_de_insert(sender, instance, created, **kwargs):
             shutil.copy(instance.IMAGEN.path, ruta_destino)
             
     ImagenesLog.objects.create(
-        id_alterna = instance,
-        id_arma = instance.ID_ARMA,
+        id_alterna = instance.ID_ALTERNA,
+        id_arma = instance.ID_ARMA.ID_ARMA,
         estado = estado,
-        institucion = instance.INSTITUCION,
-        entidad = instance.ENTIDAD,
-        dependencia = instance.DEPENDENCIA,
+        institucion = instance.INSTITUCION.NOMBRE,
+        entidad = instance.ENTIDAD.ENTIDAD,
+        dependencia = instance.DEPENDENCIA.DEPENDENCIA,
         imakey = instance.IMAKEY,
         desima = instance.DESIMA,
         tipo = instance.TIPO,
@@ -59,12 +59,12 @@ def mi_funcion_antes_de_eliminar(sender, instance, **kwargs):
             shutil.copy(instance.IMAGEN.path, ruta_destino)
             
     ImagenesLog.objects.create(
-        id_alterna = instance,
-        id_arma = instance.ID_ARMA,
+        id_alterna = instance.ID_ALTERNA,
+        id_arma = instance.ID_ARMA.ID_ARMA,
         estado = "Elimación",
-        institucion = instance.INSTITUCION,
-        entidad = instance.ENTIDAD,
-        dependencia = instance.DEPENDENCIA,
+        institucion = instance.INSTITUCION.NOMBRE,
+        entidad = instance.ENTIDAD.ENTIDAD,
+        dependencia = instance.DEPENDENCIA.DEPENDENCIA,
         imakey = instance.IMAKEY,
         desima = instance.DESIMA,
         tipo = instance.TIPO,

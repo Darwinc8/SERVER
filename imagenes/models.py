@@ -37,8 +37,8 @@ class Imagenes(models.Model):
    
 class ImagenesLog(models.Model):
     id = models.AutoField(primary_key=True)
-    id_alterna = models.ForeignKey(Imagenes, on_delete=models.SET_NULL, blank=True, null=True)
-    id_arma = models.ForeignKey(Armamento, on_delete=models.SET_NULL, blank=True, null=True, to_field='ID_ARMA')
+    id_alterna = models.DecimalField(max_digits=10, decimal_places=0)
+    id_arma = models.DecimalField(max_digits=10, decimal_places=0)
     estado = models.CharField(max_length=20)
     institucion = models.CharField(max_length=80)
     entidad = models.CharField(max_length=50)
