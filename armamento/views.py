@@ -65,7 +65,7 @@ def eliminar_armamento(request, id):
         
     except Exception as e:
         # Si ocurre una excepción, maneja el error apropiadamente
-        messages.error(request, f'Error al eliminar: {e}')
+        messages.error(request, f'Error al eliminar: No se puede eliminar esta arma ya que se encuentra referenciada a una imagen.')
         
     return redirect('armamento')  # Redirige a la misma vista  
 

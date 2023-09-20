@@ -69,7 +69,7 @@ def eliminar_portador(request, id):
         
     except Exception as e:
         # Si ocurre una excepción, maneja el error apropiadamente
-        messages.error(request, f'Error al eliminar: {e}')
+        messages.error(request, f'Error al eliminar: El portador está asignado como responsable/titular de un armamento.')
         
     return redirect('portadores')  # Redirige a la misma vista
 
