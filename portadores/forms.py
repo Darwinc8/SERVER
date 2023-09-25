@@ -2,10 +2,15 @@ from django.forms import ModelForm
 from django import forms
 from .models import Portador
 
-class PortadorForm(ModelForm):
+class CrearPortadorForm(ModelForm):
     class Meta:
         model = Portador
         exclude = ['ultima_modificacion', 'usuario']
+
+class EditarPortadorForm(ModelForm):
+    class Meta:
+        model = Portador
+        exclude = ['CUIP','ultima_modificacion', 'usuario']
     
                      
 class BusquedaPortadoresForm(forms.Form):

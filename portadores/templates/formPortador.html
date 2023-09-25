@@ -3,9 +3,7 @@
     {% csrf_token %}
     {% for campo in form %}
     <div class="mb-3">
-      {% if campo.name != "usuario" %}
       <label class="form-label">{{ campo.label|title }}:</label>
-      {% endif %}
         {% if campo.field.widget.input_type == 'file' and campo.value %}
         <br>
         <img src="{{campo.value.url}}" width="100">

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404 
 from .models import Portador
-from .forms import PortadorForm, BusquedaPortadoresForm
+from .forms import CrearPortadorForm, EditarPortadorForm, BusquedaPortadoresForm
 from django.contrib.auth.decorators import login_required
 import os
 from django.contrib import messages
@@ -21,12 +21,12 @@ def portadores(request):
 @login_required 
 def crear_portador(request):
     if request.method == 'GET':
-        form = PortadorForm(request.POST or None)
+        form = CrearPortadorForm(request.POST or None)
         return render(request, 'create_portador.html', {
             'form': form
         })
     else:
-        form = PortadorForm(request.POST, request.FILES)
+        form = CrearPortadorForm(request.POST, request.FILES)
         if form.is_valid():
             objeto = form.save(commit=False)
             objeto.usuario = request.user
@@ -40,7 +40,7 @@ def crear_portador(request):
 def editar_portador(request, id):
     portador =  get_object_or_404(Portador,pk=id)
     ruta = portador.IMAGEN.path
-    form = PortadorForm(request.POST or None, request.FILES or None, instance=portador)
+    form = EditarPortadorForm(request.POST or None, request.FILES or None, instance=portador)
     if form.is_valid() and request.method == 'POST':
         if request.FILES:
             utils.EliminarImagenAntigua(ruta)
