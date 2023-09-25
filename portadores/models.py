@@ -6,9 +6,9 @@ class Portador(models.Model):
     NOMBRE = models.CharField(max_length=30,blank=False)
     APELLIDO_PATERNO = models.CharField(max_length=30,blank=False)
     APELLIDO_MATERNO = models.CharField(max_length=30,blank=False)
-    CORREO = models.EmailField(max_length=254,blank=False)
-    TELEFONO = models.CharField(max_length=10,blank=False)
-    IMAGEN = models.FileField(upload_to='images/portadores/',blank=False)
+    CORREO = models.EmailField(max_length=254,blank=False, unique=True)
+    TELEFONO = models.CharField(max_length=10,blank=False, unique=True)
+    IMAGEN = models.FileField(upload_to='images/portadores/',blank=False, unique=True)
     
     usuario = models.ForeignKey(User, on_delete=models.RESTRICT, null=False, blank=True)
     
