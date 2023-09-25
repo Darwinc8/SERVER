@@ -9,7 +9,8 @@
         name="{{ form.ID_ARMA.name }}" 
         id="" 
         placeholder="{{ form.ID_ARMA.label|title }}"
-        value="{{form.ID_ARMA.value | default:''}}">
+        value="{{form.ID_ARMA.value | default:''}}"
+        required>
     </div>
 
     <div class="mb-3">
@@ -44,7 +45,8 @@
         name="{{ form.FOLIO_C.name }}" 
         id="" 
         placeholder="{{ form.FOLIO_C.label|title }}"
-        value="{{form.FOLIO_C.value | default:''}}">
+        value="{{form.FOLIO_C.value | default:''}}"
+        required>
     </div>
 
     <div class="mb-3">
@@ -54,7 +56,8 @@
         name="{{ form.FOLIO_D.name }}" 
         id="" 
         placeholder="{{ form.FOLIO_D.label|title }}"
-        value="{{form.FOLIO_D.value | default:''}}">
+        value="{{form.FOLIO_D.value | default:''}}"
+        required>
     </div>
 
     <div class="mb-3">
@@ -84,7 +87,8 @@
         name="{{ form.MATRICULA.name }}" 
         id="" 
         placeholder="{{ form.MATRICULA.label|title }}"
-        value="{{form.MATRICULA.value | default:''}}">
+        value="{{form.MATRICULA.value | default:''}}"
+        required>
     </div>
 
     <div class="mb-3">
