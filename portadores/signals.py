@@ -5,7 +5,7 @@ from portadores.models import Portador, PortadorLog
 import os, shutil
 
 @receiver(post_save, sender=Portador)
-def mi_funcion_despues_de_insert(sender, instance, created, **kwargs):
+def despues_de_insertar(sender, instance, created, **kwargs):
     if created:
         estado = "Creación"
     else:
@@ -39,7 +39,7 @@ def mi_funcion_despues_de_insert(sender, instance, created, **kwargs):
     print("Copia de creación/modificación creada...")
 
 @receiver(pre_delete, sender=Portador)
-def mi_funcion_antes_de_eliminar(sender, instance, **kwargs):
+def antes_de_eliminar(sender, instance, **kwargs):
     
     # Carpeta de destino donde deseas guardar la imagen
     carpeta_destino = 'C:/RNAE_V1/media/respaldo/portadores/'
