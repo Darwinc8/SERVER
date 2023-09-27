@@ -1,4 +1,3 @@
-import os
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
 from .models import Armamento
@@ -7,7 +6,6 @@ from django.contrib.auth.decorators import login_required
 from .models import Municipio, Institucion
 from django.contrib import messages
 from utilidades import utils
-from django.utils.formats import localize
 
 # Create your views here.
 @login_required
