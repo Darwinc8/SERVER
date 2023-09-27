@@ -67,7 +67,7 @@ def eliminar_portador(request, id):
         registro.delete()
         os.remove(imagen_path)
         
-    except Exception as e:
+    except:
         # Si ocurre una excepción, maneja el error apropiadamente
         messages.error(request, f'Error al eliminar: El portador está asignado como responsable/titular de un armamento.')
         
