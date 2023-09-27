@@ -83,7 +83,7 @@ DATABASES = {
         'NAME': 'rnae_bus_v1',
         'USER': 'root',
         'PASSWORD': 'root',
-        'HOST': '189.243.227.81',
+        'HOST': '189.243.227.195A',
         'PORT': '3306',
     }
 }
