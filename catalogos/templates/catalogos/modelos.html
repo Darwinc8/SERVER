@@ -11,9 +11,9 @@
 <div class="card">
   <div class="card-header">
     <h1 style="text-align: center">{% trans "MODELOS" %}</h1>
-    <div class="d-flex justify-content-between">
-        <a class="btn btn-success" href="{% url 'catalogos' %}" role="button">{% trans "Volver a Catalogos" %}</a>
-        <div>
+    <div class="d-flex justify-content-between flex-wrap">
+        <a class="btn btn-success mb-2 mb-md-0" href="{% url 'catalogos' %}" role="button">{% trans "Volver a Catalogos" %}</a>
+        <div class="mb-2 mb-md-0">
           <form method="GET" action="">
             {{ form.campos_filtrados.label_tag }}
             {{ form.campos_filtrados }}
