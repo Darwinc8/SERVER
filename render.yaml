@@ -1,0 +1,20 @@
+databases:
+  - name: rnae
+    databaseName: rnae_bus_v1
+    user: root
+
+services:
+  - type: web
+    name: rnae
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn rnae.wsgi:application"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: rnae
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
