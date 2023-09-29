@@ -43,6 +43,6 @@ class BusquedaImagenesForm(forms.Form):
     campos_filtrados = forms.ChoiceField(
         choices=OPCIONES_ORDENADAS,
         label="Filtrar por",
-        initial='ID_ARMA_id__ID_ARMA__icontains'
+        initial='ID_ARMA__ID_ARMA__icontains'
         )    
        
