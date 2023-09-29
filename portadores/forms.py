@@ -11,8 +11,7 @@ class EditarPortadorForm(ModelForm):
     class Meta:
         model = Portador
         exclude = ['CUIP','ultima_modificacion', 'usuario']
-    
-                     
+                         
 class BusquedaPortadoresForm(forms.Form):
     query = forms.CharField(max_length=100, required=False, widget=forms.TextInput(attrs={'placeholder': '     Buscar registros...'}))
     

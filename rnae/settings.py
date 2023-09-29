@@ -2,11 +2,8 @@ from pathlib import Path
 import os
 import dj_database_url
 
-
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -92,8 +89,6 @@ DATABASES = {
     }
 }
 
-
-
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -111,7 +106,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -137,6 +131,7 @@ LOCALE_PATHS = [
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
     # Otras rutas de archivos estáticos si las tienes
@@ -157,14 +152,18 @@ LOGIN_URL = '/iniciar_sesion'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 # Ruta donde se almacenarán los archivos multimedia
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 # URL base para servir archivos multimedia
 MEDIA_URL = '/media/'
-IMAGES_ROOT = os.path.join(MEDIA_ROOT, 'images')
-PORTADORES_ROOT = os.path.join(IMAGES_ROOT, 'portadores')
-IMAGENES_ROOT = os.path.join(IMAGES_ROOT, 'Imagenes')
 
+IMAGES_ROOT = os.path.join(MEDIA_ROOT, 'images')
+
+PORTADORES_ROOT = os.path.join(IMAGES_ROOT, 'portadores')
+
+IMAGENES_ROOT = os.path.join(IMAGES_ROOT, 'Imagenes')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

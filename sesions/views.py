@@ -53,6 +53,7 @@ def iniciar_sesion(request):
             login(request, user)
             return redirect('home')  
 
+@login_required
 def cambiar_lenguaje(request, language_code):
     if language_code == "es" or language_code == "en": 
         response = redirect(request.META.get('HTTP_REFERER'))

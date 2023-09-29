@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+
 urlpatterns = [
     path('', views.catalogos, name='catalogos'),
     path('emisores/', views.emisores, name='emisores'),
