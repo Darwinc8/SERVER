@@ -101,7 +101,6 @@ def calibres(request):
    
    return utils.CrearPaginador(request, calibres, 12, 'catalogos/calibres.html', BusquedaCalibreForm)
     
-
 @login_required
 def marcas(request):
     marcas = Marca.objects.all()
