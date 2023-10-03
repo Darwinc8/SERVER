@@ -39,7 +39,8 @@ def crear_portador(request):
 @login_required
 def editar_portador(request, id):
     portador =  get_object_or_404(Portador,pk=id)
-    ruta = portador.IMAGEN.path
+    ruta = portador.IMAGEN.url
+    print(portador.IMAGEN.url)
     form = EditarPortadorForm(request.POST or None, request.FILES or None, instance=portador)
     if form.is_valid() and request.method == 'POST':
         if request.FILES:

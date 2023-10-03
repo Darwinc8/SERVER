@@ -22,6 +22,7 @@ def CrearPaginador(request, lista, num_paginas, pagina, formulario):
     })
 
 def EliminarImagenAntigua(ruta):
+    ruta = os.path.abspath(ruta)
     if os.path.isfile(ruta):
         os.remove(ruta)
         print(f"El archivo {ruta} ha sido eliminado con éxito.")
