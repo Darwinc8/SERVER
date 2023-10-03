@@ -157,7 +157,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # URL base para servir archivos multimedia
-MEDIA_URL = '/media/'
+MEDIA_URL = 'RNAE_V1/media/'
 
 IMAGES_ROOT = os.path.join(MEDIA_ROOT, 'images')
 

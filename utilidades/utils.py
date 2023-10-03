@@ -1,8 +1,7 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator
 import os
-
-from rnae.settings import IMAGES_ROOT 
+from django.conf import settings
 
 def BusquedaPersonalizada(request, query, valor, lista, pagina, formulario):
     lista = lista.filter(**{valor: query})
@@ -22,10 +21,11 @@ def CrearPaginador(request, lista, num_paginas, pagina, formulario):
     })
 
 def EliminarImagenAntigua(ruta):
-    ruta = os.path.abspath(ruta)
-    if os.path.isfile(ruta):
+    # Verifica si el archivo existe
+    if os.path.exists(ruta):
+        # Si existe, elimínalo
         os.remove(ruta)
-        print(f"El archivo {ruta} ha sido eliminado con éxito.")
+        print("Imagen antigua eliminada con exito")
     else:
-        print(f"El archivo {ruta} no existe.")
+        print("imagen no encontrada")    
         

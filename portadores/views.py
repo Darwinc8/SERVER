@@ -40,10 +40,10 @@ def crear_portador(request):
 def editar_portador(request, id):
     portador =  get_object_or_404(Portador,pk=id)
     ruta = portador.IMAGEN.url
-    print(portador.IMAGEN.url)
+
     form = EditarPortadorForm(request.POST or None, request.FILES or None, instance=portador)
     if form.is_valid() and request.method == 'POST':
-        if request.FILES:
+        if 'IMAGEN' in form.changed_data:
             utils.EliminarImagenAntigua(ruta)
         objeto = form.save(commit=False)
         objeto.usuario = request.user     
