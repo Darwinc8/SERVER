@@ -25,7 +25,7 @@ class Imagenes(models.Model):
     
     GRUPO = models.CharField(max_length=1)
     
-    IMAGEN = models.FileField(upload_to='images/imagenes/',blank=False)
+    IMAGEN = models.FileField(upload_to='images/imagenes/',blank=False, unique=True)
     
     usuario = models.ForeignKey(User, on_delete=models.RESTRICT, null=False, blank=True)
     
