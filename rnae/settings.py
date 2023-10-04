@@ -75,18 +75,18 @@ WSGI_APPLICATION = 'rnae.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    # 'default': dj_database_url.config(
-    #     default='postgresql://postgres:postgres@localhost:5432/rnae',
-    #     conn_max_age=600
-    # )
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'rnae_bus_v1',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': 'localhost',
-        'PORT': '3306'
-    }
+    'default': dj_database_url.config(
+        default='postgresql://postgres:postgres@localhost:5432/rnae',
+        conn_max_age=600
+    )
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'rnae_bus_v1',
+    #     'USER': 'root',
+    #     'PASSWORD': 'root',
+    #     'HOST': 'localhost',
+    #     'PORT': '3306'
+    # }
 }
 
 # Password validation
