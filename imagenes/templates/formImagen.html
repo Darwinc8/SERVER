@@ -1,6 +1,6 @@
 {% load i18n %}
 {% load static %}
-<form enctype="multipart/form-data" method="post">
+<form enctype="multipart/form-data" method="post" id="myForm">
   {% csrf_token %}
   <div class="mb-3">
     <label for="{{ form.ID_ARMA.id_for_label }}" class="form-label">{% trans "Id del Arma existente:" %}</label>
@@ -78,8 +78,9 @@
     {% endfor %}
   </ul>
 {% endif %}
-  <input name="" id="" class="btn btn-success" type="submit" value="Guardar">
+  <input name="" id="guardar-btn" class="btn btn-success" type="submit" value="Guardar">
   <a name="" id="" class="btn btn-primary" href="{%url 'imagenes'%}" role="button">{% trans "Volver" %}</a>
 </form>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="{% static 'js/instituciones.js'%}"></script>
+<script src="{% static 'js/boton_guardar.js' %}"></script>
