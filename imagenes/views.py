@@ -64,11 +64,11 @@ def eliminar_imagen(request, id):
 @login_required
 def editar_imagen(request, id):
         imagen = Imagenes.objects.get(ID_ALTERNA=id)
-        ruta = imagen.IMAGEN.path
+        ruta = imagen.IMAGEN.url
         form = ImagenForm(request.POST or None, request.FILES or None, instance=imagen)
 
         if form.is_valid() and request.POST:
-            if request.FILES:
+            if 'IMAGEN' in form.changed_data:
                 utils.EliminarImagenAntigua(ruta)
             objeto = form.save(commit=False)
             objeto.usuario = request.user     

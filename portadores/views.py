@@ -42,6 +42,7 @@ def editar_portador(request, id):
     ruta = portador.IMAGEN.url
 
     form = EditarPortadorForm(request.POST or None, request.FILES or None, instance=portador)
+    
     if form.is_valid() and request.method == 'POST':
         if 'IMAGEN' in form.changed_data:
             utils.EliminarImagenAntigua(ruta)
