@@ -181,7 +181,8 @@
       <br>{{ form.FECHA_BAJA_DOCUMENTO }}<br>
     </div>
 
-    <input class="btn btn-success" type="submit" value="Guardar">
+    <input class="btn btn-success" type="submit" value="Guardar" id="guardar-btn">
+
     <a class="btn btn-primary" href="{%url 'armamento'%}" role="button">{% trans "Volver" %}</a>
 
 
@@ -190,6 +191,7 @@
 <script src="{% static 'js/municipios.js' %}"></script>
 <script src="{% static 'js/instituciones.js' %}"></script>
 <script src="{% static 'js/validacion_cuip.js' %}"></script>
+<script src="{% static 'js/boton_guardar.js' %}"></script>
 
 
 
