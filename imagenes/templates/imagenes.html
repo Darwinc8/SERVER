@@ -24,7 +24,7 @@
           </a>
       
           <div class="mb-2 mb-md-0">
-              <form method="GET" action="">
+              <form method="GET" action="" onsubmit="return validarForm()">
                   {{ form.campos_filtrados.label_tag }}
                   {{ form.campos_filtrados }}
                   {{ form.query }}
@@ -86,4 +86,5 @@
   {% include 'paginador.html' %}
 </div>
 <script src="{% static 'js/confirmar_eliminacion.js' %}"></script>
+<script src="{% static 'js/validar_formulario.js' %}"></script>
 {% endblock %}
