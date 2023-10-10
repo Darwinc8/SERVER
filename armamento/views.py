@@ -10,7 +10,7 @@ from utilidades import utils
 # Create your views here.
 @login_required
 def armamento(request):
-    armamentos = Armamento.objects.all().order_by('ID_ALTERNA')
+    armamentos = Armamento.objects.all().order_by('-ultima_modificacion')
     
     query = request.GET.get('query')
     valor = request.GET.get('campos_filtrados')

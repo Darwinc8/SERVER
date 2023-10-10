@@ -11,7 +11,7 @@ from utilidades import utils
 # Create your views here.
 @login_required
 def imagenes(request):
-    imagenes = Imagenes.objects.all().order_by('ID_ARMA')
+    imagenes = Imagenes.objects.all().order_by('-ultima_modificacion')
     
     query = request.GET.get('query')
     valor = request.GET.get('campos_filtrados')
