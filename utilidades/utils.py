@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator
 import os
-from django.conf import settings
 
 def BusquedaPersonalizada(request, query, valor, lista, pagina, formulario):
     lista = lista.filter(**{valor: query})

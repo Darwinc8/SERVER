@@ -8,7 +8,7 @@ from utilidades import utils
 # Create your views here.
 @login_required
 def portadores(request):
-    portador = Portador.objects.all().order_by('NOMBRE')
+    portador = Portador.objects.all().order_by('-ultima_modificacion')
     
     query = request.GET.get('query')
     valor = request.GET.get('campos_filtrados')
