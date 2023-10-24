@@ -76,4 +76,7 @@ class BusquedaArmamentoForm(forms.Form):
         initial='ID_ARMA'
         )
 
-
+class ExcelUploadForm(forms.Form):
+    archivo_excel = forms.FileField(label='Seleccione un archivo Excel', 
+    required=True,
+     widget=forms.FileInput(attrs={'accept': '.xlsx'}))

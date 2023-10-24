@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+{% load i18n %}
+{% load static %}
+{% block favicon %}
+<link rel="icon" type="image/x-icon" href="{% static 'icons/arma.png' %}">
+{% endblock %}
+ {% block title %} {% trans "Crear Armamento" %} {% endblock %} 
+
+{% block content %}
+<br><br>
+<div class="card">
+    <div class="card-header">
+        {% trans "Crear Armamento" %}
+    </div>
+    <div class="card-body">
+        <div class="container mt-5">
+            <h1>Armamento desde un archivo Excel</h1>
+            <form action="" method="post" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
+                {% csrf_token %}
+                <div class="col-md-6">
+                    <label for="archivo_excel" class="form-label">Seleccione un archivo Excel</label>
+                    <input type="{{ form.archivo_excel.field.widget.input_type }}" 
+                    class="form-control"
+                    accept=".xlsx" 
+                    name="{{ form.archivo_excel.name }}"  
+                    required>
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-primary" type="submit">Cargar archivo</button>
+                </div>
+            </form>
+        </div>
+        <div>
+            <table border="1">
+                <thead>
+                    <tr>
+                            <th>Nombre</th>
+                            <th>Edad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in data %}
+                        <tr>
+                            {% for cell in row %}
+                                <td>{{ cell }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+         
+        </div>
+    </div>
+    <div class="card-footer text-muted">
+    </div>
+</div>
+{% endblock %}

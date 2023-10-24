@@ -3,6 +3,12 @@
 {% load static %}
 {% block favicon %}
 <link rel="icon" type="image/x-icon"  href="{% static 'icons/armamento.png' %}">
+
+<style>
+  .dropdown-item:hover {
+      background-color: #e2e6ea; /* Cambia este color según tus preferencias */
+  }
+</style>
 {% endblock %}
  {% block title %} {% trans "Armamento" %} {% endblock %} 
  {% block content %} 
@@ -18,9 +24,17 @@
   <div class="card-header">
     <h1 style="text-align: center">{% trans "ARMAMENTO" %}</h1>
     <div class="d-flex justify-content-between flex-wrap">
-      <a class="btn btn-success d-inline-block mb-2 mb-md-0" href="{% url 'crear_armamento' %}" role="button">
-          {% trans "Agregar nuevo armamento" %}
-      </a>
+
+      <div class="dropdown d-inline-block mb-2 mb-md-0">
+        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            {% trans "Agregar nuevo armamento" %}
+        </button>
+        <ul class="dropdown-menu bg-light" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item text-secondary" href="{% url 'crear_armamento' %}">{% trans "Crear manualmente" %}</a></li>
+            <li><a class="dropdown-item text-secondary" href="{% url 'armamento_excel' %}">{% trans "Desde un archivo excel" %}</a></li>
+        </ul>
+    </div>
+    
   
       <div class="mb-2 mb-md-0">
           <form method="GET" action="" onsubmit="return validarForm()">

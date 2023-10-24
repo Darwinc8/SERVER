@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
 from .models import Armamento
-from .forms import ArmamentoForm, BusquedaArmamentoForm
+from .forms import ArmamentoForm, BusquedaArmamentoForm, ExcelUploadForm
 from django.contrib.auth.decorators import login_required
 from .models import Municipio, Institucion
 from django.contrib import messages
 from utilidades import utils
+import pandas as pd
 
 # Create your views here.
 @login_required
@@ -33,6 +34,24 @@ def crear_armamento(request):
         return render(request, 'crear_armamento.html', {
         'form': form
         })
+
+@login_required
+def crear_armamento_excel(request):
+    if request.method == 'POST':
+        form = ExcelUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            file = request.FILES['archivo_excel']
+            df = pd.read_excel(file)
+            data = df.values.tolist()
+
+            return render(request, 'excel_armamento.html',{
+            'data': data    
+            })
+    else:
+        form = ExcelUploadForm()
+    return render(request, 'excel_armamento.html',{
+        'form': form
+    })
 
 @login_required
 def editar_armamento(request, id):
