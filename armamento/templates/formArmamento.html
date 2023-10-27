@@ -132,13 +132,25 @@
     </div>
 
     <div class="mb-3">
-      <label for="" class="form-label">{% trans "CUIP Portador" %}</label>
-      <br>{{ form.CUIP_PORTADOR }}<br>
+      <label for="" class="form-label">{% trans "CUIP Portador" %}:</label>
+      <input type="{{ form.CUIP_PORTADOR.field.widget.input_type }}"
+        class="form-control" 
+        name="{{ form.CUIP_PORTADOR.name }}" 
+        id="" 
+        placeholder="{{ form.CUIP_PORTADOR.label|title }}"
+        value="{{form.CUIP_PORTADOR.value | default:''}}"
+        required>
     </div>
 
     <div class="mb-3">
-      <label for="" class="form-label">{% trans "CUIP Responsable" %}</label>
-      <br>{{ form.CUIP_RESPONSABLE }}<br>
+      <label for="" class="form-label">{% trans "CUIP Responsable" %}:</label>
+      <input type="{{ form.CUIP_RESPONSABLE.field.widget.input_type }}"
+        class="form-control" 
+        name="{{ form.CUIP_RESPONSABLE.name }}" 
+        id="" 
+        placeholder="{{ form.CUIP_RESPONSABLE.label|title }}"
+        value="{{form.CUIP_RESPONSABLE.value | default:''}}"
+        required>
     </div>
 
     <div class="mb-3">
