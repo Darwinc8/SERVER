@@ -45,6 +45,13 @@ def crear_armamento_excel(request):
             # Procesar el archivo de Excel con pandas y openpyxl
             df = pd.read_excel(archivo_excel, engine='openpyxl')
             
+            # Reemplazar NaN por 0 en columnas numéricas
+            df['ID Arma'] = df['ID Arma'].fillna(0)
+            df['Matricula_canon *'] = df['Matricula_canon *'].fillna("")
+            df['Código de Identificación de Huella Balística (CIHB)'] = df['Código de Identificación de Huella Balística (CIHB)'].fillna("")
+            
+
+            
             #Convirtiendo las columnas al tipo de dato esperado
             df['ID Arma'] = pd.to_numeric(df['ID Arma'], errors='coerce')
             df['Institución'] = pd.to_numeric(df['Institución'], errors='coerce')
@@ -76,7 +83,7 @@ def crear_armamento_excel(request):
                 
                  # Verificar si la fila ya existe en la base de datos
                 try:
-                    objeto = Armamento.objects.get(ID_ARMA=row['ID Arma']) 
+                    objeto = Armamento.objects.get(MATRICULA=row['Matrícula']) 
                     # Verificar si existen diferencias en los campos y actualizar si es necesario
                     if objeto.INSTITUCION != fila_institucion:
                         objeto.INSTITUCION = fila_institucion
@@ -111,8 +118,8 @@ def crear_armamento_excel(request):
                     if objeto.MODELO_ARMA != fila_modelo:
                         objeto.MODELO_ARMA = fila_modelo
                     
-                    if objeto.MATRICULA != row['Matrícula']:
-                        objeto.MATRICULA = row['Matrícula']
+                    if objeto.ID_ARMA != row['ID Arma']:
+                        objeto.ID_ARMA = row['ID Arma']
                     
                     if objeto.MATRICULA_CANON != row['Matricula_canon *']:
                         objeto.MATRICULA_CANON = row['Matricula_canon *']   

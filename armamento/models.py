@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Armamento(models.Model):
     ID_ALTERNA= models.AutoField(primary_key=True)
-    ID_ARMA = models.DecimalField(max_digits=10, decimal_places=0, unique=True, null=False, blank=False)
+    ID_ARMA = models.DecimalField(max_digits=10, decimal_places=0, unique=False, null=True, blank=True)
     INSTITUCION = models.ForeignKey(Institucion, on_delete=models.RESTRICT, null=False, blank=False)
     DEPENDENCIA = models.ForeignKey(Dependencia, on_delete=models.RESTRICT, null=False, blank=False)
     ENTIDAD = models.ForeignKey(Entidad, on_delete=models.RESTRICT, null=False, blank=False)
@@ -24,7 +24,7 @@ class Armamento(models.Model):
     CALIBRE_ARMA = models.ForeignKey(Calibre, on_delete=models.RESTRICT, null=False, blank=False)
     MARCA_ARMA = models.ForeignKey(Marca, on_delete=models.RESTRICT, null=False, blank=False)
     MODELO_ARMA = models.ForeignKey(Modelo, on_delete=models.RESTRICT, null=False, blank=False)
-    MATRICULA = models.CharField(max_length=20, null=False, blank=False)
+    MATRICULA = models.CharField(max_length=20, null=False, blank=False, unique=True)
     MATRICULA_CANON = models.CharField(max_length=40, null=True, blank=True)
     FECHA = models.DateField(null=False, blank=False)
     FECHA_LOC = models.DateField(null=False, blank=False)

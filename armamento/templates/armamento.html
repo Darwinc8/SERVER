@@ -103,7 +103,13 @@
           <td>{{arma.MARCA_ARMA.MARCA}}</td>
           <td>{{arma.MODELO_ARMA.MODELO}}</td>
           <td>{{arma.MATRICULA}}</td>
-          <td>{{arma.MATRICULA_CANON}}</td>
+          <td>
+            {% if arma.MATRICULA_CANON|default:'' %}
+            {{arma.MATRICULA_CANON}}
+            {% else %}
+            <p>No</p>
+            {% endif %}
+          </td>
           <td>{{arma.FECHA}}</td>
           <td>{{arma.FECHA_LOC}}</td>
           <td>{{arma.ESTADO_ARMA}}</td>
