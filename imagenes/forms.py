@@ -17,7 +17,7 @@ class ImagenForm(forms.ModelForm):
             'IMAGEN'
             ]
         
-    ID_ARMA = forms.ModelChoiceField(queryset=Armamento.objects.all(),to_field_name='ID_ARMA',label='Armamento')
+    ID_ARMA = forms.ModelChoiceField(queryset=Armamento.objects.all(),to_field_name='MATRICULA',label='Matricula')
     
     INSTITUCION = forms.ModelChoiceField(queryset=Institucion.objects.all(),to_field_name='ID_INSTITUCION',label='Institucion')
     
