@@ -26,7 +26,7 @@ def despues_de_insertar(sender, instance, created, **kwargs):
             
     ImagenesLog.objects.create(
         id_alterna = instance.ID_ALTERNA,
-        id_arma = instance.ID_ARMA.ID_ARMA,
+        id_arma = instance.ID_ARMA,
         estado = estado,
         institucion = instance.INSTITUCION.NOMBRE,
         entidad = instance.ENTIDAD.ENTIDAD,
@@ -60,7 +60,7 @@ def antes_de_eliminar(sender, instance, **kwargs):
             
     ImagenesLog.objects.create(
         id_alterna = instance.ID_ALTERNA,
-        id_arma = instance.ID_ARMA.ID_ARMA,
+        id_arma = instance.ID_ARMA,
         estado = "Elimación",
         institucion = instance.INSTITUCION.NOMBRE,
         entidad = instance.ENTIDAD.ENTIDAD,

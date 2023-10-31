@@ -46,7 +46,7 @@ class Armamento(models.Model):
     ultima_modificacion = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.ID_ARMA}-{self.CUIP_PORTADOR}-{self.CUIP_RESPONSABLE}"
+        return f"{self.MATRICULA}"
 
 class ArmamentoLog(models.Model):
     id = models.AutoField(primary_key=True)
