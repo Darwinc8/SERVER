@@ -29,26 +29,11 @@
                     <button class="btn btn-primary" type="submit">Cargar archivo</button>
                 </div>
             </form>
-        </div>
-        <div>
-            <table border="1">
-                <thead>
-                    <tr>
-                            <th>Nombre</th>
-                            <th>Edad</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for row in data %}
-                        <tr>
-                            {% for cell in row %}
-                                <td>{{ cell }}</td>
-                            {% endfor %}
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-         
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+                {% endif %}
         </div>
     </div>
     <div class="card-footer text-muted">

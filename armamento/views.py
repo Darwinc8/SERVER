@@ -7,6 +7,7 @@ from .models import Municipio, Institucion, Dependencia, Entidad, LOC, Tipo, Cal
 from django.contrib import messages
 from utilidades import utils
 import pandas as pd
+from django.contrib import messages
 
 # Create your views here.
 @login_required
@@ -64,6 +65,10 @@ def crear_armamento_excel(request):
             df['Modelo del arma'] = pd.to_numeric(df['Modelo del arma'], errors='coerce')
             df['Estado del arma'] = pd.to_numeric(df['Estado del arma'], errors='coerce')
             df['Estatus del arma'] = pd.to_numeric(df['Estatus del arma'], errors='coerce')
+            df['Fecha de registro'] = pd.to_datetime(df['Fecha de registro']).dt.strftime('%Y-%m-%d')
+            df['Fecha de alta/captura'] = pd.to_datetime(df['Fecha de alta/captura']).dt.strftime('%Y-%m-%d')
+            df['Fecha de alta en la LOC'] = pd.to_datetime(df['Fecha de alta en la LOC']).dt.strftime('%Y-%m-%d')
+            
             
             
             for index, row in df.iterrows():
@@ -83,45 +88,59 @@ def crear_armamento_excel(request):
                 
                  # Verificar si la fila ya existe en la base de datos
                 try:
-                    objeto = Armamento.objects.get(MATRICULA=row['Matrícula']) 
+                    objeto = Armamento.objects.get(MATRICULA=row['Matrícula'])
+                    modificado=False 
                     # Verificar si existen diferencias en los campos y actualizar si es necesario
                     if objeto.INSTITUCION != fila_institucion:
+                        modificado = True
                         objeto.INSTITUCION = fila_institucion
                         
                     if objeto.DEPENDENCIA != fila_dependencia:
+                        modificado = True
                         objeto.DEPENDENCIA = fila_dependencia
                         
                     if objeto.ENTIDAD != fila_entidad:
+                        modificado = True
                         objeto.ENTIDAD = fila_entidad
                     
                     if objeto.MUNICIPIO != fila_municipio:
+                        modificado = True
                         objeto.MUNICIPIO = fila_municipio
                         
                     if objeto.NUMERO_LOC != fila_loc:
+                        modificado = True
                         objeto.NUMERO_LOC = fila_loc
                     
                     if objeto.FOLIO_C != row['Folio C']:
+                        modificado = True
                         objeto.FOLIO_C = row['Folio C']
                     
                     if objeto.FOLIO_D != row['Folio D']:
+                        modificado = True
                         objeto.FOLIO_D = row['Folio D']
                         
                     if objeto.CLASE_TIPO_ARMA != fila_ClaseTipoArma:
+                        modificado = True
                         objeto.CLASE_TIPO_ARMA = fila_ClaseTipoArma
                         
                     if objeto.CALIBRE_ARMA != fila_calibre:
+                        modificado = True
                         objeto.CALIBRE_ARMA = fila_calibre
                     
                     if objeto.MARCA_ARMA != fila_marca:
+                        modificado = True
                         objeto.MARCA_ARMA = fila_marca 
                      
                     if objeto.MODELO_ARMA != fila_modelo:
+                        modificado = True
                         objeto.MODELO_ARMA = fila_modelo
                     
                     if objeto.ID_ARMA != row['ID Arma']:
+                        modificado = True
                         objeto.ID_ARMA = row['ID Arma']
                     
                     if objeto.MATRICULA_CANON != row['Matricula_canon *']:
+                        modificado = True
                         objeto.MATRICULA_CANON = row['Matricula_canon *']   
                     
                     if objeto.FECHA != row['Fecha de registro']:
@@ -131,46 +150,42 @@ def crear_armamento_excel(request):
                         objeto.FECHA_LOC = row['Fecha de alta en la LOC']
                     
                     if objeto.ESTADO_ARMA != fila_edoConservacion:
+                        modificado = True
                         objeto.ESTADO_ARMA = fila_edoConservacion
                         
                     if objeto.FECHA_CAPTURA != row['Fecha de alta/captura']:
                         objeto.FECHA_CAPTURA = row['Fecha de alta/captura']
                     
                     if objeto.OBSERVACIONES != row['Observaciones']:
+                        modificado = True
                         objeto.OBSERVACIONES = row['Observaciones']
                     
                     if objeto.ESTATUS_ARMA != fila_estatus:
+                        modificado = True
                         objeto.ESTATUS_ARMA = fila_estatus
                         
                     if objeto.CUIP_PORTADOR != row['CUIP del elemento que la porta']:
+                        modificado = True
                         objeto.CUIP_PORTADOR = row['CUIP del elemento que la porta']
                     
                     if objeto.CUIP_RESPONSABLE != row['CUIP del elemento que la porta']:
+                        modificado = True
                         objeto.CUIP_RESPONSABLE = row['CUIP del elemento que la porta']
                     
                     if objeto.CIHB != row['Código de Identificación de Huella Balística (CIHB)']:
+                        modificado = True
                         objeto.CIHB = row['Código de Identificación de Huella Balística (CIHB)']
-                    
-                    # if objeto.FECHA_BAJA_LOGICA != row['Fecha de baja logica']:
-                    #     objeto.FECHA_BAJA_LOGICA = row['Fecha de baja logica']
-                        
-                    # if objeto.MOTIVO_BAJA != row['Motivo de baja']:
-                    #     objeto.MOTIVO_BAJA = row['Motivo de baja']
-                    
-                    # if objeto.DOCUMENTO_BAJA != row['Documento de baja']:
-                    #     objeto.DOCUMENTO_BAJA = row['Documento de baja']
-                    
-                    # if objeto.OBSERVACIONES_BAJA != row['Observaciones de baja']:
-                    #     objeto.OBSERVACIONES_BAJA = row['Observaciones de baja']
-                    
-                    # if objeto.FECHA_BAJA_DOCUMENTO != row['Fecha de baja del documento']:
-                    #     objeto.FECHA_BAJA_DOCUMENTO = row['Fecha de baja del documento']
                     
                     if objeto.usuario != request.user:
                        objeto.usuario = request.user
                     
                     objeto.save()
-                    print("Registro modificado")
+                    if modificado:
+                        messages.success(request, f"Armamento con matricula {row['Matrícula']} fue actualizado exitosamente")
+                    else:
+                        messages.success(request, f"Armamento con matricula {row['Matrícula']} ya existia")
+
+                    
                 except Armamento.DoesNotExist:
                 # Si la fila no existe, crear un nuevo objeto
                     nuevo_objeto = Armamento(ID_ARMA = row['ID Arma'], 
@@ -204,9 +219,11 @@ def crear_armamento_excel(request):
                                            usuario = request.user     
                                            )  
                     nuevo_objeto.save()
-                    print("Nuevo registro agregado")
+                    messages.success(request, f"Armamento con matricula {row['Matrícula']} fue agregado con exito")
 
-            return render(request, 'excel_armamento.html')
+            return render(request, 'excel_armamento.html',{
+                'form':form
+            })
     else:
         form = ExcelUploadForm()
     return render(request, 'excel_armamento.html',{
