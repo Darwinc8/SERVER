@@ -85,7 +85,7 @@
       <input type="{{ form.MATRICULA.field.widget.input_type }}"
         class="form-control" 
         name="{{ form.MATRICULA.name }}" 
-        id="" 
+        id="matricula-input" 
         placeholder="{{ form.MATRICULA.label|title }}"
         value="{{form.MATRICULA.value | default:''}}"
         required>
@@ -206,6 +206,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="{% static 'js/boton_guardar.js'%}"></script>
 <script src="{% static 'js/tecla_enter.js'%}"></script>
+<script src="{% static 'js/deshabilitar_matricula.js'%}"></script>
 
 
 
