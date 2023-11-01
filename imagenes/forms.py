@@ -47,10 +47,6 @@ class BusquedaImagenesForm(forms.Form):
         )    
 
 class EditarImagenForm(forms.ModelForm):
-    def __init__(self, *args, **kwargs):
-        super(EditarImagenForm, self).__init__(*args, **kwargs)
-        if self.instance and self.instance.ID_ARMA:
-            self.fields['ID_ARMA'].widget.attrs['disabled'] = True
     class Meta:
         model = Imagenes
         fields = [
