@@ -3,7 +3,6 @@ $(document).ready(function() {
   var initialData = {};
   $('#myForm input[type="text"], #myForm input[type="number"], #myForm select, #myForm input[type="file"], #myForm textarea, #myForm input[type="date"]').each(function() {
     var fieldName = $(this).attr('name');
-    console.log("Selected field name: ", fieldName);
     initialData[fieldName] = $(this).val();
   });
 
@@ -12,7 +11,6 @@ $(document).ready(function() {
     var formData = {};
     $('#myForm input[type="text"], #myForm input[type="number"], #myForm select, #myForm input[type="file"], #myForm textarea, #myForm input[type="date"]').each(function() {
       var fieldName = $(this).attr('name');
-      console.log("Selected field name: ", fieldName);
       formData[fieldName] = $(this).val();
     });
 
