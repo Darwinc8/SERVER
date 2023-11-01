@@ -1,7 +1,9 @@
-  $(document).ready(function() {
-    // Deshabilitar la edición si el campo tiene un valor específico
-    var matriculaField = $('#matricula-input');
-    if (matriculaField.val()) {
-      matriculaField.prop('readonly', true);
-    }
-  });
+// Deshabilitar el campo select
+document.getElementById('matricula').disabled = true;
+
+// Habilitar el campo select antes de enviar el formulario
+   function enableFieldAndSubmit(event) {
+    event.preventDefault();
+    document.getElementById('matricula').disabled = false;
+    document.getElementById('myForm').submit();
+}

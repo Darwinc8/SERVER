@@ -90,7 +90,13 @@
       <tbody>
         {% for arma in lista %}
         <tr class="align-middle text-center">
-          <td>{{arma.ID_ARMA}}</td>
+          <td>
+            {% if arma.ID_ARMA %}
+                {{arma.ID_ARMA}}
+            {% else %}
+                <p>No</p>
+            {% endif %}
+          </td>        
           <td>{{arma.INSTITUCION}}</td>
           <td>{{arma.DEPENDENCIA}}</td>
           <td>{{arma.ENTIDAD}}</td>

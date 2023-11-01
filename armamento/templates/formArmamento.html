@@ -1,6 +1,6 @@
 {% load i18n %}
 {% load static %}
-<form enctype="multipart/form-data" method="post" id="myForm">
+<form enctype="multipart/form-data" method="post" id="myForm" onsubmit="enableFieldAndSubmit(event)">
     {% csrf_token %}
     <div class="mb-3">
       <label for="" class="form-label">{{ form.ID_ARMA.label|title }}:</label>
@@ -9,8 +9,7 @@
         name="{{ form.ID_ARMA.name }}" 
         id="" 
         placeholder="{{ form.ID_ARMA.label|title }}"
-        value="{{form.ID_ARMA.value | default:''}}"
-        required>
+        value="{{form.ID_ARMA.value | default:''}}">
     </div>
 
     <div class="mb-3">
@@ -85,7 +84,7 @@
       <input type="{{ form.MATRICULA.field.widget.input_type }}"
         class="form-control" 
         name="{{ form.MATRICULA.name }}" 
-        id="matricula-input" 
+        id="matricula" 
         placeholder="{{ form.MATRICULA.label|title }}"
         value="{{form.MATRICULA.value | default:''}}"
         required>
@@ -202,7 +201,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="{% static 'js/municipios.js' %}"></script>
 <script src="{% static 'js/instituciones.js' %}"></script>
-<script src="{% static 'js/validacion_cuip.js' %}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="{% static 'js/boton_guardar.js'%}"></script>
 <script src="{% static 'js/tecla_enter.js'%}"></script>

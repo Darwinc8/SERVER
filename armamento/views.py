@@ -233,17 +233,22 @@ def crear_armamento_excel(request):
 @login_required
 def editar_armamento(request, id):
     armamento = get_object_or_404(Armamento, pk=id)
-    form = ArmamentoForm(request.POST or None, instance=armamento)
-    if request.method == 'POST' and form.is_valid():
-        objecto = form.save(commit=False)
-        objecto.usuario = request.user
-        objecto.save()
-        return redirect('armamento')
+
+    if request.method == 'POST':
+        form = ArmamentoForm(request.POST, instance=armamento)
+        if form.is_valid():
+            objecto = form.save(commit=False)
+            objecto.usuario = request.user
+            objecto.save()
+            return redirect('armamento')
+        else:
+            print(form.errors)  # Mostrar errores en la consola
     else:
         armamento = convertir_fechas(armamento)
         form = ArmamentoForm(instance=armamento)
 
     return render(request, 'editar_armamento.html', {'form': form})
+
 
 @login_required
 def eliminar_armamento(request, id):
