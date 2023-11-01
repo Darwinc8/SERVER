@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-13 12:37-0600\n"
+"POT-Creation-Date: 2023-11-01 14:39-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,30 +18,40 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\armamento\templates\armamento.html:7 .\sesions\templates\index.html:28
+#: .\armamento\templates\armamento.html:13 .\sesions\templates\index.html:28
 #: .\sesions\templates\layout.html:29
 msgid "Armamento"
 msgstr "Armament"
 
-#: .\armamento\templates\armamento.html:19
+#: .\armamento\templates\armamento.html:25
 msgid "ARMAMENTO"
 msgstr "ARMAMENT"
 
-#: .\armamento\templates\armamento.html:22
+#: .\armamento\templates\armamento.html:30
 msgid "Agregar nuevo armamento"
 msgstr "Add new armament"
 
-#: .\armamento\templates\armamento.html:45
+#: .\armamento\templates\armamento.html:33
+#, fuzzy
+#| msgid "Crear Armamento"
+msgid "Crear manualmente"
+msgstr "Create Armament"
+
+#: .\armamento\templates\armamento.html:34
+msgid "Desde un archivo excel"
+msgstr ""
+
+#: .\armamento\templates\armamento.html:59
 #: .\imagenes\templates\imagenes.html:46
 msgid "ID ARMA"
 msgstr "WEAPON ID"
 
-#: .\armamento\templates\armamento.html:46
+#: .\armamento\templates\armamento.html:60
 #: .\imagenes\templates\imagenes.html:49
 msgid "INSTITUCIÓN"
 msgstr "INSTITUTION"
 
-#: .\armamento\templates\armamento.html:47
+#: .\armamento\templates\armamento.html:61
 #: .\catalogos\templates\catalogos\dependencias.html:21
 #: .\catalogos\templates\catalogos\instituciones.html:38
 #: .\catalogos\templates\catalogos\locs.html:38
@@ -49,7 +59,7 @@ msgstr "INSTITUTION"
 msgid "DEPENDENCIA"
 msgstr "DEPENDENCY"
 
-#: .\armamento\templates\armamento.html:48
+#: .\armamento\templates\armamento.html:62
 #: .\catalogos\templates\catalogos\entidades.html:21
 #: .\catalogos\templates\catalogos\locs.html:37
 #: .\catalogos\templates\catalogos\municipios.html:35
@@ -57,114 +67,114 @@ msgstr "DEPENDENCY"
 msgid "ENTIDAD"
 msgstr "ENTITY"
 
-#: .\armamento\templates\armamento.html:49
+#: .\armamento\templates\armamento.html:63
 #: .\catalogos\templates\catalogos\municipios.html:37
 msgid "MUNICIPIO"
 msgstr "MUNICIPALITY"
 
-#: .\armamento\templates\armamento.html:50
+#: .\armamento\templates\armamento.html:64
 msgid "NUMERO LOC"
 msgstr "LOC NUMBER"
 
-#: .\armamento\templates\armamento.html:51
+#: .\armamento\templates\armamento.html:65
 msgid "FOLIO C"
 msgstr "C FOLIO"
 
-#: .\armamento\templates\armamento.html:52
+#: .\armamento\templates\armamento.html:66
 msgid "FOLIO D"
 msgstr "D FOLIO"
 
-#: .\armamento\templates\armamento.html:53
+#: .\armamento\templates\armamento.html:67
 msgid "CLASE"
 msgstr "CLASS"
 
-#: .\armamento\templates\armamento.html:54
+#: .\armamento\templates\armamento.html:68
 #: .\catalogos\templates\catalogos\calibres.html:35
 msgid "CALIBRE"
 msgstr "CALIBER"
 
-#: .\armamento\templates\armamento.html:55
+#: .\armamento\templates\armamento.html:69
 #: .\catalogos\templates\catalogos\marcas.html:36
 msgid "MARCA"
 msgstr "BRAND"
 
-#: .\armamento\templates\armamento.html:56
+#: .\armamento\templates\armamento.html:70
 msgid "MODELO"
 msgstr "MODEL"
 
-#: .\armamento\templates\armamento.html:57
+#: .\armamento\templates\armamento.html:71
 msgid "MATRICULA"
 msgstr "REGISTRATION"
 
-#: .\armamento\templates\armamento.html:58
+#: .\armamento\templates\armamento.html:72
 msgid "MATRICULA CANON"
 msgstr "CANON REGISTRATION"
 
-#: .\armamento\templates\armamento.html:59
+#: .\armamento\templates\armamento.html:73
 msgid "FECHA DE REGISTRO"
 msgstr "REGISTRATION DATE"
 
-#: .\armamento\templates\armamento.html:60
+#: .\armamento\templates\armamento.html:74
 msgid "FECHA DEL LOC"
 msgstr "LOC DATE"
 
-#: .\armamento\templates\armamento.html:61
+#: .\armamento\templates\armamento.html:75
 msgid "ESTADO ARMA"
 msgstr "WEAPONS STATUS"
 
-#: .\armamento\templates\armamento.html:62
+#: .\armamento\templates\armamento.html:76
 msgid "FECHA DE CAPTURA"
 msgstr "CAPTURE DATE"
 
-#: .\armamento\templates\armamento.html:63
+#: .\armamento\templates\armamento.html:77
 msgid "OBSERVACIONES"
 msgstr "OBSERVATIONS"
 
-#: .\armamento\templates\armamento.html:64
+#: .\armamento\templates\armamento.html:78
 msgid "ESTATUS DEL ARMA"
 msgstr "WEAPONS STATUS"
 
-#: .\armamento\templates\armamento.html:65
+#: .\armamento\templates\armamento.html:79
 msgid "CUIP PORTADOR"
 msgstr "CUIP CARRIER"
 
-#: .\armamento\templates\armamento.html:66
+#: .\armamento\templates\armamento.html:80
 msgid "CUIP RESPONSABLE"
 msgstr "RESPONSIBLE CUIP"
 
-#: .\armamento\templates\armamento.html:68
+#: .\armamento\templates\armamento.html:82
 msgid "FECHA DE BAJA LOGICA"
 msgstr "LOGICAL RETIREMENT DATE"
 
-#: .\armamento\templates\armamento.html:69
+#: .\armamento\templates\armamento.html:83
 msgid "MOTIVO BAJA"
 msgstr "REASON FOR LEAVING"
 
-#: .\armamento\templates\armamento.html:70
+#: .\armamento\templates\armamento.html:84
 msgid "DOCUMENTO BAJA"
 msgstr "DOCUMENT LEAVE"
 
-#: .\armamento\templates\armamento.html:71
+#: .\armamento\templates\armamento.html:85
 msgid "OBSERVACIONES BAJA"
 msgstr "DISCHARGE REMARKS"
 
-#: .\armamento\templates\armamento.html:72
+#: .\armamento\templates\armamento.html:86
 msgid "FECHA DE BAJA DEL DOCUMENTO"
 msgstr "DOCUMENT RETIREMENT DATE"
 
-#: .\armamento\templates\armamento.html:73
+#: .\armamento\templates\armamento.html:87
 #: .\imagenes\templates\imagenes.html:56
 #: .\portadores\templates\portadores.html:51
 msgid "ACCIONES"
 msgstr "ACTIONS"
 
-#: .\armamento\templates\armamento.html:144
+#: .\armamento\templates\armamento.html:170
 #: .\imagenes\templates\imagenes.html:73
 #: .\portadores\templates\portadores.html:68
 msgid "Editar"
 msgstr "Edit"
 
-#: .\armamento\templates\armamento.html:147
+#: .\armamento\templates\armamento.html:173
 #: .\imagenes\templates\imagenes.html:76
 #: .\portadores\templates\portadores.html:71
 msgid "Eliminar"
@@ -172,6 +182,8 @@ msgstr "Delete"
 
 #: .\armamento\templates\crear_armamento.html:7
 #: .\armamento\templates\crear_armamento.html:13
+#: .\armamento\templates\excel_armamento.html:7
+#: .\armamento\templates\excel_armamento.html:13
 msgid "Crear Armamento"
 msgstr "Create Armament"
 
@@ -185,88 +197,104 @@ msgstr "Armament Data"
 msgid "Editar Armamento"
 msgstr "Edit Armament"
 
-#: .\armamento\templates\formArmamento.html:37
+#: .\armamento\templates\excel_armamento.html:16"
+msgid "Volver a Armamento"
+msgstr "Back to Armament"
+
+#: .\armamento\templates\excel_armamento.html:17
+msgid "Armamento desde un archivo Excel"
+msgstr "Armament from an Excel file"
+
+#: .\armamento\templates\excel_armamento.html:21
+msgid "Seleccione un archivo Excel"
+msgstr "Select an Excel file"
+
+#: .\armamento\templates\excel_armamento.html:31
+msgid "Cargar archivo"
+msgstr "Upload file"
+
+#: .\armamento\templates\formArmamento.html:36
 msgid "Numero Loc:"
 msgstr "Number Loc:"
 
-#: .\armamento\templates\formArmamento.html:42
+#: .\armamento\templates\formArmamento.html:41
 msgid "Folio C:"
 msgstr "C Folio"
 
-#: .\armamento\templates\formArmamento.html:53
+#: .\armamento\templates\formArmamento.html:52
 msgid "Folio D:"
 msgstr "D Folio"
 
-#: .\armamento\templates\formArmamento.html:64
+#: .\armamento\templates\formArmamento.html:63
 msgid "Clase del Arma:"
 msgstr "Weapon Class"
 
-#: .\armamento\templates\formArmamento.html:69
+#: .\armamento\templates\formArmamento.html:68
 msgid "Calibre del Arma:"
 msgstr "Weapon Caliber"
 
-#: .\armamento\templates\formArmamento.html:74
+#: .\armamento\templates\formArmamento.html:73
 msgid "Marca del Arma:"
 msgstr "Weapon Brand"
 
-#: .\armamento\templates\formArmamento.html:79
+#: .\armamento\templates\formArmamento.html:78
 msgid "Modelo del Arma:"
 msgstr "Weapon Model"
 
-#: .\armamento\templates\formArmamento.html:95
+#: .\armamento\templates\formArmamento.html:94
 msgid "Matricula Canon:"
 msgstr "Canon Registration"
 
-#: .\armamento\templates\formArmamento.html:110
+#: .\armamento\templates\formArmamento.html:109
 msgid "Fecha Loc:"
 msgstr "Loc date"
 
-#: .\armamento\templates\formArmamento.html:115
+#: .\armamento\templates\formArmamento.html:114
 msgid "Estado del Arma:"
 msgstr "Weapon Status"
 
-#: .\armamento\templates\formArmamento.html:120
+#: .\armamento\templates\formArmamento.html:119
 msgid "Fecha de Captura:"
 msgstr "Capture Date"
 
-#: .\armamento\templates\formArmamento.html:130
+#: .\armamento\templates\formArmamento.html:129
 msgid "Estatus del Arma:"
 msgstr "Weapon Status"
 
-#: .\armamento\templates\formArmamento.html:135
+#: .\armamento\templates\formArmamento.html:134
 #, fuzzy
 #| msgid "CUIP del Portador:"
 msgid "CUIP Portador"
 msgstr "Carrier's CUIP"
 
-#: .\armamento\templates\formArmamento.html:140
+#: .\armamento\templates\formArmamento.html:145
 #, fuzzy
 #| msgid "CUIP del Responsable:"
 msgid "CUIP Responsable"
 msgstr "Person in charge's CUIP"
 
-#: .\armamento\templates\formArmamento.html:155
+#: .\armamento\templates\formArmamento.html:166
 msgid "Fecha de Baja Logica:"
 msgstr "Date of Logical Discharge"
 
-#: .\armamento\templates\formArmamento.html:160
+#: .\armamento\templates\formArmamento.html:171
 msgid "Motivo de baja:"
 msgstr "Reason for leaving"
 
-#: .\armamento\templates\formArmamento.html:165
+#: .\armamento\templates\formArmamento.html:176
 msgid "Documento de Baja:"
 msgstr "Discharge Document"
 
-#: .\armamento\templates\formArmamento.html:175
+#: .\armamento\templates\formArmamento.html:186
 msgid "Observaciones de Baja:"
 msgstr "Discharge Observations"
 
-#: .\armamento\templates\formArmamento.html:180
+#: .\armamento\templates\formArmamento.html:191
 msgid "Fecha de baja del documento:"
 msgstr "Document retirement date"
 
-#: .\armamento\templates\formArmamento.html:186
-#: .\imagenes\templates\formImagen.html:82
+#: .\armamento\templates\formArmamento.html:197
+#: .\imagenes\templates\formImagen.html:81
 #: .\portadores\templates\formPortador.html:33
 msgid "Volver"
 msgstr "Back"
@@ -1725,11 +1753,11 @@ msgstr "Existing Weapon ID"
 msgid "Entidad Federativa:"
 msgstr "Federal Entity"
 
-#: .\imagenes\templates\formImagen.html:45
+#: .\imagenes\templates\formImagen.html:44
 msgid "Tipo de Imagen:"
 msgstr "Image Type"
 
-#: .\imagenes\templates\formImagen.html:65
+#: .\imagenes\templates\formImagen.html:64
 msgid "Imagen del Arma:"
 msgstr "Weapon Image"
 
