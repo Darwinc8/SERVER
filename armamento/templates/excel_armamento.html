@@ -13,20 +13,22 @@
         {% trans "Crear Armamento" %}
     </div>
     <div class="card-body">
-        <div class="container mt-5">
-            <h1>Armamento desde un archivo Excel</h1>
-            <form action="" method="post" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
+            <a class="btn btn-success mb-2 mb-md-0" href="{% url 'armamento' %}" role="button">{% trans "Volver a Armamento" %}</a>
+            <h1>{% trans "Armamento desde un archivo Excel" %}</h1>
+            <form action="" method="post" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate id="myForm">
                 {% csrf_token %}
                 <div class="col-md-6">
-                    <label for="archivo_excel" class="form-label">Seleccione un archivo Excel</label>
+                    <label for="archivo_excel" class="form-label">{% trans "Seleccione un archivo Excel" %}</label>
                     <input type="{{ form.archivo_excel.field.widget.input_type }}" 
                     class="form-control"
-                    accept=".xlsx" 
+                    accept=".xlsx"
+                    id="excel" 
                     name="{{ form.archivo_excel.name }}"  
                     required>
                 </div>
                 <div class="col-12">
-                    <button class="btn btn-primary" type="submit">Cargar archivo</button>
+                    <button class="btn btn-primary" type="submit" id="cargar_excel" disabled
+                    >{% trans "Cargar archivo" %}</button>
                 </div>
             </form>
             <br>
@@ -37,9 +39,9 @@
                 {% endfor %}
                 {% endif %}
             </div>
-        </div>
     </div>
     <div class="card-footer text-muted">
     </div>
 </div>
+<script src="{% static 'js/cargar_excel.js'%}"></script>
 {% endblock %}
