@@ -2,7 +2,7 @@ import os
 from django.shortcuts import get_object_or_404, render, redirect
 from .models import Imagenes
 from django.contrib.auth.decorators import login_required
-from .forms import ImagenForm
+from .forms import CrearImagenForm, EditarImagenForm
 from catalogos.models import Institucion
 from django.http import JsonResponse
 from .forms import BusquedaImagenesForm
@@ -24,12 +24,12 @@ def imagenes(request):
 @login_required
 def crear_imagen(request):
     if request.method == 'GET':
-        form = ImagenForm(request.POST or None)
+        form = CrearImagenForm(request.POST or None)
         return render(request, 'crear_imagen.html', {
             'form': form
         })
     else:
-        form = ImagenForm(request.POST, request.FILES)
+        form = CrearImagenForm(request.POST, request.FILES)
         if form.is_valid():
             objecto = form.save(commit=False)
             objecto.usuario = request.user
@@ -63,11 +63,12 @@ def eliminar_imagen(request, id):
 
 @login_required
 def editar_imagen(request, id):
-        imagen = Imagenes.objects.get(ID_ALTERNA=id)
-        ruta = imagen.IMAGEN.url
-        form = ImagenForm(request.POST or None, request.FILES or None, instance=imagen)
+        imagen = get_object_or_404(Imagenes,pk=id)
+        ruta = f"/RNAE_V1{imagen.IMAGEN.url}"
+        
+        form = EditarImagenForm(request.POST or None, request.FILES or None, instance=imagen)
 
-        if form.is_valid() and request.POST:
+        if form.is_valid() and request.method == 'POST':
             if 'IMAGEN' in form.changed_data:
                 utils.EliminarImagenAntigua(ruta)
             objeto = form.save(commit=False)
