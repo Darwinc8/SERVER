@@ -3,6 +3,7 @@ from django.forms import DateInput
 from .models import Armamento, Institucion, Dependencia, Entidad, Municipio, LOC, Tipo, Calibre, Marca, Modelo, Edo_conservacion
 
 class ArmamentoForm(forms.ModelForm):
+    
     class Meta:
         model = Armamento
         exclude = ['ID_ALTERNA', 'ultima_modificacion', 'usuario']

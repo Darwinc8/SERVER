@@ -80,15 +80,29 @@
     </div>
 
     <div class="mb-3">
-      <label for="" class="form-label">{{ form.MATRICULA.label|title }}:</label>
-      <input type="{{ form.MATRICULA.field.widget.input_type }}"
-        class="form-control" 
-        name="{{ form.MATRICULA.name }}" 
-        id="matricula" 
-        placeholder="{{ form.MATRICULA.label|title }}"
-        value="{{form.MATRICULA.value | default:''}}"
-        required>
-    </div>
+      <label for="matricula" class="form-label">{{ form.MATRICULA.label|title }}:</label>
+      {% if is_editing %}
+        <input type="{{ form.MATRICULA.field.widget.input_type }}"
+            class="form-control" 
+            name="{{ form.MATRICULA.name }}" 
+            id="matricula" 
+            placeholder="{{ form.MATRICULA.label|title }}"
+            value="{{form.MATRICULA.value | default:''}}"
+            disabled
+        >
+    {% else %}
+        <input type="{{ form.MATRICULA.field.widget.input_type }}"
+            class="form-control" 
+            name="{{ form.MATRICULA.name }}" 
+            id="matricula" 
+            placeholder="{{ form.MATRICULA.label|title }}"
+            value="{{form.MATRICULA.value | default:''}}"
+            required
+        >
+    {% endif %}
+  </div>
+  
+  
 
     <div class="mb-3">
       <label for="" class="form-label">{% trans "Matricula Canon:" %}</label>
@@ -204,7 +218,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="{% static 'js/boton_guardar.js'%}"></script>
 <script src="{% static 'js/tecla_enter.js'%}"></script>
-<script src="{% static 'js/deshabilitar_matricula.js'%}"></script>
+{% if is_editing %}
+  <script src="{% static 'js/deshabilitar_matricula.js'%}"></script>
+{% endif %}
 
 
 
