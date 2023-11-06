@@ -1,4 +1,5 @@
 from django.db import models
+
 from django.contrib.auth.models import User
 # Create your models here.
 class Portador(models.Model):
@@ -8,7 +9,7 @@ class Portador(models.Model):
     APELLIDO_MATERNO = models.CharField(max_length=30,blank=False)
     CORREO = models.EmailField(max_length=254,blank=False, unique=True)
     TELEFONO = models.CharField(max_length=10,blank=False, unique=True)
-    IMAGEN = models.FileField(upload_to='images/portadores/',blank=False, unique=True)
+    IMAGEN = models.ImageField(upload_to='images/portadores/',blank=False, unique=True)
     
     usuario = models.ForeignKey(User, on_delete=models.RESTRICT, null=False, blank=True)
     
@@ -26,7 +27,7 @@ class PortadorLog(models.Model):
     apellido_materno = models.CharField(max_length=30,null=False)
     correo = models.EmailField(max_length=254,null=False)
     telefono = models.CharField(max_length=10,null=False)
-    imagen = models.FileField(upload_to='respaldo/portadores/',null=False)
+    imagen = models.ImageField(upload_to='respaldo/portadores/',null=False)
     usuario = models.CharField(max_length=50)
     ultima_modificacion = models.DateTimeField()
     

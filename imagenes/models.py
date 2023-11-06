@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import FileExtensionValidator
 from catalogos.models import Institucion, Dependencia, Entidad, Tipo_Imagen
 from armamento.models import Armamento
 from django.contrib.auth.models import User
@@ -10,12 +11,12 @@ class Imagenes(models.Model):
     DESIMA = models.CharField(max_length=80)
     FOLIO = models.DecimalField(max_digits=10, decimal_places=0)
     GRUPO = models.CharField(max_length=1)
-    IMAGEN = models.CharField(unique=True, max_length=100)
+    IMAGEN = models.ImageField(upload_to='images/imagenes/',blank=False, unique=True, validators=[FileExtensionValidator(['jpg', 'jpeg', 'png', 'gif'])])
     DEPENDENCIA = models.ForeignKey(Dependencia, models.DO_NOTHING)
     ENTIDAD = models.ForeignKey(Entidad, models.DO_NOTHING)
     INSTITUCION = models.ForeignKey(Institucion, models.DO_NOTHING)
     TIPO = models.ForeignKey(Tipo_Imagen, models.DO_NOTHING)
-    ultima_modificacion = models.DateTimeField()
+    ultima_modificacion = models.DateTimeField(auto_now=True)
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
 
 class ImagenesLog(models.Model):
@@ -23,7 +24,7 @@ class ImagenesLog(models.Model):
     desima = models.CharField(max_length=80)
     folio = models.DecimalField(max_digits=10, decimal_places=0)
     grupo = models.CharField(max_length=1)
-    imagen = models.CharField(max_length=100)
+    imagen = models.ImageField(upload_to='respaldo/imagenes/',null=False)
     usuario = models.CharField(max_length=50)
     ultima_modificacion = models.DateTimeField()
     institucion = models.CharField(max_length=80)

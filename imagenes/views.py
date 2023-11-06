@@ -26,7 +26,8 @@ def crear_imagen(request):
     if request.method == 'GET':
         form = ImagenForm(request.POST or None)
         return render(request, 'crear_imagen.html', {
-            'form': form
+            'form': form,
+            'is_editing': False
         })
     else:
         form = ImagenForm(request.POST, request.FILES)
@@ -76,7 +77,8 @@ def editar_imagen(request, id):
             objeto.save()    
             return redirect('imagenes')
         return render(request, 'editar_imagen.html', {
-            'form': form
+            'form': form,
+            'is_editing': True
             })
         
 @login_required
