@@ -3,7 +3,7 @@
 <form enctype="multipart/form-data" method="post" id="myForm" onsubmit="enableFieldAndSubmit(event)">
   {% csrf_token %}
   <div class="mb-3">
-    <label for="{{ form.ID_ARMA.id_for_label }}" class="form-label">{% trans "Id del Arma existente:" %}</label>
+    <label for="{{ form.ID_ARMA.id_for_label }}" class="form-label">{% trans "Matricula del Arma existente:" %}</label>
     <br>
     {{ form.ID_ARMA}}
   </div>
@@ -68,7 +68,7 @@
     <br><br>
     {% endif %}
     <input type="{{ form.IMAGEN.field.widget.input_type }}" class="form-control" name="{{ form.IMAGEN.name }}"
-      placeholder="{{ form.IMAGEN.label|title }}" value="{{form.IMAGEN.value | default:''}}">
+      placeholder="{{ form.IMAGEN.label|title }}" value="{{form.IMAGEN.value | default:''}}" accept="image/*" >
   </div>
   {% if messages %}
   <ul class="messages">
