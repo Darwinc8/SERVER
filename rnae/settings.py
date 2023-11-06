@@ -81,7 +81,7 @@ DATABASES = {
     # )
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'rnae_bus_v1',
+        'NAME': 'rnae_bus',
         'USER': 'root',
         'PASSWORD': 'root',
         'HOST': 'localhost',
