@@ -1,9 +1,20 @@
 from django.db import models
 from catalogos.models import Institucion, Dependencia, Calibre, Edo_conservacion, Entidad, Estatus_Arma, LOC, Marca, Modelo, Municipio, Tipo
 from portadores.models import Portador
+from datetime import datetime
+from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 
 # Create your models here.
+
+def validate_fecha_no_anterior_1990(value):
+    if value < datetime(1990, 1, 1).date():
+        raise ValidationError('No puede ser anterior al 01 de enero de 1990.')
+        
+def save(self, *args, **kwargs):
+        self.clean()
+        super(Armamento, self).save(*args, **kwargs)
+    
 class Armamento(models.Model):
     ID_ALTERNA= models.AutoField(primary_key=True)
     ID_ARMA = models.DecimalField(max_digits=10, decimal_places=0, unique=False, null=True, blank=True)
@@ -26,20 +37,20 @@ class Armamento(models.Model):
     MODELO_ARMA = models.ForeignKey(Modelo, on_delete=models.RESTRICT, null=False, blank=False)
     MATRICULA = models.CharField(max_length=20, null=False, blank=False, unique=True)
     MATRICULA_CANON = models.CharField(max_length=40, null=True, blank=True)
-    FECHA = models.DateField(null=False, blank=False)
-    FECHA_LOC = models.DateField(null=False, blank=False)
+    FECHA = models.DateField(null=False, blank=False, validators=[validate_fecha_no_anterior_1990])
+    FECHA_LOC = models.DateField(null=False, blank=False, validators=[validate_fecha_no_anterior_1990])
     ESTADO_ARMA = models.ForeignKey(Edo_conservacion, on_delete=models.RESTRICT, null=False, blank=False)
-    FECHA_CAPTURA = models.DateField(null=False, blank=False)
+    FECHA_CAPTURA = models.DateField(null=False, blank=False, validators=[validate_fecha_no_anterior_1990])
     OBSERVACIONES = models.TextField(null=False, blank=False)
     ESTATUS_ARMA = models.ForeignKey(Estatus_Arma, on_delete=models.RESTRICT, null=False, blank=False)
     CUIP_PORTADOR = models.TextField(null=False)
     CUIP_RESPONSABLE = models.TextField(null=False)
     CIHB = models.CharField(max_length=20, null=True, blank=True)
-    FECHA_BAJA_LOGICA = models.DateField(null=True, blank=True)
+    FECHA_BAJA_LOGICA = models.DateField(null=True, blank=True, validators=[validate_fecha_no_anterior_1990])
     MOTIVO_BAJA = models.TextField(null=True, blank=True)
     DOCUMENTO_BAJA = models.CharField(max_length=20, null=True, blank=True)
     OBSERVACIONES_BAJA = models.TextField(null=True, blank=True)
-    FECHA_BAJA_DOCUMENTO = models.DateField(null=True, blank=True)
+    FECHA_BAJA_DOCUMENTO = models.DateField(null=True, blank=True, validators=[validate_fecha_no_anterior_1990])
     
     usuario = models.ForeignKey(User, on_delete=models.RESTRICT, null=False, blank=True)
     

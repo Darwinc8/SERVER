@@ -32,13 +32,25 @@
                 </div>
             </form>
             <br>
-            <div>
-                {% if messages %}
-                {% for message in messages %}
-                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
-                {% endfor %}
-                {% endif %}
-            </div>
+            {% if messages %}
+    <div class="my-3 p-3 rounded">
+        {% for message in messages %}
+            {% if message.tags == 'error' %}
+                <div class="alert alert-danger" role="alert">
+                    {{ message }}
+                </div>
+            {% elif message.tags == 'success' %}
+                <div class="alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+            {% else %}
+                <div class="alert alert-secondary" role="alert">
+                    {{ message }}
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endif %}
     </div>
     <div class="card-footer text-muted">
     </div>

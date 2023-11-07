@@ -1,3 +1,5 @@
+import datetime
+from django.forms import ValidationError
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
 from .models import Armamento
@@ -179,7 +181,14 @@ def crear_armamento_excel(request):
                     if objeto.usuario != request.user:
                        objeto.usuario = request.user
                     
-                    objeto.save()
+                    try:
+                        objeto.full_clean()
+                        objeto.save()
+                    except ValidationError as e:
+                        mensaje_error = str(e)
+                        messages.error(request, f"Error al guardar el Armamento {objeto.MATRICULA}: {mensaje_error}")
+                        return redirect('armamento_excel')
+                    
                     if modificado:
                         messages.success(request, f"Armamento con matricula {row['Matrícula']} fue actualizado exitosamente")
                     else:
@@ -218,7 +227,14 @@ def crear_armamento_excel(request):
                                         #    FECHA_BAJA_DOCUMENTO = row['Fecha de baja del documento'],
                                            usuario = request.user     
                                            )  
-                    nuevo_objeto.save()
+                    
+                    try:
+                        nuevo_objeto.full_clean()
+                        nuevo_objeto.save()
+                    except ValidationError as e:
+                        mensaje_error = str(e)
+                        messages.error(request, f"Error al guardar el Armamento {nuevo_objeto.MATRICULA}: {mensaje_error}")
+                        return redirect('armamento_excel')
                     messages.success(request, f"Armamento con matricula {row['Matrícula']} fue agregado con exito")
 
             return render(request, 'excel_armamento.html',{
@@ -252,7 +268,10 @@ def editar_armamento(request, id):
         'is_editing': True 
         })
 
-
+def validate_fecha_1990(value):
+    if value < datetime(1990, 1, 1).date():
+        raise ValidationError('La fecha no puede ser anterior al 01 de enero de 1990.')
+    
 @login_required
 def eliminar_armamento(request, id):
     try:
