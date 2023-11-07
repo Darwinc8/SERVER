@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm
+from .forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
@@ -10,27 +11,37 @@ from django.conf import settings
 def registrarse(request):
     if request.method == 'GET':
         print('enviando formulario')
-        return render(request, 'sign_up.html', {
-            'form': UserCreationForm
-        })
+        form = UserCreationForm()
+        return render(request, 'sign_up.html', {'form': form})
     else:
-        if request.POST['password1'] == request.POST['password2']:
-            try:
-                user = User.objects.create_user(
-                    username=request.POST['username'], password=request.POST['password1'])
-                
-                user.save()
-                login(request, user)
-                return redirect('catalogos')
-            except IntegrityError:
-                return render(request, 'sign_up.html',{
-                'form': UserCreationForm,
-                'error': 'User already exists'
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            if request.POST['password1'] == request.POST['password2']:
+                if form.cleaned_data['captcha']:
+                    try:
+                        user = User.objects.create_user(
+                            username=request.POST['username'], password=request.POST['password1'])
+                        user.is_active = False  # Establecer el usuario como inactivo
+                        user.save()
+                        login(request, user)
+                        return redirect('catalogos')
+                    except IntegrityError:
+                        return render(request, 'sign_up.html', {
+                            'form': form,
+                            'error': 'El usuario ya existe'
+                        })
+                else:
+                    return render(request, 'sign_up.html', {
+                        'form': form,
+                        'error': 'Por favor complete el CAPTCHA'
+                    })
+            else:
+                return render(request, 'sign_up.html', {
+                    'form': form,
+                    'error': 'La contraseña no coincide'
                 })
-        return render(request, 'sign_up.html', {
-            'form': UserCreationForm,
-            'error': 'Password do not match'
-        })
+        else:
+            return render(request, 'sign_up.html', {'form': form})
   
 @login_required
 def cerrar_sesion(request):

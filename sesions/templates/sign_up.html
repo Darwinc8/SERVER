@@ -59,6 +59,25 @@
                       <label class="form-label" for="password2">{% trans "Repite tu contraseña" %}</label>
                     </div>
                   </div>
+                  <div class="mb-2 d-flex align-items-center">
+                    <i class="fas fa-key fa-lg me-3 fa-fw mb-4"></i>
+                    <div class="form-outline flex-fill">
+                      {{form.captcha}}
+                      <label class="form-label" for="password2">{% trans "Transcribe el codigo de la imagen" %}</label>
+                    </div>
+                  </div>
+                  
+                  {% if form.errors %}
+    <div class="alert alert-danger" role="alert">
+        <ul>
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
                   
                   <div class="d-flex justify-content-center mx-4 mb-3">
                     <button type="submit" class="btn btn-primary btn-lg w-100">
