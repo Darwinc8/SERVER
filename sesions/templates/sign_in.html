@@ -22,30 +22,48 @@
                 <form action="" method="post">
                   {% csrf_token %}
                   <div class="d-flex align-items-center mb-3 pb-1 text-center">
-                    <span class="h1 fw-bold mx-auto">{% trans "Bienvenido!" %}</span>
+                      <span class="h1 fw-bold mx-auto">{% trans "Bienvenido!" %}</span>
                   </div>
                   
                   <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">{% trans "Inicia sesión con tu perfil" %}</h5>
-                
+              
                   <div class="form-outline mb-4">
-                    <input type="text" id="username"
-                    name="username" 
-                    class="form-control form-control-lg" />
-                    <label class="form-label" for="username">{% trans "Usuario" %}</label>
+                      <input type="text" id="username" name="username" class="form-control form-control-lg" required/>
+                      <label class="form-label" for="username">{% trans "Usuario" %}</label>
                   </div>
-                
+              
                   <div class="form-outline mb-4">
-                    <input type="password" id="password" 
-                    name="password"
-                    class="form-control form-control-lg" />
-                    <label class="form-label" for="password">{% trans "Contraseña" %}</label>
+                      <input type="password" id="password" name="password" class="form-control form-control-lg" required/>
+                      <label class="form-label" for="password">{% trans "Contraseña" %}</label>
                   </div>
-                
+              
+                  <div class="form-outline mb-4">
+                      {{ form.captcha }}
+                  </div>
+              
                   <div class="pt-1 mb-4">
-                    <button class="btn btn-primary btn-lg w-100" type="submit">{% trans "Ingresar" %}</button>
+                      <button class="btn btn-primary btn-lg w-100" type="submit">{% trans "Ingresar" %}</button>
                   </div>
-                  
-                </form>
+              
+                  {% if form.errors %}
+        <div class="alert alert-danger" role="alert">
+            <ul>
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <li><strong>{{ field.label }}:</strong> {{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    {% if error %}
+        <div class="alert alert-danger mt-3" role="alert">
+            <strong>Error:</strong> {{ error }}
+        </div>
+    {% endif %}
+
+              </form>
+              
               </div>
             </div>
           </div>
