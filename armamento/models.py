@@ -1,6 +1,5 @@
 from django.db import models
-from catalogos.models import Institucion, Dependencia, Calibre, Edo_conservacion, Entidad, Estatus_Arma, LOC, Marca, Modelo, Municipio, Tipo
-from portadores.models import Portador
+from catalogos.models import Institucion, Dependencia, Calibre, Edo_conservacion, Entidad, Estatus_Arma, LOC, Marca, Modelo, Municipio, Tipo, TipoFuncinamiento
 from datetime import datetime
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
@@ -46,6 +45,7 @@ class Armamento(models.Model):
     CUIP_PORTADOR = models.TextField(null=False)
     CUIP_RESPONSABLE = models.TextField(null=False)
     CIHB = models.CharField(max_length=20, null=True, blank=True)
+    TIPO_FUNCIONAMIENTO = models.ForeignKey(TipoFuncinamiento, on_delete=models.RESTRICT, null=False, default=4)
     FECHA_BAJA_LOGICA = models.DateField(null=True, blank=True, validators=[validate_fecha_no_anterior_1990])
     MOTIVO_BAJA = models.TextField(null=True, blank=True)
     DOCUMENTO_BAJA = models.CharField(max_length=20, null=True, blank=True)
@@ -85,6 +85,7 @@ class ArmamentoLog(models.Model):
     estatus_arma = models.CharField(max_length=30, null=False)
     cuip_portador = models.CharField(max_length=20, null=False)
     cuip_responsable = models.CharField(max_length=20, null=False) 
+    tipo_funcionamiento = models.CharField(max_length=20, null=False)
     cihb = models.CharField(max_length=20, null=True, blank=True)
     fecha_baja_logica = models.DateField(null=True, blank=True)
     motivo_baja = models.TextField(null=True, blank=True)

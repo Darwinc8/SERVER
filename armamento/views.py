@@ -67,9 +67,11 @@ def crear_armamento_excel(request):
             df['Modelo del arma'] = pd.to_numeric(df['Modelo del arma'], errors='coerce')
             df['Estado del arma'] = pd.to_numeric(df['Estado del arma'], errors='coerce')
             df['Estatus del arma'] = pd.to_numeric(df['Estatus del arma'], errors='coerce')
+            df['Tipo de funcionamiento'] = pd.to_numeric(df['Tipo de funcionamiento'], errors='coerce')
             df['Fecha de registro'] = pd.to_datetime(df['Fecha de registro']).dt.strftime('%Y-%m-%d')
             df['Fecha de alta/captura'] = pd.to_datetime(df['Fecha de alta/captura']).dt.strftime('%Y-%m-%d')
             df['Fecha de alta en la LOC'] = pd.to_datetime(df['Fecha de alta en la LOC']).dt.strftime('%Y-%m-%d')
+            
             
             
             
@@ -177,6 +179,10 @@ def crear_armamento_excel(request):
                     if objeto.CIHB != row['Código de Identificación de Huella Balística (CIHB)']:
                         modificado = True
                         objeto.CIHB = row['Código de Identificación de Huella Balística (CIHB)']
+                        
+                    if objeto.TIPO_FUNCIONAMIENTO != row['Tipo de funcionamiento']:
+                        modificado = True
+                        objeto.TIPO_FUNCIONAMIENTO = row['Tipo de funcionamiento']
                     
                     if objeto.usuario != request.user:
                        objeto.usuario = request.user
@@ -220,6 +226,7 @@ def crear_armamento_excel(request):
                                            CUIP_PORTADOR = row['CUIP del elemento que la porta'],
                                            CUIP_RESPONSABLE = row['CUIP del elemento que la porta'],
                                            CIHB = row['Código de Identificación de Huella Balística (CIHB)'],
+                                           TIPO_FUNCIONAMIENTO = row['Tipo de funcionamiento'],
                                         #    FECHA_BAJA_LOGICA = row['Fecha de baja logica'],
                                         #    MOTIVO_BAJA = row['Motivo de baja'],
                                         #    DOCUMENTO_BAJA = row['Documento de baja'],
