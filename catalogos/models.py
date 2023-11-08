@@ -125,3 +125,7 @@ class Municipio(models.Model):
     class Meta:
         unique_together = ('ID_ENTIDAD', 'ID_MUNICIPIO')
         
+class TipoFuncinamiento(models.Model):
+    ID = models.AutoField(primary_key=True)
+    TipoFuncionamiento = models.TextField(max_length=20)
+    Status = models.IntegerField(choices=[(0, 'Deshabilitado'), (1, 'Habilitado')])
