@@ -129,3 +129,6 @@ class TipoFuncinamiento(models.Model):
     ID = models.AutoField(primary_key=True)
     TipoFuncionamiento = models.TextField(max_length=20)
     Status = models.IntegerField(choices=[(0, 'Deshabilitado'), (1, 'Habilitado')])
+    
+    def __str__(self):
+        return self.TipoFuncionamiento
