@@ -45,7 +45,6 @@ def crear_armamento(request):
             'is_editing': False
         })
 
-
 @login_required
 def crear_armamento_excel(request):
     if request.method == 'POST' and request.FILES['archivo_excel']:
@@ -273,7 +272,10 @@ def editar_armamento(request, id):
             objecto.save()
             return redirect('armamento')
         else:
-            print(form.errors)  # Mostrar errores en la consola
+            return render(request, 'crear_armamento.html', {
+                'form': form,
+                'is_editing': True
+            })
     else:
         armamento = convertir_fechas(armamento)
         form = ArmamentoForm(instance=armamento)
