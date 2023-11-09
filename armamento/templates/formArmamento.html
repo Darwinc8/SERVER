@@ -81,16 +81,6 @@
 
     <div class="mb-3">
       <label for="matricula" class="form-label">{{ form.MATRICULA.label|title }}:</label>
-      {% if is_editing %}
-        <input type="{{ form.MATRICULA.field.widget.input_type }}"
-            class="form-control" 
-            name="{{ form.MATRICULA.name }}" 
-            id="matricula" 
-            placeholder="{{ form.MATRICULA.label|title }}"
-            value="{{form.MATRICULA.value | default:''}}"
-            disabled
-        >
-    {% else %}
         <input type="{{ form.MATRICULA.field.widget.input_type }}"
             class="form-control" 
             name="{{ form.MATRICULA.name }}" 
@@ -99,7 +89,6 @@
             value="{{form.MATRICULA.value | default:''}}"
             required
         >
-    {% endif %}
   </div>
   
   
@@ -177,6 +166,11 @@
     </div>
 
     <div class="mb-3">
+      <label for="" class="form-label">{{ form.TIPO_FUNCIONAMIENTO.label|title }}:</label>
+        <br>{{form.TIPO_FUNCIONAMIENTO}}<br>
+    </div>
+
+    <div class="mb-3">
       <label for="" class="form-label">{% trans "Fecha de Baja Logica:" %}</label>
       <br>{{ form.FECHA_BAJA_LOGICA }}<br>
     </div>
@@ -205,6 +199,18 @@
       <label for="" class="form-label">{% trans "Fecha de baja del documento:" %}</label>
       <br>{{ form.FECHA_BAJA_DOCUMENTO }}<br>
     </div>
+    {% if form.errors %}
+    <div class="alert alert-danger" role="alert">
+        <ul>
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+
 
     <input class="btn btn-success" type="submit" value="Guardar" id="guardar-btn">
 

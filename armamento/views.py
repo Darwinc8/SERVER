@@ -26,17 +26,25 @@ def armamento(request):
 
 @login_required
 def crear_armamento(request):
-    form = ArmamentoForm(request.POST or None)
-    if request.method == 'POST' and form.is_valid():
-        objecto = form.save(commit=False)
-        objecto.usuario = request.user
-        objecto.save()
-        return redirect('armamento')
+    if request.method == 'POST':
+        form = ArmamentoForm(request.POST)
+        if form.is_valid():
+            objecto = form.save(commit=False)
+            objecto.usuario = request.user
+            objecto.save()
+            return redirect('armamento')
+        else:
+            return render(request, 'crear_armamento.html', {
+                'form': form,
+                'is_editing': False
+            })
     else:
+        form = ArmamentoForm()
         return render(request, 'crear_armamento.html', {
-        'form': form,
-        'is_editing': False
+            'form': form,
+            'is_editing': False
         })
+
 
 @login_required
 def crear_armamento_excel(request):
