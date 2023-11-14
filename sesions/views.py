@@ -50,19 +50,24 @@ def cerrar_sesion(request):
 def iniciar_sesion(request):
     if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)
+
         if form.is_valid():
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
             user = authenticate(request, username=username, password=password)
+
             if user is not None:
                 login(request, user)
                 return redirect('home')
             else:
                 # Usuario no encontrado
-                return render(request, 'sign_in.html', {'form': form, 'error': 'Usuario no encontrado. Por favor, inténtalo de nuevo.'})
+                error_message = 'Usuario no encontrado. Por favor, inténtalo de nuevo.'
+                return render(request, 'sign_in.html', {'form': form, 'error': error_message})
         else:
-            # Error de CAPTCHA o cualquier otro error en el formulario
-            return render(request, 'sign_in.html', {'form': form})
+            # Captura errores en el formulario (puede ser un problema con el CAPTCHA u otros campos)
+            error_message = 'Usuario o contraseña incorrectos. Por favor, revisa tus datos e inténtalo de nuevo.'
+            return render(request, 'sign_in.html', {'form': form, 'error': error_message})
+    
     else:
         return render(request, 'sign_in.html', {'form': AuthenticationForm()})
 

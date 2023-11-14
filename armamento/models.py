@@ -12,7 +12,7 @@ def validate_fecha_no_anterior_1990(value):
 
 def validate_cuip_formato(value):
     if not (14 <= len(value) <= 20):
-        raise ValidationError('lOS CUIPs debe tener entre 14 y 20 caracteres.')
+        raise ValidationError('Los CUIPs debe tener entre 14 y 20 caracteres.')
     if not value[0:4].isalpha():
         raise ValidationError('Los primeros 4 caracteres de CUIPs deben ser letras.')
 

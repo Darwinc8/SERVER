@@ -17,7 +17,7 @@
             </div>
             
             <div class="col-md-6 col-lg-7 d-flex align-items-center">
-              <div class="card-body text-black p-5"> <!-- Agrega el padding aquí -->
+              <div class="card-body text-black p-5">
 
                 <form action="" method="post">
                   {% csrf_token %}
@@ -45,22 +45,19 @@
                       <button class="btn btn-primary btn-lg w-100" type="submit">{% trans "Ingresar" %}</button>
                   </div>
               
-                  {% if form.errors %}
-        <div class="alert alert-danger" role="alert">
-            <ul>
-                {% for field in form %}
-                    {% for error in field.errors %}
-                        <li><strong>{{ field.label }}:</strong> {{ error }}</li>
-                    {% endfor %}
-                {% endfor %}
-            </ul>
-        </div>
-    {% endif %}
-    {% if error %}
-        <div class="alert alert-danger mt-3" role="alert">
-            <strong>Error:</strong> {{ error }}
-        </div>
-    {% endif %}
+                  <!-- Mostrar mensaje de error específico del CAPTCHA -->
+                  {% if form.captcha.errors %}
+                  <div class="alert alert-danger mt-3">
+                      {{ form.captcha.errors.0 }}
+                  </div>
+              {% endif %}
+          
+              <!-- Mostrar mensaje de error general -->
+              {% if error and not form.captcha.errors %}
+                  <div class="alert alert-danger mt-3">
+                      {{ error }}
+                  </div>
+              {% endif %}
 
               </form>
               
