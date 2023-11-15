@@ -5,7 +5,7 @@ from django.http import JsonResponse
 from .models import Armamento
 from .forms import ArmamentoForm, BusquedaArmamentoForm, ExcelUploadForm
 from django.contrib.auth.decorators import login_required
-from .models import Municipio, Institucion, Dependencia, Entidad, LOC, Tipo, Calibre, Marca, Modelo, Edo_conservacion, Estatus_Arma
+from .models import Municipio, Institucion, Dependencia, Entidad, LOC, Tipo, Calibre, Marca, Modelo, Edo_conservacion, Estatus_Arma, TipoFuncinamiento
 from django.contrib import messages
 from utilidades import utils
 import pandas as pd
@@ -74,7 +74,7 @@ def crear_armamento_excel(request):
             df['Modelo del arma'] = pd.to_numeric(df['Modelo del arma'], errors='coerce')
             df['Estado del arma'] = pd.to_numeric(df['Estado del arma'], errors='coerce')
             df['Estatus del arma'] = pd.to_numeric(df['Estatus del arma'], errors='coerce')
-            df['Tipo de funcionamiento'] = pd.to_numeric(df['Tipo de funcionamiento'], errors='coerce')
+            df['Tipo de Funcionamiento'] = pd.to_numeric(df['Tipo de Funcionamiento'], errors='coerce')
             df['Fecha de registro'] = pd.to_datetime(df['Fecha de registro']).dt.strftime('%Y-%m-%d')
             df['Fecha de alta/captura'] = pd.to_datetime(df['Fecha de alta/captura']).dt.strftime('%Y-%m-%d')
             df['Fecha de alta en la LOC'] = pd.to_datetime(df['Fecha de alta en la LOC']).dt.strftime('%Y-%m-%d')
@@ -96,6 +96,7 @@ def crear_armamento_excel(request):
                 fila_modelo = Modelo.objects.get(ID_MODELO=row['Modelo del arma'])
                 fila_edoConservacion = Edo_conservacion.objects.get(ID_ESTADO=row['Estado del arma'])
                 fila_estatus = Estatus_Arma.objects.get(ID_ESTATUS=row['Estatus del arma'])
+                fila_tipoFuncionamiento = TipoFuncinamiento.objects.get(ID=row['Tipo de Funcionamiento'])
                 
                  # Verificar si la fila ya existe en la base de datos
                 try:
@@ -187,9 +188,9 @@ def crear_armamento_excel(request):
                         modificado = True
                         objeto.CIHB = row['Código de Identificación de Huella Balística (CIHB)']
                         
-                    if objeto.TIPO_FUNCIONAMIENTO != row['Tipo de funcionamiento']:
+                    if objeto.TIPO_FUNCIONAMIENTO != fila_tipoFuncionamiento:
                         modificado = True
-                        objeto.TIPO_FUNCIONAMIENTO = row['Tipo de funcionamiento']
+                        objeto.TIPO_FUNCIONAMIENTO = fila_tipoFuncionamiento
                     
                     if objeto.usuario != request.user:
                        objeto.usuario = request.user
@@ -233,7 +234,7 @@ def crear_armamento_excel(request):
                                            CUIP_PORTADOR = row['CUIP del elemento que la porta'],
                                            CUIP_RESPONSABLE = row['CUIP del elemento que la porta'],
                                            CIHB = row['Código de Identificación de Huella Balística (CIHB)'],
-                                           TIPO_FUNCIONAMIENTO = row['Tipo de funcionamiento'],
+                                           TIPO_FUNCIONAMIENTO = fila_tipoFuncionamiento,
                                         #    FECHA_BAJA_LOGICA = row['Fecha de baja logica'],
                                         #    MOTIVO_BAJA = row['Motivo de baja'],
                                         #    DOCUMENTO_BAJA = row['Documento de baja'],

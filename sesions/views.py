@@ -9,7 +9,6 @@ from django.conf import settings
 # Create your views here.
 def registrarse(request):
     if request.method == 'GET':
-        print('enviando formulario')
         form = UserCreationForm()
         return render(request, 'sign_up.html', {'form': form})
     else:
