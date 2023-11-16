@@ -53,9 +53,10 @@ def crear_armamento_excel(request):
             archivo_excel = request.FILES['archivo_excel']
             
             # Procesar el archivo de Excel con pandas y openpyxl
-            df = pd.read_excel(archivo_excel, engine='openpyxl')
-            
-            # Reemplazar NaN por 0 en columnas numéricas
+            df = validar_plantilla_excel(request, archivo_excel)
+            if df is None:
+                return redirect('armamento_excel')   
+            # Reemplazar NaN por 0 en columnas numéricas y celda vacia por ""
             df['ID Arma'] = df['ID Arma'].fillna(0)
             df['Matricula_canon *'] = df['Matricula_canon *'].fillna("")
             df['Código de Identificación de Huella Balística (CIHB)'] = df['Código de Identificación de Huella Balística (CIHB)'].fillna("")
@@ -85,19 +86,9 @@ def crear_armamento_excel(request):
             for index, row in df.iterrows():
  
                 #Convertimos los ids de los campos al excel a objetos para manejarlos
-                fila_institucion = Institucion.objects.get(ID_INSTITUCION=row['Institución'])
-                fila_dependencia = Dependencia.objects.get(ID_DEPENDENCIA=row['Dependencia'])
-                fila_municipio = Municipio.objects.get(ID_ENTIDAD=row['Entidad'], ID_MUNICIPIO=row['Municipio'])
-                fila_entidad = Entidad.objects.get(ID_ENTIDAD=row['Entidad'])
-                fila_loc = LOC.objects.get(NO_LICENCIA=row['Número de licencia oficial colectiva'])
-                fila_ClaseTipoArma = Tipo.objects.get(ID_TIPO=row['Clase/Tipo de arma'])
-                fila_calibre = Calibre.objects.get(ID_CALIBRE=row['Calibre del arma'])
-                fila_marca = Marca.objects.get(ID_MARCA=row['Marca del arma'])
-                fila_modelo = Modelo.objects.get(ID_MODELO=row['Modelo del arma'])
-                fila_edoConservacion = Edo_conservacion.objects.get(ID_ESTADO=row['Estado del arma'])
-                fila_estatus = Estatus_Arma.objects.get(ID_ESTATUS=row['Estatus del arma'])
-                fila_tipoFuncionamiento = TipoFuncinamiento.objects.get(ID=row['Tipo de Funcionamiento'])
+                resultados = convertir_ids_a_objetos(request, row)
                 
+                fila_institucion, fila_dependencia, fila_municipio, fila_entidad, fila_loc, fila_ClaseTipoArma, fila_calibre, fila_marca, fila_modelo, fila_edoConservacion, fila_estatus, fila_tipoFuncionamiento  = resultados
                  # Verificar si la fila ya existe en la base de datos
                 try:
                     objeto = Armamento.objects.get(MATRICULA=row['Matrícula'])
@@ -261,6 +252,49 @@ def crear_armamento_excel(request):
         'form': form
     })
 
+def validar_plantilla_excel(request, archivo_excel):
+    try:
+        # Lee el archivo Excel
+        df = pd.read_excel(archivo_excel, engine="openpyxl")
+        
+       # Lista de nombres de columnas requeridas
+        columnas_requeridas = ['ID Arma',
+                               'Institución', 
+                               'Dependencia', 
+                               'Entidad',
+                               'Municipio',
+                               'Número de licencia oficial colectiva',
+                               'Folio C',
+                               'Folio D',
+                               'Clase/Tipo de arma',
+                               'Calibre del arma',
+                               'Marca del arma',
+                               'Modelo del arma',
+                               'Matrícula',
+                               'Matricula_canon *',
+                               'Fecha de registro',
+                               'Fecha de alta en la LOC',
+                               'Estado del arma',
+                               'Fecha de alta/captura',
+                               'Observaciones',
+                               'Estatus del arma',
+                               'CUIP del elemento que la porta',
+                               'CUIP del elemento Responsable del cargo',
+                               'Código de Identificación de Huella Balística (CIHB)',
+                               'Tipo de Funcionamiento'] 
+        # Verifica si todas las columnas requeridas están presentes
+        if all(columna in df.columns for columna in columnas_requeridas):
+            return df
+        else:
+            messages.error(request, "El archivo no cumple con la plantilla requerida. Faltan columnas.")
+            return None
+    except pd.errors.EmptyDataError:
+        messages.error(request, "El archivo está vacío o no es un archivo Excel válido.")
+        return None
+    except Exception as e:
+        messages.error(request, f"Error al procesar el archivo: {e}")
+        return None
+
 @login_required
 def editar_armamento(request, id):
     armamento = get_object_or_404(Armamento, pk=id)
@@ -337,3 +371,74 @@ def obtener_instituciones(request, dependencia_id):
         # Manejo de error si no se encuentra o no existen instituciones asociadas
         print("Instituciones no encontradas.")
         return JsonResponse([], safe=False)   
+    
+def convertir_ids_a_objetos(request, row):
+    # Inicializar todas las variables con None por defecto
+    fila_institucion = fila_dependencia = fila_municipio = None
+    fila_entidad = fila_loc = fila_ClaseTipoArma = None
+    fila_calibre = fila_marca = fila_modelo = None
+    fila_edoConservacion = fila_estatus = fila_tipoFuncionamiento = None
+    
+    try:
+        fila_institucion = Institucion.objects.get(ID_INSTITUCION=row['Institución'])
+        fila_dependencia = Dependencia.objects.get(ID_DEPENDENCIA=row['Dependencia'])
+        fila_municipio = Municipio.objects.get(ID_ENTIDAD=row['Entidad'], ID_MUNICIPIO=row['Municipio'])
+        fila_entidad = Entidad.objects.get(ID_ENTIDAD=row['Entidad'])
+        fila_loc = LOC.objects.get(NO_LICENCIA=row['Número de licencia oficial colectiva'])
+        fila_ClaseTipoArma = Tipo.objects.get(ID_TIPO=row['Clase/Tipo de arma'])
+        fila_calibre = Calibre.objects.get(ID_CALIBRE=row['Calibre del arma'])
+        fila_marca = Marca.objects.get(ID_MARCA=row['Marca del arma'])
+        fila_modelo = Modelo.objects.get(ID_MODELO=row['Modelo del arma'])
+        fila_edoConservacion = Edo_conservacion.objects.get(ID_ESTADO=row['Estado del arma'])
+        fila_estatus = Estatus_Arma.objects.get(ID_ESTATUS=row['Estatus del arma'])
+        fila_tipoFuncionamiento = TipoFuncinamiento.objects.get(ID=row['Tipo de Funcionamiento'])
+        
+            # Verificar si alguna variable es None
+        if any(variable is None for variable in (
+            fila_institucion, fila_dependencia, fila_municipio, fila_entidad, fila_loc,
+            fila_ClaseTipoArma, fila_calibre, fila_marca, fila_modelo, fila_edoConservacion,
+            fila_estatus, fila_tipoFuncionamiento
+        )):
+            return redirect('armamento_excel')
+
+    except Institucion.DoesNotExist:
+       messages.error(request, f"Error: Institución no encontrada en la fila {row.name}")
+    except Dependencia.DoesNotExist:
+       messages.error(request, f"Error: Dependencia no encontrada en la fila {row.name}")
+    except Municipio.DoesNotExist:
+       messages.error(request, f"Error: Municipio no encontrado en la fila {row.name}")
+    except Entidad.DoesNotExist:
+       messages.error(request, f"Error: Entidad no encontrada en la fila {row.name}")
+    except LOC.DoesNotExist:
+       messages.error(request, f"Error: Número de licencia oficial colectiva no encontrada en la fila {row.name}")
+    except Tipo.DoesNotExist:
+       messages.error(request, f"Error: Clase/Tipo de arma no encontrada en la fila {row.name}")
+    except Calibre.DoesNotExist:
+       messages.error(request, f"Error: Calibre del arma no encontrado en la fila {row.name}")
+    except Marca.DoesNotExist:
+       messages.error(request, f"Error: Marca del arma no encontrada en la fila {row.name}")
+    except Modelo.DoesNotExist:
+       messages.error(request, f"Error: Modelo del arma no encontrado en la fila {row.name}")
+    except Edo_conservacion.DoesNotExist:
+       messages.error(request, f"Error: Estado del arma no encontradoen la fila {row.name} ")
+    except Estatus_Arma.DoesNotExist:
+       messages.error(request, f"Error: Estatus del arma no encontrado en la fila {row.name}")
+    except TipoFuncinamiento.DoesNotExist:
+       messages.error(request, f"Error: Tipo de Funcionamiento no encontrado en la fila {row.name}")
+    except Exception as e:
+       messages.error(request, f"Error inesperado al convertir IDs a objetos: {e}")
+
+    return (
+        fila_institucion,
+        fila_dependencia,
+        fila_municipio,
+        fila_entidad,
+        fila_loc,
+        fila_ClaseTipoArma,
+        fila_calibre,
+        fila_marca,
+        fila_modelo,
+        fila_edoConservacion,
+        fila_estatus,
+        fila_tipoFuncionamiento,
+    )
