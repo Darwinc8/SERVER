@@ -43,7 +43,7 @@ class BusquedaArmamentoForm(forms.Form):
     
     CAMPOS_BUSQUEDA = (
         ('ID_ARMA', 'ID'),
-        ('MATRICULA', 'Matricula'),
+        ('MATRICULA__icontains', 'Matricula'),
         ('INSTITUCION_id__NOMBRE__icontains', 'Institución'),
         ('DEPENDENCIA_id__DEPENDENCIA__icontains', 'Dependencia'),
         ('ENTIDAD_id__ENTIDAD__icontains', 'Entidad'),
@@ -60,7 +60,7 @@ class BusquedaArmamentoForm(forms.Form):
     campos_filtrados = forms.ChoiceField(
         choices=OPCIONES_ORDENADAS,
         label="Filtrar por",
-        initial='MATRICULA'
+        initial='MATRICULA__icontains'
         )
 
 class ExcelUploadForm(forms.Form):
