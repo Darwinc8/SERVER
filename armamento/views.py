@@ -125,7 +125,7 @@ def crear_armamento_excel(request):
                     if objeto.CLASE_TIPO_ARMA != fila_ClaseTipoArma:
                         modificado = True
                         objeto.CLASE_TIPO_ARMA = fila_ClaseTipoArma
-                        
+                         
                     if objeto.CALIBRE_ARMA != fila_calibre:
                         modificado = True
                         objeto.CALIBRE_ARMA = fila_calibre
@@ -146,17 +146,27 @@ def crear_armamento_excel(request):
                         modificado = True
                         objeto.MATRICULA_CANON = row['Matricula_canon *']   
                     
-                    if objeto.FECHA != row['Fecha de registro']:
-                        objeto.FECHA = row['Fecha de registro'] 
                     
-                    if objeto.FECHA_LOC != row['Fecha de alta en la LOC']:
+                    fecha_objeto_registro = pd.to_datetime(objeto.FECHA).strftime('%Y-%m-%d')
+                    fecha_registro = pd.to_datetime(row['Fecha de registro']).strftime('%Y-%m-%d')
+                    if fecha_objeto_registro != fecha_registro:
+                        modificado = True
+                        objeto.FECHA = row['Fecha de registro'] 
+                        
+                    fecha_objeto_loc = pd.to_datetime(objeto.FECHA_LOC).strftime('%Y-%m-%d')
+                    fecha_loc = pd.to_datetime(row['Fecha de alta en la LOC']).strftime('%Y-%m-%d')                   
+                    if fecha_objeto_loc != fecha_loc:
+                        modificado = True
                         objeto.FECHA_LOC = row['Fecha de alta en la LOC']
                     
                     if objeto.ESTADO_ARMA != fila_edoConservacion:
                         modificado = True
                         objeto.ESTADO_ARMA = fila_edoConservacion
-                        
-                    if objeto.FECHA_CAPTURA != row['Fecha de alta/captura']:
+                     
+                    fecha_objeto_captura = pd.to_datetime(objeto.FECHA_CAPTURA).strftime('%Y-%m-%d')
+                    fecha_captura = pd.to_datetime(row['Fecha de alta/captura']).strftime('%Y-%m-%d')    
+                    if fecha_objeto_captura != fecha_captura:
+                        modificado = True
                         objeto.FECHA_CAPTURA = row['Fecha de alta/captura']
                     
                     if objeto.OBSERVACIONES != row['Observaciones']:
@@ -186,16 +196,15 @@ def crear_armamento_excel(request):
                     if objeto.usuario != request.user:
                        objeto.usuario = request.user
                     
-                    try:
-                        objeto.full_clean()
-                        objeto.save()
-                    except ValidationError as e:
-                        mensaje_error = str(e)
-                        messages.error(request, f"Error al guardar el Armamento {objeto.MATRICULA}: {mensaje_error}")
-                        return redirect('armamento_excel')
-                    
                     if modificado:
-                        messages.success(request, f"Armamento con matricula {row['Matrícula']} fue actualizado exitosamente")
+                        try:
+                            objeto.full_clean()
+                            objeto.save()
+                            messages.success(request, f"Armamento con matricula {row['Matrícula']} fue actualizado exitosamente")
+                        except ValidationError as e:
+                            mensaje_error = str(e)
+                            messages.error(request, f"Error al guardar el Armamento {objeto.MATRICULA}: {mensaje_error}")
+                            return redirect('armamento_excel')
                     else:
                         messages.success(request, f"Armamento con matricula {row['Matrícula']} ya existia")
 
