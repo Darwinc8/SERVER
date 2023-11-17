@@ -402,29 +402,29 @@ def convertir_ids_a_objetos(request, row):
             return redirect('armamento_excel')
 
     except Institucion.DoesNotExist:
-       messages.error(request, f"Error: Institución no encontrada en la fila {row.name}")
+       messages.error(request, f"Error: Institución no encontrada en la fila {int(row.name) +2}")
     except Dependencia.DoesNotExist:
-       messages.error(request, f"Error: Dependencia no encontrada en la fila {row.name}")
+       messages.error(request, f"Error: Dependencia no encontrada en la fila {int(row.name) +2}")
     except Municipio.DoesNotExist:
-       messages.error(request, f"Error: Municipio no encontrado en la fila {row.name}")
+       messages.error(request, f"Error: Municipio no encontrado en la fila {int(row.name) +2}")
     except Entidad.DoesNotExist:
-       messages.error(request, f"Error: Entidad no encontrada en la fila {row.name}")
+       messages.error(request, f"Error: Entidad no encontrada en la fila {int(row.name) +2}")
     except LOC.DoesNotExist:
-       messages.error(request, f"Error: Número de licencia oficial colectiva no encontrada en la fila {row.name}")
+       messages.error(request, f"Error: Número de licencia oficial colectiva no encontrada en la fila {int(row.name) +2}")
     except Tipo.DoesNotExist:
-       messages.error(request, f"Error: Clase/Tipo de arma no encontrada en la fila {row.name}")
+       messages.error(request, f"Error: Clase/Tipo de arma no encontrada en la fila {int(row.name) +2}")
     except Calibre.DoesNotExist:
-       messages.error(request, f"Error: Calibre del arma no encontrado en la fila {row.name}")
+       messages.error(request, f"Error: Calibre del arma no encontrado en la fila {int(row.name) +2}")
     except Marca.DoesNotExist:
-       messages.error(request, f"Error: Marca del arma no encontrada en la fila {row.name}")
+       messages.error(request, f"Error: Marca del arma no encontrada en la fila {int(row.name) +2}")
     except Modelo.DoesNotExist:
-       messages.error(request, f"Error: Modelo del arma no encontrado en la fila {row.name}")
+       messages.error(request, f"Error: Modelo del arma no encontrado en la fila {int(row.name) +2}")
     except Edo_conservacion.DoesNotExist:
-       messages.error(request, f"Error: Estado del arma no encontradoen la fila {row.name} ")
+       messages.error(request, f"Error: Estado del arma no encontradoen la fila {int(row.name) +2} ")
     except Estatus_Arma.DoesNotExist:
-       messages.error(request, f"Error: Estatus del arma no encontrado en la fila {row.name}")
+       messages.error(request, f"Error: Estatus del arma no encontrado en la fila {int(row.name) +2}")
     except TipoFuncinamiento.DoesNotExist:
-       messages.error(request, f"Error: Tipo de Funcionamiento no encontrado en la fila {row.name}")
+       messages.error(request, f"Error: Tipo de Funcionamiento no encontrado en la fila {int(row.name) +2}")
     except Exception as e:
        messages.error(request, f"Error inesperado al convertir IDs a objetos: {e}")
 
