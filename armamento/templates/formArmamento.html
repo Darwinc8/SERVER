@@ -3,7 +3,7 @@
 <form enctype="multipart/form-data" method="post" id="myForm" onsubmit="enableFieldAndSubmit(event)">
     {% csrf_token %}
     <div class="mb-3">
-      <label for="" class="form-label">{{ form.ID_ARMA.label|title }}:</label>
+      <label for="" class="form-label">{% trans "Id del Arma" %}:</label>
       <input type="{{ form.ID_ARMA.field.widget.input_type }}"
         class="form-control" 
         name="{{ form.ID_ARMA.name }}" 
@@ -13,22 +13,22 @@
     </div>
 
     <div class="mb-3">
-      <label for="" class="form-label">{{ form.DEPENDENCIA.label|title }}:</label>
+      <label for="" class="form-label">{% trans "Dependencia" %}:</label>
         <br>{{form.DEPENDENCIA}}<br>
     </div>
 
     <div class="mb-3">
-      <label for="" class="form-label">{{ form.INSTITUCION.label|title }}:</label>
+      <label for="" class="form-label">{% trans "Institucion" %}:</label>
         <br>{{form.INSTITUCION}}<br>
     </div>
 
     <div class="mb-3">
-      <label for="" class="form-label">{{ form.ENTIDAD.label|title }}:</label>
+      <label for="" class="form-label">{% trans "Entidad" %}:</label>
         <br>{{form.ENTIDAD}}<br>
     </div>
 
     <div class="mb-3">
-      <label for="" class="form-label">{{ form.MUNICIPIO.label|title }}:</label>
+      <label for="" class="form-label">{% trans "Municipio" %}:</label>
         <br>{{form.MUNICIPIO}}<br>
     </div>
 
@@ -80,7 +80,7 @@
     </div>
 
     <div class="mb-3">
-      <label for="matricula" class="form-label">{{ form.MATRICULA.label|title }}:</label>
+      <label for="matricula" class="form-label">{% trans "Matricula" %}:</label>
         <input type="{{ form.MATRICULA.field.widget.input_type }}"
             class="form-control" 
             name="{{ form.MATRICULA.name }}" 
@@ -91,8 +91,6 @@
         >
   </div>
   
-  
-
     <div class="mb-3">
       <label for="" class="form-label">{% trans "Matricula Canon:" %}</label>
       <input type="{{ form.MATRICULA_CANON.field.widget.input_type }}"
@@ -104,7 +102,7 @@
     </div>
 
     <div class="mb-3">
-      <label for="" class="form-label">{{ form.FECHA.label|title }}:</label>
+      <label for="" class="form-label">{% trans "Fecha" %}:</label>
         <br>{{form.FECHA}}<br>
     </div>
 
@@ -124,7 +122,7 @@
     </div>
 
     <div class="mb-3">
-      <label for="" class="form-label">{{ form.OBSERVACIONES.label|title }}:</label>
+      <label for="" class="form-label">{% trans "Observaciones" %}:</label>
       <br>{{ form.OBSERVACIONES }}<br>
     </div>
 
