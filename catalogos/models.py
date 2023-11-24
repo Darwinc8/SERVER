@@ -132,3 +132,11 @@ class TipoFuncinamiento(models.Model):
     
     def __str__(self):
         return self.TipoFuncionamiento
+
+class Propiedad(models.Model):
+    ID = models.AutoField(primary_key=True)
+    Propiedad = models.TextField(max_length=20)
+    Status = models.IntegerField(choices=[(0, 'Deshabilitado'), (1, 'Habilitado')])
+    
+    def __str__(self):
+        return self.Propiedad
