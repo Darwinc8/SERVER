@@ -1,5 +1,5 @@
 from django.db import models
-from catalogos.models import Institucion, Dependencia, Calibre, Edo_conservacion, Entidad, Estatus_Arma, LOC, Marca, Modelo, Municipio, Tipo, TipoFuncinamiento
+from catalogos.models import Institucion, Dependencia, Calibre, Edo_conservacion, Entidad, Estatus_Arma, LOC, Marca, Modelo, Municipio, Tipo, TipoFuncinamiento, Propiedad
 from datetime import datetime
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
@@ -64,6 +64,7 @@ class Armamento(models.Model):
     CUIP_RESPONSABLE = models.TextField(null=False, validators=[validate_cuip_formato])
     CIHB = models.CharField(max_length=20, null=True, blank=True)
     TIPO_FUNCIONAMIENTO = models.ForeignKey(TipoFuncinamiento, on_delete=models.RESTRICT, null=False, default=4)
+    PROPIEDAD = models.ForeignKey(Propiedad, on_delete=models.RESTRICT, null=False, default=4)
     FECHA_BAJA_LOGICA = models.DateField(null=True, blank=True, validators=[validate_fecha_no_anterior_1990])
     MOTIVO_BAJA = models.TextField(null=True, blank=True)
     DOCUMENTO_BAJA = models.CharField(max_length=20, null=True, blank=True)
