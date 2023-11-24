@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import DateInput
-from .models import Armamento, Institucion, Dependencia, Entidad, Municipio, LOC, Tipo, Calibre, Marca, Modelo, Edo_conservacion, TipoFuncinamiento
+from .models import Armamento, Institucion, Dependencia, Entidad, Municipio, LOC, Tipo, Calibre, Marca, Modelo, Edo_conservacion, TipoFuncinamiento, Propiedad
 
 class ArmamentoForm(forms.ModelForm):
     
@@ -29,6 +29,8 @@ class ArmamentoForm(forms.ModelForm):
     ESTADO_ARMA = forms.ModelChoiceField(queryset=Edo_conservacion.objects.all(),to_field_name='ID_ESTADO',label='ESTADO_ARMA')
     
     TIPO_FUNCIONAMIENTO = forms.ModelChoiceField(queryset=TipoFuncinamiento.objects.all(),to_field_name='ID',label='TIPO_FUNCIONAMIENTO')
+    
+    PROPIEDAD = forms.ModelChoiceField(queryset=Propiedad.objects.all(),to_field_name='ID',label='PROPIEDAD')
     
     FECHA = forms.DateField(widget=DateInput(attrs={'type': 'date'}))
     

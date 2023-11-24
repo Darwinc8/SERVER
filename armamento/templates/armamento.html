@@ -6,7 +6,7 @@
 
 <style>
   .dropdown-item:hover {
-      background-color: #e2e6ea; /* Cambia este color según tus preferencias */
+      background-color: #e2e6ea;
   }
 </style>
 {% endblock %}
@@ -80,6 +80,7 @@
           <th scope="col">{% trans "CUIP RESPONSABLE" %}</th>
           <th scope="col">CIHB</th>
           <th scope="col">{% trans "TIPO DE FUNCIONAMIENTO" %}</th>
+          <th scope="col">{% trans "PROPIEDAD" %}</th>
           <th scope="col">{% trans "FECHA DE BAJA LOGICA" %}</th>
           <th scope="col">{% trans "MOTIVO BAJA" %}</th>
           <th scope="col">{% trans "DOCUMENTO BAJA" %}</th>
@@ -133,6 +134,7 @@
             {% endif %}
           </td>
           <td>{{arma.TIPO_FUNCIONAMIENTO}}</td>
+          <td>{{arma.PROPIEDAD}}</td>
           <td>
             {% if arma.FECHA_BAJA_LOGICA|default:'' %}
             {{arma.FECHA_BAJA_LOGICA}}
