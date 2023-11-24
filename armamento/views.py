@@ -5,7 +5,7 @@ from django.http import JsonResponse
 from .models import Armamento
 from .forms import ArmamentoForm, BusquedaArmamentoForm, ExcelUploadForm
 from django.contrib.auth.decorators import login_required
-from .models import Municipio, Institucion, Dependencia, Entidad, LOC, Tipo, Calibre, Marca, Modelo, Edo_conservacion, Estatus_Arma, TipoFuncinamiento
+from .models import Municipio, Institucion, Dependencia, Entidad, LOC, Tipo, Calibre, Marca, Modelo, Edo_conservacion, Estatus_Arma, TipoFuncinamiento, Propiedad
 from django.contrib import messages
 from utilidades import utils
 import pandas as pd
@@ -76,6 +76,7 @@ def crear_armamento_excel(request):
             df['Estado del arma'] = pd.to_numeric(df['Estado del arma'], errors='coerce')
             df['Estatus del arma'] = pd.to_numeric(df['Estatus del arma'], errors='coerce')
             df['Tipo de Funcionamiento'] = pd.to_numeric(df['Tipo de Funcionamiento'], errors='coerce')
+            df['Propiedad'] = pd.to_numeric(df['Propiedad'], errors='coerce')
             df['Fecha de registro'] = pd.to_datetime(df['Fecha de registro']).dt.strftime('%Y-%m-%d')
             df['Fecha de alta/captura'] = pd.to_datetime(df['Fecha de alta/captura']).dt.strftime('%Y-%m-%d')
             df['Fecha de alta en la LOC'] = pd.to_datetime(df['Fecha de alta en la LOC']).dt.strftime('%Y-%m-%d')
@@ -88,7 +89,7 @@ def crear_armamento_excel(request):
                 #Convertimos los ids de los campos al excel a objetos para manejarlos
                 resultados = convertir_ids_a_objetos(request, row)
                 
-                fila_institucion, fila_dependencia, fila_municipio, fila_entidad, fila_loc, fila_ClaseTipoArma, fila_calibre, fila_marca, fila_modelo, fila_edoConservacion, fila_estatus, fila_tipoFuncionamiento  = resultados
+                fila_institucion, fila_dependencia, fila_municipio, fila_entidad, fila_loc, fila_ClaseTipoArma, fila_calibre, fila_marca, fila_modelo, fila_edoConservacion, fila_estatus, fila_tipoFuncionamiento, fila_propiedad  = resultados
                  # Verificar si la fila ya existe en la base de datos
                 try:
                     objeto = Armamento.objects.get(MATRICULA=row['Matrícula'])
@@ -193,6 +194,10 @@ def crear_armamento_excel(request):
                         modificado = True
                         objeto.TIPO_FUNCIONAMIENTO = fila_tipoFuncionamiento
                     
+                    if objeto.PROPIEDAD != fila_propiedad:
+                        modificado = True
+                        objeto.PROPIEDAD = fila_propiedad
+                    
                     if objeto.usuario != request.user:
                        objeto.usuario = request.user
                     
@@ -235,6 +240,7 @@ def crear_armamento_excel(request):
                                            CUIP_RESPONSABLE = row['CUIP del elemento que la porta'],
                                            CIHB = row['Código de Identificación de Huella Balística (CIHB)'],
                                            TIPO_FUNCIONAMIENTO = fila_tipoFuncionamiento,
+                                           PROPIEDAD = fila_propiedad,
                                         #    FECHA_BAJA_LOGICA = row['Fecha de baja logica'],
                                         #    MOTIVO_BAJA = row['Motivo de baja'],
                                         #    DOCUMENTO_BAJA = row['Documento de baja'],
@@ -290,7 +296,9 @@ def validar_plantilla_excel(request, archivo_excel):
                                'CUIP del elemento que la porta',
                                'CUIP del elemento Responsable del cargo',
                                'Código de Identificación de Huella Balística (CIHB)',
-                               'Tipo de Funcionamiento'] 
+                               'Tipo de Funcionamiento',
+                               'Propiedad'
+                               ] 
         # Verifica si todas las columnas requeridas están presentes
         if all(columna in df.columns for columna in columnas_requeridas):
             return df
@@ -386,7 +394,7 @@ def convertir_ids_a_objetos(request, row):
     fila_institucion = fila_dependencia = fila_municipio = None
     fila_entidad = fila_loc = fila_ClaseTipoArma = None
     fila_calibre = fila_marca = fila_modelo = None
-    fila_edoConservacion = fila_estatus = fila_tipoFuncionamiento = None
+    fila_edoConservacion = fila_estatus = fila_tipoFuncionamiento = fila_propiedad = None
     
     try:
         fila_institucion = Institucion.objects.get(ID_INSTITUCION=row['Institución'])
@@ -401,12 +409,13 @@ def convertir_ids_a_objetos(request, row):
         fila_edoConservacion = Edo_conservacion.objects.get(ID_ESTADO=row['Estado del arma'])
         fila_estatus = Estatus_Arma.objects.get(ID_ESTATUS=row['Estatus del arma'])
         fila_tipoFuncionamiento = TipoFuncinamiento.objects.get(ID=row['Tipo de Funcionamiento'])
+        fila_propiedad = Propiedad.objects.get(ID=row['Propiedad'])
         
             # Verificar si alguna variable es None
         if any(variable is None for variable in (
             fila_institucion, fila_dependencia, fila_municipio, fila_entidad, fila_loc,
             fila_ClaseTipoArma, fila_calibre, fila_marca, fila_modelo, fila_edoConservacion,
-            fila_estatus, fila_tipoFuncionamiento
+            fila_estatus, fila_tipoFuncionamiento, fila_propiedad
         )):
             return redirect('armamento_excel')
 
@@ -434,6 +443,8 @@ def convertir_ids_a_objetos(request, row):
        messages.error(request, f"Error: Estatus del arma no encontrado en la fila {int(row.name) +2}")
     except TipoFuncinamiento.DoesNotExist:
        messages.error(request, f"Error: Tipo de Funcionamiento no encontrado en la fila {int(row.name) +2}")
+    except Propiedad.DoesNotExist:
+       messages.error(request, f"Error:Propiedad no encontrado en la fila {int(row.name) +2}")
     except Exception as e:
        messages.error(request, f"Error inesperado al convertir IDs a objetos: {e}")
 
@@ -450,4 +461,5 @@ def convertir_ids_a_objetos(request, row):
         fila_edoConservacion,
         fila_estatus,
         fila_tipoFuncionamiento,
+        fila_propiedad
     )

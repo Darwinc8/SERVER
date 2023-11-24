@@ -105,6 +105,7 @@ class ArmamentoLog(models.Model):
     cuip_portador = models.CharField(max_length=20, null=False)
     cuip_responsable = models.CharField(max_length=20, null=False) 
     tipo_funcionamiento = models.CharField(max_length=20, null=False, default="OTRO")
+    propiedad = models.CharField(max_length=20, null=False, default="OTRO")
     cihb = models.CharField(max_length=20, null=True, blank=True)
     fecha_baja_logica = models.DateField(null=True, blank=True)
     motivo_baja = models.TextField(null=True, blank=True)
