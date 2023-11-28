@@ -11,7 +11,6 @@ urlpatterns = [
     path('catalogos/', include('catalogos.urls')),
     path('', include('sesions.urls')),
     path('armamento/', include('armamento.urls')),
-    path('portadores/', include('portadores.urls')),
     path('imagenes/', include('imagenes.urls')),
     path('error/', include('utilidades.urls')),
     path('captcha/', include('captcha.urls'))
