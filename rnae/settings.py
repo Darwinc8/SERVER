@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'catalogos',
     'sesions',
     'armamento',
-    'portadores',
     'imagenes',
     'utilidades',
     'captcha',
