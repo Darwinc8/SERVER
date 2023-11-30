@@ -12,12 +12,15 @@ class Imagenes(models.Model):
     FOLIO = models.DecimalField(max_digits=10, decimal_places=0)
     GRUPO = models.CharField(max_length=1)
     IMAGEN = models.ImageField(upload_to='images/imagenes/',blank=False, unique=True, validators=[FileExtensionValidator(['jpg', 'jpeg', 'png', 'gif'])])
-    DEPENDENCIA = models.ForeignKey(Dependencia, models.DO_NOTHING)
-    ENTIDAD = models.ForeignKey(Entidad, models.DO_NOTHING)
-    INSTITUCION = models.ForeignKey(Institucion, models.DO_NOTHING)
-    TIPO = models.ForeignKey(Tipo_Imagen, models.DO_NOTHING)
+    DEPENDENCIA = models.ForeignKey(Dependencia, on_delete=models.RESTRICT)
+    ENTIDAD = models.ForeignKey(Entidad, on_delete=models.RESTRICT)
+    INSTITUCION = models.ForeignKey(Institucion, on_delete=models.RESTRICT)
+    TIPO = models.ForeignKey(Tipo_Imagen, on_delete=models.RESTRICT)
     ultima_modificacion = models.DateTimeField(auto_now=True)
-    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(User, on_delete=models.RESTRICT)
+    
+    def __str__(self):
+        return f"{self.ID_ARMA} - {self.TIPO}"
 
 class ImagenesLog(models.Model):
     imakey = models.DecimalField(max_digits=10, decimal_places=0)
