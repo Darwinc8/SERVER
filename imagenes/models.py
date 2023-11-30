@@ -37,3 +37,6 @@ class ImagenesLog(models.Model):
     id_arma = models.CharField(max_length=20)
     tipo = models.CharField(max_length=50)
     estado = models.CharField(max_length=20)
+
+    def __str__(self):
+        return f"{self.id_alterna} - {self.estado}  - {self.id_arma}"

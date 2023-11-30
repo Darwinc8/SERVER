@@ -118,4 +118,4 @@ class ArmamentoLog(models.Model):
     ultima_modificacion = models.DateTimeField()
 
     def __str__(self):
-        return f"{self.id}-{self.estado}-{self.id_alterna}"
+        return f"{self.id}-{self.estado}-{self.matricula}"
