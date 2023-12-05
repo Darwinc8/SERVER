@@ -2501,7 +2501,7 @@
   "model": "catalogos.tipo",
   "pk": "51",
   "fields": {
-    "TIPO": "ESCOPETA DOBLE CAÐON",
+    "TIPO": "ESCOPETA DOBLE CAÑON",
     "ID_CLASIFICACION": 1
   }
 },
@@ -2717,7 +2717,7 @@
   "model": "catalogos.tipo",
   "pk": "78",
   "fields": {
-    "TIPO": "MOSQUETON AðO 1941",
+    "TIPO": "MOSQUETON AÑO 1941",
     "ID_CLASIFICACION": 1
   }
 },
@@ -2957,7 +2957,7 @@
   "model": "catalogos.tipo",
   "pk": "143",
   "fields": {
-    "TIPO": "ESCOPETA UN CAÐON SISTEMA DE BOMBA",
+    "TIPO": "ESCOPETA UN CAÑON SISTEMA DE BOMBA",
     "ID_CLASIFICACION": 1
   }
 },
@@ -2965,7 +2965,7 @@
   "model": "catalogos.tipo",
   "pk": "144",
   "fields": {
-    "TIPO": "ESCOPETA DOS CAÐONES SISTEMA DE BOMBA",
+    "TIPO": "ESCOPETA DOS CAÑONES SISTEMA DE BOMBA",
     "ID_CLASIFICACION": 1
   }
 },
@@ -2973,7 +2973,7 @@
   "model": "catalogos.tipo",
   "pk": "145",
   "fields": {
-    "TIPO": "ESCOPETA UN CAÐON",
+    "TIPO": "ESCOPETA UN CAÑON",
     "ID_CLASIFICACION": 1
   }
 },
@@ -3397,7 +3397,7 @@
   "model": "catalogos.tipo",
   "pk": "235",
   "fields": {
-    "TIPO": "PISTOLA DE CAÐON LARGO",
+    "TIPO": "PISTOLA DE CAÑON LARGO",
     "ID_CLASIFICACION": 1
   }
 },
@@ -3405,7 +3405,7 @@
   "model": "catalogos.tipo",
   "pk": "236",
   "fields": {
-    "TIPO": "PISTOLA CAÐON/2 CARGADORES",
+    "TIPO": "PISTOLA CAÑON/2 CARGADORES",
     "ID_CLASIFICACION": 2
   }
 },
@@ -8292,7 +8292,7 @@
   "model": "catalogos.marca",
   "pk": "495",
   "fields": {
-    "MARCA": "CABAðAS"
+    "MARCA": "CABAÑAS"
   }
 },
 {
@@ -8712,7 +8712,7 @@
   "model": "catalogos.marca",
   "pk": "555",
   "fields": {
-    "MARCA": "ECHEVERRIA FIBAR-ESPAðA"
+    "MARCA": "ECHEVERRIA FIBAR-ESPAÑA"
   }
 },
 {
@@ -8817,7 +8817,7 @@
   "model": "catalogos.marca",
   "pk": "570",
   "fields": {
-    "MARCA": "FIBAR-ESPAðA"
+    "MARCA": "FIBAR-ESPAÑA"
   }
 },
 {
@@ -10042,7 +10042,7 @@
   "model": "catalogos.marca",
   "pk": "745",
   "fields": {
-    "MARCA": "MADE IN ESPAðA"
+    "MARCA": "MADE IN ESPAÑA"
   }
 },
 {
@@ -33205,7 +33205,7 @@
   "model": "catalogos.modelo",
   "pk": "2941",
   "fields": {
-    "MODELO": "ESPAÐOLA"
+    "MODELO": "ESPAÑOLA"
   }
 },
 {
@@ -38800,7 +38800,7 @@
   "model": "catalogos.institucion",
   "pk": "368",
   "fields": {
-    "NOMBRE": "DIRECCION DE LA POLIC═A MINISTERIAL",
+    "NOMBRE": "DIRECCION DE LA POLICIA MINISTERIAL",
     "ID_TIPO_DEPENDENCIA": "2",
     "ID_DEPENDENCIA": "7"
   }
@@ -38836,7 +38836,7 @@
   "model": "catalogos.institucion",
   "pk": "433",
   "fields": {
-    "NOMBRE": "DIRECCION GENERAL DE LA POLIC═A ESTATAL INVESTIGAD",
+    "NOMBRE": "DIRECCION GENERAL DE LA POLICIA ESTATAL INVESTIGAD",
     "ID_TIPO_DEPENDENCIA": "2",
     "ID_DEPENDENCIA": "7"
   }
@@ -38854,7 +38854,7 @@
   "model": "catalogos.institucion",
   "pk": "631",
   "fields": {
-    "NOMBRE": "COMPAÐIA MEXICANA DE TRASLADO DE VALORES, S.A. DE",
+    "NOMBRE": "COMPAÑIA MEXICANA DE TRASLADO DE VALORES, S.A. DE",
     "ID_TIPO_DEPENDENCIA": "1",
     "ID_DEPENDENCIA": "9"
   }
@@ -39484,7 +39484,7 @@
   "model": "catalogos.institucion",
   "pk": "6450",
   "fields": {
-    "NOMBRE": "SECRETAR═A DE SEGURIDAD",
+    "NOMBRE": "SECRETARIA DE SEGURIDAD",
     "ID_TIPO_DEPENDENCIA": "2",
     "ID_DEPENDENCIA": "4"
   }
@@ -39855,7 +39855,7 @@
   "fields": {
     "ID_ENTIDAD": "5",
     "ID_MUNICIPIO": "2",
-    "MUNICIPIO": "ACUÐA"
+    "MUNICIPIO": "ACUÑA"
   }
 },
 {
@@ -40260,7 +40260,7 @@
   "fields": {
     "ID_ENTIDAD": "18",
     "ID_MUNICIPIO": "3",
-    "MUNICIPIO": "AMATLAN DE CAÐAS"
+    "MUNICIPIO": "AMATLAN DE CAÑAS"
   }
 },
 {
@@ -40971,7 +40971,7 @@
   "fields": {
     "ID_ENTIDAD": "5",
     "ID_MUNICIPIO": "6",
-    "MUNICIPIO": "CASTAÐOS"
+    "MUNICIPIO": "CASTAÑOS"
   }
 },
 {
@@ -41214,7 +41214,7 @@
   "fields": {
     "ID_ENTIDAD": "32",
     "ID_MUNICIPIO": "6",
-    "MUNICIPIO": "CAÐITAS DE FELIPE PESCADOR"
+    "MUNICIPIO": "CAÑITAS DE FELIPE PESCADOR"
   }
 },
 {
@@ -42411,7 +42411,7 @@
   "fields": {
     "ID_ENTIDAD": "16",
     "ID_MUNICIPIO": "11",
-    "MUNICIPIO": "BRISEÐAS"
+    "MUNICIPIO": "BRISEÑAS"
   }
 },
 {
@@ -42519,7 +42519,7 @@
   "fields": {
     "ID_ENTIDAD": "29",
     "ID_MUNICIPIO": "11",
-    "MUNICIPIO": "MUÐOZ DE DOMINGO ARENAS"
+    "MUNICIPIO": "MUÑOZ DE DOMINGO ARENAS"
   }
 },
 {
@@ -42753,7 +42753,7 @@
   "fields": {
     "ID_ENTIDAD": "29",
     "ID_MUNICIPIO": "12",
-    "MUNICIPIO": "ESPAÐITA"
+    "MUNICIPIO": "ESPAÑITA"
   }
 },
 {
@@ -42933,7 +42933,7 @@
   "fields": {
     "ID_ENTIDAD": "22",
     "ID_MUNICIPIO": "13",
-    "MUNICIPIO": "PEÐAMILLER"
+    "MUNICIPIO": "PEÑAMILLER"
   }
 },
 {
@@ -43851,7 +43851,7 @@
   "fields": {
     "ID_ENTIDAD": "20",
     "ID_MUNICIPIO": "17",
-    "MUNICIPIO": "COMPAÐIA, LA"
+    "MUNICIPIO": "COMPAÑIA, LA"
   }
 },
 {
@@ -44238,7 +44238,7 @@
   "fields": {
     "ID_ENTIDAD": "14",
     "ID_MUNICIPIO": "19",
-    "MUNICIPIO": "BOLAÐOS"
+    "MUNICIPIO": "BOLAÑOS"
   }
 },
 {
@@ -44598,7 +44598,7 @@
   "fields": {
     "ID_ENTIDAD": "10",
     "ID_MUNICIPIO": "21",
-    "MUNICIPIO": "PEÐON BLANCO"
+    "MUNICIPIO": "PEÑON BLANCO"
   }
 },
 {
@@ -45048,7 +45048,7 @@
   "fields": {
     "ID_ENTIDAD": "19",
     "ID_MUNICIPIO": "23",
-    "MUNICIPIO": "GENERAL TREVIÐO"
+    "MUNICIPIO": "GENERAL TREVIÑO"
   }
 },
 {
@@ -49449,7 +49449,7 @@
   "fields": {
     "ID_ENTIDAD": "26",
     "ID_MUNICIPIO": "48",
-    "MUNICIPIO": "PUERTO PEÐASCO"
+    "MUNICIPIO": "PUERTO PEÑASCO"
   }
 },
 {
@@ -49710,7 +49710,7 @@
   "fields": {
     "ID_ENTIDAD": "20",
     "ID_MUNICIPIO": "50",
-    "MUNICIPIO": "MAGDALENA PEÐASCO"
+    "MUNICIPIO": "MAGDALENA PEÑASCO"
   }
 },
 {
@@ -52635,7 +52635,7 @@
   "fields": {
     "ID_ENTIDAD": "14",
     "ID_MUNICIPIO": "76",
-    "MUNICIPIO": "SAN MARTIN DE BOLAÐOS"
+    "MUNICIPIO": "SAN MARTIN DE BOLAÑOS"
   }
 },
 {
@@ -54030,7 +54030,7 @@
   "fields": {
     "ID_ENTIDAD": "20",
     "ID_MUNICIPIO": "94",
-    "MUNICIPIO": "SAN ANDRES NUXIÐO"
+    "MUNICIPIO": "SAN ANDRES NUXIÑO"
   }
 },
 {
@@ -54210,7 +54210,7 @@
   "fields": {
     "ID_ENTIDAD": "14",
     "ID_MUNICIPIO": "97",
-    "MUNICIPIO": "TLAJOMULCO DE ZUÐIGA"
+    "MUNICIPIO": "TLAJOMULCO DE ZUÑIGA"
   }
 },
 {
@@ -54390,7 +54390,7 @@
   "fields": {
     "ID_ENTIDAD": "21",
     "ID_MUNICIPIO": "99",
-    "MUNICIPIO": "CAÐADA MORELOS"
+    "MUNICIPIO": "CAÑADA MORELOS"
   }
 },
 {
@@ -55533,7 +55533,7 @@
   "fields": {
     "ID_ENTIDAD": "14",
     "ID_MUNICIPIO": "117",
-    "MUNICIPIO": "CAÐADAS DE OBREGON"
+    "MUNICIPIO": "CAÑADAS DE OBREGON"
   }
 },
 {
@@ -55650,7 +55650,7 @@
   "fields": {
     "ID_ENTIDAD": "20",
     "ID_MUNICIPIO": "119",
-    "MUNICIPIO": "SAN BARTOLOME YUCUAÐE"
+    "MUNICIPIO": "SAN BARTOLOME YUCUAÑE"
   }
 },
 {
@@ -55704,7 +55704,7 @@
   "fields": {
     "ID_ENTIDAD": "21",
     "ID_MUNICIPIO": "120",
-    "MUNICIPIO": "SAN ANTONIO CAÐADA"
+    "MUNICIPIO": "SAN ANTONIO CAÑADA"
   }
 },
 {
@@ -56478,7 +56478,7 @@
   "fields": {
     "ID_ENTIDAD": "20",
     "ID_MUNICIPIO": "147",
-    "MUNICIPIO": "SAN FRANCISCO NUXAÐO"
+    "MUNICIPIO": "SAN FRANCISCO NUXAÑO"
   }
 },
 {
@@ -57018,7 +57018,7 @@
   "fields": {
     "ID_ENTIDAD": "20",
     "ID_MUNICIPIO": "167",
-    "MUNICIPIO": "SAN JOSE DEL PEÐASCO"
+    "MUNICIPIO": "SAN JOSE DEL PEÑASCO"
   }
 },
 {
@@ -58179,7 +58179,7 @@
   "fields": {
     "ID_ENTIDAD": "20",
     "ID_MUNICIPIO": "210",
-    "MUNICIPIO": "SAN JUAN ÐUMI"
+    "MUNICIPIO": "SAN JUAN ÑUMI"
   }
 },
 {
@@ -58638,7 +58638,7 @@
   "fields": {
     "ID_ENTIDAD": "20",
     "ID_MUNICIPIO": "252",
-    "MUNICIPIO": "SAN MATEO PEÐASCO"
+    "MUNICIPIO": "SAN MATEO PEÑASCO"
   }
 },
 {
@@ -58647,7 +58647,7 @@
   "fields": {
     "ID_ENTIDAD": "20",
     "ID_MUNICIPIO": "253",
-    "MUNICIPIO": "SAN MATEO PIÐAS"
+    "MUNICIPIO": "SAN MATEO PIÑAS"
   }
 },
 {
@@ -60204,7 +60204,7 @@
   "fields": {
     "ID_ENTIDAD": "20",
     "ID_MUNICIPIO": "426",
-    "MUNICIPIO": "SANTA MARIA PEÐOLES"
+    "MUNICIPIO": "SANTA MARIA PEÑOLES"
   }
 },
 {
@@ -61194,7 +61194,7 @@
   "fields": {
     "ID_ENTIDAD": "20",
     "ID_MUNICIPIO": "536",
-    "MUNICIPIO": "SAN VICENTE NUÐU"
+    "MUNICIPIO": "SAN VICENTE NUÑU"
   }
 },
 {
