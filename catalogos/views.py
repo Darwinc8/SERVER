@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Emisor, Entidad, Dependencia, LOC, Edo_conservacion, Institucion, Tipo, Calibre, Marca, Modelo, Estatus_Arma, Tipo_Alta, Tipo_Dependencia, Tipo_Imagen, Municipio
+from .models import Emisor, Entidad, Dependencia, LOC, Edo_conservacion, Institucion, Tipo, Calibre, Marca, Modelo, Estatus_Arma, Tipo_Alta, Tipo_Dependencia, Tipo_Imagen, Municipio, TipoFuncinamiento, Propiedad
 from django.contrib.auth.decorators import login_required
 from .forms import BusquedaMunicipiosForm, BusquedaLOCsForm, BusquedaInstitucionesForm, BusquedaTiposForm, BusquedaCalibreForm, BusquedaMarcasForm, BusquedaModelosForm
 from utilidades import utils
@@ -152,3 +152,17 @@ def tipo_imagen(request):
     return render(request, 'catalogos/tipos_imagen.html', {
         'tipos':tipos
     })
+
+@login_required    
+def tipo_funcionamiento(request):
+    tipos_funcionamientos = TipoFuncinamiento.objects.all()
+    return render(request, 'catalogos/tipo_funcionamiento.html', {
+        'tipos_funcionamientos':tipos_funcionamientos
+    })
+
+@login_required    
+def propiedad(request):
+    propiedades = Propiedad.objects.all()
+    return render(request, 'catalogos/propiedad.html', {
+        'propiedades':propiedades
+    })    

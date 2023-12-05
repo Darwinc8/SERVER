@@ -17,5 +17,7 @@ urlpatterns = [
     path('tipo_alta/', views.tipo_alta, name='tipo_alta'),
     path('tipo_dependencia/', views.tipo_dependencia, name='tipo_dependencia'),
     path('tipo_imagen/', views.tipo_imagen, name='tipo_imagen'),
-    path('municipios/', views.municipios, name='municipios')
+    path('municipios/', views.municipios, name='municipios'),
+    path('propiedad/', views.propiedad, name='propiedad'),
+    path('tipo_funcionamiento/', views.tipo_funcionamiento, name='tipo_funcionamiento'),
     ]

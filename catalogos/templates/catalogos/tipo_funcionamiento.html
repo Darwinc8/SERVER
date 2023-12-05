@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% load i18n %}
+{% load static %}
+{% block favicon %}
+<link rel="icon" type="image/x-icon" href="{% static 'icons/catalogo.png' %}">
+{% endblock %}
+ {% block title %} {% trans "Tipo de Funcionamientos" %} {% endblock %} 
+
+{% block content %}
+<br/><br/>
+<div class="card">
+  <div class="card-header">
+    <h1 style="text-align: center">{% trans "TIPOS DE FUNCIONAMIENTOS" %}</h1>
+    <a class="btn btn-success" href="{% url 'catalogos' %}" role="button">{% trans "Volver a Catalogos" %}</a>
+  </div>
+  <div class="card-body table-responsive">
+    <table class="table table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">{% trans "ID" %}</th>
+                <th scope="col">{% trans "TIPO DE FUNCIONAMIENTO" %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tipo in tipos_funcionamientos %}
+            <tr>
+                <td>{{ tipo.ID }}</td>
+                <td>{{ tipo.TipoFuncionamiento }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="card-footer text-muted">
+</div>
+</div>
+
+{% endblock %}
