@@ -39403,7 +39403,7 @@
   "model": "catalogos.institucion",
   "pk": "6328",
   "fields": {
-    "NOMBRE": "SECRETARIA DE SEGURIDAD P┌BLICA ESTATAL",
+    "NOMBRE": "SECRETARIA DE SEGURIDAD PUBLICA ESTATAL",
     "ID_TIPO_DEPENDENCIA": "2",
     "ID_DEPENDENCIA": "4"
   }
