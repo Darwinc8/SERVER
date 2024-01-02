@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-23 10:54-0600\n"
+"POT-Creation-Date: 2024-01-02 10:37-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -143,44 +143,47 @@ msgid "CUIP RESPONSABLE"
 msgstr "RESPONSIBLE CUIP"
 
 #: .\armamento\templates\armamento.html:82
+#: .\catalogos\templates\catalogos\tipo_funcionamiento.html:21
 msgid "TIPO DE FUNCIONAMIENTO"
 msgstr "TYPE OF OPERATION"
 
 #: .\armamento\templates\armamento.html:83
+#: .\catalogos\templates\catalogos\propiedad.html:21
+msgid "PROPIEDAD"
+msgstr ""
+
+#: .\armamento\templates\armamento.html:84
 msgid "FECHA DE BAJA LOGICA"
 msgstr "LOGICAL RETIREMENT DATE"
 
-#: .\armamento\templates\armamento.html:84
+#: .\armamento\templates\armamento.html:85
 msgid "MOTIVO BAJA"
 msgstr "REASON FOR LEAVING"
 
-#: .\armamento\templates\armamento.html:85
+#: .\armamento\templates\armamento.html:86
 msgid "DOCUMENTO BAJA"
 msgstr "DOCUMENT LEAVE"
 
-#: .\armamento\templates\armamento.html:86
+#: .\armamento\templates\armamento.html:87
 msgid "OBSERVACIONES BAJA"
 msgstr "DISCHARGE REMARKS"
 
-#: .\armamento\templates\armamento.html:87
+#: .\armamento\templates\armamento.html:88
 msgid "FECHA DE BAJA DEL DOCUMENTO"
 msgstr "DOCUMENT RETIREMENT DATE"
 
-#: .\armamento\templates\armamento.html:88
+#: .\armamento\templates\armamento.html:89
 #: .\imagenes\templates\imagenes.html:56
-#: .\portadores\templates\portadores.html:51
 msgid "ACCIONES"
 msgstr "ACTIONS"
 
-#: .\armamento\templates\armamento.html:172
+#: .\armamento\templates\armamento.html:174
 #: .\imagenes\templates\imagenes.html:73
-#: .\portadores\templates\portadores.html:68
 msgid "Editar"
 msgstr "Edit"
 
-#: .\armamento\templates\armamento.html:175
+#: .\armamento\templates\armamento.html:177
 #: .\imagenes\templates\imagenes.html:76
-#: .\portadores\templates\portadores.html:71
 msgid "Eliminar"
 msgstr "Delete"
 
@@ -312,33 +315,38 @@ msgid "Tipo de Funcionamiento"
 msgstr "Caliber types"
 
 #: .\armamento\templates\formArmamento.html:172
+#, fuzzy
+#| msgid "Tipos de Dependencia"
+msgid "Tipo de Propiedad"
+msgstr "Types of Dependency"
+
+#: .\armamento\templates\formArmamento.html:177
 msgid "Fecha de Baja Logica:"
 msgstr "Date of Logical Discharge"
 
-#: .\armamento\templates\formArmamento.html:177
+#: .\armamento\templates\formArmamento.html:182
 msgid "Motivo de baja:"
 msgstr "Reason for leaving"
 
-#: .\armamento\templates\formArmamento.html:182
+#: .\armamento\templates\formArmamento.html:187
 msgid "Documento de Baja:"
 msgstr "Discharge Document"
 
-#: .\armamento\templates\formArmamento.html:192
+#: .\armamento\templates\formArmamento.html:197
 msgid "Observaciones de Baja:"
 msgstr "Discharge Observations"
 
-#: .\armamento\templates\formArmamento.html:197
+#: .\armamento\templates\formArmamento.html:202
 msgid "Fecha de baja del documento:"
 msgstr "Document retirement date"
 
-#: .\armamento\templates\formArmamento.html:215
+#: .\armamento\templates\formArmamento.html:220
 #: .\imagenes\templates\formImagen.html:81
-#: .\portadores\templates\formPortador.html:33
 msgid "Volver"
 msgstr "Back"
 
-#: .\catalogos\templates\catalogos.html:7 .\sesions\templates\index.html:37
-#: .\sesions\templates\layout.html:38
+#: .\catalogos\templates\catalogos.html:7 .\sesions\templates\index.html:34
+#: .\sesions\templates\layout.html:35
 msgid "Catalogos"
 msgstr "Catalogs"
 
@@ -374,6 +382,8 @@ msgstr "Emitters"
 #: .\catalogos\templates\catalogos.html:99
 #: .\catalogos\templates\catalogos.html:105
 #: .\catalogos\templates\catalogos.html:111
+#: .\catalogos\templates\catalogos.html:117
+#: .\catalogos\templates\catalogos.html:123
 msgid "Ver"
 msgstr "See"
 
@@ -422,20 +432,30 @@ msgid "Modelos"
 msgstr "Models"
 
 #: .\catalogos\templates\catalogos.html:91
+msgid "Propiedad"
+msgstr ""
+
+#: .\catalogos\templates\catalogos.html:97
+#, fuzzy
+#| msgid "Tipos de calibre"
+msgid "Tipos de Funcionamiento"
+msgstr "Caliber types"
+
+#: .\catalogos\templates\catalogos.html:103
 #: .\catalogos\templates\catalogos\estatus_arma.html:7
 msgid "Estatus de armas"
 msgstr "Weapons status"
 
-#: .\catalogos\templates\catalogos.html:97
+#: .\catalogos\templates\catalogos.html:109
 msgid "Tipos de Alta"
 msgstr "Types of registration"
 
-#: .\catalogos\templates\catalogos.html:103
+#: .\catalogos\templates\catalogos.html:115
 #: .\catalogos\templates\catalogos\tipos_dependencia.html:7
 msgid "Tipos de Dependencia"
 msgstr "Types of Dependency"
 
-#: .\catalogos\templates\catalogos.html:109
+#: .\catalogos\templates\catalogos.html:121
 msgid "Tipos de Imagen"
 msgstr "Image Types"
 
@@ -458,6 +478,8 @@ msgstr "CALIBERS"
 #: .\catalogos\templates\catalogos\marcas.html:15
 #: .\catalogos\templates\catalogos\modelos.html:15
 #: .\catalogos\templates\catalogos\municipios.html:15
+#: .\catalogos\templates\catalogos\propiedad.html:14
+#: .\catalogos\templates\catalogos\tipo_funcionamiento.html:14
 #: .\catalogos\templates\catalogos\tipos.html:15
 #: .\catalogos\templates\catalogos\tipos_alta.html:14
 #: .\catalogos\templates\catalogos\tipos_dependencia.html:15
@@ -499,6 +521,8 @@ msgid "EMISORES"
 msgstr "EMITTERS"
 
 #: .\catalogos\templates\catalogos\emisores.html:20
+#: .\catalogos\templates\catalogos\propiedad.html:20
+#: .\catalogos\templates\catalogos\tipo_funcionamiento.html:20
 msgid "ID"
 msgstr "ID"
 
@@ -530,7 +554,6 @@ msgid "INSTITUCIONES"
 msgstr "INSTITUTIONS"
 
 #: .\catalogos\templates\catalogos\instituciones.html:36
-#: .\portadores\templates\portadores.html:47
 msgid "NOMBRE"
 msgstr "NAME"
 
@@ -562,6 +585,30 @@ msgstr "MUNICIPALITIES"
 #: .\catalogos\templates\catalogos\municipios.html:36
 msgid "ID MUNICIPIO"
 msgstr "MUNICIPALITY ID"
+
+#: .\catalogos\templates\catalogos\propiedad.html:7
+#, fuzzy
+#| msgid "Entidades"
+msgid "Propiedades"
+msgstr "Entities"
+
+#: .\catalogos\templates\catalogos\propiedad.html:13
+#, fuzzy
+#| msgid "ENTIDADES"
+msgid "PROPIEDADES"
+msgstr "ENTITIES"
+
+#: .\catalogos\templates\catalogos\tipo_funcionamiento.html:7
+#, fuzzy
+#| msgid "Tipos de calibre"
+msgid "Tipo de Funcionamientos"
+msgstr "Caliber types"
+
+#: .\catalogos\templates\catalogos\tipo_funcionamiento.html:13
+#, fuzzy
+#| msgid "TIPO DE FUNCIONAMIENTO"
+msgid "TIPOS DE FUNCIONAMIENTOS"
+msgstr "TYPE OF OPERATION"
 
 #: .\catalogos\templates\catalogos\tipos.html:13
 msgid "TIPOS DE ARMAS"
@@ -1797,6 +1844,10 @@ msgstr "Federal Entity"
 msgid "Tipo de Imagen:"
 msgstr "Image Type"
 
+#: .\imagenes\templates\formImagen.html:57
+msgid "Grupo"
+msgstr "Group"
+
 #: .\imagenes\templates\formImagen.html:64
 msgid "Imagen del Arma:"
 msgstr "Weapon Image"
@@ -1815,7 +1866,6 @@ msgid "Agregar nueva imagen"
 msgstr "Add new image"
 
 #: .\imagenes\templates\imagenes.html:47
-#: .\portadores\templates\portadores.html:46
 msgid "IMAGEN"
 msgstr "IMAGE"
 
@@ -1834,50 +1884,6 @@ msgstr "FOLIO"
 #: .\imagenes\templates\imagenes.html:55
 msgid "GRUPO"
 msgstr "GROUP"
-
-#: .\portadores\templates\create_portador.html:7
-#: .\portadores\templates\create_portador.html:13
-msgid "Crear Portador"
-msgstr "Create Carrier"
-
-#: .\portadores\templates\create_portador.html:16
-#: .\portadores\templates\editar_portador.html:16
-msgid "Datos del Portador"
-msgstr "Carrier Data"
-
-#: .\portadores\templates\editar_portador.html:7
-#: .\portadores\templates\editar_portador.html:13
-msgid "Editar Portador"
-msgstr "Edit Carrier"
-
-#: .\portadores\templates\formPortador.html:32
-msgid "Guardar"
-msgstr "Save"
-
-#: .\portadores\templates\portadores.html:7 .\sesions\templates\index.html:34
-#: .\sesions\templates\layout.html:35 .\utilidades\templates\404.html:7
-msgid "Portadores"
-msgstr "Carriers"
-
-#: .\portadores\templates\portadores.html:19
-msgid "PORTADORES"
-msgstr "CARRIERS"
-
-#: .\portadores\templates\portadores.html:22
-msgid "Agregar nuevo portador"
-msgstr "Add new carrier"
-
-#: .\portadores\templates\portadores.html:48
-msgid "APELLIDOS"
-msgstr "SURNAMES"
-
-#: .\portadores\templates\portadores.html:49
-msgid "TELEFONO"
-msgstr "PHONE NUMBER"
-
-#: .\portadores\templates\portadores.html:50
-msgid "CORREO"
-msgstr "EMAIL"
 
 #: .\sesions\templates\footer.html:26
 msgid "CONTACTO"
@@ -1907,27 +1913,27 @@ msgstr "Welcome "
 msgid "Home"
 msgstr "Home"
 
-#: .\sesions\templates\layout.html:42
+#: .\sesions\templates\layout.html:39
 msgid "Lenguaje"
 msgstr "Language"
 
-#: .\sesions\templates\layout.html:45
+#: .\sesions\templates\layout.html:42
 msgid "Español"
 msgstr "Spanish"
 
-#: .\sesions\templates\layout.html:47
+#: .\sesions\templates\layout.html:44
 msgid "Ingles"
 msgstr "English"
 
-#: .\sesions\templates\layout.html:52
+#: .\sesions\templates\layout.html:49
 msgid "Cerrar Sesión"
 msgstr "Log Out"
 
-#: .\sesions\templates\layout.html:57
+#: .\sesions\templates\layout.html:54
 msgid "Registrarse"
 msgstr "Sign up"
 
-#: .\sesions\templates\layout.html:60
+#: .\sesions\templates\layout.html:57
 msgid "Iniciar Sesión"
 msgstr "Log In"
 
@@ -1975,6 +1981,10 @@ msgstr "Transcribe the image code"
 msgid "Registrar"
 msgstr "Register"
 
+#: .\utilidades\templates\404.html:7
+msgid "Portadores"
+msgstr "Carriers"
+
 #: .\utilidades\templates\paginador.html:4
 msgid "Primera"
 msgstr "First"
@@ -1990,3 +2000,30 @@ msgstr "Next"
 #: .\utilidades\templates\paginador.html:13
 msgid "última"
 msgstr "Last"
+
+#~ msgid "Crear Portador"
+#~ msgstr "Create Carrier"
+
+#~ msgid "Datos del Portador"
+#~ msgstr "Carrier Data"
+
+#~ msgid "Editar Portador"
+#~ msgstr "Edit Carrier"
+
+#~ msgid "Guardar"
+#~ msgstr "Save"
+
+#~ msgid "PORTADORES"
+#~ msgstr "CARRIERS"
+
+#~ msgid "Agregar nuevo portador"
+#~ msgstr "Add new carrier"
+
+#~ msgid "APELLIDOS"
+#~ msgstr "SURNAMES"
+
+#~ msgid "TELEFONO"
+#~ msgstr "PHONE NUMBER"
+
+#~ msgid "CORREO"
+#~ msgstr "EMAIL"

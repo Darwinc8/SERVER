@@ -54,7 +54,7 @@
   </div>
 
   <div class="mb-3">
-    <label for="" class="form-label">{{form.GRUPO.label|title}}:</label>
+    <label for="" class="form-label">{% trans "Grupo" %}</label>
     <input type="{{ form.GRUPO.field.widget.input_type }}" class="form-control" name="{{ form.GRUPO.name }}" id=""
       placeholder="{{ form.GRUPO.label|title }}" value="{{form.GRUPO.value | default:''}}" maxlength="1"
       required>
