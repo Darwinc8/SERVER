@@ -51,6 +51,13 @@
         </tbody>
     </table>
   </div>
+  <div class="container mt-4">
+    {% if mensaje %}
+        <!-- Muestra el mensaje de Bootstrap si está presente -->
+        <div class="alert alert-info" role="alert">
+            {{ mensaje }}
+        </div>
+    {% endif %}
   <div class="card-footer text-muted">
 </div>
 </div>
