@@ -55,8 +55,8 @@ class BusquedaArmamentoForm(forms.Form):
         ('NUMERO_LOC_id__NO_LICENCIA__icontains', 'LOC'),
         ('CLASE_TIPO_ARMA_id__TIPO__icontains', 'Tipo de arma'),
         ('CALIBRE_ARMA_id__CALIBRE__icontains', 'Calibres'),
-        ('MARCA_id__MARCA__icontains', 'Marcas'),
-        ('MODELO_id__MODELO__icontains', 'Modelos')
+        ('MARCA_ARMA__MARCA__icontains', 'Marcas'),
+        ('MODELO_ARMA__MODELO__icontains', 'Modelos')
     )
     
     OPCIONES_ORDENADAS = sorted(CAMPOS_BUSQUEDA, key=lambda option: option[1])
