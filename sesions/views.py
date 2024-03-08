@@ -21,8 +21,11 @@ def registrarse(request):
                             username=request.POST['username'], password=request.POST['password1'])
                         user.is_active = False  # Establecer el usuario como inactivo
                         user.save()
-                        login(request, user)
-                        return redirect('catalogos')
+                        msj = '!Registro exitoso, por favor espere a que su usuario sea activado por el administrador!'
+                        return render(request, 'sign_up.html', {
+                    'form': form,
+                    'mensaje': msj
+                })
                     except IntegrityError:
                         return render(request, 'sign_up.html', {
                             'form': form,
@@ -47,6 +50,7 @@ def cerrar_sesion(request):
     return redirect('home')
 
 def iniciar_sesion(request):
+    # Recupera los mensajes almacenados
     if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)
 

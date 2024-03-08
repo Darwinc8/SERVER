@@ -87,6 +87,11 @@
                     </button>
                   </div>
                 </form>
+                {% if mensaje %}
+    <div class="alert alert-success" role="alert">
+        {{ mensaje }}
+    </div>
+    {% endif %}
               </div>
               <div
                 class="col-md-10 col-lg-6 col-xl-7 order-1 order-lg-2 d-flex align-items-center"
