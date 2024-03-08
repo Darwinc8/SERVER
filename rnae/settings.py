@@ -1,6 +1,5 @@
 from pathlib import Path
 import os
-import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -18,11 +17,7 @@ RECAPTCHA_PRIVATE_KEY = 'TU_CLAVE_SECRETA'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
-RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
-if RENDER_EXTERNAL_HOSTNAME:
-    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -164,8 +159,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 IMAGES_ROOT = os.path.join(MEDIA_ROOT, 'images')
-
-PORTADORES_ROOT = os.path.join(IMAGES_ROOT, 'portadores')
 
 IMAGENES_ROOT = os.path.join(IMAGES_ROOT, 'Imagenes')
 
