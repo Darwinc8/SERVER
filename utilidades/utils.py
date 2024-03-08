@@ -29,8 +29,5 @@ def EliminarImagenAntigua(ruta):
     # Verifica si el archivo existe
     if os.path.exists(ruta):
         # Si existe, elimínalo
-        os.remove(ruta)
-        print("Imagen antigua eliminada con exito")
-    else:
-        print("imagen no encontrada")    
+        os.remove(ruta)   
         

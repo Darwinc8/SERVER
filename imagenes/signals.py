@@ -40,7 +40,6 @@ def despues_de_insertar(sender, instance, created, **kwargs):
         usuario = instance.usuario.username,
         ultima_modificacion = instance.ultima_modificacion
     )
-    print("Copia de creación/modificación creada...")
     
 @receiver(pre_delete, sender=Imagenes)
 def antes_de_eliminar(sender, instance, **kwargs):
@@ -74,4 +73,3 @@ def antes_de_eliminar(sender, instance, **kwargs):
         usuario = instance.usuario.username,
         ultima_modificacion = timezone.now()
     )
-    print("Copia de eliminación creada...")

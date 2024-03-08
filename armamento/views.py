@@ -374,7 +374,6 @@ def obtener_municipios(request, entidad_id):
 
     except Municipio.DoesNotExist:
         # Manejo de error si no se encuentra la entidad o no existen municipios asociados
-        print("Municipio o entidad no encontrados.")
         return JsonResponse([], safe=False)
 
 def obtener_instituciones(request, dependencia_id):
@@ -385,7 +384,6 @@ def obtener_instituciones(request, dependencia_id):
 
     except Institucion.DoesNotExist:
         # Manejo de error si no se encuentra o no existen instituciones asociadas
-        print("Instituciones no encontradas.")
         return JsonResponse([], safe=False)   
     
 def convertir_ids_a_objetos(request, row):

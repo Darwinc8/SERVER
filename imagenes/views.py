@@ -37,7 +37,6 @@ def crear_imagen(request):
             objecto.save()
             return redirect('imagenes')
         else:
-            print(form.errors)
             return redirect('crear_imagen')
 
 @login_required
@@ -65,7 +64,7 @@ def eliminar_imagen(request, id):
 @login_required
 def editar_imagen(request, id):
         imagen = get_object_or_404(Imagenes,pk=id)
-        ruta = f"/RNAE_V1{imagen.IMAGEN.url}"
+        ruta = f"/RNAE{imagen.IMAGEN.url}"
         
         form = ImagenForm(request.POST or None, request.FILES or None, instance=imagen)
 
@@ -90,7 +89,6 @@ def obtener_instituciones(dependencia_id):
 
     except Institucion.DoesNotExist:
         # Manejo de error si no se encuentra o no existen instituciones asociadas
-        print("Instituciones no encontradas.")
         return JsonResponse([], safe=False)
     
     
