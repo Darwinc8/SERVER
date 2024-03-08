@@ -1,5 +1,7 @@
 {% extends "layout.html" %} 
-{% load i18n %} 
+{% load i18n %}
+{% load static %}
+{% block favicon%} <link rel="icon" type="image/x-icon" href="{% static 'icons/home.png' %}"> {% endblock %} 
 {% block title %} {% trans "Registrar usuario" %} 
 {% endblock %} 
 {% block content %}
