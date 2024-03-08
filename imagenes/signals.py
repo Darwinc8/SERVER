@@ -12,7 +12,7 @@ def despues_de_insertar(sender, instance, created, **kwargs):
         estado = "Modificación"
     
     # Carpeta de destino donde deseas guardar la imagen
-    carpeta_destino = '/RNAE_V1/media/respaldo/imagenes/'
+    carpeta_destino = '/home/RNAE/media/respaldo/imagenes/'
     
     if instance.IMAGEN:
         # Genera una ruta única para la imagen en la carpeta de destino
@@ -46,7 +46,7 @@ def despues_de_insertar(sender, instance, created, **kwargs):
 def antes_de_eliminar(sender, instance, **kwargs):
     
     # Carpeta de destino donde deseas guardar la imagen
-    carpeta_destino = '/RNAE_V1/media/respaldo/imagenes/'
+    carpeta_destino = '/home/sistemas/RNAE/media/respaldo/imagenes/'
     
     if instance.IMAGEN:
         # Genera una ruta única para la imagen en la carpeta de destino
