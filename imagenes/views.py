@@ -64,7 +64,7 @@ def eliminar_imagen(request, id):
 @login_required
 def editar_imagen(request, id):
         imagen = get_object_or_404(Imagenes,pk=id)
-        ruta = f"/RNAE{imagen.IMAGEN.url}"
+        ruta = f"/home/sistemas/RNAE{imagen.IMAGEN.url}"
         
         form = ImagenForm(request.POST or None, request.FILES or None, instance=imagen)
 
@@ -73,7 +73,9 @@ def editar_imagen(request, id):
                 utils.EliminarImagenAntigua(ruta)
             objeto = form.save(commit=False)
             objeto.usuario = request.user     
-            objeto.save()    
+            objeto.save()
+            file_path = objeto.IMAGEN.path
+            os.chmod(file_path, 0o777)
             return redirect('imagenes')
         return render(request, 'editar_imagen.html', {
             'form': form,

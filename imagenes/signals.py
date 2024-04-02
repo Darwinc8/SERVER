@@ -12,7 +12,7 @@ def despues_de_insertar(sender, instance, created, **kwargs):
         estado = "Modificación"
     
     # Carpeta de destino donde deseas guardar la imagen
-    carpeta_destino = 'media/respaldo/imagenes/'
+    carpeta_destino = '/home/sistemas/RNAE/media/respaldo/imagenes/'
     
     if instance.IMAGEN:
         # Genera una ruta única para la imagen en la carpeta de destino
@@ -23,7 +23,7 @@ def despues_de_insertar(sender, instance, created, **kwargs):
         if not os.path.exists(ruta_destino):
             # Copia la imagen a la carpeta de destino
             shutil.copy(instance.IMAGEN.path, ruta_destino)
-            
+  
     ImagenesLog.objects.create(
         id_alterna = instance.ID_ALTERNA,
         id_arma = instance.ID_ARMA,
@@ -45,7 +45,7 @@ def despues_de_insertar(sender, instance, created, **kwargs):
 def antes_de_eliminar(sender, instance, **kwargs):
     
     # Carpeta de destino donde deseas guardar la imagen
-    carpeta_destino = 'media/respaldo/imagenes/'
+    carpeta_destino = '/home/sistemas/RNAE/media/respaldo/imagenes/'
     
     if instance.IMAGEN:
         # Genera una ruta única para la imagen en la carpeta de destino

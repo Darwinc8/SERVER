@@ -16,8 +16,7 @@ RECAPTCHA_PRIVATE_KEY = 'TU_CLAVE_SECRETA'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['172.16.1.20']
 
 
 # Application definition
@@ -81,8 +80,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'rnae_bus',
-        'USER': 'root',
-        'PASSWORD': 'root',
+        'USER': 'admin_rnae',
+        'PASSWORD': 'rnae_admin',
         'HOST': 'localhost',
         'PORT': '3306'
     }
@@ -129,22 +128,12 @@ LOCALE_PATHS = [
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'home/sistemas/RNAE/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
     # Otras rutas de archivos estáticos si las tienes
 ]
-
-if not DEBUG:
-    # Tell Django to copy statics to the `staticfiles` directory
-    # in your application directory on Render.
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-    # Turn on WhiteNoise storage backend that takes care of compressing static files
-    # and creating unique names for each version so they can safely be cached forever.
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 
 LOGIN_URL = '/iniciar_sesion'
 
