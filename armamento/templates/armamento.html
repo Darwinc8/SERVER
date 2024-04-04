@@ -112,7 +112,7 @@
           <td>{{arma.MODELO_ARMA.MODELO}}</td>
           <td>{{arma.MATRICULA}}</td>
           <td>
-            {% if arma.MATRICULA_CANON|default:'' %}
+            {% if arma.MATRICULA_CANON %}
             {{arma.MATRICULA_CANON}}
             {% else %}
             <p>No</p>
@@ -127,7 +127,7 @@
           <td>{{arma.CUIP_PORTADOR}}</td>
           <td>{{arma.CUIP_RESPONSABLE}}</td>
           <td>
-            {% if arma.CIHB|default:'' %}
+            {% if arma.CIHB %}
             {{arma.CIHB}}
             {% else %}
             <p>No</p>
@@ -136,38 +136,38 @@
           <td>{{arma.TIPO_FUNCIONAMIENTO}}</td>
           <td>{{arma.PROPIEDAD}}</td>
           <td>
-            {% if arma.FECHA_BAJA_LOGICA|default:'' %}
+            {% if arma.FECHA_BAJA_LOGICA %}
             {{arma.FECHA_BAJA_LOGICA}}
             {% else %}
-            <p>No</p>
+            <p>SIN FECHA</p>
             {% endif %}
           </td>
           <td>
-            {% if arma.MOTIVO_BAJA|default:'' %}
+            {% if arma.MOTIVO_BAJA %}
             {{arma.MOTIVO_BAJA}}
             {% else %}
             <p>No</p>
             {% endif %}
           </td>
           <td>
-            {% if arma.DOCUMENTO_BAJA|default:'' %}
+            {% if arma.DOCUMENTO_BAJA %}
+            {{arma.DOCUMENTO_BAJA}}
+            {% else %}
+            <p>No</p>
+            {% endif %}
+          </td>
+          <td>
+            {% if arma.OBSERVACIONES_BAJA %}
             {{arma.OBSERVACIONES_BAJA}}
             {% else %}
             <p>No</p>
             {% endif %}
           </td>
           <td>
-            {% if arma.OBSERVACIONES_BAJA|default:'' %}
-            {{arma.OBSERVACIONES_BAJA}}
-            {% else %}
-            <p>No</p>
-            {% endif %}
-          </td>
-          <td>
-            {% if arma.FECHA_BAJA_DOCUMENTO|default:'' %}
+            {% if arma.FECHA_BAJA_DOCUMENTO %}
             {{arma.FECHA_BAJA_DOCUMENTO}}
             {% else %}
-            <p>No</p>
+            <p>SIN FECHA</p>
             {% endif %}
           </td>
           <td>
@@ -183,7 +183,6 @@
   </div>
   <div class="container mt-4">
     {% if mensaje %}
-        <!-- Muestra el mensaje de Bootstrap si está presente -->
         <div class="alert alert-info" role="alert">
             {{ mensaje }}
         </div>
