@@ -15,8 +15,8 @@ RECAPTCHA_PUBLIC_KEY = 'TU_CLAVE_DE_SITIO'
 RECAPTCHA_PRIVATE_KEY = 'TU_CLAVE_SECRETA'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-ALLOWED_HOSTS = ['172.16.1.20']
+DEBUG = True
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition

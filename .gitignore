@@ -1,1 +1,11 @@
 media/
+entorno/
+manage.py
+static/
+staticfiles/
+sesions/
+rnae/
+entorno/
+conf/
+data.json
+requirements.txt
