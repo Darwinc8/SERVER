@@ -358,6 +358,7 @@ def eliminar_armamento(request, id):
         messages.error(request, f'Error al eliminar: No se puede eliminar este armamento ya que se encuentra referenciada a una imagen.')
         
     return redirect('armamento')  # Redirige a la misma vista  
+
 def convertir_fechas(objeto):
     if objeto.FECHA: objeto.FECHA = objeto.FECHA.strftime("%Y-%m-%d")
     if objeto.FECHA_LOC: objeto.FECHA_LOC = objeto.FECHA_LOC.strftime("%Y-%m-%d")
