@@ -96,7 +96,7 @@
             {% if arma.ID_ARMA %}
                 {{arma.ID_ARMA}}
             {% else %}
-                <p>No</p>
+                <p>NO ID</p>
             {% endif %}
           </td>        
           <td>{{arma.INSTITUCION}}</td>
@@ -115,7 +115,7 @@
             {% if arma.MATRICULA_CANON %}
             {{arma.MATRICULA_CANON}}
             {% else %}
-            <p>No</p>
+            <p>NO</p>
             {% endif %}
           </td>
           <td>{{arma.FECHA}}</td>
@@ -139,35 +139,35 @@
             {% if arma.FECHA_BAJA_LOGICA %}
             {{arma.FECHA_BAJA_LOGICA}}
             {% else %}
-            <p>SIN FECHA</p>
+            <p>{% trans "SIN FECHA" %}</p>
             {% endif %}
           </td>
           <td>
             {% if arma.MOTIVO_BAJA %}
             {{arma.MOTIVO_BAJA}}
             {% else %}
-            <p>No</p>
+            <p>NO</p>
             {% endif %}
           </td>
           <td>
             {% if arma.DOCUMENTO_BAJA %}
             {{arma.DOCUMENTO_BAJA}}
             {% else %}
-            <p>No</p>
+            <p>NO</p>
             {% endif %}
           </td>
           <td>
             {% if arma.OBSERVACIONES_BAJA %}
             {{arma.OBSERVACIONES_BAJA}}
             {% else %}
-            <p>No</p>
+            <p>NO</p>
             {% endif %}
           </td>
           <td>
             {% if arma.FECHA_BAJA_DOCUMENTO %}
             {{arma.FECHA_BAJA_DOCUMENTO}}
             {% else %}
-            <p>SIN FECHA</p>
+            <p>{% trans "SIN FECHA" %}</p>
             {% endif %}
           </td>
           <td>
