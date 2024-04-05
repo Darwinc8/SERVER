@@ -10,7 +10,9 @@ from django.contrib import messages
 from utilidades import utils
 import pandas as pd
 from django.contrib import messages
-
+from django.http import FileResponse
+from django.conf import settings
+import os
 # Create your views here.
 @login_required
 def armamento(request):
@@ -461,3 +463,8 @@ def convertir_ids_a_objetos(request, row):
         fila_tipoFuncionamiento,
         fila_propiedad
     )
+
+def descargar_plantilla_excel(request):
+    ruta_plantilla = "static/plantillas/armamento_plantilla.xlsx"
+    # Abre el archivo y devuelve una respuesta de archivo para descargar
+    return FileResponse(open(ruta_plantilla, 'rb'), as_attachment=True)
