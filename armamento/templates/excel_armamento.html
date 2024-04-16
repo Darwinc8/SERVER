@@ -29,7 +29,10 @@
                     <a class="btn btn-success mb-2 mb-md-0" href="{% url 'armamento' %}" role="button">{% trans "Volver a Armamento" %}</a>
                     <button class="btn btn-primary" type="submit" id="cargar_excel" disabled
                     >{% trans "Cargar archivo" %}</button>
-                    <a class="btn btn-primary" href="{% url 'descargar_plantilla_excel' %}" role="button">{% trans "Descargar plantilla Excel" %}</a>
+                    <a href="{% url 'descargar_plantilla_excel' %}" role="button">
+                        <i class="bi bi-file-excel"></i> {% trans "Descargar plantilla Excel" %}
+                      </a>
+                      
                 </div>
             </form>
             <br>
