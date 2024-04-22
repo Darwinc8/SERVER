@@ -2,244 +2,236 @@
 {% load static %}
 <form enctype="multipart/form-data" method="post" id="myForm" onsubmit="enableFieldAndSubmit(event)">
     {% csrf_token %}
-    <div class="mb-3">
-      <label for="" class="form-label">{% trans "Id del Arma" %}:</label>
-      <input type="{{ form.ID_ARMA.field.widget.input_type }}"
-        class="form-control" 
-        name="{{ form.ID_ARMA.name }}" 
-        id="" 
-        placeholder="{{ form.ID_ARMA.label|title }}"
-        value="{{form.ID_ARMA.value | default:''}}">
-    </div>
 
-    <div class="mb-3">
-      <label for="" class="form-label">{% trans "Dependencia" %}:</label>
-        <br>{{form.DEPENDENCIA}}<br>
-    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                <label for="" class="form-label">{% trans "Id del Arma" %}:</label>
+                <input type="{{ form.ID_ARMA.field.widget.input_type }}"
+                    class="form-control" 
+                    name="{{ form.ID_ARMA.name }}" 
+                    id="" 
+                    placeholder="{{ form.ID_ARMA.label|title }}"
+                    value="{{form.ID_ARMA.value | default:''}}">
+            </div>
 
-    <div class="mb-3">
-      <label for="" class="form-label">{% trans "Institucion" %}:</label>
-        <br>{{form.INSTITUCION}}<br>
-    </div>
+            <div class="col-12 col-lg-6">
+                <label for="" class="form-label">{% trans "Dependencia" %}:</label>
+                <br>{{form.DEPENDENCIA}}<br>
+            </div>
 
-    <div class="mb-3">
-      <label for="" class="form-label">{% trans "Entidad" %}:</label>
-        <br>{{form.ENTIDAD}}<br>
-    </div>
+            <div class="col-12 col-lg-6">
+                <label for="" class="form-label">{% trans "Institucion" %}:</label>
+                <br>{{form.INSTITUCION}}<br>
+            </div>
 
-    <div class="mb-3">
-      <label for="" class="form-label">{% trans "Municipio" %}:</label>
-        <br>{{form.MUNICIPIO}}<br>
-    </div>
-
-    <div class="mb-3">
-      <label for="" class="form-label">{% trans "Numero Loc:" %}</label>
-        <br>{{form.NUMERO_LOC}}<br>
-    </div>
-
-    <div class="mb-3">
-      <label for="" class="form-label">{% trans "Folio C:" %}</label>
-      <input type="{{ form.FOLIO_C.field.widget.input_type }}"
-        class="form-control" 
-        name="{{ form.FOLIO_C.name }}" 
-        id="" 
-        placeholder="{{ form.FOLIO_C.label|title }}"
-        value="{{form.FOLIO_C.value | default:''}}"
-        required>
-    </div>
-
-    <div class="mb-3">
-      <label for="" class="form-label">{% trans "Folio D:" %}</label>
-      <input type="{{ form.FOLIO_D.field.widget.input_type }}"
-        class="form-control" 
-        name="{{ form.FOLIO_D.name }}" 
-        id="" 
-        placeholder="{{ form.FOLIO_D.label|title }}"
-        value="{{form.FOLIO_D.value | default:''}}"
-        required>
-    </div>
-
-    <div class="mb-3">
-      <label for="" class="form-label">{% trans "Clase del Arma:" %}</label>
-        <br>{{form.CLASE_TIPO_ARMA}}<br>
-    </div>
-
-    <div class="mb-3">
-      <label for="" class="form-label">{% trans "Calibre del Arma:" %}</label>
-        <br>{{form.CALIBRE_ARMA}}<br>
-    </div>
-
-    <div class="mb-3">
-      <label for="" class="form-label">{% trans "Marca del Arma:" %}</label>
-        <br>{{form.MARCA_ARMA}}<br>
-    </div>
-
-    <div class="mb-3">
-      <label for="" class="form-label">{% trans "Modelo del Arma:" %}</label>
-        <br>{{form.MODELO_ARMA}}<br>
-    </div>
-
-    <div class="mb-3">
-      <label for="matricula" class="form-label">{% trans "Matricula" %}:</label>
-        <input type="{{ form.MATRICULA.field.widget.input_type }}"
-            class="form-control" 
-            name="{{ form.MATRICULA.name }}" 
-            id="matricula" 
-            placeholder="{{ form.MATRICULA.label|title }}"
-            value="{{form.MATRICULA.value | default:''}}"
-            required
-        >
-  </div>
+            <div class="col-12 col-lg-6">
+                <label for="" class="form-label">{% trans "Entidad" %}:</label>
+                <br>{{form.ENTIDAD}}<br>
+            </div>
   
-    <div class="mb-3">
-      <label for="" class="form-label">{% trans "Matricula Canon:" %}</label>
-      <input type="{{ form.MATRICULA_CANON.field.widget.input_type }}"
-        class="form-control" 
-        name="{{ form.MATRICULA_CANON.name }}" 
-        id="" 
-        placeholder="{{ form.MATRICULA_CANON.label|title }}"
-        value="{{form.MATRICULA_CANON.value | default:''}}">
-    </div>
+            <div class="col-12 col-lg-6">
+                <label for="" class="form-label">{% trans "Municipio" %}:</label>
+                <br>{{form.MUNICIPIO}}<br>
+            </div>
 
-    <div class="mb-3">
-      <label for="" class="form-label">{% trans "Fecha" %}:</label>
-        <br>{{form.FECHA}}<br>
-    </div>
+            <div class="col-12 col-lg-6">
+                <label for="" class="form-label">{% trans "Numero Loc:" %}</label>
+                <br>{{form.NUMERO_LOC}}<br>
+            </div>
 
-    <div class="mb-3">
-      <label for="" class="form-label">{% trans "Fecha Loc:" %}</label>
-        <br>{{form.FECHA_LOC}}<br>
-    </div>
+            <div class="col-12 col-lg-6">
+                <label for="" class="form-label">{% trans "Folio C:" %}</label>
+                <input type="{{ form.FOLIO_C.field.widget.input_type }}"
+                    class="form-control" 
+                    name="{{ form.FOLIO_C.name }}" 
+                    id="" 
+                    placeholder="{{ form.FOLIO_C.label|title }}"
+                    value="{{form.FOLIO_C.value | default:''}}"
+                    required>
+            </div>
 
-    <div class="mb-3">
-      <label for="" class="form-label"> {% trans "Estado del Arma:" %}</label>
-        <br>{{form.ESTADO_ARMA}}<br>
-    </div>
+            <div class="col-12 col-lg-6">
+                <label for="" class="form-label">{% trans "Folio D:" %}</label>
+                <input type="{{ form.FOLIO_D.field.widget.input_type }}"
+                    class="form-control" 
+                    name="{{ form.FOLIO_D.name }}" 
+                    id="" 
+                    placeholder="{{ form.FOLIO_D.label|title }}"
+                    value="{{form.FOLIO_D.value | default:''}}"
+                    required>
+            </div>
 
-    <div class="mb-3">
-      <label for="" class="form-label">{% trans "Fecha de Captura:" %}</label>
-        <br>{{form.FECHA_CAPTURA}}<br>
-    </div>
+            <div class="col-12 col-lg-6">
+              <label for="" class="form-label">{% trans "Clase del Arma:" %}</label>
+                <br>{{form.CLASE_TIPO_ARMA}}<br>
+            </div>
+        
+            <div class="col-12 col-lg-6">
+              <label for="" class="form-label">{% trans "Calibre del Arma:" %}</label>
+                <br>{{form.CALIBRE_ARMA}}<br>
+            </div>
+        
+            <div class="col-12 col-lg-6">
+              <label for="" class="form-label">{% trans "Marca del Arma:" %}</label>
+                <br>{{form.MARCA_ARMA}}<br>
+            </div>
+        
+            <div class="col-12 col-lg-6">
+              <label for="" class="form-label">{% trans "Modelo del Arma:" %}</label>
+                <br>{{form.MODELO_ARMA}}<br>
+            </div>
+        
+            <div class="col-12 col-lg-6">
+              <label for="matricula" class="form-label">{% trans "Matricula" %}:</label>
+                <input type="{{ form.MATRICULA.field.widget.input_type }}"
+                    class="form-control" 
+                    name="{{ form.MATRICULA.name }}" 
+                    id="matricula" 
+                    placeholder="{{ form.MATRICULA.label|title }}"
+                    value="{{form.MATRICULA.value | default:''}}"
+                    required
+                >
+          </div>
+          
+            <div class="col-12 col-lg-6">
+              <label for="" class="form-label">{% trans "Matricula Canon:" %}</label>
+              <input type="{{ form.MATRICULA_CANON.field.widget.input_type }}"
+                class="form-control" 
+                name="{{ form.MATRICULA_CANON.name }}" 
+                id="" 
+                placeholder="{{ form.MATRICULA_CANON.label|title }}"
+                value="{{form.MATRICULA_CANON.value | default:''}}">
+            </div>
+        
+            <div class="col-12 col-lg-6">
+              <label for="" class="form-label">{% trans "Fecha" %}:</label>
+                <br>{{form.FECHA}}<br>
+            </div>
+        
+            <div class="col-12 col-lg-6">
+              <label for="" class="form-label">{% trans "Fecha Loc:" %}</label>
+                <br>{{form.FECHA_LOC}}<br>
+            </div>
+        
+            <div class="col-12 col-lg-6">
+              <label for="" class="form-label"> {% trans "Estado del Arma:" %}</label>
+                <br>{{form.ESTADO_ARMA}}<br>
+            </div>
+        
+            <div class="col-12 col-lg-6">
+              <label for="" class="form-label">{% trans "Fecha de Captura:" %}</label>
+                <br>{{form.FECHA_CAPTURA}}<br>
+            </div>
+        
+            <div class="col-12 col-lg-6">
+              <label for="" class="form-label">{% trans "Observaciones" %}:</label>
+              <br>{{ form.OBSERVACIONES }}<br>
+            </div>
+        
+            <div class="col-12 col-lg-6">
+              <label for="" class="form-label">{% trans "Estatus del Arma:" %}</label>
+              <br>{{ form.ESTATUS_ARMA }}<br>
+            </div>
+        
+            <div class="col-12 col-lg-6">
+              <label for="" class="form-label">{% trans "CUIP Portador" %}:</label>
+              <input type="text"
+                class="form-control" 
+                name="{{ form.CUIP_PORTADOR.name }}" 
+                id="" 
+                placeholder="{{ form.CUIP_PORTADOR.label|title }}"
+                value="{{form.CUIP_PORTADOR.value | default:''}}"
+                required>
+            </div>
+        
+            <div class="col-12 col-lg-6">
+              <label for="" class="form-label">{% trans "CUIP Responsable" %}:</label>
+              <input type="text"
+                class="form-control" 
+                name="{{ form.CUIP_RESPONSABLE.name }}" 
+                id="" 
+                placeholder="{{ form.CUIP_RESPONSABLE.label|title }}"
+                value="{{form.CUIP_RESPONSABLE.value | default:''}}"
+                required>
+            </div>
+        
+            <div class="col-12 col-lg-6">
+              <label for="" class="form-label">{{ form.CIHB.label }}:</label>
+              <input type="{{ form.CIHB.field.widget.input_type }}"
+                class="form-control" 
+                name="{{ form.CIHB.name }}" 
+                id="" 
+                placeholder="{{ form.CIHB.label }}"
+                value="{{form.CIHB.value | default:''}}">
+            </div>
+        
+            <div class="col-12 col-lg-6">
+              <label for="" class="form-label">{%trans "Tipo de Funcionamiento"%}:</label>
+                <br>{{form.TIPO_FUNCIONAMIENTO}}<br>
+            </div>
+        
+            <div class="col-12 col-lg-6">
+              <label for="" class="form-label">{%trans "Tipo de Propiedad" %}:</label>
+                <br>{{form.PROPIEDAD}}<br>
+            </div>
+        
+            <div class="col-12 col-lg-6">
+              <label for="" class="form-label">{% trans "Fecha de Baja Logica:" %}</label>
+              <br>{{ form.FECHA_BAJA_LOGICA }}<br>
+            </div>
+        
+            <div class="col-12 col-lg-6">
+              <label for="" class="form-label">{% trans "Motivo de baja:" %}</label>
+              <br>{{ form.MOTIVO_BAJA }}<br>
+            </div>
+        
+            <div class="col-12 col-lg-6">
+              <label for="" class="form-label">{% trans "Documento de Baja:" %}</label>
+              <input type="{{ form.DOCUMENTO_BAJA.field.widget.input_type }}"
+                class="form-control" 
+                name="{{ form.DOCUMENTO_BAJA.name }}" 
+                id="" 
+                placeholder="{{ form.DOCUMENTO_BAJA.label|title }}"
+                value="{{form.DOCUMENTO_BAJA.value | default:''}}">
+            </div>
+        
+            <div class="col-12 col-lg-6">
+              <label for="" class="form-label">{% trans "Observaciones de Baja:" %}</label>
+              <br>{{ form.OBSERVACIONES_BAJA }}<br>
+            </div>
+        
+            <div class="col-12 col-lg-6">
+              <label for="" class="form-label">{% trans "Fecha de baja del documento:" %}</label>
+              <br>{{ form.FECHA_BAJA_DOCUMENTO }}<br>
+            </div>
+        </div>
+    </div>   
 
-    <div class="mb-3">
-      <label for="" class="form-label">{% trans "Observaciones" %}:</label>
-      <br>{{ form.OBSERVACIONES }}<br>
-    </div>
+              
 
-    <div class="mb-3">
-      <label for="" class="form-label">{% trans "Estatus del Arma:" %}</label>
-      <br>{{ form.ESTATUS_ARMA }}<br>
-    </div>
-
-    <div class="mb-3">
-      <label for="" class="form-label">{% trans "CUIP Portador" %}:</label>
-      <input type="text"
-        class="form-control" 
-        name="{{ form.CUIP_PORTADOR.name }}" 
-        id="" 
-        placeholder="{{ form.CUIP_PORTADOR.label|title }}"
-        value="{{form.CUIP_PORTADOR.value | default:''}}"
-        required>
-    </div>
-
-    <div class="mb-3">
-      <label for="" class="form-label">{% trans "CUIP Responsable" %}:</label>
-      <input type="text"
-        class="form-control" 
-        name="{{ form.CUIP_RESPONSABLE.name }}" 
-        id="" 
-        placeholder="{{ form.CUIP_RESPONSABLE.label|title }}"
-        value="{{form.CUIP_RESPONSABLE.value | default:''}}"
-        required>
-    </div>
-
-    <div class="mb-3">
-      <label for="" class="form-label">{{ form.CIHB.label }}:</label>
-      <input type="{{ form.CIHB.field.widget.input_type }}"
-        class="form-control" 
-        name="{{ form.CIHB.name }}" 
-        id="" 
-        placeholder="{{ form.CIHB.label }}"
-        value="{{form.CIHB.value | default:''}}">
-    </div>
-
-    <div class="mb-3">
-      <label for="" class="form-label">{%trans "Tipo de Funcionamiento"%}:</label>
-        <br>{{form.TIPO_FUNCIONAMIENTO}}<br>
-    </div>
-
-    <div class="mb-3">
-      <label for="" class="form-label">{%trans "Tipo de Propiedad" %}:</label>
-        <br>{{form.PROPIEDAD}}<br>
-    </div>
-
-    <div class="mb-3">
-      <label for="" class="form-label">{% trans "Fecha de Baja Logica:" %}</label>
-      <br>{{ form.FECHA_BAJA_LOGICA }}<br>
-    </div>
-
-    <div class="mb-3">
-      <label for="" class="form-label">{% trans "Motivo de baja:" %}</label>
-      <br>{{ form.MOTIVO_BAJA }}<br>
-    </div>
-
-    <div class="mb-3">
-      <label for="" class="form-label">{% trans "Documento de Baja:" %}</label>
-      <input type="{{ form.DOCUMENTO_BAJA.field.widget.input_type }}"
-        class="form-control" 
-        name="{{ form.DOCUMENTO_BAJA.name }}" 
-        id="" 
-        placeholder="{{ form.DOCUMENTO_BAJA.label|title }}"
-        value="{{form.DOCUMENTO_BAJA.value | default:''}}">
-    </div>
-
-    <div class="mb-3">
-      <label for="" class="form-label">{% trans "Observaciones de Baja:" %}</label>
-      <br>{{ form.OBSERVACIONES_BAJA }}<br>
-    </div>
-
-    <div class="mb-3">
-      <label for="" class="form-label">{% trans "Fecha de baja del documento:" %}</label>
-      <br>{{ form.FECHA_BAJA_DOCUMENTO }}<br>
-    </div>
     {% if form.errors %}
-    <div class="alert alert-danger" role="alert">
-        <ul>
-            {% for field in form %}
-                {% for error in field.errors %}
-                    <li>{{ error }}</li>
+        <div class="alert alert-danger" role="alert">
+            <ul>
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
                 {% endfor %}
-            {% endfor %}
-        </ul>
-    </div>
-{% endif %}
-
+            </ul>
+        </div>
+    {% endif %}
 
     <input class="btn btn-success" type="submit" value="Guardar" id="guardar-btn">
-
     <a class="btn btn-primary" href="{%url 'armamento'%}" role="button">{% trans "Volver" %}</a>
-
-
 </form>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="{% static 'js/municipios.js' %}"></script>
 <script src="{% static 'js/instituciones.js' %}"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="{% static 'js/boton_guardar.js'%}"></script>
 <script src="{% static 'js/tecla_enter.js'%}"></script>
+
 {% if is_editing %}
-  <script src="{% static 'js/deshabilitar_matricula.js'%}"></script>
+    <script src="{% static 'js/deshabilitar_matricula.js'%}"></script>
 {% endif %}
-
-
-
-
-
-
-
-
-
-
-
-
-

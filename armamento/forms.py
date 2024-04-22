@@ -42,6 +42,14 @@ class ArmamentoForm(forms.ModelForm):
         
     FECHA_BAJA_DOCUMENTO = forms.DateField(widget=DateInput(attrs={'type': 'date'}), required=False)
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['OBSERVACIONES'].widget = forms.Textarea(attrs={'rows': 1})
+
+        self.fields['MOTIVO_BAJA'].widget = forms.Textarea(attrs={'rows': 1})
+
+        self.fields['OBSERVACIONES_BAJA'].widget = forms.Textarea(attrs={'rows': 1})
+
 class BusquedaArmamentoForm(forms.Form):
     query = forms.CharField(max_length=100, required=False, widget=forms.TextInput(attrs={'placeholder': '     Buscar registros...'}))
     
