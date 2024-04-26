@@ -150,7 +150,7 @@ msgstr "TYPE OF OPERATION"
 #: .\armamento\templates\armamento.html:83
 #: .\catalogos\templates\catalogos\propiedad.html:21
 msgid "PROPIEDAD"
-msgstr ""
+msgstr "PROPERTY"
 
 #: .\armamento\templates\armamento.html:84
 msgid "FECHA DE BAJA LOGICA"
@@ -583,7 +583,7 @@ msgstr "BRANDS"
 #: .\catalogos\templates\catalogos\modelos.html:13
 #: .\catalogos\templates\catalogos\modelos.html:36
 msgid "MODELOS"
-msgstr "MODEL"
+msgstr "MODELS"
 
 #: .\catalogos\templates\catalogos\municipios.html:13
 msgid "MUNICIPIOS"
@@ -600,10 +600,8 @@ msgid "Propiedades"
 msgstr "Entities"
 
 #: .\catalogos\templates\catalogos\propiedad.html:13
-#, fuzzy
-#| msgid "ENTIDADES"
 msgid "PROPIEDADES"
-msgstr "ENTITIES"
+msgstr "PROPERTIES"
 
 #: .\catalogos\templates\catalogos\tipo_funcionamiento.html:13
 msgid "TIPOS DE FUNCIONAMIENTOS"
