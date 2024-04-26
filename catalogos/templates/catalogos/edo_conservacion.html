@@ -17,15 +17,15 @@
   <div class="card-body table-responsive">
     <table class="table table table-striped table-bordered">
         <thead>
-            <tr>
-                <th scope="col" class="text-center">{% trans "ID ESTADO" %}</th>
+            <tr class="text-center">
+                <th scope="col">{% trans "ID ESTADO" %}</th>
                 <th scope="col">{% trans "DESCRIPCIÓN" %}</th>
             </tr>
         </thead>
         <tbody>
             {% for estado in estados %}
-            <tr class="">
-                <td class="text-center">{{ estado.ID_ESTADO }}</td>
+            <tr class="text-center">
+                <td>{{ estado.ID_ESTADO }}</td>
                 <td>{{ estado.DESCRIPCION }}</td>
             </tr>
             {% endfor %}

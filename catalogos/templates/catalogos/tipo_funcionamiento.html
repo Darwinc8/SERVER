@@ -17,14 +17,14 @@
     <table class="table table table-striped table-bordered">
         <thead>
             <tr>
-                <th scope="col">{% trans "ID" %}</th>
+                <th scope="col" class="text-center">{% trans "ID" %}</th>
                 <th scope="col">{% trans "TIPO DE FUNCIONAMIENTO" %}</th>
             </tr>
         </thead>
         <tbody>
             {% for tipo in tipos_funcionamientos %}
             <tr>
-                <td>{{ tipo.ID }}</td>
+                <td class="text-center">{{ tipo.ID }}</td>
                 <td>{{ tipo.TipoFuncionamiento }}</td>
             </tr>
             {% endfor %}

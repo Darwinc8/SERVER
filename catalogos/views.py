@@ -103,7 +103,7 @@ def calibres(request):
     
 @login_required
 def marcas(request):
-    marcas = Marca.objects.all()
+    marcas = Marca.objects.all().order_by('ID_MARCA')
     
     query = request.GET.get('query')
     valor = request.GET.get('campos_filtrados')

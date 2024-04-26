@@ -17,14 +17,14 @@
     <table class="table table table-striped table-bordered">
         <thead>
             <tr>
-                <th scope="col">{% trans "ID" %}</th>
+                <th scope="col" class="text-center">{% trans "ID" %}</th>
                 <th scope="col">{% trans "PROPIEDAD" %}</th>
             </tr>
         </thead>
         <tbody>
             {% for propiedad in propiedades %}
             <tr>
-                <td>{{ propiedad.ID }}</td>
+                <td class="text-center">{{ propiedad.ID }}</td>
                 <td>{{ propiedad.Propiedad }}</td>
             </tr>
             {% endfor %}

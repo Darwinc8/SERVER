@@ -50,6 +50,9 @@
         </tbody>
     </table>
 </div>
+<div class="card-footer text-muted">
+</div>
+</div>
 <div class="container mt-4">
   {% if mensaje %}
       <!-- Muestra el mensaje de Bootstrap si está presente -->
@@ -57,11 +60,8 @@
           {{ mensaje }}
       </div>
   {% endif %}
-<div class="card-footer text-muted">
-</div>
 </div>
 <div class="pagination">
-    {% include 'paginador.html' %}
+  {% include 'paginador.html' %}
 </div>
-
 {% endblock %}

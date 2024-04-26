@@ -45,17 +45,17 @@
       </tbody>
     </table>
   </div>
-  <div class="container mt-4">
-    {% if mensaje %}
-        <!-- Muestra el mensaje de Bootstrap si está presente -->
-        <div class="alert alert-info" role="alert">
-            {{ mensaje }}
-        </div>
-    {% endif %}
   <div class="card-footer text-muted">
   </div>
 </div>
+<div class="container mt-4">
+  {% if mensaje %}
+      <div class="alert alert-info" role="alert">
+          {{ mensaje }}
+      </div>
+  {% endif %}
+</div>
 <div class="pagination">
-    {% include 'paginador.html' %}
+  {% include 'paginador.html' %}
 </div>
 {% endblock %}

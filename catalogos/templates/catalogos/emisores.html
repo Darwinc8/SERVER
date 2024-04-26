@@ -17,14 +17,14 @@
     <table class="table table table-striped table-bordered">
         <thead>
             <tr>
-                <th scope="col">{% trans "ID" %}</th>
+                <th scope="col" class="text-center">{% trans "ID" %}</th>
                 <th scope="col">{% trans "TIPO" %}</th>
             </tr>
         </thead>
         <tbody>
             {% for emisor in emisores %}
             <tr>
-                <td>{{ emisor.Id_Emisor }}</td>
+                <td class="text-center">{{ emisor.Id_Emisor }}</td>
                 <td>{{ emisor.Tipo }}</td>
             </tr>
             {% endfor %}

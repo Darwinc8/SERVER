@@ -130,7 +130,7 @@
             {% if arma.CIHB %}
             {{arma.CIHB}}
             {% else %}
-            <p>No</p>
+            <p>NO</p>
             {% endif %}
           </td>
           <td>{{arma.TIPO_FUNCIONAMIENTO}}</td>
@@ -190,9 +190,10 @@
   <div class="card-footer text-muted">
   </div>
 </div>
-  <div class="pagination">
-    {% include 'paginador.html' %}
-  </div>
+</div>
+<br>
+<div class="pagination">
+  {% include 'paginador.html' %}
 </div>
 <script src="{% static 'js/confirmar_eliminacion.js' %}"></script>
 <script src="{% static 'js/validar_formulario.js' %}"></script>
