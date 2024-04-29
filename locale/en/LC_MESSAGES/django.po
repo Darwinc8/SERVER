@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-26 13:20-0600\n"
+"POT-Creation-Date: 2024-04-26 15:14-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,10 +32,8 @@ msgid "Agregar nuevo armamento"
 msgstr "Add new armament"
 
 #: .\armamento\templates\armamento.html:33
-#, fuzzy
-#| msgid "Crear Armamento"
 msgid "Crear manualmente"
-msgstr "Create Armament"
+msgstr "Manual creation"
 
 #: .\armamento\templates\armamento.html:34
 msgid "Desde un archivo excel"
@@ -234,10 +232,12 @@ msgid "Id del Arma"
 msgstr "Weapon ID"
 
 #: .\armamento\templates\formArmamento.html:19
+#: .\imagenes\templates\formImagen.html:14
 msgid "Dependencia"
 msgstr "Dependencies"
 
 #: .\armamento\templates\formArmamento.html:24
+#: .\imagenes\templates\formImagen.html:22
 msgid "Institucion"
 msgstr "Institutions"
 
@@ -318,16 +318,12 @@ msgid "CUIP Responsable"
 msgstr "Person in charge's CUIP"
 
 #: .\armamento\templates\formArmamento.html:170
-#, fuzzy
-#| msgid "Tipos de calibre"
 msgid "Tipo de Funcionamiento"
-msgstr "Caliber types"
+msgstr "Type of Operation"
 
 #: .\armamento\templates\formArmamento.html:175
-#, fuzzy
-#| msgid "Tipos de Dependencia"
 msgid "Tipo de Propiedad"
-msgstr "Types of Dependency"
+msgstr "Types of Property"
 
 #: .\armamento\templates\formArmamento.html:180
 msgid "Fecha de Baja Logica:"
@@ -602,6 +598,12 @@ msgstr "Entities"
 #: .\catalogos\templates\catalogos\propiedad.html:13
 msgid "PROPIEDADES"
 msgstr "PROPERTIES"
+
+#: .\catalogos\templates\catalogos\tipo_funcionamiento.html:7
+#, fuzzy
+#| msgid "Tipos de calibre"
+msgid "Tipo de Funcionamientos"
+msgstr "Caliber types"
 
 #: .\catalogos\templates\catalogos\tipo_funcionamiento.html:13
 msgid "TIPOS DE FUNCIONAMIENTOS"
@@ -2093,9 +2095,22 @@ msgstr ""
 msgid "Connect, get help, or contribute"
 msgstr ""
 
+#: .\imagenes\templates\crear_imagen.html:7
+#: .\imagenes\templates\crear_imagen.html:13
+msgid "Crear Imagen"
+msgstr "Create Image"
+
+#: .\imagenes\templates\crear_imagen.html:16
+#: .\imagenes\templates\editar_imagen.html:16
+msgid "Datos de la Imagen"
+msgstr "Image Data"
+
+#: .\imagenes\templates\editar_imagen.html:7
+#: .\imagenes\templates\editar_imagen.html:13
+msgid "Editar Imagen"
+msgstr "Edit Image"
+
 #: .\imagenes\templates\formImagen.html:8
-#, fuzzy
-#| msgid "Id del Arma existente:"
 msgid "Matricula del Arma existente:"
 msgstr "Existing Weapon ID"
 

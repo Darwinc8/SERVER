@@ -4,16 +4,16 @@
 {% block favicon %}
 <link rel="icon" type="image/x-icon" href="{% static 'icons/foto_unica.png' %}">
 {% endblock %}
- {% block title %} Crear Imagen {% endblock %} 
+ {% block title %} {% trans "Crear Imagen" %} {% endblock %} 
 
 {% block content %}
 <br><br>
 <div class="card">
     <div class="card-header">
-        Crear Imagen
+        {% trans "Crear Imagen" %}
     </div>
     <div class="card-body">
-        <h4 class="card-title">Datos de la Imagen</h4>
+        <h4 class="card-title">{% trans "Datos de la Imagen"%}</h4>
         <div class="container">
             {% include 'formImagen.html'%}
         </div>

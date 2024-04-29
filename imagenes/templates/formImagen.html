@@ -11,7 +11,7 @@
 
   <div class="mb-3 row">
     <div class="col-md-6">
-        <label for="{{ form.DEPENDENCIA.id_for_label }}" class="form-label">{{ form.DEPENDENCIA.label|title }}:</label>
+        <label for="{{ form.DEPENDENCIA.id_for_label }}" class="form-label">{% trans "Dependencia"%}:</label>
         <div>{{ form.DEPENDENCIA }}</div>
     </div>
 
@@ -19,7 +19,7 @@
 
 
     <div class="col-md-6">
-      <label for="{{ form.INSTITUCION.id_for_label }}" class="form-label">{{ form.INSTITUCION.label|title }}:</label>
+      <label for="{{ form.INSTITUCION.id_for_label }}" class="form-label">{% trans "Institucion" %}:</label>
       <div>{{ form.INSTITUCION }}</div>
     </div>
   </div>
