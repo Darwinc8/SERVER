@@ -8,6 +8,7 @@ from django.http import JsonResponse
 from .forms import BusquedaImagenesForm
 from django.contrib import messages
 from utilidades import utils
+from django.utils.translation import gettext_lazy as _
 # Create your views here.
 @login_required
 def imagenes(request):

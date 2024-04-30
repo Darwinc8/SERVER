@@ -12,21 +12,22 @@ def validate_fecha_no_anterior_1990(value):
 
 def validate_cuip_formato(value):
     if not (14 <= len(value) <= 20):
-        raise ValidationError('Los CUIPs debe tener entre 14 y 20 caracteres.')
+        raise ValidationError(_('Los CUIPs deben tener entre 14 y 20 caracteres.'))
+
     if not value[0:4].isalpha():
-        raise ValidationError('Los primeros 4 caracteres de CUIPs deben ser letras.')
+        raise ValidationError(_('Los primeros 4 caracteres de los CUIPs deben ser letras.'))
 
     if not value[4:10].isdigit():
-        raise ValidationError('Los caracteres del 5 al 10 de los CUIPs deben ser todos dígitos.')
+        raise ValidationError(_('Los caracteres del 5 al 10 de los CUIPs deben ser todos dígitos.'))
 
     if value[10] not in ['H', 'M']:
-        raise ValidationError('El carácter en la posición 11 de CUIPs debe ser H o M.')
+        raise ValidationError(_('El carácter en la posición 11 de los CUIPs debe ser H o M.'))
 
     if not (value[11:13].isdigit() and value[11:13] in [str(i).zfill(2) for i in range(1, 33)] + ['98', '99']):
-        raise ValidationError('Los caracteres del 12 al 13 de CUIPs deben estar entre 01 y 32 o ser 98 o 99.')
+        raise ValidationError(_('Los caracteres del 12 al 13 de los CUIPs deben estar entre 01 y 32 o ser 98 o 99.'))
 
     if not value[13:].isdigit():
-        raise ValidationError('Los caracteres a partir del 14 de CUIPs deben ser todos dígitos.')
+        raise ValidationError(_('Los caracteres a partir del 14 de los CUIPs deben ser todos dígitos.'))
         
 def save(self, *args, **kwargs):
         self.clean()
@@ -38,13 +39,7 @@ class Armamento(models.Model):
     INSTITUCION = models.ForeignKey(Institucion, on_delete=models.RESTRICT, null=False, blank=False)
     DEPENDENCIA = models.ForeignKey(Dependencia, on_delete=models.RESTRICT, null=False, blank=False)
     ENTIDAD = models.ForeignKey(Entidad, on_delete=models.RESTRICT, null=False, blank=False)
-    
-    MUNICIPIO = models.ForeignKey(
-        Municipio,
-        on_delete=models.RESTRICT,
-        to_field='id', null=False, blank=False
-    )
-    
+    MUNICIPIO = models.ForeignKey(Municipio,on_delete=models.RESTRICT,to_field='id', null=False, blank=False)
     NUMERO_LOC = models.ForeignKey(LOC, on_delete=models.RESTRICT, null=False, blank=False)
     FOLIO_C = models.CharField(max_length=20, null=False, blank=False)
     FOLIO_D = models.CharField(max_length=20, null=False, blank=False)

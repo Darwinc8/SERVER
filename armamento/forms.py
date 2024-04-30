@@ -51,9 +51,6 @@ class ArmamentoForm(forms.ModelForm):
 
         self.fields['OBSERVACIONES_BAJA'].widget = forms.Textarea(attrs={'rows': 1})
 
-from django import forms
-from django.utils.translation import gettext_lazy as _
-
 class BusquedaArmamentoForm(forms.Form):
     query = forms.CharField(
         max_length=100,
@@ -83,8 +80,9 @@ class BusquedaArmamentoForm(forms.Form):
         initial='MATRICULA__icontains'
     )
 
-
 class ExcelUploadForm(forms.Form):
-    archivo_excel = forms.FileField(label='Seleccione un archivo Excel', 
-    required=True,
-     widget=forms.FileInput(attrs={'accept': '.xlsx'}))
+    archivo_excel = forms.FileField(
+        label=_('Seleccione un archivo Excel'),
+        required=True,
+        widget=forms.FileInput(attrs={'accept': '.xlsx'})
+    )

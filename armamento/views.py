@@ -13,6 +13,7 @@ from django.contrib import messages
 from django.http import FileResponse
 from django.conf import settings
 import os
+from django.utils.translation import gettext_lazy as _
 # Create your views here.
 @login_required
 def armamento(request):
@@ -338,11 +339,7 @@ def editar_armamento(request, id):
         'form': form,
         'is_editing': True 
         })
-
-def validate_fecha_1990(value):
-    if value < datetime(1990, 1, 1).date():
-        raise ValidationError('La fecha no puede ser anterior al 01 de enero de 1990.')
-    
+   
 @login_required
 def eliminar_armamento(request, id):
     try:
