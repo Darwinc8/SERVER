@@ -1,4 +1,5 @@
 from django import forms
+from django.utils.translation import gettext_lazy as _
 
 class BusquedaForm(forms.Form):
     query = forms.CharField(max_length=100, required=False, widget=forms.TextInput(attrs={'placeholder': '     Buscar registros...'}))
@@ -14,7 +15,7 @@ class BusquedaMunicipiosForm(BusquedaForm):
     
     campos_filtrados = forms.ChoiceField(
         choices=OPCIONES_ORDENADAS,
-        label="Filtrar por",
+        label=_("Filtrar por"),
         initial='MUNICIPIO__icontains'
         )
     
@@ -29,7 +30,7 @@ class BusquedaLOCsForm(BusquedaForm):
     
     campos_filtrados = forms.ChoiceField(
         choices=OPCIONES_ORDENADAS,
-        label="Filtrar por",
+        label=_("Filtrar por"),
         initial='NO_LICENCIA'
         )
     
@@ -44,7 +45,7 @@ class BusquedaInstitucionesForm(BusquedaForm):
     
     campos_filtrados = forms.ChoiceField(
         choices=OPCIONES_ORDENADAS,
-        label="Filtrar por",
+        label=_("Filtrar por"),
         initial='NOMBRE__icontains'
         )
     
@@ -58,7 +59,7 @@ class BusquedaTiposForm(BusquedaForm):
     
     campos_filtrados = forms.ChoiceField(
         choices=OPCIONES_ORDENADAS,
-        label="Filtrar por",
+        label=_("Filtrar por"),
         initial='TIPO__icontains'
         )
 
@@ -72,7 +73,7 @@ class BusquedaCalibreForm(BusquedaForm):
     
     campos_filtrados = forms.ChoiceField(
         choices=OPCIONES_ORDENADAS,
-        label="Filtrar por",
+        label=_("Filtrar por"),
         initial='CALIBRE__icontains'
         )
 
@@ -86,7 +87,7 @@ class BusquedaMarcasForm(BusquedaForm):
     
     campos_filtrados = forms.ChoiceField(
         choices=OPCIONES_ORDENADAS,
-        label="Filtrar por",
+        label=_("Filtrar por"),
         initial='MARCA__icontains'
         )
 
@@ -100,6 +101,6 @@ class BusquedaModelosForm(BusquedaForm):
     
     campos_filtrados = forms.ChoiceField(
         choices=OPCIONES_ORDENADAS,
-        label="Filtrar por",
+        label=_("Filtrar por"),
         initial='MODELO__icontains'
         )
