@@ -5,7 +5,7 @@
   {% csrf_token %}
 
   <div class="mb-3">
-    <label for="{{ form.ID_ARMA.id_for_label }}" class="form-label">{% trans "Matricula del Arma existente:" %}</label>
+    <label for="{{ form.ID_ARMA.id_for_label }}" class="form-label">{% trans "Matricula del Arma existente" %}:</label>
     {{ form.ID_ARMA }}
   </div>
 
@@ -26,7 +26,7 @@
 
   <div class="mb-3 row">
     <div class="col-md-6 col-sm-12">
-      <label for="{{ form.ENTIDAD.id_for_label }}" class="form-label">{% trans "Entidad Federativa:" %}</label>
+      <label for="{{ form.ENTIDAD.id_for_label }}" class="form-label">{% trans "Entidad Federativa" %}:</label>
       <div>{{ form.ENTIDAD }}</div>
     </div>
     <div class="col-md-6 col-sm-12">
@@ -58,7 +58,7 @@
   </div>
 
   <div class="mb-3 imagen">
-    <label for="" class="form-label">{% trans "Imagen del Arma:" %}</label>
+    <label for="" class="form-label">{% trans "Imagen del Arma" %}:</label>
     {% if form.IMAGEN.value %}
       <br>
       <img src="{{ form.IMAGEN.value.url }}" width="100">

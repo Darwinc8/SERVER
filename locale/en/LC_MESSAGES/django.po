@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-26 15:14-0600\n"
+"POT-Creation-Date: 2024-04-30 10:09-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,66 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\armamento\forms.py:61 .\imagenes\forms.py:35
+msgid "Buscar registros..."
+msgstr "Search registers..."
+
+#: .\armamento\forms.py:65 .\catalogos\templates\catalogos\emisores.html:20
+#: .\catalogos\templates\catalogos\propiedad.html:20
+#: .\catalogos\templates\catalogos\tipo_funcionamiento.html:20
+#: .\imagenes\forms.py:39
+msgid "ID"
+msgstr "ID"
+
+#: .\armamento\forms.py:66 .\armamento\templates\formArmamento.html:86
+msgid "Matricula"
+msgstr "Registration"
+
+#: .\armamento\forms.py:67 .\armamento\templates\formArmamento.html:24
+#: .\imagenes\forms.py:40 .\imagenes\templates\formImagen.html:22
+msgid "Institucion"
+msgstr "Institutions"
+
+#: .\armamento\forms.py:68 .\armamento\templates\formArmamento.html:19
+#: .\imagenes\forms.py:42 .\imagenes\templates\formImagen.html:14
+msgid "Dependencia"
+msgstr "Dependencies"
+
+#: .\armamento\forms.py:69 .\armamento\templates\formArmamento.html:29
+#: .\imagenes\forms.py:41
+msgid "Entidad"
+msgstr "Entities"
+
+#: .\armamento\forms.py:70 .\armamento\templates\formArmamento.html:34
+msgid "Municipio"
+msgstr "Municipalities"
+
+#: .\armamento\forms.py:71
+msgid "LOC"
+msgstr "LOC"
+
+#: .\armamento\forms.py:72
+msgid "Tipo de arma"
+msgstr "Weapon type"
+
+#: .\armamento\forms.py:73 .\catalogos\templates\catalogos\calibres.html:7
+msgid "Calibres"
+msgstr "Calibers"
+
+#: .\armamento\forms.py:74 .\catalogos\templates\catalogos.html:79
+#: .\catalogos\templates\catalogos\marcas.html:7
+msgid "Marcas"
+msgstr "Brands"
+
+#: .\armamento\forms.py:75 .\catalogos\templates\catalogos.html:85
+#: .\catalogos\templates\catalogos\modelos.html:7
+msgid "Modelos"
+msgstr "Models"
+
+#: .\armamento\forms.py:82 .\imagenes\forms.py:50
+msgid "Filtrar por"
+msgstr "Filter by"
 
 #: .\armamento\templates\armamento.html:13 .\sesions\templates\index.html:30
 #: .\sesions\templates\layout.html:29
@@ -231,24 +291,6 @@ msgstr "Upload file"
 msgid "Id del Arma"
 msgstr "Weapon ID"
 
-#: .\armamento\templates\formArmamento.html:19
-#: .\imagenes\templates\formImagen.html:14
-msgid "Dependencia"
-msgstr "Dependencies"
-
-#: .\armamento\templates\formArmamento.html:24
-#: .\imagenes\templates\formImagen.html:22
-msgid "Institucion"
-msgstr "Institutions"
-
-#: .\armamento\templates\formArmamento.html:29
-msgid "Entidad"
-msgstr "Entities"
-
-#: .\armamento\templates\formArmamento.html:34
-msgid "Municipio"
-msgstr "Municipalities"
-
 #: .\armamento\templates\formArmamento.html:39
 msgid "Numero Loc:"
 msgstr "Number Loc:"
@@ -276,10 +318,6 @@ msgstr "Weapon Brand"
 #: .\armamento\templates\formArmamento.html:81
 msgid "Modelo del Arma:"
 msgstr "Weapon Model"
-
-#: .\armamento\templates\formArmamento.html:86
-msgid "Matricula"
-msgstr "Registration"
 
 #: .\armamento\templates\formArmamento.html:98
 msgid "Matricula Canon:"
@@ -426,16 +464,6 @@ msgstr "Weapons types"
 msgid "Tipos de calibre"
 msgstr "Caliber types"
 
-#: .\catalogos\templates\catalogos.html:79
-#: .\catalogos\templates\catalogos\marcas.html:7
-msgid "Marcas"
-msgstr "Brands"
-
-#: .\catalogos\templates\catalogos.html:85
-#: .\catalogos\templates\catalogos\modelos.html:7
-msgid "Modelos"
-msgstr "Models"
-
 #: .\catalogos\templates\catalogos.html:91
 msgid "Propiedad"
 msgstr "Property"
@@ -461,10 +489,6 @@ msgstr "Types of Dependency"
 #: .\catalogos\templates\catalogos.html:121
 msgid "Tipos de Imagen"
 msgstr "Image Types"
-
-#: .\catalogos\templates\catalogos\calibres.html:7
-msgid "Calibres"
-msgstr "Calibers"
 
 #: .\catalogos\templates\catalogos\calibres.html:12
 msgid "CALIBRES"
@@ -522,12 +546,6 @@ msgstr "DESCRIPTION"
 #: .\catalogos\templates\catalogos\emisores.html:13
 msgid "EMISORES"
 msgstr "EMITTERS"
-
-#: .\catalogos\templates\catalogos\emisores.html:20
-#: .\catalogos\templates\catalogos\propiedad.html:20
-#: .\catalogos\templates\catalogos\tipo_funcionamiento.html:20
-msgid "ID"
-msgstr "ID"
 
 #: .\catalogos\templates\catalogos\emisores.html:21
 #: .\catalogos\templates\catalogos\tipos.html:36
@@ -2095,6 +2113,12 @@ msgstr ""
 msgid "Connect, get help, or contribute"
 msgstr ""
 
+#: .\imagenes\forms.py:43
+#, fuzzy
+#| msgid "Tipos de Imagen"
+msgid "Tipo de Imagen"
+msgstr "Image Types"
+
 #: .\imagenes\templates\crear_imagen.html:7
 #: .\imagenes\templates\crear_imagen.html:13
 msgid "Crear Imagen"
@@ -2111,23 +2135,25 @@ msgid "Editar Imagen"
 msgstr "Edit Image"
 
 #: .\imagenes\templates\formImagen.html:8
-msgid "Matricula del Arma existente:"
+msgid "Matricula del Arma existente"
 msgstr "Existing Weapon ID"
 
 #: .\imagenes\templates\formImagen.html:29
-msgid "Entidad Federativa:"
+msgid "Entidad Federativa"
 msgstr "Federal Entity"
 
 #: .\imagenes\templates\formImagen.html:44
+#, fuzzy
+#| msgid "Tipos de Imagen"
 msgid "Tipo de Imagen:"
-msgstr "Image Type"
+msgstr "Image Types"
 
 #: .\imagenes\templates\formImagen.html:55
 msgid "Grupo"
 msgstr "Group"
 
 #: .\imagenes\templates\formImagen.html:61
-msgid "Imagen del Arma:"
+msgid "Imagen del Arma"
 msgstr "Weapon Image"
 
 #: .\imagenes\templates\formImagen.html:78
@@ -2282,6 +2308,11 @@ msgstr "Next"
 #: .\utilidades\templates\paginador.html:13
 msgid "última"
 msgstr "Last"
+
+#, fuzzy
+#~| msgid "Institucion"
+#~ msgid "Institución"
+#~ msgstr "Institutions"
 
 #~ msgid "Crear Portador"
 #~ msgstr "Create Carrier"

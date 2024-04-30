@@ -1,5 +1,6 @@
 from django import forms
 from .models import  Institucion, Entidad, Dependencia, Tipo_Imagen, Armamento, Imagenes
+from django.utils.translation import gettext_lazy as _
 
 class ImagenForm(forms.ModelForm):
     class Meta:
@@ -28,22 +29,26 @@ class ImagenForm(forms.ModelForm):
     TIPO = forms.ModelChoiceField(queryset=Tipo_Imagen.objects.all().order_by('DESCRIPCION'),to_field_name='ID_IMAGEN',label='Tipo de Imagen')
 
 class BusquedaImagenesForm(forms.Form):
-    query = forms.CharField(max_length=100, required=False, widget=forms.TextInput(attrs={'placeholder': '     Buscar registros...'}))
+    query = forms.CharField(
+        max_length=100,
+        required=False,
+        widget=forms.TextInput(attrs={'placeholder': _('Buscar registros...')})
+    )
     
     CAMPOS_BUSQUEDA = (
-        ('ID_ARMA__ID_ARMA__icontains', 'ID'),
-        ('INSTITUCION_id__NOMBRE__icontains', 'Institución'),
-        ('ENTIDAD_id__ENTIDAD__icontains', 'Entidad'),
-        ('DEPENDENCIA_id__DEPENDENCIA__icontains', 'Dependencia'),
-        ('TIPO_id__DESCRIPCION__icontains', 'Tipo de Imagen')
+        ('ID_ARMA__ID_ARMA__icontains', _('ID')),
+        ('INSTITUCION_id__NOMBRE__icontains', _('Institucion')),
+        ('ENTIDAD_id__ENTIDAD__icontains', _('Entidad')),
+        ('DEPENDENCIA_id__DEPENDENCIA__icontains', _('Dependencia')),
+        ('TIPO_id__DESCRIPCION__icontains', _('Tipo de Imagen'))
     )
     
     OPCIONES_ORDENADAS = sorted(CAMPOS_BUSQUEDA, key=lambda option: option[1])
     
     campos_filtrados = forms.ChoiceField(
         choices=OPCIONES_ORDENADAS,
-        label="Filtrar por",
+        label=_("Filtrar por"),
         initial='ID_ARMA__ID_ARMA__icontains'
-        )    
+    )    
 
             

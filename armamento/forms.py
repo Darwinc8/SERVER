@@ -1,6 +1,7 @@
 from django import forms
 from django.forms import DateInput
 from .models import Armamento, Institucion, Dependencia, Entidad, Municipio, LOC, Tipo, Calibre, Marca, Modelo, Edo_conservacion, TipoFuncinamiento, Propiedad
+from django.utils.translation import gettext_lazy as _
 
 class ArmamentoForm(forms.ModelForm):
     
@@ -50,30 +51,38 @@ class ArmamentoForm(forms.ModelForm):
 
         self.fields['OBSERVACIONES_BAJA'].widget = forms.Textarea(attrs={'rows': 1})
 
+from django import forms
+from django.utils.translation import gettext_lazy as _
+
 class BusquedaArmamentoForm(forms.Form):
-    query = forms.CharField(max_length=100, required=False, widget=forms.TextInput(attrs={'placeholder': '     Buscar registros...'}))
+    query = forms.CharField(
+        max_length=100,
+        required=False,
+        widget=forms.TextInput(attrs={'placeholder': _('Buscar registros...')})
+    )
     
     CAMPOS_BUSQUEDA = (
-        ('ID_ARMA', 'ID'),
-        ('MATRICULA__icontains', 'Matricula'),
-        ('INSTITUCION_id__NOMBRE__icontains', 'Institución'),
-        ('DEPENDENCIA_id__DEPENDENCIA__icontains', 'Dependencia'),
-        ('ENTIDAD_id__ENTIDAD__icontains', 'Entidad'),
-        ('MUNICIPIO_id__MUNICIPIO__icontains', 'Municipio'),
-        ('NUMERO_LOC_id__NO_LICENCIA__icontains', 'LOC'),
-        ('CLASE_TIPO_ARMA_id__TIPO__icontains', 'Tipo de arma'),
-        ('CALIBRE_ARMA_id__CALIBRE__icontains', 'Calibres'),
-        ('MARCA_ARMA__MARCA__icontains', 'Marcas'),
-        ('MODELO_ARMA__MODELO__icontains', 'Modelos')
+        ('ID_ARMA', _('ID')),
+        ('MATRICULA__icontains', _('Matricula')),
+        ('INSTITUCION_id__NOMBRE__icontains', _('Institucion')),
+        ('DEPENDENCIA_id__DEPENDENCIA__icontains', _('Dependencia')),
+        ('ENTIDAD_id__ENTIDAD__icontains', _('Entidad')),
+        ('MUNICIPIO_id__MUNICIPIO__icontains', _('Municipio')),
+        ('NUMERO_LOC_id__NO_LICENCIA__icontains', _('LOC')),
+        ('CLASE_TIPO_ARMA_id__TIPO__icontains', _('Tipo de arma')),
+        ('CALIBRE_ARMA_id__CALIBRE__icontains', _('Calibres')),
+        ('MARCA_ARMA__MARCA__icontains', _('Marcas')),
+        ('MODELO_ARMA__MODELO__icontains', _('Modelos'))
     )
     
     OPCIONES_ORDENADAS = sorted(CAMPOS_BUSQUEDA, key=lambda option: option[1])
     
     campos_filtrados = forms.ChoiceField(
         choices=OPCIONES_ORDENADAS,
-        label="Filtrar por",
+        label=_("Filtrar por"),
         initial='MATRICULA__icontains'
-        )
+    )
+
 
 class ExcelUploadForm(forms.Form):
     archivo_excel = forms.FileField(label='Seleccione un archivo Excel', 

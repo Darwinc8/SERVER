@@ -1722,7 +1722,7 @@ msgid "Entidad Federativa:"
 msgstr ""
 
 #: .\imagenes\templates\formImagen.html:45
-msgid "Tipo de Imagen:"
+msgid "Tipo de Imagen"
 msgstr ""
 
 #: .\imagenes\templates\formImagen.html:65
