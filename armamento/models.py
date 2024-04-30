@@ -3,12 +3,12 @@ from catalogos.models import Institucion, Dependencia, Calibre, Edo_conservacion
 from datetime import datetime
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
-
+from django.utils.translation import gettext_lazy as _
 # Create your models here.
 
 def validate_fecha_no_anterior_1990(value):
     if value < datetime(1990, 1, 1).date():
-        raise ValidationError('No puede ser anterior al 01 de enero de 1990.')
+        raise ValidationError(_('La fecha no puede ser anterior al 01 de enero de 1990.'))
 
 def validate_cuip_formato(value):
     if not (14 <= len(value) <= 20):
