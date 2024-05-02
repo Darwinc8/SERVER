@@ -358,6 +358,7 @@ def eliminar_armamento(request, id):
         
     return redirect('armamento')  # Redirige a la misma vista  
 
+@login_required
 def convertir_fechas(objeto):
     if objeto.FECHA: objeto.FECHA = objeto.FECHA.strftime("%Y-%m-%d")
     if objeto.FECHA_LOC: objeto.FECHA_LOC = objeto.FECHA_LOC.strftime("%Y-%m-%d")
@@ -366,6 +367,7 @@ def convertir_fechas(objeto):
     if objeto.FECHA_BAJA_DOCUMENTO: objeto.FECHA_BAJA_DOCUMENTO = objeto.FECHA_BAJA_DOCUMENTO.strftime("%Y-%m-%d")
     return objeto
 
+@login_required
 def obtener_municipios(request, entidad_id):
     try:
         municipios = Municipio.objects.filter(ID_ENTIDAD__ID_ENTIDAD=entidad_id).values('id', 'MUNICIPIO')
@@ -376,6 +378,7 @@ def obtener_municipios(request, entidad_id):
         # Manejo de error si no se encuentra la entidad o no existen municipios asociados
         return JsonResponse([], safe=False)
 
+@login_required
 def obtener_instituciones(request, dependencia_id):
     try:
         instituciones = Institucion.objects.filter(ID_DEPENDENCIA=dependencia_id).values('ID_INSTITUCION', 'NOMBRE')
@@ -385,7 +388,8 @@ def obtener_instituciones(request, dependencia_id):
     except Institucion.DoesNotExist:
         # Manejo de error si no se encuentra o no existen instituciones asociadas
         return JsonResponse([], safe=False)   
-    
+
+@login_required   
 def convertir_ids_a_objetos(request, row):
     # Inicializar todas las variables con None por defecto
     fila_institucion = fila_dependencia = fila_municipio = None
@@ -461,6 +465,7 @@ def convertir_ids_a_objetos(request, row):
         fila_propiedad
     )
 
+@login_required
 def descargar_plantilla_excel(request):
     ruta_plantilla = "static/plantillas/armamento_plantilla.xlsx"
     # Abre el archivo y devuelve una respuesta de archivo para descargar
