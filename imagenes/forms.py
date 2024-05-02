@@ -40,7 +40,7 @@ class BusquedaImagenesForm(forms.Form):
         ('INSTITUCION_id__NOMBRE__icontains', _('Institucion')),
         ('ENTIDAD_id__ENTIDAD__icontains', _('Entidad')),
         ('DEPENDENCIA_id__DEPENDENCIA__icontains', _('Dependencia')),
-        ('TIPO_id__DESCRIPCION__icontains', _('Tipo de Imagen'))
+        ('TIPO_id__DESCRIPCION__icontains', _('Tipos de Imagen'))
     )
     
     OPCIONES_ORDENADAS = sorted(CAMPOS_BUSQUEDA, key=lambda option: option[1])
