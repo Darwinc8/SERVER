@@ -16,22 +16,22 @@
             </div>
 
             <div class="col-12 col-lg-6">
-                <label for="" class="form-label">{% trans "Dependencia" %}:</label>
+                <label for="id_DEPENDENCIA" class="form-label">{% trans "Dependencia" %}:</label>
                 <br>{{form.DEPENDENCIA}}<br>
             </div>
 
             <div class="col-12 col-lg-6">
-                <label for="" class="form-label">{% trans "Institucion" %}:</label>
+                <label for="id_INSTITUCION" class="form-label">{% trans "Institucion" %}:</label>
                 <br>{{form.INSTITUCION}}<br>
             </div>
 
             <div class="col-12 col-lg-6">
-                <label for="" class="form-label">{% trans "Entidad" %}:</label>
+                <label for="id_ENTIDAD" class="form-label">{% trans "Entidad" %}:</label>
                 <br>{{form.ENTIDAD}}<br>
             </div>
   
             <div class="col-12 col-lg-6">
-                <label for="" class="form-label">{% trans "Municipio" %}:</label>
+                <label for="id_MUNICIPIO" class="form-label">{% trans "Municipio" %}:</label>
                 <br>{{form.MUNICIPIO}}<br>
             </div>
 
@@ -227,6 +227,8 @@
 </form>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{% static 'js/habilitar_municipios.js' %}"></script>
+<script src="{% static 'js/habilitar_instituciones.js' %}"></script>
 <script src="{% static 'js/municipios.js' %}"></script>
 <script src="{% static 'js/instituciones.js' %}"></script>
 <script src="{% static 'js/boton_guardar.js'%}"></script>
