@@ -6,7 +6,9 @@ function habilitarInstitucion() {
         institucion.disabled = false;
     } else {
         institucion.disabled = true;
-        institucion.value = ""; // Limpiar el valor del campo Institución si se deshabilita
+        if (!institucion.value) {
+            institucion.value = ""; // Limpiar el valor del campo Institución solo si está vacío
+        }
     }
 }
 

@@ -5,7 +5,9 @@ function habilitarMunicipio() {
         municipio.disabled = false;
     } else {
         municipio.disabled = true;
-        municipio.value = "";
+        if (!institucion.value) {
+            institucion.value = ""; // Limpiar el valor del campo Institución solo si está vacío
+        };
     }
 }
 
