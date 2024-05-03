@@ -358,7 +358,6 @@ def eliminar_armamento(request, id):
         
     return redirect('armamento')  # Redirige a la misma vista  
 
-@login_required
 def convertir_fechas(objeto):
     if objeto.FECHA: objeto.FECHA = objeto.FECHA.strftime("%Y-%m-%d")
     if objeto.FECHA_LOC: objeto.FECHA_LOC = objeto.FECHA_LOC.strftime("%Y-%m-%d")
