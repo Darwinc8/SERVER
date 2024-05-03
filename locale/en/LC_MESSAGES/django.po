@@ -399,6 +399,7 @@ msgid "CUIP Responsable"
 msgstr "Person in charge's CUIP"
 
 #: .\armamento\templates\formArmamento.html:170
+#: .\catalogos\templates\catalogos\tipo_funcionamiento.html:7
 msgid "Tipo de Funcionamiento"
 msgstr "Type of Operation"
 
@@ -652,24 +653,16 @@ msgid "ID MUNICIPIO"
 msgstr "MUNICIPALITY ID"
 
 #: .\catalogos\templates\catalogos\propiedad.html:7
-#, fuzzy
-#| msgid "Entidades"
 msgid "Propiedades"
-msgstr "Entities"
+msgstr "Properties"
 
 #: .\catalogos\templates\catalogos\propiedad.html:13
 msgid "PROPIEDADES"
 msgstr "PROPERTIES"
 
-#: .\catalogos\templates\catalogos\tipo_funcionamiento.html:7
-#, fuzzy
-#| msgid "Tipos de calibre"
-msgid "Tipo de Funcionamientos"
-msgstr "Caliber types"
-
 #: .\catalogos\templates\catalogos\tipo_funcionamiento.html:13
 msgid "TIPOS DE FUNCIONAMIENTOS"
-msgstr "TYPE OF OPERATION"
+msgstr "TYPES OF OPERATION"
 
 #: .\catalogos\templates\catalogos\tipos.html:13
 msgid "TIPOS DE ARMAS"
