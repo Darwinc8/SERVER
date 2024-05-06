@@ -12,6 +12,11 @@ def BusquedaPersonalizada(request, query, valor, lista, pagina, formulario):
         mensaje = _("No se encontraron registros con esos parámetros.")
         return render(request, pagina, {'mensaje': mensaje, 'form': formulario({'campos_filtrados': valor, 'query': query})})
 
+    return render(request, pagina, {
+        'lista': lista_filtrada,
+        'form': formulario({'campos_filtrados': valor, 'query': query})
+    })
+
 def CrearPaginador(request, lista, num_paginas, pagina, formulario):
     paginator = Paginator(lista, num_paginas)
     page_number = request.GET.get('page')
