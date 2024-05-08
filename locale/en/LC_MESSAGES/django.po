@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-02 12:12-0600\n"
+"POT-Creation-Date: 2024-05-08 09:34-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -149,7 +149,7 @@ msgid "INSTITUCIÓN"
 msgstr "INSTITUTION"
 
 #: .\armamento\templates\armamento.html:61
-#: .\catalogos\templates\catalogos\dependencias.html:21
+#: .\catalogos\templates\catalogos\dependencias.html:22
 #: .\catalogos\templates\catalogos\instituciones.html:38
 #: .\catalogos\templates\catalogos\locs.html:38
 #: .\imagenes\templates\imagenes.html:48
@@ -476,14 +476,17 @@ msgid "Ver"
 msgstr "See"
 
 #: .\catalogos\templates\catalogos.html:31
+#: .\catalogos\templates\catalogos\entidades.html:7
 msgid "Entidades"
 msgstr "Entities"
 
 #: .\catalogos\templates\catalogos.html:37
+#: .\catalogos\templates\catalogos\municipios.html:7
 msgid "Municipios"
 msgstr "Municipalities"
 
 #: .\catalogos\templates\catalogos.html:43
+#: .\catalogos\templates\catalogos\dependencias.html:7
 msgid "Dependencias"
 msgstr "Dependencies"
 
@@ -531,7 +534,8 @@ msgstr "Types of registration"
 msgid "Tipos de Dependencia"
 msgstr "Types of Dependency"
 
-#: .\catalogos\templates\catalogos.html:121 .\imagenes\forms.py:43
+#: .\catalogos\templates\catalogos.html:121
+#: .\catalogos\templates\catalogos\tipos_imagen.html:7 .\imagenes\forms.py:43
 msgid "Tipos de Imagen"
 msgstr "Image Types"
 
@@ -540,7 +544,7 @@ msgid "CALIBRES"
 msgstr "CALIBERS"
 
 #: .\catalogos\templates\catalogos\calibres.html:14
-#: .\catalogos\templates\catalogos\dependencias.html:13
+#: .\catalogos\templates\catalogos\dependencias.html:14
 #: .\catalogos\templates\catalogos\edo_conservacion.html:15
 #: .\catalogos\templates\catalogos\emisores.html:14
 #: .\catalogos\templates\catalogos\entidades.html:14
@@ -559,16 +563,16 @@ msgstr "CALIBERS"
 msgid "Volver a Catalogos"
 msgstr "Back to Catalogs"
 
-#: .\catalogos\templates\catalogos\dependencias.html:12
+#: .\catalogos\templates\catalogos\dependencias.html:13
 msgid "DEPENDENCIAS"
 msgstr "DEPENDENCIES"
 
-#: .\catalogos\templates\catalogos\dependencias.html:19
+#: .\catalogos\templates\catalogos\dependencias.html:20
 #: .\catalogos\templates\catalogos\tipos_dependencia.html:22
 msgid "TIPO DE DEPENDENCIA"
 msgstr "TYPE OF DEPENDENCY"
 
-#: .\catalogos\templates\catalogos\dependencias.html:20
+#: .\catalogos\templates\catalogos\dependencias.html:21
 msgid "ID DEPENDENCIAS"
 msgstr "DEPENDENCIES ID"
 
@@ -2174,9 +2178,7 @@ msgid "Entidad Federativa"
 msgstr "Federal Entity"
 
 #: .\imagenes\templates\formImagen.html:44
-#, fuzzy
-#| msgid "Tipos de Imagen"
-msgid "Tipo de Imagen:"
+msgid "Tipo de Imagen"
 msgstr "Image Types"
 
 #: .\imagenes\templates\formImagen.html:55
