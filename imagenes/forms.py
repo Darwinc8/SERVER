@@ -28,6 +28,15 @@ class ImagenForm(forms.ModelForm):
     
     TIPO = forms.ModelChoiceField(queryset=Tipo_Imagen.objects.all().order_by('DESCRIPCION'),to_field_name='ID_IMAGEN',label='Tipo de Imagen')
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['ID_ARMA'].widget.attrs.update({'class': 'form-control'})
+        self.fields['INSTITUCION'].widget.attrs.update({'class': 'form-control'})
+        self.fields['ENTIDAD'].widget.attrs.update({'class': 'form-control'})
+        self.fields['DEPENDENCIA'].widget.attrs.update({'class': 'form-control'})
+        self.fields['TIPO'].widget.attrs.update({'class': 'form-control'})
+        self.fields['IMAGEN'].widget.attrs.update({'class': 'form-control'})
+
 class BusquedaImagenesForm(forms.Form):
     query = forms.CharField(
         max_length=100,

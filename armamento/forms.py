@@ -45,11 +45,32 @@ class ArmamentoForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['OBSERVACIONES'].widget = forms.Textarea(attrs={'rows': 1})
+        self.fields['OBSERVACIONES'].widget = forms.Textarea(attrs={'rows': 1, 'class': 'form-control'})
+        self.fields['MOTIVO_BAJA'].widget = forms.Textarea(attrs={'rows': 1, 'class': 'form-control'})
+        self.fields['OBSERVACIONES_BAJA'].widget = forms.Textarea(attrs={'rows': 1, 'class': 'form-control'})
 
-        self.fields['MOTIVO_BAJA'].widget = forms.Textarea(attrs={'rows': 1})
+        self.fields['INSTITUCION'].widget.attrs.update({'class': 'form-control'})
+        self.fields['DEPENDENCIA'].widget.attrs.update({'class': 'form-control'})
+        self.fields['ENTIDAD'].widget.attrs.update({'class': 'form-control'})
+        self.fields['NUMERO_LOC'].widget.attrs.update({'class': 'form-control'})
+        self.fields['MUNICIPIO'].widget.attrs.update({'class': 'form-control'})
+        self.fields['CALIBRE_ARMA'].widget.attrs.update({'class': 'form-control'})
+        self.fields['MARCA_ARMA'].widget.attrs.update({'class': 'form-control'})
+        self.fields['MODELO_ARMA'].widget.attrs.update({'class': 'form-control'})
+        self.fields['ESTADO_ARMA'].widget.attrs.update({'class': 'form-control'})
+        self.fields['TIPO_FUNCIONAMIENTO'].widget.attrs.update({'class': 'form-control'})
+        self.fields['ESTATUS_ARMA'].widget.attrs.update({'class': 'form-control'})
+        self.fields['CLASE_TIPO_ARMA'].widget.attrs.update({'class': 'form-control'})
+        self.fields['PROPIEDAD'].widget.attrs.update({'class': 'form-control'})
 
-        self.fields['OBSERVACIONES_BAJA'].widget = forms.Textarea(attrs={'rows': 1})
+        self.fields['FECHA'].widget.attrs.update({'class': 'form-control'})
+        self.fields['FECHA_LOC'].widget.attrs.update({'class': 'form-control'})
+        self.fields['FECHA_CAPTURA'].widget.attrs.update({'class': 'form-control'})
+        self.fields['FECHA_BAJA_LOGICA'].widget.attrs.update({'class': 'form-control'})
+        self.fields['FECHA_BAJA_DOCUMENTO'].widget.attrs.update({'class': 'form-control'})
+
+
+
 
 class BusquedaArmamentoForm(forms.Form):
     query = forms.CharField(

@@ -3,7 +3,7 @@
 
 <form enctype="multipart/form-data" method="post" id="myForm" onsubmit="enableFieldAndSubmit(event)">
   {% csrf_token %}
-
+<br>
   <div class="mb-3">
     <label for="{{ form.ID_ARMA.id_for_label }}" class="form-label">{% trans "Matricula del Arma existente" %}:</label>
     {{ form.ID_ARMA }}
@@ -15,9 +15,6 @@
         <div>{{ form.DEPENDENCIA }}</div>
     </div>
 
-
-
-
     <div class="col-md-6">
       <label for="{{ form.INSTITUCION.id_for_label }}" class="form-label">{% trans "Institucion" %}:</label>
       <div>{{ form.INSTITUCION }}</div>
@@ -25,47 +22,58 @@
   </div>
 
   <div class="mb-3 row">
+
     <div class="col-md-6 col-sm-12">
       <label for="{{ form.ENTIDAD.id_for_label }}" class="form-label">{% trans "Entidad Federativa" %}:</label>
       <div>{{ form.ENTIDAD }}</div>
     </div>
+
     <div class="col-md-6 col-sm-12">
-      <label for="" class="form-label">{{ form.IMAKEY.label|title }}:</label>
-      <input type="number" class="form-control" name="{{ form.IMAKEY.name }}" placeholder="{{ form.IMAKEY.label|title }}" value="{{ form.IMAKEY.value | default:'' }}" required>
+      <label for="{{ form.IMAKEY.id_for_label }}" class="form-label">{{ form.IMAKEY.label|title }}:</label>
+      <input type="number" class="form-control" name="{{ form.IMAKEY.name }}" placeholder="{{ form.IMAKEY.label|title }}" value="{{ form.IMAKEY.value | default:'' }}" id="id_IMAKEY" required>
     </div>
+
   </div>
 
   <div class="mb-3 row">
+
     <div class="col-md-6 col-sm-12">
       <label for="{{ form.DESIMA.id_for_label }}" class="form-label">{{ form.DESIMA.label|title }}:</label>
-      <input type="{{ form.DESIMA.field.widget.input_type }}" class="form-control" name="{{ form.DESIMA.name }}" placeholder="{{ form.DESIMA.label|title }}" value="{{ form.DESIMA.value | default:'' }}" required>
+      <input type="{{ form.DESIMA.field.widget.input_type }}" class="form-control" name="{{ form.DESIMA.name }}" placeholder="{{ form.DESIMA.label|title }}" value="{{ form.DESIMA.value | default:'' }}" id="id_DESIMA" required>
     </div>
+
     <div class="col-md-6 col-sm-12">
       <label for="{{ form.TIPO.id_for_label }}" class="form-label">{% trans "Tipo de Imagen" %}:</label>
       <div>{{ form.TIPO }}</div>
     </div>
+
   </div>
 
   <div class="mb-3 row">
+
     <div class="col-md-6 col-sm-12">
       <label for="{{ form.FOLIO.id_for_label }}" class="form-label">{{ form.FOLIO.label|title }}:</label>
-      <input type="{{ form.FOLIO.field.widget.input_type }}" class="form-control" name="{{ form.FOLIO.name }}" placeholder="{{ form.FOLIO.label|title }}" value="{{ form.FOLIO.value | default:'' }}" required>
+      <input type="{{ form.FOLIO.field.widget.input_type }}" class="form-control" name="{{ form.FOLIO.name }}" placeholder="{{ form.FOLIO.label|title }}" value="{{ form.FOLIO.value | default:'' }}" id="id_FOLIO" required>
     </div>
+
     <div class="col-md-6 col-sm-12">
       <label for="" class="form-label">{% trans "Grupo" %}:</label>
-      <input type="{{ form.GRUPO.field.widget.input_type }}" class="form-control" name="{{ form.GRUPO.name }}" placeholder="{{ form.GRUPO.label|title }}" value="{{ form.GRUPO.value | default:'' }}" maxlength="1" required>
+      <input type="{{ form.GRUPO.field.widget.input_type }}" class="form-control" name="{{ form.GRUPO.name }}" placeholder="{{ form.GRUPO.label|title }}" value="{{ form.GRUPO.value | default:'' }}" maxlength="1" id="id_GRUPO" required>
     </div>
+
   </div>
 
-  <div class="mb-3 imagen">
-    <label for="" class="form-label">{% trans "Imagen del Arma" %}:</label>
+<div class="mb-3 row">
+  <div class="col-col-md-6 col-sm-12-6">
+    <label for="id_IMAGEN" class="form-label">{% trans "Imagen del Arma" %}:</label>
     {% if form.IMAGEN.value %}
       <br>
-      <img src="{{ form.IMAGEN.value.url }}" width="100">
-      <br><br>
+      <img src="{{ form.IMAGEN.value.url }}" width="300">
+      <br>
     {% endif %}
     {{ form.IMAGEN }}
   </div>
+</div>
 
   {% if messages %}
     <ul class="messages">
