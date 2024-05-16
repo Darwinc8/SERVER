@@ -36,7 +36,7 @@ msgstr "Registration"
 
 #: .\armamento\forms.py:64 .\armamento\templates\formArmamento.html:24
 #: .\imagenes\forms.py:40 .\imagenes\templates\formImagen.html:22
-msgid "Institucion"
+msgid "Institución"
 msgstr "Institutions"
 
 #: .\armamento\forms.py:65 .\armamento\templates\formArmamento.html:19
@@ -2346,10 +2346,6 @@ msgstr "Last"
 msgid "No se encontraron registros con esos parámetros."
 msgstr "No records were found with these parameters."
 
-#, fuzzy
-#~| msgid "Institucion"
-#~ msgid "Institución"
-#~ msgstr "Institutions"
 
 #~ msgid "Crear Portador"
 #~ msgstr "Create Carrier"
