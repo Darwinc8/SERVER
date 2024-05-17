@@ -11,18 +11,30 @@
   <div class="card-header">
     <h1 style="text-align: center">{% trans "CALIBRES" %}</h1>
     <div class="d-flex justify-content-between flex-wrap">
-      <a class="btn btn-success d-inline-block mb-2 mb-md-0" href="{% url 'catalogos' %}" role="button">{% trans "Volver a Catalogos" %}</a>
+      <a class="btn btn-success d-flex align-items-center justify-content-center" href="{% url 'catalogos' %}" role="button">{% trans "Volver a Catalogos" %}</a>
       <div class="mb-2 mb-md-0">
         <form method="GET" action="">
-          {{ form.campos_filtrados.label_tag }}
-          {{ form.campos_filtrados }}
-          {{ form.query }}
-          <button type="submit" class="btn btn-outline-secondary">
-            <i class="fa fa-search"></i>
-          </button>
-          <a class="btn btn-danger" href="{% url 'calibres' %}" role="button">
-            <i class="fa fa-refresh" aria-hidden="true"></i>
-          </a>
+          <div class="col-auto d-flex align-items-center">
+            <div class="p-1">
+                {{ form.campos_filtrados.label_tag }}
+            </div>
+            <div class="p-1">
+                {{ form.campos_filtrados }}
+            </div>
+            <div class="p-1">
+                {{ form.query }}
+            </div>
+            <div class="p-1">
+                <button type="submit" class="btn btn-outline-secondary">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+            <div class="p-1">
+                <a class="btn btn-danger" href="{% url 'calibres' %}" role="button">
+                    <i class="fa fa-refresh" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
         </form>
       </div>
     </div>

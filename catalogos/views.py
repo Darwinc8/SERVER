@@ -80,7 +80,7 @@ def instituciones(request):
 
 @login_required    
 def tipos(request):
-    tipos = Tipo.objects.all()
+    tipos = Tipo.objects.all().order_by('ID_TIPO')
     
     query = request.GET.get('query')
     valor = request.GET.get('campos_filtrados')
@@ -92,7 +92,7 @@ def tipos(request):
 
 @login_required
 def calibres(request):
-   calibres = Calibre.objects.all()
+   calibres = Calibre.objects.all().order_by('ID_CALIBRE')
    query = request.GET.get('query')
    valor = request.GET.get('campos_filtrados')
    

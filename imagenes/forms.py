@@ -58,6 +58,11 @@ class BusquedaImagenesForm(forms.Form):
         choices=OPCIONES_ORDENADAS,
         label=_("Filtrar por"),
         initial='ID_ARMA__ID_ARMA__icontains'
-    )    
+    )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['campos_filtrados'].widget.attrs.update({'class': 'form-select', 'style': 'width: 175px; font-weight: bold;'})
+        self.fields['query'].widget.attrs.update({'class': 'form-control input-placeholder', 'style': 'width: 200px;'})    
 
             

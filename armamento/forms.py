@@ -70,8 +70,6 @@ class ArmamentoForm(forms.ModelForm):
         self.fields['FECHA_BAJA_DOCUMENTO'].widget.attrs.update({'class': 'form-control'})
 
 
-
-
 class BusquedaArmamentoForm(forms.Form):
     query = forms.CharField(
         max_length=100,
@@ -101,6 +99,10 @@ class BusquedaArmamentoForm(forms.Form):
         initial='MATRICULA__icontains'
     )
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['campos_filtrados'].widget.attrs.update({'class': 'form-select', 'style': 'width: 160px; font-weight: bold;'})
+        self.fields['query'].widget.attrs.update({'class': 'form-control input-placeholder', 'style': 'width: 200px;'})
 class ExcelUploadForm(forms.Form):
     archivo_excel = forms.FileField(
         label=_('Seleccione un archivo Excel'),

@@ -2,7 +2,10 @@ from django import forms
 from django.utils.translation import gettext_lazy as _
 
 class BusquedaForm(forms.Form):
-    query = forms.CharField(max_length=100, required=False, widget=forms.TextInput(attrs={'placeholder': '     Buscar registros...'}))
+    query = forms.CharField(max_length=100, required=False, widget=forms.TextInput(attrs={'placeholder': _('Buscar registros...')}))
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['query'].widget.attrs.update({'class': 'form-control input-placeholder', 'style': 'width: 100%; max-width: 300px;'})
 
 class BusquedaMunicipiosForm(BusquedaForm):
     CAMPOS_BUSQUEDA = (
@@ -19,6 +22,13 @@ class BusquedaMunicipiosForm(BusquedaForm):
         initial='MUNICIPIO__icontains'
         )
     
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['campos_filtrados'].widget.attrs.update({
+            'class': 'form-select',
+            'style': 'width: 100%; max-width: 300px; font-weight: bold;'
+        })
+
 class BusquedaLOCsForm(BusquedaForm):
     CAMPOS_BUSQUEDA = (
         ('NO_LICENCIA', 'Número de Licencia'),
@@ -33,6 +43,13 @@ class BusquedaLOCsForm(BusquedaForm):
         label=_("Filtrar por"),
         initial='NO_LICENCIA'
         )
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['campos_filtrados'].widget.attrs.update({
+            'class': 'form-select',
+            'style': 'width: 100%; max-width: 300px; font-weight: bold;'
+})
     
 class BusquedaInstitucionesForm(BusquedaForm):
     CAMPOS_BUSQUEDA = (
@@ -49,6 +66,13 @@ class BusquedaInstitucionesForm(BusquedaForm):
         initial='NOMBRE__icontains'
         )
     
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['campos_filtrados'].widget.attrs.update({
+            'class': 'form-select',
+            'style': 'width: 100%; max-width: 300px; font-weight: bold;'
+})
+
 class BusquedaTiposForm(BusquedaForm):
     CAMPOS_BUSQUEDA = (
         ('TIPO__icontains', 'Tipo de arma'),
@@ -62,6 +86,13 @@ class BusquedaTiposForm(BusquedaForm):
         label=_("Filtrar por"),
         initial='TIPO__icontains'
         )
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['campos_filtrados'].widget.attrs.update({
+            'class': 'form-select',
+            'style': 'width: 100%; max-width: 300px; font-weight: bold;'
+})
 
 class BusquedaCalibreForm(BusquedaForm):
     CAMPOS_BUSQUEDA = (
@@ -76,6 +107,12 @@ class BusquedaCalibreForm(BusquedaForm):
         label=_("Filtrar por"),
         initial='CALIBRE__icontains'
         )
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['campos_filtrados'].widget.attrs.update({
+            'class': 'form-select',
+            'style': 'width: 100%; max-width: 300px; font-weight: bold;'
+})
 
 class BusquedaMarcasForm(BusquedaForm):
     CAMPOS_BUSQUEDA = (
@@ -91,6 +128,13 @@ class BusquedaMarcasForm(BusquedaForm):
         initial='MARCA__icontains'
         )
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['campos_filtrados'].widget.attrs.update({
+            'class': 'form-select',
+            'style': 'width: 100%; max-width: 300px; font-weight: bold;'
+})
+
 class BusquedaModelosForm(BusquedaForm):
     CAMPOS_BUSQUEDA = (
         ('MODELO__icontains', 'Modelos'),
@@ -104,3 +148,10 @@ class BusquedaModelosForm(BusquedaForm):
         label=_("Filtrar por"),
         initial='MODELO__icontains'
         )
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['campos_filtrados'].widget.attrs.update({
+            'class': 'form-select',
+            'style': 'width: 100%; max-width: 300px; font-weight: bold;'
+})

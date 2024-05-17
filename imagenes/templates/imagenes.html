@@ -19,21 +19,33 @@
     <div class="card-header">
         <h1 style="text-align:center;">{% trans "IMAGENES" %}</h1>
         <div class="d-flex justify-content-between flex-wrap">
-          <a class="btn btn-success d-inline-block mb-2 mb-md-0" href="{% url 'crear_imagen' %}" role="button">
+          <a class="btn btn-success d-flex align-items-center" href="{% url 'crear_imagen' %}" role="button">
               {% trans "Agregar nueva imagen" %}
           </a>
       
           <div class="mb-2 mb-md-0">
               <form method="GET" action="" onsubmit="return validarForm()">
-                {{ form.campos_filtrados.label_tag }}
-                  {{ form.campos_filtrados }}
-                  {{ form.query }}
-                  <button type="submit" class="btn btn-outline-secondary">
-                      <i class="fa fa-search"></i>
-                  </button>
-                  <a class="btn btn-danger" href="{% url 'imagenes' %}" role="button">
-                      <i class="fa fa-refresh" aria-hidden="true"></i>
-                  </a>
+                <div class="col-auto d-flex align-items-center">
+                  <div class="p-1">
+                      {{ form.campos_filtrados.label_tag }}
+                  </div>
+                  <div class="p-1">
+                      {{ form.campos_filtrados }}
+                  </div>
+                  <div class="p-1">
+                      {{ form.query }}
+                  </div>
+                  <div class="p-1">
+                      <button type="submit" class="btn btn-outline-secondary">
+                          <i class="fa fa-search"></i>
+                      </button>
+                  </div>
+                  <div class="p-1">
+                      <a class="btn btn-danger" href="{% url 'armamento' %}" role="button">
+                          <i class="fa fa-refresh" aria-hidden="true"></i>
+                      </a>
+                  </div>
+              </div>
               </form>
           </div>
       </div>
