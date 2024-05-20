@@ -2195,11 +2195,11 @@ msgstr "Save"
 
 #: .\imagenes\templates\imagenes.html:7 .\sesions\templates\index.html:33
 #: .\sesions\templates\layout.html:32
-msgid "Imagenes"
+msgid "Imágenes"
 msgstr "Images"
 
 #: .\imagenes\templates\imagenes.html:20
-msgid "IMAGENES"
+msgid "IMÁGENES"
 msgstr "IMAGES"
 
 #: .\imagenes\templates\imagenes.html:23
