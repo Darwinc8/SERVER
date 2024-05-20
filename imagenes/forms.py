@@ -45,7 +45,7 @@ class BusquedaImagenesForm(forms.Form):
     )
     
     CAMPOS_BUSQUEDA = (
-        ('ID_ARMA__ID_ARMA__icontains', _('ID')),
+        ('ID_ARMA__MATRICULA__icontains', _('ID')),
         ('INSTITUCION_id__NOMBRE__icontains', _('Institucion')),
         ('ENTIDAD_id__ENTIDAD__icontains', _('Entidad')),
         ('DEPENDENCIA_id__DEPENDENCIA__icontains', _('Dependencia')),
@@ -57,7 +57,7 @@ class BusquedaImagenesForm(forms.Form):
     campos_filtrados = forms.ChoiceField(
         choices=OPCIONES_ORDENADAS,
         label=_("Filtrar por"),
-        initial='ID_ARMA__ID_ARMA__icontains'
+        initial='ID_ARMA__MATRICULA__icontains'
     )
 
     def __init__(self, *args, **kwargs):
