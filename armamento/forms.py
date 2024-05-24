@@ -69,7 +69,6 @@ class ArmamentoForm(forms.ModelForm):
         self.fields['FECHA_BAJA_LOGICA'].widget.attrs.update({'class': 'form-control'})
         self.fields['FECHA_BAJA_DOCUMENTO'].widget.attrs.update({'class': 'form-control'})
 
-
 class BusquedaArmamentoForm(forms.Form):
     query = forms.CharField(
         max_length=100,

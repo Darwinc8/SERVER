@@ -1,4 +1,3 @@
-import datetime
 from django.forms import ValidationError
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
@@ -314,6 +313,16 @@ def validar_plantilla_excel(request, archivo_excel):
     except Exception as e:
         messages.error(request, f"Error al procesar el archivo: {e}")
         return None
+
+@login_required
+def ver_armamento(request, id):
+    armamento = get_object_or_404(Armamento, pk=id)
+    form = ArmamentoForm(instance=armamento)
+        # Itera sobre los campos del formulario y establece el atributo "readonly" en True
+    for field_name, field in form.fields.items():
+        form.fields[field_name].disabled = True
+    return render(request, 'ver_armamento.html', {'form': form,
+                                                  'id': id})
 
 @login_required
 def editar_armamento(request, id):

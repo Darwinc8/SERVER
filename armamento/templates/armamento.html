@@ -73,32 +73,17 @@
           <th scope="col">{% trans "DEPENDENCIA" %}</th>
           <th scope="col">{% trans "ENTIDAD" %}</th>
           <th scope="col">{% trans "MUNICIPIO" %}</th>
-          <th scope="col">{% trans "NUMERO LOC" %}</th>
-          <th scope="col">{% trans "FOLIO C" %}</th>
-          <th scope="col">{% trans "FOLIO D" %}</th>
           <th scope="col">{% trans "CLASE" %}</th>
           <th scope="col">{% trans "CALIBRE" %}</th>
           <th scope="col">{% trans "MARCA" %}</th>
           <th scope="col">{% trans "MODELO" %}</th>
           <th scope="col">{% trans "MATRICULA" %}</th>
-          <th scope="col">{% trans "MATRICULA CANON" %}</th>
-          <th scope="col">{% trans "FECHA DE REGISTRO" %}</th>
-          <th scope="col">{% trans "FECHA DEL LOC" %}</th>
-          <th scope="col">{% trans "ESTADO ARMA" %}</th>
-          <th scope="col">{% trans "FECHA DE CAPTURA" %}</th>
+          <th scope="col">{% trans "ESTADO ARMA" %}</th>s
           <th scope="col">{% trans "OBSERVACIONES" %}</th>
           <th scope="col">{% trans "ESTATUS DEL ARMA" %}</th>
           <th scope="col">{% trans "CUIP PORTADOR" %}</th>
           <th scope="col">{% trans "CUIP RESPONSABLE" %}</th>
-          <th scope="col">CIHB</th>
-          <th scope="col">{% trans "TIPO DE FUNCIONAMIENTO" %}</th>
-          <th scope="col">{% trans "PROPIEDAD" %}</th>
-          <th scope="col">{% trans "FECHA DE BAJA LOGICA" %}</th>
-          <th scope="col">{% trans "MOTIVO BAJA" %}</th>
-          <th scope="col">{% trans "DOCUMENTO BAJA" %}</th>
-          <th scope="col">{% trans "OBSERVACIONES BAJA" %}</th>
-          <th scope="col">{% trans "FECHA DE BAJA DEL DOCUMENTO" %}</th>
-          <th scope="col" colspan="2">{% trans "ACCIONES" %}</th>
+          <th scope="col">{% trans "ACCIONES" %}</th>
         </tr>
       </thead>
       <tbody>
@@ -115,79 +100,23 @@
           <td>{{arma.DEPENDENCIA}}</td>
           <td>{{arma.ENTIDAD}}</td>
           <td>{{arma.MUNICIPIO.MUNICIPIO}}</td>
-          <td>{{arma.NUMERO_LOC.NO_LICENCIA}}</td>
-          <td>{{arma.FOLIO_C}}</td>
-          <td>{{arma.FOLIO_D}}</td>
           <td>{{arma.CLASE_TIPO_ARMA.TIPO}}</td>
           <td>{{arma.CALIBRE_ARMA.CALIBRE}}</td>
           <td>{{arma.MARCA_ARMA.MARCA}}</td>
           <td>{{arma.MODELO_ARMA.MODELO}}</td>
           <td>{{arma.MATRICULA}}</td>
-          <td>
-            {% if arma.MATRICULA_CANON %}
-            {{arma.MATRICULA_CANON}}
-            {% else %}
-            <p>NO</p>
-            {% endif %}
-          </td>
-          <td>{{arma.FECHA}}</td>
-          <td>{{arma.FECHA_LOC}}</td>
           <td>{{arma.ESTADO_ARMA}}</td>
-          <td>{{arma.FECHA_CAPTURA}}</td>
           <td>{{arma.OBSERVACIONES}}</td>
           <td>{{arma.ESTATUS_ARMA.DESCRIPCION}}</td>
           <td>{{arma.CUIP_PORTADOR}}</td>
           <td>{{arma.CUIP_RESPONSABLE}}</td>
-          <td>
-            {% if arma.CIHB %}
-            {{arma.CIHB}}
-            {% else %}
-            <p>NO</p>
-            {% endif %}
-          </td>
-          <td>{{arma.TIPO_FUNCIONAMIENTO}}</td>
-          <td>{{arma.PROPIEDAD}}</td>
-          <td>
-            {% if arma.FECHA_BAJA_LOGICA %}
-            {{arma.FECHA_BAJA_LOGICA}}
-            {% else %}
-            <p>{% trans "SIN FECHA" %}</p>
-            {% endif %}
-          </td>
-          <td>
-            {% if arma.MOTIVO_BAJA %}
-            {{arma.MOTIVO_BAJA}}
-            {% else %}
-            <p>NO</p>
-            {% endif %}
-          </td>
-          <td>
-            {% if arma.DOCUMENTO_BAJA %}
-            {{arma.DOCUMENTO_BAJA}}
-            {% else %}
-            <p>NO</p>
-            {% endif %}
-          </td>
-          <td>
-            {% if arma.OBSERVACIONES_BAJA %}
-            {{arma.OBSERVACIONES_BAJA}}
-            {% else %}
-            <p>NO</p>
-            {% endif %}
-          </td>
-          <td>
-            {% if arma.FECHA_BAJA_DOCUMENTO %}
-            {{arma.FECHA_BAJA_DOCUMENTO}}
-            {% else %}
-            <p>{% trans "SIN FECHA" %}</p>
-            {% endif %}
-          </td>
-          <td>
-            <a name="" id="" class="btn btn-warning" href="{% url 'editar_armamento' arma.ID_ALTERNA %}" role="button">{% trans "Editar" %}</a>
-          </td>
-            <td>
-              <button data-url="{% url 'eliminar_armamento' arma.ID_ALTERNA %}" class="boton-borrar btn btn-danger">{% trans "Eliminar" %}</button>
-          </td>
+          <td class="w-100 h-100">
+            <div class="d-flex justify-content-center align-items-center">
+                <a class="btn btn-info mx-1" href="{% url 'ver_armamento' arma.ID_ALTERNA %}" role="button">{% trans "Ver" %}</a>
+                <a class="btn btn-warning mx-1" href="{% url 'editar_armamento' arma.ID_ALTERNA %}" role="button">{% trans "Editar" %}</a>
+                <button data-url="{% url 'eliminar_armamento' arma.ID_ALTERNA %}" class="boton-borrar btn btn-danger mx-1">{% trans "Eliminar" %}</button>
+            </div>
+        </td>
         </tr>
         {% endfor %}
       </tbody>
