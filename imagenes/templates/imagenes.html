@@ -65,7 +65,7 @@
                 <th scope="col">{% trans "TIPO" %}</th>
                 <th scope="col">{% trans "FOLIO" %}</th>
                 <th scope="col">{% trans "GRUPO" %}</th>
-                <th scope="col" colspan="2">{% trans "ACCIONES" %}</th>
+                <th scope="col">{% trans "ACCIONES" %}</th>
               </tr>
             </thead>
             <tbody>
@@ -81,11 +81,12 @@
                 <td>{{ imagen.TIPO }}</td>
                 <td>{{ imagen.FOLIO }}</td>
                 <td>{{ imagen.GRUPO }}</td>
-                <td>
-                  <a name="" id="" class="btn btn-warning" href="{% url 'editar_imagen' imagen.ID_ALTERNA %}" role="button">{% trans "Editar" %}</a>
+                <td class="w-100 h-100">
+                  <div class="d-flex justify-content-center align-items-center">
+                    <a name="" id="" class="btn btn-warning  mx-1" href="{% url 'editar_imagen' imagen.ID_ALTERNA %}" role="button">{% trans "Editar" %}</a>
+                    <button data-url="{% url 'eliminar_imagen' imagen.ID_ALTERNA %}" class="boton-borrar btn btn-danger  mx-1">{% trans "Eliminar" %}</button>
+                  </div>
                 </td>
-                <td>
-                <button data-url="{% url 'eliminar_imagen' imagen.ID_ALTERNA %}" class="boton-borrar btn btn-danger">{% trans "Eliminar" %}</button>
               </tr>
               {% endfor %}
             </tbody>
