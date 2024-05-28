@@ -346,6 +346,7 @@ def validar_plantilla_excel(request, archivo_excel):
 @login_required
 def ver_armamento(request, id):
     armamento = get_object_or_404(Armamento, pk=id)
+    armamento = convertir_fechas(armamento)
     form = ArmamentoForm(instance=armamento)
         # Itera sobre los campos del formulario y establece el atributo "readonly" en True
     for field_name, field in form.fields.items():
