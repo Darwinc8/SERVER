@@ -206,7 +206,7 @@ def crear_armamento_excel(request):
                     
                     if objeto.FECHA_BAJA_LOGICA != row['Fecha de baja logica']:
                         modificado = True
-                        objeto.PROPIEDAD = row['Fecha de baja logica']
+                        objeto.FECHA_BAJA_LOGICA = row['Fecha de baja logica']
 
                     if objeto.MOTIVO_BAJA != row['Motivo de baja']:
                         modificado = True
