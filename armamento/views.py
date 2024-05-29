@@ -483,7 +483,7 @@ def convertir_ids_a_objetos(request, row):
     except TipoFuncinamiento.DoesNotExist:
        messages.error(request, f"Error: Tipo de Funcionamiento no encontrado en la fila {int(row.name) +2}")
     except Propiedad.DoesNotExist:
-       messages.error(request, f"Error:Propiedad no encontrado en la fila {int(row.name) +2}")
+       messages.error(request, f"Error:Propiedad no encontrada en la fila {int(row.name) +2}")
     except Exception as e:
        messages.error(request, f"Error inesperado al convertir IDs a objetos: {e}")
 
