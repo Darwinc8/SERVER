@@ -79,15 +79,15 @@ class BusquedaArmamentoForm(forms.Form):
     CAMPOS_BUSQUEDA = (
         ('ID_ARMA', _('ID')),
         ('MATRICULA__icontains', _('Matricula')),
-        ('INSTITUCION_id__NOMBRE__icontains', _('Institucion')),
+        ('INSTITUCION_id__NOMBRE__icontains', _('Institución')),
         ('DEPENDENCIA_id__DEPENDENCIA__icontains', _('Dependencia')),
         ('ENTIDAD_id__ENTIDAD__icontains', _('Entidad')),
         ('MUNICIPIO_id__MUNICIPIO__icontains', _('Municipio')),
         ('CLASE_TIPO_ARMA_id__TIPO__icontains', _('Clase')),
         ('CALIBRE_ARMA_id__CALIBRE__icontains', _('Calibres')),
         ('MARCA_ARMA__MARCA__icontains', _('Marcas')),
-        ('CUIP_PORTADOR__icontains', _('Cuip Portador')),
-        ('CUIP_RESPONSABLE__icontains', _('Cuip Responsable')),
+        ('CUIP_PORTADOR__icontains', _('CUIP Portador')),
+        ('CUIP_RESPONSABLE__icontains', _('CUIP Responsable')),
         ('MODELO_ARMA__MODELO__icontains', _('Modelos'))
     )
     
