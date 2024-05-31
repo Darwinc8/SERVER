@@ -9,9 +9,9 @@ class BusquedaForm(forms.Form):
 
 class BusquedaMunicipiosForm(BusquedaForm):
     CAMPOS_BUSQUEDA = (
-        ('MUNICIPIO__icontains', 'Nombre de Municipio'),
-        ('ID_MUNICIPIO', 'ID del Municipio'),
-        ('ID_ENTIDAD_id__ENTIDAD__icontains', 'Entidad')
+        ('MUNICIPIO__icontains', _('Municipios')),
+        ('ID_MUNICIPIO', _('ID del Municipio')),
+        ('ID_ENTIDAD_id__ENTIDAD__icontains', _('Entidad'))
     )
     
     OPCIONES_ORDENADAS = sorted(CAMPOS_BUSQUEDA, key=lambda option: option[1])
@@ -31,9 +31,9 @@ class BusquedaMunicipiosForm(BusquedaForm):
 
 class BusquedaLOCsForm(BusquedaForm):
     CAMPOS_BUSQUEDA = (
-        ('NO_LICENCIA', 'Número de Licencia'),
-        ('DEPENDENCIA__icontains', 'Dependencia'),
-        ('ENTIDAD__icontains', 'Entidad')
+        ('NO_LICENCIA', _('Número de Licencia')),
+        ('DEPENDENCIA__icontains', _('Dependencia')),
+        ('ENTIDAD__icontains', _('Entidad'))
     )
     
     OPCIONES_ORDENADAS = sorted(CAMPOS_BUSQUEDA, key=lambda option: option[1])
@@ -53,9 +53,9 @@ class BusquedaLOCsForm(BusquedaForm):
     
 class BusquedaInstitucionesForm(BusquedaForm):
     CAMPOS_BUSQUEDA = (
-        ('NOMBRE__icontains', 'Instituciones'),
+        ('NOMBRE__icontains', _('Nombre')),
         ('ID_INSTITUCION', 'ID'),
-        ('ID_DEPENDENCIA_id__DEPENDENCIA__icontains', 'Dependencias')
+        ('ID_DEPENDENCIA_id__DEPENDENCIA__icontains', _('Dependencias'))
     )
     
     OPCIONES_ORDENADAS = sorted(CAMPOS_BUSQUEDA, key=lambda option: option[1])
@@ -75,7 +75,7 @@ class BusquedaInstitucionesForm(BusquedaForm):
 
 class BusquedaTiposForm(BusquedaForm):
     CAMPOS_BUSQUEDA = (
-        ('TIPO__icontains', 'Tipo de arma'),
+        ('TIPO__icontains', _('Tipo')),
         ('ID_TIPO', 'ID')
     )
     
@@ -96,7 +96,7 @@ class BusquedaTiposForm(BusquedaForm):
 
 class BusquedaCalibreForm(BusquedaForm):
     CAMPOS_BUSQUEDA = (
-        ('CALIBRE__icontains', 'Calibre'),
+        ('CALIBRE__icontains', _('Calibre')),
         ('ID_CALIBRE', 'ID')
     )
     
@@ -116,7 +116,7 @@ class BusquedaCalibreForm(BusquedaForm):
 
 class BusquedaMarcasForm(BusquedaForm):
     CAMPOS_BUSQUEDA = (
-        ('MARCA__icontains', 'Marcas'),
+        ('MARCA__icontains', _('Marcas')),
         ('ID_MARCA', 'ID')
     )
     
@@ -137,7 +137,7 @@ class BusquedaMarcasForm(BusquedaForm):
 
 class BusquedaModelosForm(BusquedaForm):
     CAMPOS_BUSQUEDA = (
-        ('MODELO__icontains', 'Modelos'),
+        ('MODELO__icontains', _('Modelos')),
         ('ID_MODELO', 'ID')
     )
     

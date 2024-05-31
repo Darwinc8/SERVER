@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-29 16:36-0600\n"
+"POT-Creation-Date: 2024-05-31 16:12-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,13 +41,14 @@ msgid "Institución"
 msgstr "Institution"
 
 #: .\armamento\forms.py:83 .\armamento\templates\formArmamento.html:19
-#: .\armamento\templates\ver_armamento.html:33 .\imagenes\forms.py:51
-#: .\imagenes\templates\formImagen.html:16
+#: .\armamento\templates\ver_armamento.html:33 .\catalogos\forms.py:35
+#: .\imagenes\forms.py:51 .\imagenes\templates\formImagen.html:16
 msgid "Dependencia"
 msgstr "Dependencies"
 
 #: .\armamento\forms.py:84 .\armamento\templates\formArmamento.html:29
-#: .\armamento\templates\ver_armamento.html:43 .\imagenes\forms.py:50
+#: .\armamento\templates\ver_armamento.html:43 .\catalogos\forms.py:14
+#: .\catalogos\forms.py:36 .\imagenes\forms.py:50
 msgid "Entidad"
 msgstr "Entities"
 
@@ -438,10 +439,38 @@ msgstr "Back"
 
 #: .\armamento\templates\ver_armamento.html:7
 #: .\armamento\templates\ver_armamento.html:13
-#, fuzzy
-#| msgid "Crear Armamento"
 msgid "Ver Armamento"
-msgstr "Create Armament"
+msgstr "See Armament"
+
+#: .\catalogos\forms.py:12 .\catalogos\templates\catalogos.html:37
+#: .\catalogos\templates\catalogos\municipios.html:7
+msgid "Municipios"
+msgstr "Municipalities"
+
+#: .\catalogos\forms.py:13
+msgid "ID del Municipio"
+msgstr "Municipality ID"
+
+#: .\catalogos\forms.py:34
+msgid "Número de Licencia"
+msgstr "License Number"
+
+#: .\catalogos\forms.py:56
+msgid "Nombre"
+msgstr "Name"
+
+#: .\catalogos\forms.py:58 .\catalogos\templates\catalogos.html:43
+#: .\catalogos\templates\catalogos\dependencias.html:7
+msgid "Dependencias"
+msgstr "Dependencies"
+
+#: .\catalogos\forms.py:78
+msgid "Tipo"
+msgstr "Type"
+
+#: .\catalogos\forms.py:99
+msgid "Calibre"
+msgstr "Caliber"
 
 #: .\catalogos\templates\catalogos.html:7 .\sesions\templates\index.html:36
 #: .\sesions\templates\layout.html:36
@@ -469,16 +498,6 @@ msgstr "Emitters"
 #: .\catalogos\templates\catalogos\entidades.html:7
 msgid "Entidades"
 msgstr "Entities"
-
-#: .\catalogos\templates\catalogos.html:37
-#: .\catalogos\templates\catalogos\municipios.html:7
-msgid "Municipios"
-msgstr "Municipalities"
-
-#: .\catalogos\templates\catalogos.html:43
-#: .\catalogos\templates\catalogos\dependencias.html:7
-msgid "Dependencias"
-msgstr "Dependencies"
 
 #: .\catalogos\templates\catalogos.html:49
 msgid "Locs"
