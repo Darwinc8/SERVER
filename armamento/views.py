@@ -1,6 +1,6 @@
 from django.forms import ValidationError
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import JsonResponse
+from django.http import JsonResponse, FileResponse
 from .models import Armamento
 from .forms import ArmamentoForm, BusquedaArmamentoForm, ExcelUploadForm
 from django.contrib.auth.decorators import login_required
@@ -8,10 +8,7 @@ from .models import Municipio, Institucion, Dependencia, Entidad, LOC, Tipo, Cal
 from django.contrib import messages
 from utilidades import utils
 import pandas as pd
-from django.contrib import messages
-from django.http import FileResponse
 from django.conf import settings
-import os
 from django.utils.translation import gettext_lazy as _
 # Create your views here.
 @login_required
@@ -34,6 +31,7 @@ def crear_armamento(request):
             objecto = form.save(commit=False)
             objecto.usuario = request.user
             objecto.save()
+            messages.success(request, 'El Armamento fue agregado exitosamente.')
             return redirect('armamento')
         else:
             return render(request, 'crear_armamento.html', {
@@ -364,6 +362,7 @@ def editar_armamento(request, id):
             objecto = form.save(commit=False)
             objecto.usuario = request.user
             objecto.save()
+            messages.success(request, 'El Armamento fue editado exitosamente.')
             return redirect('armamento')
         else:
             return render(request, 'crear_armamento.html', {

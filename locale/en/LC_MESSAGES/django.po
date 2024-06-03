@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-31 16:12-0600\n"
+"POT-Creation-Date: 2024-05-31 17:40-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,7 +65,8 @@ msgstr "Class"
 msgid "Calibres"
 msgstr "Calibers"
 
-#: .\armamento\forms.py:88 .\catalogos\templates\catalogos.html:79
+#: .\armamento\forms.py:88 .\catalogos\forms.py:119
+#: .\catalogos\templates\catalogos.html:79
 #: .\catalogos\templates\catalogos\marcas.html:7
 msgid "Marcas"
 msgstr "Brands"
@@ -84,7 +85,8 @@ msgstr "Carrier's CUIP"
 msgid "CUIP Responsable"
 msgstr "Person in charge's CUIP"
 
-#: .\armamento\forms.py:91 .\catalogos\templates\catalogos.html:85
+#: .\armamento\forms.py:91 .\catalogos\forms.py:140
+#: .\catalogos\templates\catalogos.html:85
 #: .\catalogos\templates\catalogos\modelos.html:7
 msgid "Modelos"
 msgstr "Models"
@@ -136,33 +138,33 @@ msgstr "The characters starting from 14 of the CUIPs must be all digits."
 msgid "Armamento"
 msgstr "Armament"
 
-#: .\armamento\templates\armamento.html:25
+#: .\armamento\templates\armamento.html:28
 msgid "ARMAMENTO"
 msgstr "ARMAMENT"
 
-#: .\armamento\templates\armamento.html:30
+#: .\armamento\templates\armamento.html:33
 msgid "Agregar nuevo armamento"
 msgstr "Add new armament"
 
-#: .\armamento\templates\armamento.html:33
+#: .\armamento\templates\armamento.html:36
 msgid "Crear manualmente"
 msgstr "Manual creation"
 
-#: .\armamento\templates\armamento.html:34
+#: .\armamento\templates\armamento.html:37
 msgid "Desde un archivo excel"
 msgstr "From an excel file"
 
-#: .\armamento\templates\armamento.html:71
+#: .\armamento\templates\armamento.html:74
 #: .\imagenes\templates\imagenes.html:58
 msgid "ID ARMA"
 msgstr "WEAPON ID"
 
-#: .\armamento\templates\armamento.html:72
+#: .\armamento\templates\armamento.html:75
 #: .\imagenes\templates\imagenes.html:61
 msgid "INSTITUCIÓN"
 msgstr "INSTITUTION"
 
-#: .\armamento\templates\armamento.html:73
+#: .\armamento\templates\armamento.html:76
 #: .\catalogos\templates\catalogos\dependencias.html:22
 #: .\catalogos\templates\catalogos\instituciones.html:50
 #: .\catalogos\templates\catalogos\locs.html:50
@@ -170,7 +172,7 @@ msgstr "INSTITUTION"
 msgid "DEPENDENCIA"
 msgstr "DEPENDENCY"
 
-#: .\armamento\templates\armamento.html:74
+#: .\armamento\templates\armamento.html:77
 #: .\catalogos\templates\catalogos\entidades.html:21
 #: .\catalogos\templates\catalogos\locs.html:49
 #: .\catalogos\templates\catalogos\municipios.html:47
@@ -178,59 +180,59 @@ msgstr "DEPENDENCY"
 msgid "ENTIDAD"
 msgstr "ENTITY"
 
-#: .\armamento\templates\armamento.html:75
+#: .\armamento\templates\armamento.html:78
 #: .\catalogos\templates\catalogos\municipios.html:49
 msgid "MUNICIPIO"
 msgstr "MUNICIPALITY"
 
-#: .\armamento\templates\armamento.html:76
+#: .\armamento\templates\armamento.html:79
 msgid "CLASE"
 msgstr "CLASS"
 
-#: .\armamento\templates\armamento.html:77
+#: .\armamento\templates\armamento.html:80
 #: .\catalogos\templates\catalogos\calibres.html:47
 msgid "CALIBRE"
 msgstr "CALIBER"
 
-#: .\armamento\templates\armamento.html:78
+#: .\armamento\templates\armamento.html:81
 #: .\catalogos\templates\catalogos\marcas.html:48
 msgid "MARCA"
 msgstr "BRAND"
 
-#: .\armamento\templates\armamento.html:79
+#: .\armamento\templates\armamento.html:82
 msgid "MODELO"
 msgstr "MODEL"
 
-#: .\armamento\templates\armamento.html:80
+#: .\armamento\templates\armamento.html:83
 msgid "MATRICULA"
 msgstr "REGISTRATION"
 
-#: .\armamento\templates\armamento.html:81
+#: .\armamento\templates\armamento.html:84
 msgid "ESTADO ARMA"
 msgstr "WEAPONS STATUS"
 
-#: .\armamento\templates\armamento.html:82
+#: .\armamento\templates\armamento.html:85
 msgid "OBSERVACIONES"
 msgstr "OBSERVATIONS"
 
-#: .\armamento\templates\armamento.html:83
+#: .\armamento\templates\armamento.html:86
 msgid "ESTATUS DEL ARMA"
 msgstr "WEAPONS STATUS"
 
-#: .\armamento\templates\armamento.html:84
+#: .\armamento\templates\armamento.html:87
 msgid "CUIP PORTADOR"
 msgstr "CUIP CARRIER"
 
-#: .\armamento\templates\armamento.html:85
+#: .\armamento\templates\armamento.html:88
 msgid "CUIP RESPONSABLE"
 msgstr "RESPONSIBLE CUIP"
 
-#: .\armamento\templates\armamento.html:86
+#: .\armamento\templates\armamento.html:89
 #: .\imagenes\templates\imagenes.html:68
 msgid "ACCIONES"
 msgstr "ACTIONS"
 
-#: .\armamento\templates\armamento.html:115
+#: .\armamento\templates\armamento.html:118
 #: .\catalogos\templates\catalogos.html:27
 #: .\catalogos\templates\catalogos.html:33
 #: .\catalogos\templates\catalogos.html:39
@@ -251,13 +253,13 @@ msgstr "ACTIONS"
 msgid "Ver"
 msgstr "See"
 
-#: .\armamento\templates\armamento.html:116
+#: .\armamento\templates\armamento.html:119
 #: .\armamento\templates\ver_armamento.html:228
 #: .\imagenes\templates\imagenes.html:86
 msgid "Editar"
 msgstr "Edit"
 
-#: .\armamento\templates\armamento.html:117
+#: .\armamento\templates\armamento.html:120
 #: .\imagenes\templates\imagenes.html:87
 msgid "Eliminar"
 msgstr "Delete"
