@@ -36,6 +36,7 @@ def crear_imagen(request):
             objecto = form.save(commit=False)
             objecto.usuario = request.user
             objecto.save()
+            messages.success(request, 'La Imagen fue agregada exitosamente.')
             return redirect('imagenes')
         else:
             return redirect('crear_imagen')
@@ -75,8 +76,7 @@ def editar_imagen(request, id):
             objeto = form.save(commit=False)
             objeto.usuario = request.user     
             objeto.save()
-            file_path = objeto.IMAGEN.path
-            os.chmod(file_path, 0o777)
+            messages.success(request, 'La Imagen fue editada exitosamente.')
             return redirect('imagenes')
         return render(request, 'editar_imagen.html', {
             'form': form,

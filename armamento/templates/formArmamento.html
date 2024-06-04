@@ -5,16 +5,26 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-12 col-lg-6">
-                <label for="id_ID_ARMA" class="form-label fw-bold text-muted fst-italic">{% trans "Id del Arma" %}:</label>
-                <br><input type="{{ form.ID_ARMA.field.widget.input_type }}"
-                    class="form-control input-placeholder input-placeholder" 
-                    name="{{ form.ID_ARMA.name }}" 
-                    id="id_ID_ARMA" 
-                    placeholder="{% trans 'Id del Arma' %}"
-                    value="{{form.ID_ARMA.value | default:''}}"><br>
+          <div class="col-12 col-lg-6">
+            <label for="id_ID_ARMA" class="form-label fw-bold text-muted fst-italic">{% trans "Id del Arma" %}:</label>
+            <input type="{{ form.ID_ARMA.field.widget.input_type }}"
+                   class="form-control input-placeholder" 
+                   name="{{ form.ID_ARMA.name }}" 
+                   id="id_ID_ARMA" 
+                   placeholder="{% trans 'Id del Arma' %}"
+                   value="{{ form.ID_ARMA.value | default:'' }}">
+          
+            {% if form.ID_ARMA.errors %}
+            <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
+              {% for error in form.ID_ARMA.errors %}
+                <span>{{ error }}</span>
+              {% endfor %}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-
+            {% endif %}
+            <br>
+          </div>
+          
             <div class="col-12 col-lg-6">
                 <label for="id_DEPENDENCIA" class="form-label fw-bold text-muted fst-italic">{% trans "Dependencia" %}:</label>
                 <br>{{form.DEPENDENCIA}}<br>
@@ -42,24 +52,42 @@
 
             <div class="col-12 col-lg-6">
                 <label for="id_FOLIO_C" class="form-label fw-bold text-muted fst-italic">{% trans "Folio C" %}:</label>
-                <br><input type="{{ form.FOLIO_C.field.widget.input_type }}"
+                <input type="{{ form.FOLIO_C.field.widget.input_type }}"
                     class="form-control input-placeholder input-placeholder" 
                     name="{{ form.FOLIO_C.name }}" 
                     id="id_FOLIO_C" 
                     placeholder="{% trans 'Folio C' %}"
                     value="{{form.FOLIO_C.value | default:''}}"
-                    required><br>
+                    required>
+            {% if form.FOLIO_C.errors %}
+            <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
+              {% for error in form.FOLIO_C.errors %}
+                <span>{{ error }}</span>
+              {% endfor %}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endif %}
+            <br>
             </div>
 
             <div class="col-12 col-lg-6">
                 <label for="id_FOLIO_D" class="form-label fw-bold text-muted fst-italic">{% trans "Folio D" %}:</label>
-                <br><input type="{{ form.FOLIO_D.field.widget.input_type }}"
+                <input type="{{ form.FOLIO_D.field.widget.input_type }}"
                     class="form-control input-placeholder input-placeholder" 
                     name="{{ form.FOLIO_D.name }}" 
                     id="id_FOLIO_D" 
                     placeholder="{% trans 'Folio D' %}"
                     value="{{form.FOLIO_D.value | default:''}}"
-                    required><br>
+                    required>
+                    {% if form.FOLIO_D.errors %}
+                    <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
+                      {% for error in form.FOLIO_D.errors %}
+                        <span>{{ error }}</span>
+                      {% endfor %}
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endif %} 
+                    <br>     
             </div>
 
             <div class="col-12 col-lg-6">
@@ -84,24 +112,41 @@
         
             <div class="col-12 col-lg-6">
               <label for="id_MATRICULA" class="form-label fw-bold text-muted fst-italic">{% trans "Matricula" %}:</label>
-              <br><input type="{{ form.MATRICULA.field.widget.input_type }}"
+              <input type="{{ form.MATRICULA.field.widget.input_type }}"
                     class="form-control input-placeholder input-placeholder" 
                     name="{{ form.MATRICULA.name }}" 
                     id="id_MATRICULA" 
                     placeholder="{% trans 'Matricula' %}"
                     value="{{form.MATRICULA.value | default:''}}"
-                    required
-                ><br>
+                    required>
+                    {% if form.MATRICULA.errors %}
+                    <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
+                      {% for error in form.MATRICULA.errors %}
+                        <span>{{ error }}</span>
+                      {% endfor %}
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endif %}
+                    <br>
           </div>
           
             <div class="col-12 col-lg-6">
               <label for="id_matricula_canon" class="form-label fw-bold text-muted fst-italic">{% trans "Matricula Canon" %}:</label>
-              <br><input type="{{ form.MATRICULA_CANON.field.widget.input_type }}"
+              <input type="{{ form.MATRICULA_CANON.field.widget.input_type }}"
                 class="form-control input-placeholder input-placeholder" 
                 name="{{ form.MATRICULA_CANON.name }}" 
                 id="id_matricula_canon" 
                 placeholder="{% trans 'Matricula Canon' %}"
-                value="{{form.MATRICULA_CANON.value | default:''}}"><br>
+                value="{{form.MATRICULA_CANON.value | default:''}}">
+                {% if form.MATRICULA_CANON.errors %}
+                    <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
+                      {% for error in form.MATRICULA_CANON.errors %}
+                        <span>{{ error }}</span>
+                      {% endfor %}
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endif %}
+                    <br>
             </div>
         
             <div class="col-12 col-lg-6">
@@ -136,34 +181,61 @@
         
             <div class="col-12 col-lg-6">
               <label for="id_CUIP_PORTADOR" class="form-label fw-bold text-muted fst-italic">{% trans "CUIP Portador" %}:</label>
-              <br><input type="text"
+              <input type="text"
                 class="form-control input-placeholder" 
                 name="{{ form.CUIP_PORTADOR.name }}" 
                 id="id_CUIP_PORTADOR" 
                 placeholder="{% trans 'CUIP Portador' %}"
                 value="{{form.CUIP_PORTADOR.value | default:''}}"
-                required><br>
+                required>
+                {% if form.CUIP_PORTADOR.errors %}
+                    <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
+                      {% for error in form.CUIP_PORTADOR.errors %}
+                        <span>{{ error }}</span>
+                      {% endfor %}
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endif %}
+                    <br>
             </div>
         
             <div class="col-12 col-lg-6">
               <label for="id_CUIP_RESPONSABLE" class="form-label fw-bold text-muted fst-italic">{% trans "CUIP Responsable" %}:</label>
-              <br><input type="text"
+              <input type="text"
                 class="form-control input-placeholder" 
                 name="{{ form.CUIP_RESPONSABLE.name }}" 
                 id="id_CUIP_RESPONSABLE" 
                 placeholder="{% trans 'CUIP Responsable' %}"
                 value="{{form.CUIP_RESPONSABLE.value | default:''}}"
-                required><br>
+                required>
+                {% if form.CUIP_RESPONSABLE.errors %}
+                    <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
+                      {% for error in form.CUIP_RESPONSABLE.errors %}
+                        <span>{{ error }}</span>
+                      {% endfor %}
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endif %}
+                    <br>
             </div>
         
             <div class="col-12 col-lg-6">
               <label for="id_CIHB" class="form-label fw-bold text-muted fst-italic">{{ form.CIHB.label }}:</label>
-              <br><input type="{{ form.CIHB.field.widget.input_type }}"
+              <input type="{{ form.CIHB.field.widget.input_type }}"
                 class="form-control input-placeholder" 
                 name="{{ form.CIHB.name }}" 
                 id="id_CIHB" 
                 placeholder="{{ form.CIHB.label }}"
-                value="{{form.CIHB.value | default:''}}"><br>
+                value="{{form.CIHB.value | default:''}}">
+                {% if form.CIHB.errors %}
+                    <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
+                      {% for error in form.CIHB.errors %}
+                        <span>{{ error }}</span>
+                      {% endfor %}
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endif %}
+                    <br>
             </div>
         
             <div class="col-12 col-lg-6">
@@ -188,12 +260,21 @@
         
             <div class="col-12 col-lg-6">
               <label for="id_DOCUMENTO_BAJA" class="form-label fw-bold text-muted fst-italic">{% trans "Documento de Baja" %}:</label>
-              <br><input type="{{ form.DOCUMENTO_BAJA.field.widget.input_type }}"
+              <input type="{{ form.DOCUMENTO_BAJA.field.widget.input_type }}"
                 class="form-control input-placeholder" 
                 name="{{ form.DOCUMENTO_BAJA.name }}" 
                 id="id_DOCUMENTO_BAJA" 
                 placeholder="{% trans 'Documento de Baja' %}"
-                value="{{form.DOCUMENTO_BAJA.value | default:''}}"><br>
+                value="{{form.DOCUMENTO_BAJA.value | default:''}}">
+                {% if form.DOCUMENTO_BAJA.errors %}
+                    <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
+                      {% for error in form.DOCUMENTO_BAJA.errors %}
+                        <span>{{ error }}</span>
+                      {% endfor %}
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endif %}
+                    <br>
             </div>
         
             <div class="col-12 col-lg-6">
@@ -207,20 +288,6 @@
             </div>
         </div>
     </div>   
-
-              
-
-    {% if form.errors %}
-        <div class="alert alert-danger" role="alert">
-            <ul>
-                {% for field in form %}
-                    {% for error in field.errors %}
-                        <li>{{ error }}</li>
-                    {% endfor %}
-                {% endfor %}
-            </ul>
-        </div>
-    {% endif %}
 
     <input class="btn btn-success" type="submit" value="{% trans 'Guardar' %}"" id="guardar-btn">
     <a class="btn btn-primary" href="{%url 'armamento'%}" role="button">{% trans "Volver" %}</a>

@@ -85,12 +85,9 @@ def crear_armamento_excel(request):
             df['Fecha de alta en la LOC'] = pd.to_datetime(df['Fecha de alta en la LOC']).dt.strftime('%Y-%m-%d')
             df['Fecha de baja logica'] = pd.to_datetime(df['Fecha de baja logica']).dt.strftime('%Y-%m-%d')
             df['Fecha de baja del documento'] = pd.to_datetime(df['Fecha de baja del documento']).dt.strftime('%Y-%m-%d')
-            
-            
-            
+                      
             
             for index, row in df.iterrows():
- 
                 #Convertimos los ids de los campos al excel a objetos para manejarlos
                 resultados = convertir_ids_a_objetos(request, row)
                 
@@ -202,7 +199,9 @@ def crear_armamento_excel(request):
                         modificado = True
                         objeto.PROPIEDAD = fila_propiedad
                     
-                    if objeto.FECHA_BAJA_LOGICA != row['Fecha de baja logica']:
+                    fecha_objeto_baja_logica = pd.to_datetime(objeto.FECHA_BAJA_LOGICA).strftime('%Y-%m-%d')
+                    fecha_baja_logica = pd.to_datetime(row['Fecha de baja logica']).strftime('%Y-%m-%d')
+                    if fecha_objeto_baja_logica != fecha_baja_logica:
                         modificado = True
                         objeto.FECHA_BAJA_LOGICA = row['Fecha de baja logica']
 
@@ -218,7 +217,9 @@ def crear_armamento_excel(request):
                         modificado = True
                         objeto.OBSERVACIONES_BAJA = row['Observaciones de baja']
 
-                    if objeto.FECHA_BAJA_DOCUMENTO != row['Fecha de baja del documento']:
+                    fecha_objeto_baja_documento = pd.to_datetime(objeto.FECHA_BAJA_DOCUMENTO).strftime('%Y-%m-%d')
+                    fecha_baja_documento = pd.to_datetime(row['Fecha de baja del documento']).strftime('%Y-%m-%d')
+                    if fecha_objeto_baja_documento != fecha_baja_documento:
                         modificado = True
                         objeto.FECHA_BAJA_DOCUMENTO = row['Fecha de baja del documento']
 
