@@ -60,7 +60,8 @@ def eliminar_imagen(request, id):
     except Exception as e:
         # Si ocurre una excepción, maneja el error apropiadamente
         messages.error(request, f'Error al eliminar: {e}')
-        
+
+    messages.success(request, 'La Imagen fue eliminada exitosamente.')    
     return redirect('imagenes')  # Redirige a la misma vista
 
 @login_required

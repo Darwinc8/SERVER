@@ -32,7 +32,18 @@
 
     <div class="col-md-6 col-sm-12">
       <label for="{{ form.IMAKEY.id_for_label }}" class="form-label fw-bold text-muted fst-italic">{{ form.IMAKEY.label|title }}:</label>
-      <input type="number" class="form-control input-placeholder input-placeholder" name="{{ form.IMAKEY.name }}" placeholder="{{ form.IMAKEY.label|title }}" value="{{ form.IMAKEY.value | default:'' }}" id="id_IMAKEY" required>
+      <input type="number" 
+              class="form-control input-placeholder input-placeholder" 
+              name="{{ form.IMAKEY.name }}" 
+              placeholder="{{ form.IMAKEY.label|title }}" 
+              value="{{ form.IMAKEY.value | default:'' }}" 
+              id="id_IMAKEY" required>
+        {% if form.IMAKEY.errors %}
+        <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
+          {% for error in form.IMAKEY.errors %}
+            <span>{{ error }}</span>
+          {% endfor %}
+        </div>
     </div>
 
   </div>
@@ -41,7 +52,18 @@
 
     <div class="col-md-6 col-sm-12">
       <label for="{{ form.DESIMA.id_for_label }}" class="form-label fw-bold text-muted fst-italic">{{ form.DESIMA.label|title }}:</label>
-      <input type="{{ form.DESIMA.field.widget.input_type }}" class="form-control input-placeholder" name="{{ form.DESIMA.name }}" placeholder="{{ form.DESIMA.label|title }}" value="{{ form.DESIMA.value | default:'' }}" id="id_DESIMA" required>
+      <input type="{{ form.DESIMA.field.widget.input_type }}" 
+             class="form-control input-placeholder" 
+             name="{{ form.DESIMA.name }}" 
+             placeholder="{{ form.DESIMA.label|title }}" 
+             value="{{ form.DESIMA.value | default:'' }}" 
+             id="id_DESIMA" required>
+      {% if form.IMAKEY.errors %}
+        <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
+          {% for error in form.IMAKEY.errors %}
+            <span>{{ error }}</span>
+          {% endfor %}
+        </div>
     </div>
 
     <div class="col-md-6 col-sm-12">
@@ -76,14 +98,6 @@
     {{ form.IMAGEN }}
   </div>
 </div>
-
-  {% if messages %}
-    <ul class="messages">
-      {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-      {% endfor %}
-    </ul>
-  {% endif %}
 
   <input class="btn btn-success" type="submit" value="{% trans 'Guardar' %}"" id="guardar-btn">
   <a class="btn btn-primary" href="{% url 'imagenes' %}" role="button">{% trans "Volver" %}</a>
