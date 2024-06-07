@@ -101,11 +101,9 @@
 
 <div class="mb-3 row">
   <div class="col-md-6 col-sm-12">
-    <label for="id_IMAGEN" class="form-label fw-bold text-muted fst-italic">{% trans "Imagen del Arma" %}:</label>
+    <label for="id_IMAGEN" class="form-label fw-bold text-muted fst-italic">{% trans "Imagen del Arma" %}:</label><br>
     {% if form.IMAGEN.value %}
-      
-      <img src="{{ form.IMAGEN.value.url }}" width="300">
-      
+    <img src="{{ form.IMAGEN.value.url }}" width="300"><br>
     {% endif %}
     {{ form.IMAGEN }}
   </div>
