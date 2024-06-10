@@ -293,6 +293,9 @@
     <a class="btn btn-primary" href="{%url 'armamento'%}" role="button">{% trans "Volver" %}</a>
 </form>
 
+{% if is_editing %}
+    <script src="{% static 'js/deshabilitar_matricula.js'%}"></script>
+{% endif %}
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="{% static 'js/habilitar_municipios.js' %}"></script>
 <script src="{% static 'js/habilitar_instituciones.js' %}"></script>
@@ -301,6 +304,4 @@
 <script src="{% static 'js/boton_guardar.js'%}"></script>
 <script src="{% static 'js/tecla_enter.js'%}"></script>
 
-{% if is_editing %}
-    <script src="{% static 'js/deshabilitar_matricula.js'%}"></script>
-{% endif %}
+
