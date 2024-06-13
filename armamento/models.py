@@ -12,22 +12,22 @@ def validate_fecha_no_anterior_1990(value):
 
 def validate_cuip_formato(value):
     if not (14 <= len(value) <= 20):
-        raise ValidationError(_('Los CUIPs deben tener entre 14 y 20 caracteres.'))
+        raise ValidationError(_('El CUIP debe tener entre 14 y 20 caracteres.'))
 
     if not value[0:4].isalpha():
-        raise ValidationError(_('Los primeros 4 caracteres de los CUIPs deben ser letras.'))
+        raise ValidationError(_('Los primeros 4 caracteres del CUIP deben ser letras.'))
 
     if not value[4:10].isdigit():
-        raise ValidationError(_('Los caracteres del 5 al 10 de los CUIPs deben ser todos dígitos.'))
+        raise ValidationError(_('Los caracteres del 5 al 10 del CUIP deben ser todos dígitos.'))
 
     if value[10] not in ['H', 'M']:
-        raise ValidationError(_('El carácter en la posición 11 de los CUIPs debe ser H o M.'))
+        raise ValidationError(_('El carácter en la posición 11 del CUIP debe ser H o M.'))
 
     if not (value[11:13].isdigit() and value[11:13] in [str(i).zfill(2) for i in range(1, 33)] + ['98', '99']):
-        raise ValidationError(_('Los caracteres del 12 al 13 de los CUIPs deben estar entre 01 y 32 o ser 98 o 99.'))
+        raise ValidationError(_('Los caracteres del 12 al 13 del CUIP deben estar entre 01 y 32 o ser 98 o 99.'))
 
     if not value[13:].isdigit():
-        raise ValidationError(_('Los caracteres a partir del 14 de los CUIPs deben ser todos dígitos.'))
+        raise ValidationError(_('Los caracteres a partir del 14 del CUIP deben ser todos dígitos.'))
         
 def save(self, *args, **kwargs):
         self.clean()

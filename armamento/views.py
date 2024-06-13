@@ -56,15 +56,6 @@ def crear_armamento_excel(request):
             df = validar_plantilla_excel(request, archivo_excel)
             if df is None:
                 return redirect('armamento_excel')   
-            # Reemplazar NaN por 0 en columnas numéricas y celda vacia por ""
-            df['ID Arma'] = df['ID Arma'].fillna(0)
-            df['Matricula_canon *'] = df['Matricula_canon *'].fillna("")
-            df['Código de Identificación de Huella Balística (CIHB)'] = df['Código de Identificación de Huella Balística (CIHB)'].fillna("")
-            df['Fecha de baja logica'] = df['Fecha de baja logica'].fillna("")
-            df['Motivo de baja'] = df['Motivo de baja'].fillna("")
-            df['Documento de baja'] = df['Documento de baja'].fillna("")
-            df['Observaciones de baja'] = df['Observaciones de baja'].fillna("")
-            df['Fecha de baja del documento'] = df['Fecha de baja del documento'].fillna("")
             
             #Convirtiendo las columnas al tipo de dato esperado
             df['ID Arma'] = pd.to_numeric(df['ID Arma'], errors='coerce')
@@ -83,13 +74,18 @@ def crear_armamento_excel(request):
             df['Fecha de registro'] = pd.to_datetime(df['Fecha de registro']).dt.strftime('%Y-%m-%d')
             df['Fecha de alta/captura'] = pd.to_datetime(df['Fecha de alta/captura']).dt.strftime('%Y-%m-%d')
             df['Fecha de alta en la LOC'] = pd.to_datetime(df['Fecha de alta en la LOC']).dt.strftime('%Y-%m-%d')
-
             df['Fecha de baja logica'] = pd.to_datetime(df['Fecha de baja logica'], errors='coerce')
-            df['Fecha de baja logica'] = df['Fecha de baja logica'].apply(lambda x: x.strftime('%Y-%m-%d') if pd.notnull(x) else None)
-            
             df['Fecha de baja del documento'] = pd.to_datetime(df['Fecha de baja del documento'], errors='coerce')
-            df['Fecha de baja del documento'] = df['Fecha de baja del documento'].apply(lambda x: x.strftime('%Y-%m-%d') if pd.notnull(x) else None)
-                      
+            
+             # Reemplazar NaN por 0 en columnas numéricas y celda vacia por ""
+            df['ID Arma'] = df['ID Arma'].fillna(0)
+            df['Matricula_canon *'] = df['Matricula_canon *'].fillna("")
+            df['Código de Identificación de Huella Balística (CIHB)'] = df['Código de Identificación de Huella Balística (CIHB)'].fillna("")
+            df['Motivo de baja'] = df['Motivo de baja'].fillna("")
+            df['Documento de baja'] = df['Documento de baja'].fillna("")
+            df['Observaciones de baja'] = df['Observaciones de baja'].fillna("")
+            df['Fecha de baja logica'] = df['Fecha de baja logica'].apply(lambda x: None if pd.isna(x) else x)
+            df['Fecha de baja del documento'] = df['Fecha de baja del documento'].apply(lambda x: None if pd.isna(x) else x)         
             
             for index, row in df.iterrows():
                 #Convertimos los ids de los campos al excel a objetos para manejarlos
@@ -203,27 +199,22 @@ def crear_armamento_excel(request):
                         modificado = True
                         objeto.PROPIEDAD = fila_propiedad
                     
-                    # Verifica si la fila tiene un valor válido en la columna 'Fecha de baja logica'
-                    if pd.notnull(row['Fecha de baja logica']):
-                        # Convierte la fecha del objeto a datetime si es válida
-                        fecha_objeto_baja_logica = pd.to_datetime(objeto.FECHA_BAJA_LOGICA, errors='coerce')
-                        # Convierte la fecha de la fila a datetime si es válida
-                        fecha_baja_logica = pd.to_datetime(row['Fecha de baja logica'], errors='coerce')
 
-                        # Verifica si ambas fechas son válidas
-                        if not pd.isnull(fecha_objeto_baja_logica) and not pd.isnull(fecha_baja_logica):
-                            # Formatea las fechas como strings
-                            fecha_objeto_baja_logica_str = fecha_objeto_baja_logica.strftime('%Y-%m-%d')
-                            fecha_baja_logica_str = fecha_baja_logica.strftime('%Y-%m-%d')
-
-                            # Compara las fechas formateadas
-                            if fecha_objeto_baja_logica_str != fecha_baja_logica_str:
-                                # Actualiza el objeto si las fechas son diferentes
+                    if pd.notna(row['Fecha de baja logica']):
+                        if objeto.FECHA_BAJA_LOGICA is not None:
+                            fecha_objeto_baja_logica = pd.to_datetime(objeto.FECHA_BAJA_LOGICA).strftime('%Y-%m-%d')
+                            fecha_baja_logica = pd.to_datetime(row['Fecha de baja logica']).strftime('%Y-%m-%d')
+                            if fecha_objeto_baja_logica != fecha_baja_logica:
                                 modificado = True
                                 objeto.FECHA_BAJA_LOGICA = row['Fecha de baja logica']
+                        else:
+                            modificado = True
+                            objeto.FECHA_BAJA_LOGICA = row['Fecha de baja logica']
+
 
                     if objeto.MOTIVO_BAJA != row['Motivo de baja']:
                         modificado = True
+                        print(modificado)
                         objeto.MOTIVO_BAJA = row['Motivo de baja']
 
                     if objeto.DOCUMENTO_BAJA != row['Documento de baja']:
@@ -234,25 +225,17 @@ def crear_armamento_excel(request):
                         modificado = True
                         objeto.OBSERVACIONES_BAJA = row['Observaciones de baja']
                     
-
-                    # Verifica si la fila tiene un valor válido en la columna 'Fecha de baja del documento'
-                    if pd.notnull(row['Fecha de baja del documento']):
-                        # Convierte la fecha del objeto a datetime si es válida
-                        fecha_objeto_baja_documento = pd.to_datetime(objeto.FECHA_BAJA_DOCUMENTO, errors='coerce')
-                        # Convierte la fecha de la fila a datetime si es válida
-                        fecha_baja_documento = pd.to_datetime(row['Fecha de baja del documento'], errors='coerce')
-
-                        # Verifica si ambas fechas son válidas
-                        if not pd.isnull(fecha_objeto_baja_documento) and not pd.isnull(fecha_baja_documento):
-                            # Formatea las fechas como strings
-                            fecha_objeto_baja_documento_str = fecha_objeto_baja_documento.strftime('%Y-%m-%d')
-                            fecha_baja_documento_str = fecha_baja_documento.strftime('%Y-%m-%d')
-
-                            # Compara las fechas formateadas
-                            if fecha_objeto_baja_documento_str != fecha_baja_documento_str:
-                                # Actualiza el objeto si las fechas son diferentes
+                    if pd.notna(row['Fecha de baja del documento']):
+                        if objeto.FECHA_BAJA_DOCUMENTO is not None:
+                            fecha_objeto_baja_documento = pd.to_datetime(objeto.FECHA_BAJA_DOCUMENTO).strftime('%Y-%m-%d')
+                            fecha_baja_documento = pd.to_datetime(row['Fecha de baja del documento']).strftime('%Y-%m-%d')
+                            if fecha_objeto_baja_documento != fecha_baja_documento:
                                 modificado = True
-                                objeto.FECHA_BAJA_DOCUMENTO = row['Fecha de baja logica']
+                                objeto.FECHA_BAJA_DOCUMENTO = row['Fecha de baja del documento']
+                        else:
+                            modificado = True
+                            objeto.FECHA_BAJA_DOCUMENTO = row['Fecha de baja del documento']
+                    
 
 
                     if objeto.usuario != request.user:
@@ -428,7 +411,7 @@ def eliminar_armamento(request, id):
         messages.info(request, 'Error al eliminar: No se puede eliminar este armamento ya que se encuentra referenciada a una imagen.')
         return redirect('armamento')
     
-    messages.success(request, 'El Armamento fue eliminado exitosamente.')      
+    messages.info(request, 'El Armamento fue eliminado exitosamente.')      
     return redirect('armamento')  # Redirige a la misma vista  
 
 def convertir_fechas(objeto):
