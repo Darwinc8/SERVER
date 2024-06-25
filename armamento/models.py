@@ -3,6 +3,8 @@ from catalogos.models import Institucion, Dependencia, Calibre, Edo_conservacion
 from datetime import datetime
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
+import re
+import unicodedata
 from django.utils.translation import gettext_lazy as _
 # Create your models here.
 
@@ -28,7 +30,76 @@ def validate_cuip_formato(value):
 
     if not value[13:].isdigit():
         raise ValidationError(_('Los caracteres a partir del 14 del CUIP deben ser todos dígitos.'))
-        
+
+def validate_AZ_09_Ñ(campo, permitir_ñ=True):
+    """
+    Función para validar un campo según los siguientes criterios:
+    - Solo letras mayúsculas de A-Z
+    - Números del 0-9
+    - Opcionalmente, la letra 'Ñ' si se especifica permitir_ñ=True
+    - Espacio en blanco
+    """
+    regex = r'^[A-Z0-9'
+    if permitir_ñ:
+        regex += 'Ñ'
+    regex += r' ]+$'
+    
+    if not re.match(regex, campo):
+        if permitir_ñ:
+            raise ValidationError(
+                'El campo solo puede contener letras mayúsculas de A-Z, la letra Ñ, números de 0-9.'
+            )
+        else:
+            raise ValidationError(
+                'El campo solo puede contener letras mayúsculas de A-Z, números de 0-9.'
+            )        
+
+def validate_especiales(campo):
+    """
+    Función para validar un campo que incluya letras mayúsculas de A-Z, Ñ,
+    números de 0-9, y los caracteres especiales . / _ -, y espacio en blanco.
+    """
+    regex = r'^[A-Z0-9Ñ./_\- ]+$'
+    
+    if not re.match(regex, campo):
+        raise ValidationError(
+            _('El campo solo puede contener letras mayúsculas de A-Z, Ñ, números de 0-9, '
+              'y los caracteres especiales . / _ - y espacio en blanco.')
+        )
+
+def validate_09(campo):
+    """
+    Función para validar que un campo contenga solo números del 0 al 9.
+    """
+    regex = r'^[0-9]+$'
+    
+    if not re.match(regex, campo):
+        raise ValidationError(
+            'El campo solo puede contener números del 0 al 9.'
+        )
+
+def validar_sin_acentos(texto):
+    texto = str(texto)
+    # Normalizar el texto en forma NFD (Descomposición Canónica)
+    texto_normalizado = unicodedata.normalize('NFD', texto)
+    
+    # Comprobar si hay caracteres diacríticos (acentos) en el texto
+    for char in texto_normalizado:
+        if unicodedata.category(char) == 'Mn':
+            raise ValidationError(_('El campo no puede contener caracteres con acentos.'))
+
+def convertir_a_mayusculas(texto):
+    """
+    Función para convertir un texto a mayúsculas.
+    
+    Parámetros:
+    texto (str): El texto que se desea convertir a mayúsculas.
+    
+    Retorna:
+    str: El texto convertido a mayúsculas.
+    """
+    return texto.upper()
+
 def save(self, *args, **kwargs):
         self.clean()
         super(Armamento, self).save(*args, **kwargs)
@@ -41,23 +112,24 @@ class Armamento(models.Model):
     ENTIDAD = models.ForeignKey(Entidad, on_delete=models.RESTRICT, null=False, blank=False)
     MUNICIPIO = models.ForeignKey(Municipio,on_delete=models.RESTRICT,to_field='id', null=False, blank=False)
     NUMERO_LOC = models.ForeignKey(LOC, on_delete=models.RESTRICT, null=False, blank=False)
-    FOLIO_C = models.CharField(max_length=20, null=False, blank=False)
-    FOLIO_D = models.CharField(max_length=20, null=False, blank=False)
+    FOLIO_C = models.CharField(max_length=20, null=False, blank=False, validators=[validate_AZ_09_Ñ])
+    FOLIO_D = models.CharField(max_length=20, null=False, blank=False, validators=[validate_AZ_09_Ñ])
     CLASE_TIPO_ARMA = models.ForeignKey(Tipo, on_delete=models.RESTRICT, null=False, blank=False)
     CALIBRE_ARMA = models.ForeignKey(Calibre, on_delete=models.RESTRICT, null=False, blank=False)
     MARCA_ARMA = models.ForeignKey(Marca, on_delete=models.RESTRICT, null=False, blank=False)
     MODELO_ARMA = models.ForeignKey(Modelo, on_delete=models.RESTRICT, null=False, blank=False)
-    MATRICULA = models.CharField(max_length=20, null=False, blank=False, unique=True)
-    MATRICULA_CANON = models.CharField(max_length=40, null=True, blank=True)
+    MATRICULA_CANON = models.CharField(max_length=40, null=True, blank=True, validators=[validate_AZ_09_Ñ])
+    MATRICULA = models.CharField(max_length=20, null=False, blank=False, unique=True, validators=[validate_AZ_09_Ñ, validar_sin_acentos])
+    MATRICULA_CANON = models.CharField(max_length=40, null=True, blank=True, validators=[validate_AZ_09_Ñ])
     FECHA = models.DateField(null=False, blank=False, validators=[validate_fecha_no_anterior_1990])
     FECHA_LOC = models.DateField(null=False, blank=False, validators=[validate_fecha_no_anterior_1990])
     ESTADO_ARMA = models.ForeignKey(Edo_conservacion, on_delete=models.RESTRICT, null=False, blank=False)
     FECHA_CAPTURA = models.DateField(null=False, blank=False, validators=[validate_fecha_no_anterior_1990])
-    OBSERVACIONES = models.TextField(null=False, blank=False)
+    OBSERVACIONES = models.TextField(null=False, blank=False, validators=[validate_especiales])
     ESTATUS_ARMA = models.ForeignKey(Estatus_Arma, on_delete=models.RESTRICT, null=False, blank=False)
     CUIP_PORTADOR = models.TextField(null=False, validators=[validate_cuip_formato])
     CUIP_RESPONSABLE = models.TextField(null=False, validators=[validate_cuip_formato])
-    CIHB = models.CharField(max_length=20, null=True, blank=True)
+    CIHB = models.CharField(max_length=20, null=True, blank=True, validators=[validate_09])
     TIPO_FUNCIONAMIENTO = models.ForeignKey(TipoFuncinamiento, on_delete=models.RESTRICT, null=False, default=4)
     PROPIEDAD = models.ForeignKey(Propiedad, on_delete=models.RESTRICT, null=False, default=4)
     FECHA_BAJA_LOGICA = models.DateField(null=True, blank=True, validators=[validate_fecha_no_anterior_1990])

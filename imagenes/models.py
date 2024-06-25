@@ -1,8 +1,19 @@
 from django.db import models
+from django.forms import ValidationError
 from django.core.validators import FileExtensionValidator
 from catalogos.models import Institucion, Dependencia, Entidad, Tipo_Imagen
 from armamento.models import Armamento
 from django.contrib.auth.models import User
+
+
+def validate_F_D(campo):
+    # Verifica si el campo es igual a "F" o "D"
+    if campo.upper() not in ['F', 'D']:
+        # Si no es "F" ni "D", levanta un ValueError
+        raise ValidationError("El campo debe ser 'F' o 'D'.")
+    
+    # Si es "F" o "D", no hace nada y retorna True opcionalmente
+    return True
 
 class Imagenes(models.Model):
     ID_ALTERNA = models.AutoField(primary_key=True)
@@ -10,7 +21,7 @@ class Imagenes(models.Model):
     IMAKEY = models.DecimalField(max_digits=10, decimal_places=0)
     DESIMA = models.CharField(max_length=80)
     FOLIO = models.DecimalField(max_digits=10, decimal_places=0)
-    GRUPO = models.CharField(max_length=1)
+    GRUPO = models.CharField(max_length=1, validators=[validate_F_D])
     IMAGEN = models.ImageField(upload_to='images/imagenes/',blank=False, unique=True, validators=[FileExtensionValidator(['jpg', 'jpeg', 'png', 'gif'])])
     DEPENDENCIA = models.ForeignKey(Dependencia, on_delete=models.RESTRICT)
     ENTIDAD = models.ForeignKey(Entidad, on_delete=models.RESTRICT)

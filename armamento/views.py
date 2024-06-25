@@ -58,7 +58,6 @@ def crear_armamento_excel(request):
                 return redirect('armamento_excel')   
             
             #Convirtiendo las columnas al tipo de dato esperado
-            df['ID Arma'] = pd.to_numeric(df['ID Arma'], errors='coerce')
             df['Institución'] = pd.to_numeric(df['Institución'], errors='coerce')
             df['Dependencia'] = pd.to_numeric(df['Dependencia'], errors='coerce')
             df['Entidad'] = pd.to_numeric(df['Entidad'], errors='coerce')
@@ -71,35 +70,40 @@ def crear_armamento_excel(request):
             df['Estatus del arma'] = pd.to_numeric(df['Estatus del arma'], errors='coerce')
             df['Tipo de Funcionamiento'] = pd.to_numeric(df['Tipo de Funcionamiento'], errors='coerce')
             df['Propiedad'] = pd.to_numeric(df['Propiedad'], errors='coerce')
-            df['Fecha de registro'] = pd.to_datetime(df['Fecha de registro']).dt.strftime('%Y-%m-%d')
-            df['Fecha de alta/captura'] = pd.to_datetime(df['Fecha de alta/captura']).dt.strftime('%Y-%m-%d')
-            df['Fecha de alta en la LOC'] = pd.to_datetime(df['Fecha de alta en la LOC']).dt.strftime('%Y-%m-%d')
-            df['Fecha de baja logica'] = pd.to_datetime(df['Fecha de baja logica'], errors='coerce')
-            df['Fecha de baja del documento'] = pd.to_datetime(df['Fecha de baja del documento'], errors='coerce')
             
              # Reemplazar NaN por 0 en columnas numéricas y celda vacia por ""
-            df['ID Arma'] = df['ID Arma'].fillna(0)
             df['Matricula_canon *'] = df['Matricula_canon *'].fillna("")
             df['Código de Identificación de Huella Balística (CIHB)'] = df['Código de Identificación de Huella Balística (CIHB)'].fillna("")
             df['Motivo de baja'] = df['Motivo de baja'].fillna("")
             df['Documento de baja'] = df['Documento de baja'].fillna("")
             df['Observaciones de baja'] = df['Observaciones de baja'].fillna("")
-            df['Fecha de baja logica'] = df['Fecha de baja logica'].apply(lambda x: None if pd.isna(x) else x)
-            df['Fecha de baja del documento'] = df['Fecha de baja del documento'].apply(lambda x: None if pd.isna(x) else x)         
+       
             
-            for index, row in df.iterrows():
-                #Convertimos los ids de los campos al excel a objetos para manejarlos
-                resultados = convertir_ids_a_objetos(request, row)
-                
-                fila_institucion, fila_dependencia, fila_municipio, fila_entidad, fila_loc, fila_ClaseTipoArma, fila_calibre, fila_marca, fila_modelo, fila_edoConservacion, fila_estatus, fila_tipoFuncionamiento, fila_propiedad  = resultados
+            for index, row in df.iterrows(): 
+                try:
+                   #Convertimos los ids de los campos al excel a objetos para manejarlos
+                    resultados = convertir_ids_a_objetos(request, row)
+                    fila_institucion, fila_dependencia, fila_municipio, fila_entidad, fila_loc, fila_ClaseTipoArma, fila_calibre, fila_marca, fila_modelo, fila_edoConservacion, fila_estatus, fila_tipoFuncionamiento, fila_propiedad  = resultados
+                    
+                    fila_id_arma = transformar_numero(request,(row['ID Arma']), row, 'ID Arma')
+                    fila_fecha_registro = transformar_fecha(request, (row['Fecha de registro']), 'Fecha de Registro', row)
+                    fila_fecha_loc = transformar_fecha(request, (row['Fecha de alta en la LOC']), 'Fecha de alta en la LOC', row)
+                    fila_fecha_captura = transformar_fecha(request, (row['Fecha de alta/captura']), 'Fecha de alta/captura', row)
+                    fila_fecha_baja_logica = transformar_fecha(request, (row['Fecha de baja logica']), 'Fecha de baja logica', row)
+                    fila_fecha_baja_documento = transformar_fecha(request, (row['Fecha de baja del documento']), 'Fecha de baja del documento', row)
+                except ValidationError as ve:
+                    # Capturar y mostrar el error en la plantilla
+                    messages.error(request, ve.message)
+                    return render(request, 'excel_armamento.html', {'form': form})
+                 
                  # Verificar si la fila ya existe en la base de datos
                 try:
                     objeto = Armamento.objects.get(MATRICULA=row['Matrícula'])
                     modificado=False 
                     # Verificar si existen diferencias en los campos y actualizar si es necesario
-                    if objeto.ID_ARMA != row['ID Arma']:
+                    if objeto.ID_ARMA != fila_id_arma:
                         modificado = True
-                        objeto.ID_ARMA = row['ID Arma']
+                        objeto.ID_ARMA = fila_id_arma
 
                     if objeto.INSTITUCION != fila_institucion:
                         modificado = True
@@ -150,26 +154,23 @@ def crear_armamento_excel(request):
                         objeto.MATRICULA_CANON = row['Matricula_canon *']   
                                        
                     fecha_objeto_registro = pd.to_datetime(objeto.FECHA).strftime('%Y-%m-%d')
-                    fecha_registro = pd.to_datetime(row['Fecha de registro']).strftime('%Y-%m-%d')
-                    if fecha_objeto_registro != fecha_registro:
+                    if fecha_objeto_registro != fila_fecha_registro:
                         modificado = True
-                        objeto.FECHA = row['Fecha de registro'] 
+                        objeto.FECHA = fila_fecha_registro 
                         
                     fecha_objeto_loc = pd.to_datetime(objeto.FECHA_LOC).strftime('%Y-%m-%d')
-                    fecha_loc = pd.to_datetime(row['Fecha de alta en la LOC']).strftime('%Y-%m-%d') 
-                    if fecha_objeto_loc != fecha_loc:
+                    if fecha_objeto_loc != fila_fecha_loc:
                         modificado = True
-                        objeto.FECHA_LOC = row['Fecha de alta en la LOC']
+                        objeto.FECHA_LOC = fila_fecha_loc
                     
                     if objeto.ESTADO_ARMA != fila_edoConservacion:
                         modificado = True
                         objeto.ESTADO_ARMA = fila_edoConservacion
                      
-                    fecha_objeto_captura = pd.to_datetime(objeto.FECHA_CAPTURA).strftime('%Y-%m-%d')
-                    fecha_captura = pd.to_datetime(row['Fecha de alta/captura']).strftime('%Y-%m-%d')    
-                    if fecha_objeto_captura != fecha_captura:
+                    fecha_objeto_captura = pd.to_datetime(objeto.FECHA_CAPTURA).strftime('%Y-%m-%d')    
+                    if fecha_objeto_captura != fila_fecha_captura:
                         modificado = True
-                        objeto.FECHA_CAPTURA = row['Fecha de alta/captura']
+                        objeto.FECHA_CAPTURA = fila_fecha_captura
                     
                     if objeto.OBSERVACIONES != row['Observaciones']:
                         modificado = True
@@ -203,7 +204,7 @@ def crear_armamento_excel(request):
                     if pd.notna(row['Fecha de baja logica']):
                         if objeto.FECHA_BAJA_LOGICA is not None:
                             fecha_objeto_baja_logica = pd.to_datetime(objeto.FECHA_BAJA_LOGICA).strftime('%Y-%m-%d')
-                            fecha_baja_logica = pd.to_datetime(row['Fecha de baja logica']).strftime('%Y-%m-%d')
+                            fecha_baja_logica = transformar_fecha(request, (row['Fecha de baja logica']), 'Fecha de baja logica', row)
                             if fecha_objeto_baja_logica != fecha_baja_logica:
                                 modificado = True
                                 objeto.FECHA_BAJA_LOGICA = row['Fecha de baja logica']
@@ -228,7 +229,7 @@ def crear_armamento_excel(request):
                     if pd.notna(row['Fecha de baja del documento']):
                         if objeto.FECHA_BAJA_DOCUMENTO is not None:
                             fecha_objeto_baja_documento = pd.to_datetime(objeto.FECHA_BAJA_DOCUMENTO).strftime('%Y-%m-%d')
-                            fecha_baja_documento = pd.to_datetime(row['Fecha de baja del documento']).strftime('%Y-%m-%d')
+                            fecha_baja_documento = transformar_fecha(request, (row['Fecha de baja del documento']), 'Fecha de baja del documento', row)
                             if fecha_objeto_baja_documento != fecha_baja_documento:
                                 modificado = True
                                 objeto.FECHA_BAJA_DOCUMENTO = row['Fecha de baja del documento']
@@ -236,8 +237,6 @@ def crear_armamento_excel(request):
                             modificado = True
                             objeto.FECHA_BAJA_DOCUMENTO = row['Fecha de baja del documento']
                     
-
-
                     if objeto.usuario != request.user:
                        objeto.usuario = request.user
                     
@@ -248,15 +247,14 @@ def crear_armamento_excel(request):
                             messages.success(request, f"Armamento con matricula {row['Matrícula']} fue actualizado exitosamente")
                         except ValidationError as e:
                             mensaje_error = str(e)
-                            messages.error(request, f"Error al guardar el Armamento {objeto.MATRICULA}: {mensaje_error}")
+                            messages.error(request, f"Error al modificar el Armamento {objeto.MATRICULA}: {mensaje_error} en la fila {int(row.name) +2}")
                             return redirect('armamento_excel')
                     else:
                         messages.success(request, f"Armamento con matricula {row['Matrícula']} ya existia")
-
                     
-                except Armamento.DoesNotExist:
+                except Armamento.DoesNotExist:    
                 # Si la fila no existe, crear un nuevo objeto
-                    nuevo_objeto = Armamento(ID_ARMA = row['ID Arma'], 
+                    nuevo_objeto = Armamento(ID_ARMA = fila_id_arma, 
                                            INSTITUCION = fila_institucion, 
                                            DEPENDENCIA = fila_dependencia, 
                                            ENTIDAD = fila_entidad,
@@ -270,10 +268,10 @@ def crear_armamento_excel(request):
                                            MODELO_ARMA = fila_modelo,
                                            MATRICULA = row['Matrícula'],
                                            MATRICULA_CANON = row['Matricula_canon *'],
-                                           FECHA = row['Fecha de registro'],
-                                           FECHA_LOC = row['Fecha de alta en la LOC'],
+                                           FECHA = fila_fecha_registro,
+                                           FECHA_LOC = fila_fecha_loc,
                                            ESTADO_ARMA = fila_edoConservacion,
-                                           FECHA_CAPTURA = row['Fecha de alta/captura'],
+                                           FECHA_CAPTURA = fila_fecha_captura,
                                            OBSERVACIONES = row['Observaciones'],
                                            ESTATUS_ARMA = fila_estatus,
                                            CUIP_PORTADOR = row['CUIP del elemento que la porta'],
@@ -281,11 +279,11 @@ def crear_armamento_excel(request):
                                            CIHB = row['Código de Identificación de Huella Balística (CIHB)'],
                                            TIPO_FUNCIONAMIENTO = fila_tipoFuncionamiento,
                                            PROPIEDAD = fila_propiedad,
-                                           FECHA_BAJA_LOGICA = row['Fecha de baja logica'],
+                                           FECHA_BAJA_LOGICA = fila_fecha_baja_logica,
                                            MOTIVO_BAJA = row['Motivo de baja'],
                                            DOCUMENTO_BAJA = row['Documento de baja'],
                                            OBSERVACIONES_BAJA = row['Observaciones de baja'],
-                                           FECHA_BAJA_DOCUMENTO = row['Fecha de baja del documento'],
+                                           FECHA_BAJA_DOCUMENTO = fila_fecha_baja_documento,
                                            usuario = request.user     
                                            )  
                     
@@ -294,7 +292,7 @@ def crear_armamento_excel(request):
                         nuevo_objeto.save()
                     except ValidationError as e:
                         mensaje_error = str(e)
-                        messages.error(request, f"Error al guardar el Armamento {nuevo_objeto.MATRICULA}: {mensaje_error}")
+                        messages.error(request, f"Error al guardar el Armamento {nuevo_objeto.MATRICULA}: {mensaje_error} en la fila {int(row.name) +2}")
                         return redirect('armamento_excel')
                     messages.success(request, f"Armamento con matricula {row['Matrícula']} fue agregado con exito")
 
@@ -312,38 +310,19 @@ def validar_plantilla_excel(request, archivo_excel):
         # Lee el archivo Excel
         df = pd.read_excel(archivo_excel, engine="openpyxl")
         
-       # Lista de nombres de columnas requeridas
-        columnas_requeridas = ['ID Arma',
-                               'Institución', 
-                               'Dependencia', 
-                               'Entidad',
-                               'Municipio',
-                               'Número de licencia oficial colectiva',
-                               'Folio C',
-                               'Folio D',
-                               'Clase/Tipo de arma',
-                               'Calibre del arma',
-                               'Marca del arma',
-                               'Modelo del arma',
-                               'Matrícula',
-                               'Matricula_canon *',
-                               'Fecha de registro',
-                               'Fecha de alta en la LOC',
-                               'Estado del arma',
-                               'Fecha de alta/captura',
-                               'Observaciones',
-                               'Estatus del arma',
-                               'CUIP del elemento que la porta',
-                               'CUIP del elemento responsable del cargo',
-                               'Código de Identificación de Huella Balística (CIHB)',
-                               'Tipo de Funcionamiento',
-                               'Propiedad',
-                               'Fecha de baja logica',
-                               'Motivo de baja',
-                               'Documento de baja',
-                               'Observaciones de baja',
-                               'Fecha de baja del documento',
-                               ] 
+        # Lista de nombres de columnas requeridas
+        columnas_requeridas = [
+            'ID Arma', 'Institución', 'Dependencia', 'Entidad', 'Municipio',
+            'Número de licencia oficial colectiva', 'Folio C', 'Folio D',
+            'Clase/Tipo de arma', 'Calibre del arma', 'Marca del arma',
+            'Modelo del arma', 'Matrícula', 'Matricula_canon *', 'Fecha de registro',
+            'Fecha de alta en la LOC', 'Estado del arma', 'Fecha de alta/captura',
+            'Observaciones', 'Estatus del arma', 'CUIP del elemento que la porta',
+            'CUIP del elemento responsable del cargo', 'Código de Identificación de Huella Balística (CIHB)',
+            'Tipo de Funcionamiento', 'Propiedad', 'Fecha de baja logica', 'Motivo de baja',
+            'Documento de baja', 'Observaciones de baja', 'Fecha de baja del documento',
+        ]
+        
         # Verifica si todas las columnas requeridas están presentes
         if all(columna in df.columns for columna in columnas_requeridas):
             return df
@@ -475,7 +454,7 @@ def convertir_ids_a_objetos(request, row):
         )):
             return redirect('armamento_excel')
 
-    except Institucion.DoesNotExist:
+    except Institucion.DoesNotExist :
        messages.error(request, f"Error: Institución no encontrada en la fila {int(row.name) +2}")
     except Dependencia.DoesNotExist:
        messages.error(request, f"Error: Dependencia no encontrada en la fila {int(row.name) +2}")
@@ -502,7 +481,7 @@ def convertir_ids_a_objetos(request, row):
     except Propiedad.DoesNotExist:
        messages.error(request, f"Error:Propiedad no encontrada en la fila {int(row.name) +2}")
     except Exception as e:
-       messages.error(request, f"Error inesperado al convertir IDs a objetos: {e}")
+       messages.error(request, f"Error inesperado en la fila {int(row.name) +2}: {e}")
 
     return (
         fila_institucion,
@@ -525,3 +504,37 @@ def descargar_plantilla_excel(request):
     ruta_plantilla = "static/plantillas/armamento_plantilla.xlsx"
     # Abre el archivo y devuelve una respuesta de archivo para descargar
     return FileResponse(open(ruta_plantilla, 'rb'), as_attachment=True)
+
+def transformar_fecha(request, valor_fecha, columna, row):
+    columnas_obligatorias = ['Fecha de registro', 'Fecha de alta en la LOC','Fecha de alta/captura']  # Lista de columnas que deben contener fechas
+    try:
+        # Verificar si la celda está vacía
+        if pd.isna(valor_fecha):
+            if columna in columnas_obligatorias:
+                raise ValidationError(f"La fecha de la columna {columna} no puede estar vacía en la fila {int(row.name) + 2}")
+            else:
+                return None
+        # Convertir la fecha al formato deseado
+        fecha = pd.to_datetime(valor_fecha, errors='coerce')
+    
+        fecha_transformada = fecha.strftime('%Y-%m-%d')
+        return fecha_transformada  # Devolver la fecha transformada como cadena
+
+    except Exception as e:
+        msj = f"Error en la columna {columna}: ({str(e)}) en la fila {int(row.name) + 2}"
+        raise ValidationError(msj)
+
+def transformar_numero(request, campo, row, columna):
+    try:
+        # Verificar si la celda está vacía
+        if pd.isna(campo) or campo is None:
+                return None
+        # Convertir la fecha al formato deseado
+        valor_str = str(campo)
+        valor_float = float(valor_str)
+        return int(valor_float)  # Devolver el numero 
+
+    except Exception as e:
+        print("eeoor mai")
+        msj = f"Error: Número invalido en {columna} en la fila {int(row.name) + 2},,,, {e}"
+        raise ValidationError(msj)        

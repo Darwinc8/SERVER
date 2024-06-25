@@ -8,7 +8,7 @@
           <div class="col-12 col-lg-6">
             <label for="id_ID_ARMA" class="form-label fw-bold text-muted fst-italic">{% trans "Id del Arma" %}:</label>
             <input type="{{ form.ID_ARMA.field.widget.input_type }}"
-                   class="form-control input-placeholder" 
+                   class="form-control input-placeholder"
                    name="{{ form.ID_ARMA.name }}" 
                    id="id_ID_ARMA" 
                    placeholder="{% trans 'Id del Arma' %}"
@@ -53,10 +53,12 @@
             <div class="col-12 col-lg-6">
                 <label for="id_FOLIO_C" class="form-label fw-bold text-muted fst-italic">{% trans "Folio C" %}:</label>
                 <input type="{{ form.FOLIO_C.field.widget.input_type }}"
-                    class="form-control input-placeholder input-placeholder" 
+                    class="form-control input-placeholder input-placeholder"
+                    oninput="this.value = this.value.toUpperCase();" 
                     name="{{ form.FOLIO_C.name }}" 
                     id="id_FOLIO_C" 
                     placeholder="{% trans 'Folio C' %}"
+                    maxlength="20" 
                     value="{{form.FOLIO_C.value | default:''}}"
                     required>
             {% if form.FOLIO_C.errors %}
@@ -73,10 +75,12 @@
             <div class="col-12 col-lg-6">
                 <label for="id_FOLIO_D" class="form-label fw-bold text-muted fst-italic">{% trans "Folio D" %}:</label>
                 <input type="{{ form.FOLIO_D.field.widget.input_type }}"
-                    class="form-control input-placeholder input-placeholder" 
+                    class="form-control input-placeholder input-placeholder"
+                    oninput="this.value = this.value.toUpperCase();"  
                     name="{{ form.FOLIO_D.name }}" 
                     id="id_FOLIO_D" 
                     placeholder="{% trans 'Folio D' %}"
+                    maxlength="20"
                     value="{{form.FOLIO_D.value | default:''}}"
                     required>
                     {% if form.FOLIO_D.errors %}
@@ -113,10 +117,12 @@
             <div class="col-12 col-lg-6">
               <label for="id_MATRICULA" class="form-label fw-bold text-muted fst-italic">{% trans "Matricula" %}:</label>
               <input type="{{ form.MATRICULA.field.widget.input_type }}"
-                    class="form-control input-placeholder input-placeholder" 
+                    class="form-control input-placeholder input-placeholder"
+                    oninput="this.value = this.value.toUpperCase();"  
                     name="{{ form.MATRICULA.name }}" 
                     id="id_MATRICULA" 
                     placeholder="{% trans 'Matricula' %}"
+                    maxlength="20"
                     value="{{form.MATRICULA.value | default:''}}"
                     required>
                     {% if form.MATRICULA.errors %}
@@ -133,10 +139,12 @@
             <div class="col-12 col-lg-6">
               <label for="id_matricula_canon" class="form-label fw-bold text-muted fst-italic">{% trans "Matricula Canon" %}:</label>
               <input type="{{ form.MATRICULA_CANON.field.widget.input_type }}"
-                class="form-control input-placeholder input-placeholder" 
+                class="form-control input-placeholder input-placeholder"
+                oninput="this.value = this.value.toUpperCase();"  
                 name="{{ form.MATRICULA_CANON.name }}" 
                 id="id_matricula_canon" 
                 placeholder="{% trans 'Matricula Canon' %}"
+                maxlength="40"
                 value="{{form.MATRICULA_CANON.value | default:''}}">
                 {% if form.MATRICULA_CANON.errors %}
                     <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
@@ -182,10 +190,12 @@
             <div class="col-12 col-lg-6">
               <label for="id_CUIP_PORTADOR" class="form-label fw-bold text-muted fst-italic">{% trans "CUIP Portador" %}:</label>
               <input type="text"
-                class="form-control input-placeholder" 
+                class="form-control input-placeholder"
+                oninput="this.value = this.value.toUpperCase();"  
                 name="{{ form.CUIP_PORTADOR.name }}" 
                 id="id_CUIP_PORTADOR" 
                 placeholder="{% trans 'CUIP Portador' %}"
+                maxlength="20"
                 value="{{form.CUIP_PORTADOR.value | default:''}}"
                 required>
                 {% if form.CUIP_PORTADOR.errors %}
@@ -202,10 +212,12 @@
             <div class="col-12 col-lg-6">
               <label for="id_CUIP_RESPONSABLE" class="form-label fw-bold text-muted fst-italic">{% trans "CUIP Responsable" %}:</label>
               <input type="text"
-                class="form-control input-placeholder" 
+                class="form-control input-placeholder"
+                oninput="this.value = this.value.toUpperCase();"  
                 name="{{ form.CUIP_RESPONSABLE.name }}" 
                 id="id_CUIP_RESPONSABLE" 
                 placeholder="{% trans 'CUIP Responsable' %}"
+                maxlength="20"
                 value="{{form.CUIP_RESPONSABLE.value | default:''}}"
                 required>
                 {% if form.CUIP_RESPONSABLE.errors %}
@@ -222,10 +234,12 @@
             <div class="col-12 col-lg-6">
               <label for="id_CIHB" class="form-label fw-bold text-muted fst-italic">{{ form.CIHB.label }}:</label>
               <input type="{{ form.CIHB.field.widget.input_type }}"
-                class="form-control input-placeholder" 
+                class="form-control input-placeholder"
+                oninput="this.value = this.value.toUpperCase();"  
                 name="{{ form.CIHB.name }}" 
                 id="id_CIHB" 
                 placeholder="{{ form.CIHB.label }}"
+                maxlength="20"
                 value="{{form.CIHB.value | default:''}}">
                 {% if form.CIHB.errors %}
                     <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
@@ -261,9 +275,11 @@
             <div class="col-12 col-lg-6">
               <label for="id_DOCUMENTO_BAJA" class="form-label fw-bold text-muted fst-italic">{% trans "Documento de Baja" %}:</label>
               <input type="{{ form.DOCUMENTO_BAJA.field.widget.input_type }}"
-                class="form-control input-placeholder" 
+                class="form-control input-placeholder"
+                oninput="this.value = this.value.toUpperCase();"  
                 name="{{ form.DOCUMENTO_BAJA.name }}" 
-                id="id_DOCUMENTO_BAJA" 
+                id="id_DOCUMENTO_BAJA"
+                maxlength="20" 
                 placeholder="{% trans 'Documento de Baja' %}"
                 value="{{form.DOCUMENTO_BAJA.value | default:''}}">
                 {% if form.DOCUMENTO_BAJA.errors %}

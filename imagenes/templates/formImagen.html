@@ -95,6 +95,12 @@
              value="{{ form.GRUPO.value | default:'' }}" 
              maxlength="1" id="id_GRUPO" 
              required>
+             {% if form.GRUPO.errors %}
+        <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
+          {% for error in form.GRUPO.errors %}
+            <span>{{ error }}</span>
+          {% endfor %}
+        </div>{% endif %}
     </div>
     
   </div>
