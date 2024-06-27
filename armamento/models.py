@@ -10,7 +10,7 @@ from django.utils.translation import gettext_lazy as _
 
 def validate_fecha_no_anterior_1990(value):
     if value < datetime(1990, 1, 1).date():
-        raise ValidationError(_('La fecha no puede ser anterior al 01 de enero de 1990.'))
+        raise ValidationError(_('La fecha no puede ser anterior al 01 de enero de 1990'))
 
 def validate_FechaRegistro_FechaLOC(fecha_registro, fecha_loc):
     if fecha_registro < fecha_loc:
@@ -26,22 +26,22 @@ def validate_FechaCaptura_FechaRegistro(fecha_captura, fecha_registro):
 
 def validate_cuip_formato(value):
     if not (14 <= len(value) <= 20):
-        raise ValidationError(_('El CUIP debe tener entre 14 y 20 caracteres.'))
+        raise ValidationError(_('El CUIP debe tener entre 14 y 20 caracteres'))
 
     if not value[0:4].isalpha():
-        raise ValidationError(_('Los primeros 4 caracteres del CUIP deben ser letras.'))
+        raise ValidationError(_('Los primeros 4 caracteres del CUIP deben ser letras'))
 
     if not value[4:10].isdigit():
-        raise ValidationError(_('Los caracteres del 5 al 10 del CUIP deben ser todos dígitos.'))
+        raise ValidationError(_('Los caracteres del 5 al 10 del CUIP deben ser todos dígitos'))
 
     if value[10] not in ['H', 'M']:
-        raise ValidationError(_('El carácter en la posición 11 del CUIP debe ser H o M.'))
+        raise ValidationError(_('El carácter en la posición 11 del CUIP debe ser H o M'))
 
     if not (value[11:13].isdigit() and value[11:13] in [str(i).zfill(2) for i in range(1, 33)] + ['98', '99']):
-        raise ValidationError(_('Los caracteres del 12 al 13 del CUIP deben estar entre 01 y 32 o ser 98 o 99.'))
+        raise ValidationError(_('Los caracteres del 12 al 13 del CUIP deben estar entre 01 y 32 o ser 98 o 99'))
 
     if not value[13:].isdigit():
-        raise ValidationError(_('Los caracteres a partir del 14 del CUIP deben ser todos dígitos.'))
+        raise ValidationError(_('Los caracteres a partir del 14 del CUIP deben ser todos dígitos'))
 
 def validate_AZ_09_Ñ(campo, permitir_ñ=True):
     """
@@ -76,7 +76,7 @@ def validate_especiales(campo):
     if not re.match(regex, campo):
         raise ValidationError(
             _('El campo solo puede contener letras mayúsculas de A-Z, Ñ, números de 0-9, '
-              'y los caracteres especiales . / _ - y espacio en blanco.')
+              'y los caracteres especiales . / _ - y espacio en blanco')
         )
 
 def validate_09(campo):
@@ -87,7 +87,7 @@ def validate_09(campo):
     
     if not re.match(regex, campo):
         raise ValidationError(
-            'El campo solo puede contener números del 0 al 9.'
+            'El campo solo puede contener números del 0 al 9'
         )
 
 def validar_sin_acentos(texto):
@@ -98,7 +98,7 @@ def validar_sin_acentos(texto):
     # Comprobar si hay caracteres diacríticos (acentos) en el texto
     for char in texto_normalizado:
         if unicodedata.category(char) == 'Mn':
-            raise ValidationError(_('El campo no puede contener caracteres con acentos.'))
+            raise ValidationError(_('El campo no puede contener caracteres con acentos'))
 
 def convertir_a_mayusculas(texto):
     """
