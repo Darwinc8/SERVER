@@ -12,20 +12,27 @@ def BusquedaPersonalizada(request, query, valor, lista, pagina, formulario):
         mensaje = _("No se encontraron registros con esos parámetros.")
         return render(request, pagina, {'mensaje': mensaje, 'form': formulario({'campos_filtrados': valor, 'query': query})})
 
-    return render(request, pagina, {
+    num_registros = lista_filtrada.count()
+    context = {
         'lista': lista_filtrada,
-        'form': formulario({'campos_filtrados': valor, 'query': query})
-    })
+        'form': formulario({'campos_filtrados': valor, 'query': query}),
+        'num_registros': num_registros,
+    }
+    return render(request, pagina, context)
 
 def CrearPaginador(request, lista, num_paginas, pagina, formulario):
     paginator = Paginator(lista, num_paginas)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    
-    return render(request, pagina, {
+
+    num_registros = lista.count()
+    context = {
         'lista': page_obj,
-        'form': formulario()
-    })
+        'form': formulario(),
+        'num_registros': num_registros,
+    }
+    
+    return render(request, pagina, context)
 
 def EliminarImagenAntigua(ruta):
     # Verifica si el archivo existe

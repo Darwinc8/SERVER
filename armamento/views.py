@@ -13,6 +13,7 @@ from django.utils.translation import gettext_lazy as _
 # Create your views here.
 @login_required
 def armamento(request):
+
     armamentos = Armamento.objects.all().order_by('-ultima_modificacion')
     
     query = request.GET.get('query')
@@ -20,7 +21,7 @@ def armamento(request):
     
     if query and valor:
         return utils.BusquedaPersonalizada(request, query, valor, armamentos, 'armamento.html', BusquedaArmamentoForm)
-        
+  
     return utils.CrearPaginador(request, armamentos, 5, 'armamento.html', BusquedaArmamentoForm)
 
 @login_required

@@ -12,6 +12,18 @@ def validate_fecha_no_anterior_1990(value):
     if value < datetime(1990, 1, 1).date():
         raise ValidationError(_('La fecha no puede ser anterior al 01 de enero de 1990.'))
 
+def validate_FechaRegistro_FechaLOC(fecha_registro, fecha_loc):
+    if fecha_registro < fecha_loc:
+        raise ValidationError(_('La fecha de registro no puede ser menor a la Fecha de Alta del LOC'))
+
+def validate_FechaCaptura_FechaLOC(fecha_captura, fecha_loc):
+    if fecha_captura < fecha_loc:
+        raise ValidationError(_('La fecha de Captura no puede ser menor a la Fecha de Alta del LOC'))    
+
+def validate_FechaCaptura_FechaRegistro(fecha_captura, fecha_registro):
+    if fecha_captura < fecha_registro:
+        raise ValidationError(_('La fecha de Captura no puede ser menor a la Fecha de Registro'))
+
 def validate_cuip_formato(value):
     if not (14 <= len(value) <= 20):
         raise ValidationError(_('El CUIP debe tener entre 14 y 20 caracteres.'))
@@ -90,15 +102,11 @@ def validar_sin_acentos(texto):
 
 def convertir_a_mayusculas(texto):
     """
-    Función para convertir un texto a mayúsculas.
-    
-    Parámetros:
-    texto (str): El texto que se desea convertir a mayúsculas.
-    
-    Retorna:
-    str: El texto convertido a mayúsculas.
+    Validator que convierte el valor a mayúsculas.
     """
-    return texto.upper()
+    if texto is not None:
+        return texto.upper()
+    return texto
 
 def save(self, *args, **kwargs):
         self.clean()
@@ -135,12 +143,27 @@ class Armamento(models.Model):
     FECHA_BAJA_LOGICA = models.DateField(null=True, blank=True, validators=[validate_fecha_no_anterior_1990])
     MOTIVO_BAJA = models.TextField(null=True, blank=True)
     DOCUMENTO_BAJA = models.CharField(max_length=20, null=True, blank=True)
-    OBSERVACIONES_BAJA = models.TextField(null=True, blank=True)
+    OBSERVACIONES_BAJA = models.TextField(null=True, blank=True,)
     FECHA_BAJA_DOCUMENTO = models.DateField(null=True, blank=True, validators=[validate_fecha_no_anterior_1990])
     
     usuario = models.ForeignKey(User, on_delete=models.RESTRICT, null=False, blank=True)
     
     ultima_modificacion = models.DateTimeField(auto_now=True)
+
+    def clean(self):
+        # Llama al método clean() de la superclase para aplicar validaciones adicionales
+        super().clean()
+        self.FOLIO_C = convertir_a_mayusculas(self.FOLIO_C)
+        self.FOLIO_D = convertir_a_mayusculas(self.FOLIO_D)
+        self.MATRICULA = convertir_a_mayusculas(self.MATRICULA)
+        self.MATRICULA_CANON = convertir_a_mayusculas(self.MATRICULA_CANON)
+        self.OBSERVACIONES = convertir_a_mayusculas(self.OBSERVACIONES)
+        self.CUIP_PORTADOR = convertir_a_mayusculas(self.CUIP_PORTADOR)
+        self.CUIP_RESPONSABLE = convertir_a_mayusculas(self.CUIP_RESPONSABLE)
+        self.OBSERVACIONES_BAJA = convertir_a_mayusculas(self.OBSERVACIONES_BAJA)
+        validate_FechaRegistro_FechaLOC(self.FECHA, self.FECHA_LOC)
+        validate_FechaCaptura_FechaLOC(self.FECHA_CAPTURA, self.FECHA_LOC)
+        validate_FechaCaptura_FechaRegistro(self.FECHA_CAPTURA, self.FECHA)
 
     def __str__(self):
         return f"{self.MATRICULA}"
