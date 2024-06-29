@@ -7,10 +7,15 @@ from django.contrib.auth.decorators import login_required
 from .models import Municipio, Institucion, Dependencia, Entidad, LOC, Tipo, Calibre, Marca, Modelo, Edo_conservacion, Estatus_Arma, TipoFuncinamiento, Propiedad
 from django.contrib import messages
 from utilidades import utils
+from django.db.models import Q
 import pandas as pd
 from django.conf import settings
 from django.utils.translation import gettext_lazy as _
 # Create your views here.
+@login_required
+def panel_armamento(request):
+    return render(request, 'armamento_panel.html')
+
 @login_required
 def armamento(request):
 
@@ -23,6 +28,44 @@ def armamento(request):
         return utils.BusquedaPersonalizada(request, query, valor, armamentos, 'armamento.html', BusquedaArmamentoForm)
   
     return utils.CrearPaginador(request, armamentos, 5, 'armamento.html', BusquedaArmamentoForm)
+
+@login_required
+def armamento_activos(request):
+
+    armamentos = Armamento.objects.filter(
+    Q(FECHA_BAJA_LOGICA__isnull=True) &
+    Q(MOTIVO_BAJA__isnull=True) | Q(MOTIVO_BAJA__exact='') &
+    Q(DOCUMENTO_BAJA__isnull=True) | Q(DOCUMENTO_BAJA__exact='') &
+    Q(OBSERVACIONES_BAJA__isnull=True) | Q(OBSERVACIONES_BAJA__exact='') &
+    Q(FECHA_BAJA_DOCUMENTO__isnull=True)
+).order_by('-ultima_modificacion')
+    
+    query = request.GET.get('query')
+    valor = request.GET.get('campos_filtrados')
+    
+    if query and valor:
+        return utils.BusquedaPersonalizada(request, query, valor, armamentos, 'activos_armamento.html', BusquedaArmamentoForm)
+  
+    return utils.CrearPaginador(request, armamentos, 5, 'activos_armamento.html', BusquedaArmamentoForm)
+
+@login_required
+def armamento_inactivos(request):
+
+    armamentos = Armamento.objects.exclude(
+    Q(FECHA_BAJA_LOGICA__isnull=True) &
+    Q(MOTIVO_BAJA__isnull=True) | Q(MOTIVO_BAJA__exact='') &
+    Q(DOCUMENTO_BAJA__isnull=True) | Q(DOCUMENTO_BAJA__exact='') &
+    Q(OBSERVACIONES_BAJA__isnull=True) | Q(OBSERVACIONES_BAJA__exact='') &
+    Q(FECHA_BAJA_DOCUMENTO__isnull=True)
+).order_by('-ultima_modificacion')
+    
+    query = request.GET.get('query')
+    valor = request.GET.get('campos_filtrados')
+    
+    if query and valor:
+        return utils.BusquedaPersonalizada(request, query, valor, armamentos, 'inactivos_armamento.html', BusquedaArmamentoForm)
+  
+    return utils.CrearPaginador(request, armamentos, 5, 'inactivos_armamento.html', BusquedaArmamentoForm)
 
 @login_required
 def crear_armamento(request):

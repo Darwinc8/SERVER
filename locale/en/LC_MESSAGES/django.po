@@ -2386,7 +2386,7 @@ msgid "Anterior"
 msgstr "Previous"
 
 #: .\utilidades\templates\paginador.html:8
-msgid "Pagina"
+msgid "Página"
 msgstr "Page"
 
 #: .\utilidades\templates\paginador.html:8

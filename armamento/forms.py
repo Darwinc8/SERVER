@@ -98,6 +98,7 @@ class BusquedaArmamentoForm(forms.Form):
         label=_("Filtrar por"),
         initial='MATRICULA__icontains'
     )
+    
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+{% load i18n %}
+{% load static %}
+{% block favicon %}
+<link rel="icon" type="image/x-icon" href="{% static 'icons/armamento.png' %}">
+{% endblock %}
+ {% block title %} {% trans "Panel de Armamento" %} {% endblock %} 
+{% block content %}
+<br>
+<div class="p-5 text-center bg-image rounded-3" 
+  style=
+  "
+  background-image: url('home/sistemas/RNAE/static/images/ssp_fondo.jpg');
+  background-size: cover;
+  background-position: center 30%;
+  background-color: #929fba;
+  height: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  ">
+  <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+    <div class="d-flex justify-content-center align-items-center">
+      <div class="text-white d-flex align-items-center justify-content-center" style="height: 100%;">
+        <h1>{% trans "Panel de Armamento" %}</h1>
+    </div>
+    </div>
+  </div>
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <a href="{% url 'armamento' %}" class="btn btn-outline-light btn-lg w-100">{% trans "Todo el Armamento" %}</a>
+      </div>
+      <div class="col-md-6 mb-3">
+        <a href="{% url 'armamento_activos' %}" class="btn btn-outline-light btn-lg w-100">{% trans " Armamento Activo" %}</a>
+      </div>
+      <div class="col-md-6 mb-3">
+        <a href="{% url  'armamento_inactivos' %}" class="btn btn-outline-light btn-lg w-100">{%trans "Armamento Inactivo"%}</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+    <div class="d-flex justify-content-center align-items-center">
+      <div class="text-white d-flex align-items-center justify-content-center" style="height: 100%;">
+        <h1>{% trans "Agregar Armamento" %}</h1>
+    </div>
+    </div>
+  </div>
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <a href="{% url 'crear_armamento' %}" class="btn btn-outline-light btn-lg w-100">{% trans "Mediante Formulario" %}</a>
+      </div>
+      <div class="col-md-6 mb-3">
+        <a href="{% url 'armamento_excel' %}" class="btn btn-outline-light btn-lg w-100">{% trans " Mediante Archivo excel" %}</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
