@@ -10,7 +10,7 @@
   }
 </style>
 {% endblock %}
- {% block title %} {% trans "Armamento" %} {% endblock %} 
+ {% block title %} {% trans "Armamento Inactivo" %} {% endblock %} 
  {% block content %} 
  <br/><br/>
  {% if messages %}
@@ -25,17 +25,13 @@
         {% endif %}
 <div class="card">
   <div class="card-header">
-    <h1 style="text-align: center">{% trans "ARMAMENTO" %}</h1>
+    <h1 style="text-align: center">{% trans "ARMAMENTO INACTIVO" %}</h1>
     <div class="d-flex justify-content-between flex-wrap">
 
-      <div class="dropdown d-inline-block mb-2 mb-md-0">
-        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-            {% trans "Agregar nuevo armamento" %}
-        </button>
-        <ul class="dropdown-menu bg-light" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item text-secondary" href="{% url 'crear_armamento' %}">{% trans "Crear manualmente" %}</a></li>
-            <li><a class="dropdown-item text-secondary" href="{% url 'armamento_excel' %}">{% trans "Desde un archivo excel" %}</a></li>
-        </ul>
+      <div class="d-inline-block mb-2 mb-md-0">
+        <a href="{% url 'panel_armamento' %}" class="btn btn-success">
+            {% trans "Volver al Panel de Armamento" %}
+        </a>
     </div>
     
   
@@ -57,7 +53,7 @@
                 </button>
             </div>
             <div class="p-1">
-                <a class="btn btn-danger" href="{% url 'armamento' %}" role="button">
+                <a class="btn btn-danger" href="{% url 'armamento_inactivos' %}" role="button">
                     <i class="fa fa-refresh" aria-hidden="true"></i>
                 </a>
             </div>
