@@ -7,17 +7,36 @@
  {% block title %} {% trans "Panel de Armamento" %} {% endblock %} 
 {% block content %}
 <br>
-<div class="p-5 text-center bg-image rounded-3" 
-  style=
-  "
-  background-image: url('/home/sistemas/RNAE/static/images/fondo_armamento.jpg');
-  background-size: cover;
-  background-position: center 30%;
-  background-color: #929fba;
-  height: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  ">
+<style>
+  .background-blur {
+    position: relative;
+    height: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .background-blur::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/home/sistemas/RNAE/static/images/fondo_armamento.jpg');
+    background-size: cover;
+    background-position: center 30%;
+    background-color: #929fba;
+    filter: blur(4px); /* Ajusta el valor del desenfoque según sea necesario */
+    z-index: -1; /* Asegúrate de que el contenido se muestre por encima del pseudo-elemento */
+  }
+
+  .content {
+    position: relative;
+    z-index: 1; /* Asegúrate de que el contenido esté por encima del pseudo-elemento */
+  }
+</style>
+<div class="p-5 text-center bg-image rounded-3 background-blur">
   <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
     <div class="d-flex justify-content-center align-items-center">
       <div class="text-white d-flex align-items-center justify-content-center" style="height: 100%;">
