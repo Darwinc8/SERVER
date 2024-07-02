@@ -10,6 +10,7 @@ urlpatterns = [
     path('crear_armamento/excel/descargar_excel/', views.descargar_plantilla_excel, name='descargar_plantilla_excel'),
      path('ver_armamento/<int:id>/', views.ver_armamento, name='ver_armamento'),
     path('editar_armamento/<int:id>/', views.editar_armamento, name='editar_armamento'),
+    path('baja_armamento/<int:id>',views.baja_armamento, name='baja_armamento'),
     path('eliminar_armamento/<int:id>',views.eliminar_armamento, name='eliminar_armamento'),
     path('obtener_municipios/<int:entidad_id>/', views.obtener_municipios, name='obtener_municipios'),
     path('obtener_instituciones/<int:dependencia_id>/', views.obtener_instituciones, name='obtener_instituciones'),

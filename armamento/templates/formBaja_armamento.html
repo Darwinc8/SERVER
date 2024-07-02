@@ -1,0 +1,115 @@
+{% extends "layout.html" %}
+{% load i18n %}
+{% load static %}
+{% block favicon %}
+<link rel="icon" type="image/x-icon" href="{% static 'icons/armamento.png' %}">
+{% endblock %}
+ {% block title %} {% trans "Panel de Armamento" %} {% endblock %} 
+{% block content %}
+<br>
+<div class="card">
+    <div class="card-header">
+        {% trans "Baja de Armamento" %}
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">{% trans "Datos del Armamento" %}</h4>
+        <form enctype="multipart/form-data" method="post" id="myForm" onsubmit="enableFieldAndSubmit(event)">
+            {% csrf_token %}
+        
+            <div class="container">
+                <div class="row">
+                
+                    <div class="col-12 col-lg-6">
+                      <label for="id_FECHA_BAJA_LOGICA" class="form-label fw-bold text-muted fst-italic">{% trans "Fecha de Baja Logica" %}:</label>
+                      <br>{{ form.FECHA_BAJA_LOGICA }}
+                    {% if form.FECHA_BAJA_LOGICA.errors %}
+                    <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
+                      {% for error in form.FECHA_BAJA_LOGICA.errors %}
+                        <span>{{ error }}</span>
+                      {% endfor %}
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endif %}
+                    </div>
+                
+                    <div class="col-12 col-lg-6">
+                      <label for="id_MOTIVO_BAJA" class="form-label fw-bold text-muted fst-italic">{% trans "Motivo de baja" %}:</label>
+                      <br>{{ form.MOTIVO_BAJA }}
+                      {% if form.MOTIVO_BAJA.errors %}
+                    <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
+                      {% for error in form.MOTIVO_BAJA.errors %}
+                        <span>{{ error }}</span>
+                      {% endfor %}
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endif %}
+                      
+                    </div>
+                
+                    <div class="col-12 col-lg-6">
+                      <label for="id_DOCUMENTO_BAJA" class="form-label fw-bold text-muted fst-italic">{% trans "Documento de Baja" %}:</label>
+                      <input type="{{ form.DOCUMENTO_BAJA.field.widget.input_type }}"
+                        class="form-control input-placeholder"
+                        oninput="this.value = this.value.toUpperCase();"  
+                        name="{{ form.DOCUMENTO_BAJA.name }}" 
+                        id="id_DOCUMENTO_BAJA"
+                        maxlength="20" 
+                        placeholder="{% trans 'Documento de Baja' %}"
+                        value="{{form.DOCUMENTO_BAJA.value | default:''}}">
+                        {% if form.DOCUMENTO_BAJA.errors %}
+                            <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
+                              {% for error in form.DOCUMENTO_BAJA.errors %}
+                                <span>{{ error }}</span>
+                              {% endfor %}
+                              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                            {% endif %}
+                            <br>
+                    </div>
+                
+                    <div class="col-12 col-lg-6">
+                      <label for="id_OBSERVACIONES_BAJA" class="form-label fw-bold text-muted fst-italic">{% trans "Observaciones de Baja" %}:</label>
+                      <br>{{ form.OBSERVACIONES_BAJA }}
+                    {% if form.OBSERVACIONES_BAJA.errors %}
+                    <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
+                      {% for error in form.OBSERVACIONES_BAJA.errors %}
+                        <span>{{ error }}</span>
+                      {% endfor %}
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endif %}
+                    </div>
+                
+                    <div class="col-12 col-lg-6">
+                      <label for="id_FECHA_BAJA_DOCUMENTO" class="form-label fw-bold text-muted fst-italic">{% trans "Fecha de baja del documento" %}:</label>
+                      <br>{{ form.FECHA_BAJA_DOCUMENTO }}
+                    {% if form.FECHA_BAJA_DOCUMENTO.errors %}
+                    <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
+                      {% for error in form.FECHA_BAJA_DOCUMENTO.errors %}
+                        <span>{{ error }}</span>
+                      {% endfor %}
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endif %}
+                    </div>
+                </div>
+            </div>   
+        <br>
+            <input class="btn btn-success" type="submit" value="{% trans 'Guardar' %}"" id="guardar-btn">
+            <a class="btn btn-primary" href="{%url 'armamento_activos'%}" role="button">{% trans "Volver" %}</a>
+        </form>
+    </div>
+    <div class="card-footer text-muted">
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{% static 'js/boton_guardar.js'%}"></script>
+<script src="{% static 'js/tecla_enter.js'%}"></script>
+
+{% if is_editing %}
+    <script src="{% static 'js/deshabilitar_matricula.js'%}"></script>
+{% endif %}
+
+{% endblock %}

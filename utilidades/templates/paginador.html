@@ -1,4 +1,5 @@
 {% load i18n %}
+{% if lista.paginator.num_pages > 1 %}
     <span class="step-links">
     {% if lista.has_previous %}
         <a class="btn btn-primary" href="?page=1" role="button">&laquo; {% trans "Primera" %}</a>
@@ -13,3 +14,6 @@
         <a class="btn btn-primary" href="?page={{ lista.paginator.num_pages }}" role="button">{% trans "última" %} &raquo;</a>
     {% endif %}
     </span>
+    {% else %}
+    <a class="btn btn-danger" role="button"> {% trans "Página" %} 1 {% trans "de" %} 1</a>
+{% endif %}

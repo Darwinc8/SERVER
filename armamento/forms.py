@@ -62,6 +62,7 @@ class ArmamentoForm(forms.ModelForm):
         self.fields['ESTATUS_ARMA'].widget.attrs.update({'class': 'form-control'})
         self.fields['CLASE_TIPO_ARMA'].widget.attrs.update({'class': 'form-control'})
         self.fields['PROPIEDAD'].widget.attrs.update({'class': 'form-control'})
+        self.fields['DOCUMENTO_BAJA'].widget.attrs.update({'class': 'form-control'})
 
         self.fields['FECHA'].widget.attrs.update({'class': 'form-control'})
         self.fields['FECHA_LOC'].widget.attrs.update({'class': 'form-control'})
@@ -114,3 +115,16 @@ class ExcelUploadForm(forms.Form):
         required=True,
         widget=forms.FileInput(attrs={'accept': '.xlsx'})
     )
+
+class BajaArmamentoForm(forms.ModelForm):
+    class Meta:
+        model = Armamento
+        fields = ['FECHA_BAJA_LOGICA', 'MOTIVO_BAJA', 'DOCUMENTO_BAJA', 'OBSERVACIONES_BAJA', 'FECHA_BAJA_DOCUMENTO']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['MOTIVO_BAJA'].widget = forms.Textarea(attrs={'rows': 1, 'class': 'form-control'})
+        self.fields['OBSERVACIONES_BAJA'].widget = forms.Textarea(attrs={'rows': 1, 'class': 'form-control'})
+        self.fields['DOCUMENTO_BAJA'].widget.attrs.update({'class': 'form-control'})
+        self.fields['FECHA_BAJA_LOGICA'].widget.attrs.update({'class': 'form-control'})
+        self.fields['FECHA_BAJA_DOCUMENTO'].widget.attrs.update({'class': 'form-control'})

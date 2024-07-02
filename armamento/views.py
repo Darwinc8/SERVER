@@ -2,7 +2,7 @@ from django.forms import ValidationError
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse, FileResponse
 from .models import Armamento
-from .forms import ArmamentoForm, BusquedaArmamentoForm, ExcelUploadForm
+from .forms import ArmamentoForm, BusquedaArmamentoForm, ExcelUploadForm, BajaArmamentoForm
 from django.contrib.auth.decorators import login_required
 from .models import Municipio, Institucion, Dependencia, Entidad, LOC, Tipo, Calibre, Marca, Modelo, Edo_conservacion, Estatus_Arma, TipoFuncinamiento, Propiedad
 from django.contrib import messages
@@ -436,6 +436,32 @@ def eliminar_armamento(request, id):
     
     messages.info(request, 'El Armamento fue eliminado exitosamente.')      
     return redirect('armamento')  # Redirige a la misma vista  
+
+@login_required
+def baja_armamento(request, id):
+    armamento = get_object_or_404(Armamento, pk=id)
+    
+    if request.method == 'POST':
+        form = BajaArmamentoForm(request.POST, instance=armamento)
+        if form.is_valid():
+            objecto = form.save(commit=False)
+            objecto.usuario = request.user
+            objecto.save()
+            messages.success(request, 'El Armamento fue dado de baja exitosamente.')
+            return redirect('armamento_inactivos')
+        else:
+            return render(request, 'formBaja_armamento.html', {
+                'form': form,
+                'is_editing': True
+            })
+    else:
+        armamento = convertir_fechas(armamento)
+        form = BajaArmamentoForm(instance=armamento)
+
+    return render(request, 'formBaja_armamento.html', {
+        'form': form,
+        'is_editing': True 
+        })
 
 def convertir_fechas(objeto):
     if objeto.FECHA: objeto.FECHA = objeto.FECHA.strftime("%Y-%m-%d")
