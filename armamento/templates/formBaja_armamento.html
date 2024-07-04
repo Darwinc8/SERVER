@@ -15,13 +15,25 @@
         <h4 class="card-title">{% trans "Datos del Armamento" %}</h4>
         <form enctype="multipart/form-data" method="post" id="myForm" onsubmit="enableFieldAndSubmit(event)">
             {% csrf_token %}
-        
+            <br>
             <div class="container">
                 <div class="row">
-                
+                  <div class="col-12 col-lg-6">
+                    <label for="id_MATRICULA" class="form-label fw-bold text-muted fst-italic">{% trans "Matricula" %}:</label>
+                    <br>{{ form.MATRICULA }}<br>
+                  {% if form.MATRICULA.errors %}
+                  <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
+                    {% for error in form.MATRICULA.errors %}
+                      <span>{{ error }}</span>
+                    {% endfor %}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                  {% endif %}
+                  </div>
+
                     <div class="col-12 col-lg-6">
                       <label for="id_FECHA_BAJA_LOGICA" class="form-label fw-bold text-muted fst-italic">{% trans "Fecha de Baja Logica" %}:</label>
-                      <br>{{ form.FECHA_BAJA_LOGICA }}
+                      <br>{{ form.FECHA_BAJA_LOGICA }}<br>
                     {% if form.FECHA_BAJA_LOGICA.errors %}
                     <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
                       {% for error in form.FECHA_BAJA_LOGICA.errors %}
@@ -31,10 +43,10 @@
                     </div>
                     {% endif %}
                     </div>
-                
+
                     <div class="col-12 col-lg-6">
                       <label for="id_MOTIVO_BAJA" class="form-label fw-bold text-muted fst-italic">{% trans "Motivo de baja" %}:</label>
-                      <br>{{ form.MOTIVO_BAJA }}
+                      <br>{{ form.MOTIVO_BAJA }}<br>
                       {% if form.MOTIVO_BAJA.errors %}
                     <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
                       {% for error in form.MOTIVO_BAJA.errors %}
@@ -48,14 +60,14 @@
                 
                     <div class="col-12 col-lg-6">
                       <label for="id_DOCUMENTO_BAJA" class="form-label fw-bold text-muted fst-italic">{% trans "Documento de Baja" %}:</label>
-                      <input type="{{ form.DOCUMENTO_BAJA.field.widget.input_type }}"
+                      <br><input type="{{ form.DOCUMENTO_BAJA.field.widget.input_type }}"
                         class="form-control input-placeholder"
                         oninput="this.value = this.value.toUpperCase();"  
                         name="{{ form.DOCUMENTO_BAJA.name }}" 
                         id="id_DOCUMENTO_BAJA"
                         maxlength="20" 
                         placeholder="{% trans 'Documento de Baja' %}"
-                        value="{{form.DOCUMENTO_BAJA.value | default:''}}">
+                        value="{{form.DOCUMENTO_BAJA.value | default:''}}"><br>
                         {% if form.DOCUMENTO_BAJA.errors %}
                             <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
                               {% for error in form.DOCUMENTO_BAJA.errors %}
@@ -64,12 +76,12 @@
                               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                             {% endif %}
-                            <br>
+                            
                     </div>
                 
                     <div class="col-12 col-lg-6">
                       <label for="id_OBSERVACIONES_BAJA" class="form-label fw-bold text-muted fst-italic">{% trans "Observaciones de Baja" %}:</label>
-                      <br>{{ form.OBSERVACIONES_BAJA }}
+                      <br>{{ form.OBSERVACIONES_BAJA }}<br>
                     {% if form.OBSERVACIONES_BAJA.errors %}
                     <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
                       {% for error in form.OBSERVACIONES_BAJA.errors %}
@@ -82,7 +94,7 @@
                 
                     <div class="col-12 col-lg-6">
                       <label for="id_FECHA_BAJA_DOCUMENTO" class="form-label fw-bold text-muted fst-italic">{% trans "Fecha de baja del documento" %}:</label>
-                      <br>{{ form.FECHA_BAJA_DOCUMENTO }}
+                      <br>{{ form.FECHA_BAJA_DOCUMENTO }}<br>
                     {% if form.FECHA_BAJA_DOCUMENTO.errors %}
                     <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
                       {% for error in form.FECHA_BAJA_DOCUMENTO.errors %}
@@ -113,3 +125,4 @@
 {% endif %}
 
 {% endblock %}
+<

@@ -119,12 +119,17 @@ class ExcelUploadForm(forms.Form):
 class BajaArmamentoForm(forms.ModelForm):
     class Meta:
         model = Armamento
-        fields = ['FECHA_BAJA_LOGICA', 'MOTIVO_BAJA', 'DOCUMENTO_BAJA', 'OBSERVACIONES_BAJA', 'FECHA_BAJA_DOCUMENTO']
+        fields = ['MATRICULA','MOTIVO_BAJA', 'OBSERVACIONES_BAJA', 'DOCUMENTO_BAJA', 'FECHA_BAJA_LOGICA', 'FECHA_BAJA_DOCUMENTO']
+        widgets = {
+            'FECHA_BAJA_LOGICA': forms.DateInput(attrs={'type': 'date'}),
+            'FECHA_BAJA_DOCUMENTO': forms.DateInput(attrs={'type': 'date'}),
+        }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['MOTIVO_BAJA'].widget = forms.Textarea(attrs={'rows': 1, 'class': 'form-control'})
-        self.fields['OBSERVACIONES_BAJA'].widget = forms.Textarea(attrs={'rows': 1, 'class': 'form-control'})
-        self.fields['DOCUMENTO_BAJA'].widget.attrs.update({'class': 'form-control'})
-        self.fields['FECHA_BAJA_LOGICA'].widget.attrs.update({'class': 'form-control'})
-        self.fields['FECHA_BAJA_DOCUMENTO'].widget.attrs.update({'class': 'form-control'})
+        self.fields['MATRICULA'].widget = forms.Textarea(attrs={'rows': 1, 'class': 'form-control','required': True})
+        self.fields['MOTIVO_BAJA'].widget = forms.Textarea(attrs={'rows': 1, 'class': 'form-control','required': True})
+        self.fields['OBSERVACIONES_BAJA'].widget = forms.Textarea(attrs={'rows': 1, 'class': 'form-control','required': True})
+        self.fields['DOCUMENTO_BAJA'].widget.attrs.update({'class': 'form-control', 'required': True})
+        self.fields['FECHA_BAJA_LOGICA'].widget.attrs.update({'class': 'form-control', 'required': True})
+        self.fields['FECHA_BAJA_DOCUMENTO'].widget.attrs.update({'class': 'form-control', 'required': True})
