@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-04 11:27-0600\n"
+"POT-Creation-Date: 2024-07-04 13:53-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -177,6 +177,7 @@ msgstr "Back to Armament Panel"
 #: .\armamento\templates\activos_armamento.html:67
 #: .\armamento\templates\armamento.html:71
 #: .\armamento\templates\inactivos_armamento.html:67
+#: .\imagenes\templates\imagenes.html:58
 msgid "Total de registros"
 msgstr "Total of records"
 
@@ -348,7 +349,6 @@ msgstr "From an excel file"
 
 #: .\armamento\templates\armamento_panel.html:7
 #: .\armamento\templates\armamento_panel.html:43
-#: .\armamento\templates\formBaja_armamento.html:7
 msgid "Panel de Armamento"
 msgstr "Armament Panel"
 
@@ -561,17 +561,14 @@ msgstr "Save"
 msgid "Volver"
 msgstr "Back"
 
+#: .\armamento\templates\formBaja_armamento.html:7
 #: .\armamento\templates\formBaja_armamento.html:12
-#, fuzzy
-#| msgid "Datos del Armamento"
 msgid "Baja de Armamento"
-msgstr "Armament Data"
+msgstr "Retire of Armament"
 
 #: .\armamento\templates\inactivos_armamento.html:28
-#, fuzzy
-#| msgid "ARMAMENTO"
 msgid "ARMAMENTO INACTIVO"
-msgstr "ARMAMENT"
+msgstr "INACTIVE ARMAMENT"
 
 #: .\armamento\templates\inactivos_armamento.html:119
 #: .\imagenes\templates\imagenes.html:93
