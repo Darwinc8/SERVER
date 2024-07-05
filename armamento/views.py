@@ -438,6 +438,18 @@ def eliminar_armamento(request, id):
     return redirect('armamento')  # Redirige a la misma vista  
 
 @login_required
+def reactivar_armamento(request, id):
+    armamento = get_object_or_404(Armamento, pk=id)
+    armamento.FECHA_BAJA_LOGICA = None
+    armamento.MOTIVO_BAJA = None
+    armamento.DOCUMENTO_BAJA = None
+    armamento.OBSERVACIONES_BAJA = None
+    armamento.FECHA_BAJA_DOCUMENTO = None
+    armamento.save()
+    messages.success(request, 'El Armamento fue reactivado exitosamente.')
+    return redirect('armamento_activos')
+
+@login_required
 def baja_armamento(request, id):
     armamento = get_object_or_404(Armamento, pk=id)
     
