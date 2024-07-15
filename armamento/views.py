@@ -101,20 +101,6 @@ def crear_armamento_excel(request):
             if df is None:
                 return redirect('armamento_excel')   
             
-            #Convirtiendo las columnas al tipo de dato esperado
-            df['Institución'] = pd.to_numeric(df['Institución'], errors='coerce')
-            df['Dependencia'] = pd.to_numeric(df['Dependencia'], errors='coerce')
-            df['Entidad'] = pd.to_numeric(df['Entidad'], errors='coerce')
-            df['Municipio'] = pd.to_numeric(df['Municipio'], errors='coerce')
-            df['Clase/Tipo de arma'] = pd.to_numeric(df['Clase/Tipo de arma'], errors='coerce')
-            df['Calibre del arma'] = pd.to_numeric(df['Calibre del arma'], errors='coerce')
-            df['Marca del arma'] = pd.to_numeric(df['Marca del arma'], errors='coerce')
-            df['Modelo del arma'] = pd.to_numeric(df['Modelo del arma'], errors='coerce')
-            df['Estado del arma'] = pd.to_numeric(df['Estado del arma'], errors='coerce')
-            df['Estatus del arma'] = pd.to_numeric(df['Estatus del arma'], errors='coerce')
-            df['Tipo de Funcionamiento'] = pd.to_numeric(df['Tipo de Funcionamiento'], errors='coerce')
-            df['Propiedad'] = pd.to_numeric(df['Propiedad'], errors='coerce')
-            
              # Reemplazar NaN por 0 en columnas numéricas y celda vacia por ""
             df['Matricula_canon *'] = df['Matricula_canon *'].fillna("")
             df['Código de Identificación de Huella Balística (CIHB)'] = df['Código de Identificación de Huella Balística (CIHB)'].fillna("")
@@ -126,9 +112,20 @@ def crear_armamento_excel(request):
             for index, row in df.iterrows(): 
                 try:
                    #Convertimos los ids de los campos al excel a objetos para manejarlos
-                    resultados = convertir_ids_a_objetos(request, row)
-                    fila_institucion, fila_dependencia, fila_municipio, fila_entidad, fila_loc, fila_ClaseTipoArma, fila_calibre, fila_marca, fila_modelo, fila_edoConservacion, fila_estatus, fila_tipoFuncionamiento, fila_propiedad  = resultados
-                    
+                    fila_institucion = obtener_institucion_id(request, (row['Institución']))
+                    fila_dependencia = obtener_dependencia_id(request, (row['Dependencia']))
+                    fila_entidad = obtener_entidad_id(request, (row['Entidad']), )
+                    fila_municipio = obtener_municipio_id(request, (row['Municipio']),fila_entidad.ID_ENTIDAD)
+                    fila_loc = obtener_loc_id(request, (row['Número de licencia oficial colectiva']))
+                    fila_ClaseTipoArma = obtener_claseTipoArma_id(request, (row['Clase/Tipo de arma']))
+                    fila_calibre = obtener_calibre_id(request, (row['Calibre del arma']))
+                    fila_marca = obtener_marca_id(request, (row['Marca del arma']))
+                    fila_modelo = obtener_modelo_id(request, (row['Modelo del arma']))
+                    fila_edoConservacion =  obtener_edoConservacion_id(request, (row['Estado del arma']))
+                    fila_estatus = obtener_statusArma_id(request, (row['Estatus del arma']))
+                    fila_tipoFuncionamiento = obtener_tipoFuncionamiento_id(request, (row['Tipo de Funcionamiento']))
+                    fila_propiedad = obtener_propiedad_id(request, (row['Propiedad']))
+
                     fila_id_arma = transformar_numero(request,(row['ID Arma']), row, 'ID Arma')
                     fila_fecha_registro = transformar_fecha(request, (row['Fecha de registro']), 'Fecha de Registro', row)
                     fila_fecha_loc = transformar_fecha(request, (row['Fecha de alta en la LOC']), 'Fecha de alta en la LOC', row)
@@ -505,82 +502,6 @@ def obtener_instituciones(request, dependencia_id):
         # Manejo de error si no se encuentra o no existen instituciones asociadas
         return JsonResponse([], safe=False)   
 
-@login_required   
-def convertir_ids_a_objetos(request, row):
-    # Inicializar todas las variables con None por defecto
-    fila_institucion = fila_dependencia = fila_municipio = None
-    fila_entidad = fila_loc = fila_ClaseTipoArma = None
-    fila_calibre = fila_marca = fila_modelo = None
-    fila_edoConservacion = fila_estatus = fila_tipoFuncionamiento = fila_propiedad = None
-    
-    try:
-        fila_institucion = Institucion.objects.get(ID_INSTITUCION=row['Institución'])
-        fila_dependencia = Dependencia.objects.get(ID_DEPENDENCIA=row['Dependencia'])
-        fila_municipio = Municipio.objects.get(ID_ENTIDAD=row['Entidad'], ID_MUNICIPIO=row['Municipio'])
-        fila_entidad = Entidad.objects.get(ID_ENTIDAD=row['Entidad'])
-        fila_loc = LOC.objects.get(NO_LICENCIA=row['Número de licencia oficial colectiva'])
-        fila_ClaseTipoArma = Tipo.objects.get(ID_TIPO=row['Clase/Tipo de arma'])
-        fila_calibre = Calibre.objects.get(ID_CALIBRE=row['Calibre del arma'])
-        fila_marca = Marca.objects.get(ID_MARCA=row['Marca del arma'])
-        fila_modelo = Modelo.objects.get(ID_MODELO=row['Modelo del arma'])
-        fila_edoConservacion = Edo_conservacion.objects.get(ID_ESTADO=row['Estado del arma'])
-        fila_estatus = Estatus_Arma.objects.get(ID_ESTATUS=row['Estatus del arma'])
-        fila_tipoFuncionamiento = TipoFuncinamiento.objects.get(ID=row['Tipo de Funcionamiento'])
-        fila_propiedad = Propiedad.objects.get(ID=row['Propiedad'])
-        
-            # Verificar si alguna variable es None
-        if any(variable is None for variable in (
-            fila_institucion, fila_dependencia, fila_municipio, fila_entidad, fila_loc,
-            fila_ClaseTipoArma, fila_calibre, fila_marca, fila_modelo, fila_edoConservacion,
-            fila_estatus, fila_tipoFuncionamiento, fila_propiedad
-        )):
-            return redirect('armamento_excel')
-
-    except Institucion.DoesNotExist :
-       messages.error(request, f"Error: Institución no encontrada en la fila {int(row.name) +2}")
-    except Dependencia.DoesNotExist:
-       messages.error(request, f"Error: Dependencia no encontrada en la fila {int(row.name) +2}")
-    except Municipio.DoesNotExist:
-       messages.error(request, f"Error: Municipio no encontrado en la fila {int(row.name) +2}")
-    except Entidad.DoesNotExist:
-       messages.error(request, f"Error: Entidad no encontrada en la fila {int(row.name) +2}")
-    except LOC.DoesNotExist:
-       messages.error(request, f"Error: Número de licencia oficial colectiva no encontrada en la fila {int(row.name) +2}")
-    except Tipo.DoesNotExist:
-       messages.error(request, f"Error: Clase/Tipo de arma no encontrada en la fila {int(row.name) +2}")
-    except Calibre.DoesNotExist:
-       messages.error(request, f"Error: Calibre del arma no encontrado en la fila {int(row.name) +2}")
-    except Marca.DoesNotExist:
-       messages.error(request, f"Error: Marca del arma no encontrada en la fila {int(row.name) +2}")
-    except Modelo.DoesNotExist:
-       messages.error(request, f"Error: Modelo del arma no encontrado en la fila {int(row.name) +2}")
-    except Edo_conservacion.DoesNotExist:
-       messages.error(request, f"Error: Estado del arma no encontradoen la fila {int(row.name) +2} ")
-    except Estatus_Arma.DoesNotExist:
-       messages.error(request, f"Error: Estatus del arma no encontrado en la fila {int(row.name) +2}")
-    except TipoFuncinamiento.DoesNotExist:
-       messages.error(request, f"Error: Tipo de Funcionamiento no encontrado en la fila {int(row.name) +2}")
-    except Propiedad.DoesNotExist:
-       messages.error(request, f"Error:Propiedad no encontrada en la fila {int(row.name) +2}")
-    except Exception as e:
-       messages.error(request, f"Error inesperado en la fila {int(row.name) +2}: {e}")
-
-    return (
-        fila_institucion,
-        fila_dependencia,
-        fila_municipio,
-        fila_entidad,
-        fila_loc,
-        fila_ClaseTipoArma,
-        fila_calibre,
-        fila_marca,
-        fila_modelo,
-        fila_edoConservacion,
-        fila_estatus,
-        fila_tipoFuncionamiento,
-        fila_propiedad
-    )
-
 @login_required
 def descargar_plantilla_excel(request):
     ruta_plantilla = "static/plantillas/armamento_plantilla.xlsx"
@@ -607,6 +528,7 @@ def transformar_fecha(request, valor_fecha, columna, row):
         raise ValidationError(msj)
 
 def transformar_numero(request, campo, row, columna):
+
     try:
         # Verificar si la celda está vacía
         if pd.isna(campo) or campo is None:
@@ -617,6 +539,291 @@ def transformar_numero(request, campo, row, columna):
         return int(valor_float)  # Devolver el numero 
 
     except Exception as e:
-        print("eeoor mai")
         msj = f"Error: Número invalido en {columna} en la fila {int(row.name) + 2},,,, {e}"
-        raise ValidationError(msj)        
+        raise ValidationError(msj)     
+
+def obtener_institucion_id(request, cell_value):
+    # Verificar si el valor es texto o número
+    if isinstance(cell_value, str):
+        # Es texto, hacer una consulta por nombre
+        try:
+            institucion = Institucion.objects.get(NOMBRE=cell_value)
+            return institucion
+        except Institucion.DoesNotExist:
+            messages.error(request, f"No se encontró una institución con el nombre: '{cell_value}'")
+            return None
+    elif isinstance(cell_value, (int, float)):
+        # Es número, hacer una consulta por id
+        try:
+            institucion = Institucion.objects.get(ID_INSTITUCION=cell_value)
+            return institucion
+        except Institucion.DoesNotExist:
+            messages.error(request, f"No se encontró una institución con el id: '{cell_value}'")
+            return None
+    else:
+        messages.error(request, f"El valor proporcionado en Institución no es ni texto ni número")
+        return None
+    
+def obtener_dependencia_id(request, cell_value):
+    # Verificar si el valor es texto o número
+    if isinstance(cell_value, str):
+        # Es texto, hacer una consulta por nombre
+        try:
+            dependencia = Dependencia.objects.get(DEPENDENCIA=cell_value)
+            return dependencia
+        except Dependencia.DoesNotExist:
+            messages.error(request, f"No se encontró una Dependencia con el nombre: '{cell_value}'")
+            return None
+    elif isinstance(cell_value, (int, float)):
+        # Es número, hacer una consulta por id
+        try:
+            dependencia = Dependencia.objects.get(ID_DEPENDENCIA=cell_value)
+            return dependencia
+        except Dependencia.DoesNotExist:
+            messages.error(request, f"No se encontró una Dependencia con el id: '{cell_value}'")
+            return None
+    else:
+        messages.error(request, f"El valor proporcionado de Dependencia no es ni texto ni número")
+        return None
+    
+def obtener_entidad_id(request, cell_value):
+    # Verificar si el valor es texto o número
+    if isinstance(cell_value, str):
+        # Es texto, hacer una consulta por nombre
+        try:
+            entidad = Entidad.objects.get(ENTIDAD=cell_value)
+            return entidad
+        except Entidad.DoesNotExist:
+            messages.error(request, f"No se encontró una Entidad con el nombre: '{cell_value}'")
+            return None
+    elif isinstance(cell_value, (int, float)):
+        # Es número, hacer una consulta por id
+        try:
+            entidad = Entidad.objects.get(ID_ENTIDAD=cell_value)
+            return entidad
+        except Dependencia.DoesNotExist:
+            messages.error(request, f"No se encontró una Entidad con el id: '{cell_value}'")
+            return None
+    else:
+        messages.error("El valor proporcionado para Entidad no es ni texto ni número")
+        return None
+
+def obtener_municipio_id(request, cell_value, entidad):
+    # Verificar si el valor es texto o número
+    if isinstance(cell_value, str):
+        # Es texto, hacer una consulta por nombre
+        try:
+            municipio = Municipio.objects.get(MUNICIPIO=cell_value, ID_ENTIDAD=entidad)
+            return municipio
+        except Municipio.DoesNotExist:
+            messages.error(request, f"No se encontró una Municipio con el nombre: '{cell_value}'")
+            return None
+    elif isinstance(cell_value, (int, float)):
+        # Es número, hacer una consulta por id
+        try:
+            municipio = Municipio.objects.get(ID_MUNICIPIO=cell_value, ID_ENTIDAD=entidad)
+            return municipio
+        except Municipio.DoesNotExist:
+            messages.error(request, f"No se encontró una Municipio con el id: '{cell_value}'")
+            return None
+    else:
+        messages.error("El valor proporcionado para Municipio no es ni texto ni número")
+        return None
+
+def obtener_loc_id(request, cell_value):
+    # Verificar si el valor es texto o número
+    if isinstance(cell_value, str):
+        # Es texto, hacer una consulta por nombre
+        try:
+            loc = LOC.objects.get(NO_LICENCIA=cell_value)
+            return loc
+        except LOC.DoesNotExist:
+            messages.error(request, f"No se encontró un LOC con el nombre: '{cell_value}'")
+            return None
+    elif isinstance(cell_value, (int, float)):
+        # Es número, hacer una consulta por id
+        try:
+            loc = LOC.objects.get(NO_LICENCIA=cell_value)
+            return loc
+        except LOC.DoesNotExist:
+            messages.error(request, f"No se encontró un LOC con el nombre: '{cell_value}'")
+            return None
+    else:
+        print("El valor proporcionado no es ni texto ni número")
+        return None
+    
+def obtener_claseTipoArma_id(request, cell_value):
+    # Verificar si el valor es texto o número
+    if isinstance(cell_value, str):
+        # Es texto, hacer una consulta por nombre
+        try:
+            clase = Tipo.objects.get(TIPO=cell_value)
+            return clase
+        except Tipo.DoesNotExist:
+            messages.error(request, f"No se encontró un Tipo/Clase de arma con el nombre: '{cell_value}'")
+            return None
+    elif isinstance(cell_value, (int, float)):
+        # Es número, hacer una consulta por id
+        try:
+            clase = Tipo.objects.get(ID_TIPO=cell_value)
+            return clase
+        except Tipo.DoesNotExist:
+            messages.error(request, f"No se encontró un Tipo/Clase de arma con el id: '{cell_value}'")
+            return None
+    else:
+        messages.error("El valor proporcionado para el Tipo/Clase de arma no es ni texto ni número")
+        return None
+
+def obtener_calibre_id(request, cell_value):
+     # Verificar si el valor es texto o número
+    if isinstance(cell_value, str):
+        # Es texto, hacer una consulta por nombre
+        try:
+            calibre = Calibre.objects.get(CALIBRE=cell_value)
+            return calibre
+        except Calibre.DoesNotExist:
+            messages.error(request, f"No se encontró un Calibre con el nombre: '{cell_value}'")
+            return None
+    elif isinstance(cell_value, (int, float)):
+        # Es número, hacer una consulta por id
+        try:
+            calibre = Calibre.objects.get(ID_CALIBRE=cell_value)
+            return calibre
+        except Calibre.DoesNotExist:
+            messages.error(request, f"No se encontró un Calibre con el id: '{cell_value}'")
+            return None
+    else:
+        messages.error("El valor proporcionado para el Calibre no es ni texto ni número")
+        return None
+
+def obtener_marca_id(request,cell_value):
+    # Verificar si el valor es texto o número
+    if isinstance(cell_value, str):
+        # Es texto, hacer una consulta por nombre
+        try:
+            marca = Marca.objects.get(MARCA=cell_value)
+            return marca
+        except Marca.DoesNotExist:
+            messages.error(request, f"No se encontró una Marca con el nombre: '{cell_value}'")
+            return None
+    elif isinstance(cell_value, (int, float)):
+        # Es número, hacer una consulta por id
+        try:
+            marca = Marca.objects.get(ID_MARCA=cell_value)
+            return marca
+        except Marca.DoesNotExist:
+            messages.error(request, f"No se encontró una Marca con el id: '{cell_value}'")
+            return None
+    else:
+        messages.error("El valor proporcionado para Marca no es ni texto ni número")
+        return None
+
+def obtener_modelo_id(request, cell_value):
+    # Verificar si el valor es texto o número
+    if isinstance(cell_value, str):
+        # Es texto, hacer una consulta por nombre
+        try:
+            modelo = Modelo.objects.get(MODELO=cell_value)
+            return modelo
+        except Modelo.DoesNotExist:
+            messages.error(request, f"No se encontró un Modelo con el nombre: '{cell_value}'")
+            return None
+    elif isinstance(cell_value, (int, float)):
+        # Es número, hacer una consulta por id
+        try:
+            modelo = Modelo.objects.get(ID_MODELO=cell_value)
+            return modelo
+        except Modelo.DoesNotExist:
+            messages.error(request, f"No se encontró un Modelo con el id: '{cell_value}'")
+            return None
+    else:
+        messages.error("El valor proporcionado para Modelo no es ni texto ni número")
+        return None
+
+def obtener_edoConservacion_id(request, cell_value):
+    # Verificar si el valor es texto o número
+    if isinstance(cell_value, str):
+        # Es texto, hacer una consulta por nombre
+        try:
+            edoConservacion = Edo_conservacion.objects.get(DESCRIPCION=cell_value)
+            return edoConservacion
+        except Edo_conservacion.DoesNotExist:
+            messages.error(request, f"No se encontró un Estado de conservación con el nombre: '{cell_value}'")
+            return None
+    elif isinstance(cell_value, (int, float)):
+        # Es número, hacer una consulta por id
+        try:
+            edoConservacion = Edo_conservacion.objects.get(ID_ESTADO=cell_value)
+            return edoConservacion
+        except Edo_conservacion.DoesNotExist:
+            messages.error(request, f"No se encontró un Estado de conservación con el id: '{cell_value}'")
+            return None
+    else:
+        messages.error("El valor proporcionado para Edo. de Conservación no es ni texto ni número")
+        return None  
+    
+def obtener_statusArma_id(request, cell_value):
+    # Verificar si el valor es texto o número
+    if isinstance(cell_value, str):
+        # Es texto, hacer una consulta por nombre
+        try:
+            statusArma = Estatus_Arma.objects.get(DESCRIPCION=cell_value)
+            return statusArma
+        except Estatus_Arma.DoesNotExist:
+            messages.error(request, f"No se encontró un Estatus de arma con el nombre: '{cell_value}'")
+            return None
+    elif isinstance(cell_value, (int, float)):
+        # Es número, hacer una consulta por id
+        try:
+            statusArma = Estatus_Arma.objects.get(ID_ESTATUS=cell_value)
+            return statusArma
+        except Estatus_Arma.DoesNotExist:
+            messages.error(request, f"No se encontró un Estatus de arma con el id: '{cell_value}'")
+            return None
+    else:
+        messages.error("El valor proporcionado para Estatus de Arma no es ni texto ni número")
+        return None    
+
+def obtener_propiedad_id(request, cell_value):
+    # Verificar si el valor es texto o número
+    if isinstance(cell_value, str):
+        # Es texto, hacer una consulta por nombre
+        try:
+            propiedad = Propiedad.objects.get(Propiedad=cell_value)
+            return propiedad
+        except Propiedad.DoesNotExist:
+            messages.error(request, f"No se encontró una Propiedad con el nombre: '{cell_value}'")
+            return None
+    elif isinstance(cell_value, (int, float)):
+        # Es número, hacer una consulta por id
+        try:
+            propiedad = Propiedad.objects.get(ID=cell_value)
+            return propiedad
+        except Propiedad.DoesNotExist:
+            messages.error(request, f"No se encontró una Propiedad con el id: '{cell_value}'")
+            return None
+    else:
+        messages.error("El valor proporcionado no es ni texto ni número")
+        return None 
+    
+def obtener_tipoFuncionamiento_id(request, cell_value):
+    # Verificar si el valor es texto o número
+    if isinstance(cell_value, str):
+        # Es texto, hacer una consulta por nombre
+        try:
+            tipoFuncionamiento = TipoFuncinamiento.objects.get(TipoFuncionamiento=cell_value)
+            return tipoFuncionamiento
+        except TipoFuncinamiento.DoesNotExist:
+            messages.error(request, f"No se encontró un Tipo de funcionamiento con el nombre: '{cell_value}'")
+            return None
+    elif isinstance(cell_value, (int, float)):
+        # Es número, hacer una consulta por id
+        try:
+            tipoFuncionamiento = TipoFuncinamiento.objects.get(ID=cell_value)
+            return tipoFuncionamiento
+        except TipoFuncinamiento.DoesNotExist:
+            messages.error(request, f"No se encontró un Tipo de funcionamiento con el id: '{cell_value}'")
+            return None
+    else:
+        messages.error("El valor proporcionado para Tipo de funcionamiento no es ni texto ni número")
+        return None
