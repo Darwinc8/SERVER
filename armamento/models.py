@@ -161,6 +161,9 @@ class Armamento(models.Model):
         self.CUIP_PORTADOR = convertir_a_mayusculas(self.CUIP_PORTADOR)
         self.CUIP_RESPONSABLE = convertir_a_mayusculas(self.CUIP_RESPONSABLE)
         self.OBSERVACIONES_BAJA = convertir_a_mayusculas(self.OBSERVACIONES_BAJA)
+        self.MOTIVO_BAJA = convertir_a_mayusculas(self.MOTIVO_BAJA)
+        self.DOCUMENTO_BAJA = convertir_a_mayusculas(self.DOCUMENTO_BAJA)
+
         validate_FechaRegistro_FechaLOC(self.FECHA, self.FECHA_LOC)
         validate_FechaCaptura_FechaLOC(self.FECHA_CAPTURA, self.FECHA_LOC)
         validate_FechaCaptura_FechaRegistro(self.FECHA_CAPTURA, self.FECHA)

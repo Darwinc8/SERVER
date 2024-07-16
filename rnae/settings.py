@@ -145,6 +145,8 @@ STATICFILES_DIRS = [
     # Otras rutas de archivos estáticos si las tienes
 ]
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 LOGIN_URL = '/iniciar_sesion'
 
 # Default primary key field type
