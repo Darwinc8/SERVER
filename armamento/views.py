@@ -1,8 +1,8 @@
 from django.forms import ValidationError
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse, FileResponse
-from .models import Armamento
-from .forms import ArmamentoForm, BusquedaArmamentoForm, ExcelUploadForm, BajaArmamentoForm
+from .models import Armamento, ArmamentoLog
+from .forms import ArmamentoForm, BusquedaArmamentoForm, ExcelUploadForm, BajaArmamentoForm, ArmamentoLogForm
 from django.contrib.auth.decorators import login_required
 from .models import Municipio, Institucion, Dependencia, Entidad, LOC, Tipo, Calibre, Marca, Modelo, Edo_conservacion, Estatus_Arma, TipoFuncinamiento, Propiedad
 from django.contrib import messages
@@ -47,6 +47,21 @@ def armamento_activos(request):
         return utils.BusquedaPersonalizada(request, query, valor, armamentos, 'activos_armamento.html', BusquedaArmamentoForm)
   
     return utils.CrearPaginador(request, armamentos, 5, 'activos_armamento.html', BusquedaArmamentoForm)
+
+@login_required
+def movimientos_armamento(request):
+    movimientos = ArmamentoLog.objects.all().order_by('-ultima_modificacion')
+    return utils.CrearPaginador(request, movimientos, 5, 'movimientos_armamento.html', ArmamentoLogForm)    
+
+@login_required
+def ver_movimiento(request, id):
+    movimiento = get_object_or_404(ArmamentoLog, pk=id)
+    form = ArmamentoLogForm(instance=movimiento)
+        # Itera sobre los campos del formulario y establece el atributo "readonly" en True
+    for field_name, field in form.fields.items():
+        form.fields[field_name].disabled = True
+    return render(request, 'formMovimientos.html', {'form': form,
+                                                  'id': id})
 
 @login_required
 def armamento_inactivos(request):

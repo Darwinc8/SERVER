@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+{% load i18n %}
+{% load static %}
+{% block favicon %}
+<link rel="icon" type="image/x-icon" href="{% static 'icons/armamento.png' %}">
+{% endblock %}
+ {% block title %} {% trans "Movimientos de Armamento" %} {% endblock %} 
+{% block content %}
+<br>
+<div class="card">
+    <div class="card-header">
+        <h1 style="text-align:center;">{% trans "MOVIMIENTOS DE ARMAMENTO" %}</h1>
+        <div class="d-flex justify-content-between flex-wrap">
+          <a class="btn btn-success d-flex align-items-center" href="{% url 'panel_armamento' %}" role="button">
+              {% trans "Volver al panel" %}
+          </a>
+      
+          <div class="mb-2 mb-md-0">
+            <!-- 
+              <form method="GET" action="" onsubmit="return validarForm()">
+                <div class="col-auto d-flex align-items-center">
+                  <div class="p-1">
+                      {{ form.campos_filtrados.label_tag }}
+                  </div>
+                  <div class="p-1">
+                      {{ form.campos_filtrados }}
+                  </div>
+                  <div class="p-1">
+                      {{ form.query }}
+                  </div>
+                  <div class="p-1">
+                      <button type="submit" class="btn btn-outline-secondary">
+                          <i class="fa fa-search"></i>
+                      </button>
+                  </div>
+                  <div class="p-1">
+                      <a class="btn btn-danger" href="{% url 'imagenes' %}" role="button">
+                          <i class="fa fa-refresh" aria-hidden="true"></i>
+                      </a>
+                  </div>
+              </div>
+              </form>-->
+          </div>
+      </div>
+      
+    </div>
+    <div class="d-flex justify-content-end me-3 me-3">
+      <span class="fw-light fst-italic">{% trans "Total de registros" %}: {{ num_registros }}</span>
+  </div>
+    <div class="card-body table-responsive">
+        <table class="table table table-striped table-bordered">
+            <thead>
+              <tr class="text-center align-middle">
+                <th scope="col">{% trans "ID" %}</th>
+                <th scope="col">{% trans "MOVIMIENTO" %}</th>
+                <th scope="col">{% trans "MATRICULA" %}</th>
+                <th scope="col">{% trans "USUARIO" %}</th>
+                <th scope="col">{% trans "FECHA" %}</th>
+                <th scope="col">{% trans "ACCIONES" %}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for movimiento in lista %}
+              <tr class="text-center align-middle">
+                <td>{{ movimiento.id }}</td>
+                <td>{{ movimiento.estado }}</td>
+                <td>{{ movimiento.matricula }}</td>
+                <td>{{ movimiento.usuario }}</td>
+                <td>{{ movimiento.ultima_modificacion }}</td>
+                <td>
+                  <div class="d-flex justify-content-center align-items-center">
+                    <a name="" id="" class="btn btn-info  mx-1" href="{% url 'ver_movimiento' movimiento.id %}" role="button">{% trans "Ver" %}</a>
+
+                  </div>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+    </div>
+    <div class="card-footer text-muted">
+    </div>
+</div>
+<br>
+<div class="pagination">
+    {% include 'paginador.html' %}
+  </div>
+{% endblock %}
+

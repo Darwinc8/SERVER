@@ -1,0 +1,235 @@
+{% extends "layout.html" %}
+{% load i18n %}
+{% load static %}
+{% block favicon %}
+<link rel="icon" type="image/x-icon" href="{% static 'icons/arma.png' %}">
+{% endblock %}
+ {% block title %} {% trans "Ver Movimiento" %} {% endblock %} 
+
+{% block content %}
+<br><br>
+<div class="card">
+    <div class="card-header">
+        {% trans "Ver Movimiento" %}
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">{% trans "Datos del Movimiento" %}</h4>
+        <h6 class="text-center"><strong>{{form.estado.value}}</strong> del armamento con matricula "<strong>{{form.matricula.value}}</strong>" hecha por <strong>{{form.usuario.value}}</strong> el {{form.ultima_modificacion.value}}</h6>
+        <form enctype="multipart/form-data" method="post" id="myForm" onsubmit="enableFieldAndSubmit(event)">
+            {% csrf_token %}
+        
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-6">
+                        <label for="id_id_arma" class="form-label fw-bold text-muted fst-italic">{% trans "Id del Arma" %}:</label>
+                        <br><input type="{{ form.id_arma.field.widget.input_type }}"
+                            class="form-control input-placeholder input-placeholder" 
+                            name="{{ form.id_arma.name }}" 
+                            id="id_id_arma" 
+                            placeholder="{% trans 'Id del Arma' %}"
+                            value="{{form.id_arma.value | default:''}}" disabled><br>
+                    </div>
+        
+                    <div class="col-12 col-lg-6">
+                        <label for="id_dependencia" class="form-label fw-bold text-muted fst-italic">{% trans "Dependencia" %}:</label>
+                        <br>{{form.dependencia}}<br>
+                    </div>
+        
+                    <div class="col-12 col-lg-6">
+                        <label for="id_institucion" class="form-label fw-bold text-muted fst-italic">{% trans "Institución" %}:</label>
+                        <br>{{form.institucion}}<br>
+                    </div>
+        
+                    <div class="col-12 col-lg-6">
+                        <label for="id_entidad" class="form-label fw-bold text-muted fst-italic">{% trans "Entidad" %}:</label>
+                        <br>{{form.entidad}}<br>
+                    </div>
+          
+                    <div class="col-12 col-lg-6">
+                        <label for="id_municipio" class="form-label fw-bold text-muted fst-italic">{% trans "Municipio" %}:</label>
+                        <br>{{form.municipio}}<br>
+                    </div>
+        
+                    <div class="col-12 col-lg-6">
+                        <label for="id_numero_loc" class="form-label fw-bold text-muted fst-italic">{% trans "Numero Loc" %}:</label>
+                        <br>{{form.numero_loc}}<br>
+                    </div>
+        
+                    <div class="col-12 col-lg-6">
+                        <label for="id_folio_c" class="form-label fw-bold text-muted fst-italic">{% trans "Folio C" %}:</label>
+                        <br><input type="{{ form.folio_c.field.widget.input_type }}"
+                            class="form-control input-placeholder input-placeholder" 
+                            name="{{ form.folio_c.name }}" 
+                            id="id_folio_c" 
+                            placeholder="{% trans 'Folio C' %}"
+                            value="{{form.folio_c.value | default:''}}"
+                            disabled><br>
+                    </div>
+        
+                    <div class="col-12 col-lg-6">
+                        <label for="id_folio_d" class="form-label fw-bold text-muted fst-italic">{% trans "Folio D" %}:</label>
+                        <br><input type="{{ form.folio_d.field.widget.input_type }}"
+                            class="form-control input-placeholder input-placeholder" 
+                            name="{{ form.folio_d.name }}" 
+                            id="id_folio_d" 
+                            placeholder="{% trans 'Folio D' %}"
+                            value="{{form.folio_d.value | default:''}}"
+                            disabled><br>
+                    </div>
+        
+                    <div class="col-12 col-lg-6">
+                      <label for="id_clase_tipo_arma" class="form-label fw-bold text-muted fst-italic">{% trans "Clase del Arma" %}:</label>
+                        <br>{{form.clase_tipo_arma}}<br>
+                    </div>
+                
+                    <div class="col-12 col-lg-6">
+                      <label for="id_calibre_arma" class="form-label fw-bold text-muted fst-italic">{% trans "Calibre del Arma" %}:</label>
+                        <br>{{form.calibre_arma}}<br>
+                    </div>
+                
+                    <div class="col-12 col-lg-6">
+                      <label for="id_marca_arma" class="form-label fw-bold text-muted fst-italic">{% trans "Marca del Arma" %}:</label>
+                        <br>{{form.marca_arma}}<br>
+                    </div>
+                
+                    <div class="col-12 col-lg-6">
+                      <label for="id_modelo_arma" class="form-label fw-bold text-muted fst-italic">{% trans "Modelo del Arma" %}:</label>
+                        <br>{{form.modelo_arma}}<br>
+                    </div>
+                
+                    <div class="col-12 col-lg-6">
+                      <label for="id_matricula" class="form-label fw-bold text-muted fst-italic">{% trans "Matricula" %}:</label>
+                      <br><input type="{{ form.matricula.field.widget.input_type }}"
+                            class="form-control input-placeholder input-placeholder" 
+                            name="{{ form.matricula.name }}" 
+                            id="id_matricula" 
+                            placeholder="{% trans 'matricula' %}"
+                            value="{{form.matricula.value | default:''}}"
+                            disabled
+                        ><br>
+                  </div>
+                  
+                    <div class="col-12 col-lg-6">
+                      <label for="id_matricula_canon" class="form-label fw-bold text-muted fst-italic">{% trans "Matricula Canon" %}:</label>
+                      <br><input type="{{ form.matricula_canon.field.widget.input_type }}"
+                        class="form-control input-placeholder input-placeholder" 
+                        name="{{ form.matricula_canon.name }}" 
+                        id="id_matricula_canon" 
+                        placeholder="{% trans 'Matricula Canon' %}"
+                        value="{{form.matricula_canon.value | default:''}}"
+                        disabled><br>
+                    </div>
+                
+                    <div class="col-12 col-lg-6">
+                      <label for="id_fecha" class="form-label fw-bold text-muted fst-italic">{% trans "Fecha" %}:</label>
+                        <br>{{form.fecha}}<br>
+                    </div>
+                
+                    <div class="col-12 col-lg-6">
+                      <label for="id_fecha_loc" class="form-label fw-bold text-muted fst-italic">{% trans "Fecha Loc" %}:</label>
+                        <br>{{form.fecha_loc}}<br>
+                    </div>
+                
+                    <div class="col-12 col-lg-6">
+                      <label for="id_estado_arma" class="form-label fw-bold text-muted fst-italic"> {% trans "Estado del Arma" %}:</label>
+                        <br>{{form.estado_arma}}<br>
+                    </div>
+                
+                    <div class="col-12 col-lg-6">
+                      <label for="id_fecha_captura" class="form-label fw-bold text-muted fst-italic">{% trans "Fecha de Captura" %}:</label>
+                        <br>{{form.fecha_captura}}<br>
+                    </div>
+                
+                    <div class="col-12 col-lg-6">
+                      <label for="id_observaciones" class="form-label fw-bold text-muted fst-italic">{% trans "Observaciones" %}:</label>
+                      <br>{{ form.observaciones }}<br>
+                    </div>
+                
+                    <div class="col-12 col-lg-6">
+                      <label for="id_estatus_arma" class="form-label fw-bold text-muted fst-italic">{% trans "Estatus del Arma" %}:</label>
+                      <br>{{ form.estatus_arma }}<br>
+                    </div>
+                
+                    <div class="col-12 col-lg-6">
+                      <label for="id_cuip_portador" class="form-label fw-bold text-muted fst-italic">{% trans "CUIP Portador" %}:</label>
+                      <br><input type="text"
+                        class="form-control input-placeholder" 
+                        name="{{ form.cuip_portador.name }}" 
+                        id="id_cuip_portador" 
+                        placeholder="{% trans 'CUIP Portador' %}"
+                        value="{{form.cuip_portador.value | default:''}}"
+                        disabled><br>
+                    </div>
+                
+                    <div class="col-12 col-lg-6">
+                      <label for="id_cuip_responsable" class="form-label fw-bold text-muted fst-italic">{% trans "CUIP Responsable" %}:</label>
+                      <br><input type="text"
+                        class="form-control input-placeholder" 
+                        name="{{ form.cuip_responsable.name }}" 
+                        id="id_cuip_responsable" 
+                        placeholder="{% trans 'CUIP Responsable' %}"
+                        value="{{form.cuip_responsable.value | default:''}}"
+                        disabled><br>
+                    </div>
+                
+                    <div class="col-12 col-lg-6">
+                      <label for="id_cihb" class="form-label fw-bold text-muted fst-italic">CIHB:</label>
+                      <br><input type="{{ form.cihb.field.widget.input_type }}"
+                        class="form-control input-placeholder" 
+                        name="{{ form.cihb.name }}" 
+                        id="id_cihb" 
+                        placeholder="CIHB"
+                        value="{{form.cihb.value | default:''}}"
+                        disabled><br>
+                    </div>
+                
+                    <div class="col-12 col-lg-6">
+                      <label for="id_tipo_funcionamiento" class="form-label fw-bold text-muted fst-italic">{%trans "Tipo de Funcionamiento"%}:</label>
+                        <br>{{form.tipo_funcionamiento}}<br>
+                    </div>
+                
+                    <div class="col-12 col-lg-6">
+                      <label for="id_propiedad" class="form-label fw-bold text-muted fst-italic">{%trans "Tipo de Propiedad" %}:</label>
+                        <br>{{form.propiedad}}<br>
+                    </div>
+                
+                    <div class="col-12 col-lg-6">
+                      <label for="id_fecha_baja_logica" class="form-label fw-bold text-muted fst-italic">{% trans "Fecha de Baja Logica" %}:</label>
+                      <br>{{ form.fecha_baja_logica }}<br>
+                    </div>
+                
+                    <div class="col-12 col-lg-6">
+                      <label for="id_motivo_baja" class="form-label fw-bold text-muted fst-italic">{% trans "Motivo de baja" %}:</label>
+                      <br>{{ form.motivo_baja }}<br>
+                    </div>
+                
+                    <div class="col-12 col-lg-6">
+                      <label for="id_documento_baja" class="form-label fw-bold text-muted fst-italic">{% trans "Documento de Baja" %}:</label>
+                      <br><input type="{{ form.documento_baja.field.widget.input_type }}"
+                        class="form-control input-placeholder" 
+                        name="{{ form.documento_baja.name }}" 
+                        id="id_documento_baja" 
+                        placeholder="{% trans 'Documento de Baja' %}"
+                        value="{{form.documento_baja.value | default:''}}"
+                        disabled><br>
+                    </div>
+                
+                    <div class="col-12 col-lg-6">
+                      <label for="id_observaciones_baja" class="form-label fw-bold text-muted fst-italic">{% trans "Observaciones de Baja" %}:</label>
+                      <br>{{ form.observaciones_baja }}<br>
+                    </div>
+                
+                    <div class="col-12 col-lg-6">
+                      <label for="id_fecha_baja_documento" class="form-label fw-bold text-muted fst-italic">{% trans "Fecha de baja del documento" %}:</label>
+                      <br>{{ form.fecha_baja_documento }}<br>
+                    </div>
+                </div>
+            </div>
+            {{form.ID_ALTERNA}}   
+            <a class="btn btn-primary" href="{%url 'movimientos_armamento'%}" role="button">{% trans "Volver" %}</a>
+        </form>
+    </div>
+    <div class="card-footer text-muted">
+    </div>
+</div>
+{% endblock %}

@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import DateInput
-from .models import Armamento, Institucion, Dependencia, Entidad, Municipio, LOC, Tipo, Calibre, Marca, Modelo, Edo_conservacion, TipoFuncinamiento, Propiedad
+from .models import Armamento, ArmamentoLog, Institucion, Dependencia, Entidad, Municipio, LOC, Tipo, Calibre, Marca, Modelo, Edo_conservacion, TipoFuncinamiento, Propiedad
 from django.utils.translation import gettext_lazy as _
 
 class ArmamentoForm(forms.ModelForm):
@@ -44,31 +44,9 @@ class ArmamentoForm(forms.ModelForm):
     FECHA_BAJA_DOCUMENTO = forms.DateField(widget=DateInput(attrs={'type': 'date'}), required=False)
 
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['OBSERVACIONES'].widget = forms.Textarea(attrs={'rows': 1, 'class': 'form-control'})
-        self.fields['MOTIVO_BAJA'].widget = forms.Textarea(attrs={'rows': 1, 'class': 'form-control'})
-        self.fields['OBSERVACIONES_BAJA'].widget = forms.Textarea(attrs={'rows': 1, 'class': 'form-control'})
-
-        self.fields['INSTITUCION'].widget.attrs.update({'class': 'form-control'})
-        self.fields['DEPENDENCIA'].widget.attrs.update({'class': 'form-control'})
-        self.fields['ENTIDAD'].widget.attrs.update({'class': 'form-control'})
-        self.fields['NUMERO_LOC'].widget.attrs.update({'class': 'form-control'})
-        self.fields['MUNICIPIO'].widget.attrs.update({'class': 'form-control'})
-        self.fields['CALIBRE_ARMA'].widget.attrs.update({'class': 'form-control'})
-        self.fields['MARCA_ARMA'].widget.attrs.update({'class': 'form-control'})
-        self.fields['MODELO_ARMA'].widget.attrs.update({'class': 'form-control'})
-        self.fields['ESTADO_ARMA'].widget.attrs.update({'class': 'form-control'})
-        self.fields['TIPO_FUNCIONAMIENTO'].widget.attrs.update({'class': 'form-control'})
-        self.fields['ESTATUS_ARMA'].widget.attrs.update({'class': 'form-control'})
-        self.fields['CLASE_TIPO_ARMA'].widget.attrs.update({'class': 'form-control'})
-        self.fields['PROPIEDAD'].widget.attrs.update({'class': 'form-control'})
-        self.fields['DOCUMENTO_BAJA'].widget.attrs.update({'class': 'form-control'})
-
-        self.fields['FECHA'].widget.attrs.update({'class': 'form-control'})
-        self.fields['FECHA_LOC'].widget.attrs.update({'class': 'form-control'})
-        self.fields['FECHA_CAPTURA'].widget.attrs.update({'class': 'form-control'})
-        self.fields['FECHA_BAJA_LOGICA'].widget.attrs.update({'class': 'form-control'})
-        self.fields['FECHA_BAJA_DOCUMENTO'].widget.attrs.update({'class': 'form-control'})
+        super(ArmamentoForm, self).__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs.update({'rows': 1,'class': 'form-control'})
 
 class BusquedaArmamentoForm(forms.Form):
     query = forms.CharField(
@@ -108,6 +86,16 @@ class BusquedaArmamentoForm(forms.Form):
             'style': 'width: 100%; max-width: 300px; font-weight: bold;'
 })
         self.fields['query'].widget.attrs.update({'class': 'form-control input-placeholder', 'style': 'width: 100%; max-width: 300px;'})
+
+class ArmamentoLogForm(forms.ModelForm):
+    class Meta:
+        model = ArmamentoLog
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super(ArmamentoLogForm, self).__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs.update({'rows': 1, 'class': 'form-control'})
 
 class ExcelUploadForm(forms.Form):
     archivo_excel = forms.FileField(

@@ -2,9 +2,11 @@ from django.urls import path
 from . import views
 urlpatterns = [
     path('', views.panel_armamento, name='panel_armamento'),
-    path('armamento/',views.armamento, name='armamento'),
+    path('todo/',views.armamento, name='armamento'),
     path('activos/',views.armamento_activos, name='armamento_activos'),
     path('inactivos/',views.armamento_inactivos, name='armamento_inactivos'),
+    path('movimientos/',views.movimientos_armamento, name='movimientos_armamento'),
+    path('movimientos/<int:id>/',views.ver_movimiento, name='ver_movimiento'),
     path('crear_armamento/',views.crear_armamento, name='crear_armamento'),
     path('crear_armamento/excel',views.crear_armamento_excel, name='armamento_excel'),
     path('crear_armamento/excel/descargar_excel/', views.descargar_plantilla_excel, name='descargar_plantilla_excel'),
